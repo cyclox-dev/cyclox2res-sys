@@ -1,5 +1,5 @@
 <div id="main">
-	<h2>{title}</h2>
+	<h2>大会リスト</h2>
 	<table class="table table-striped">
 		<thead>
 			<tr>

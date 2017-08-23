@@ -15,9 +15,15 @@ class Meet_model extends CI_Model {
 	
 	public function __construct()
 	{
+		parent::__construct();
 		$this->load->database();
 	}
 	
+	/**
+	 * 大会を取得する。deleted は含まない。
+	 * @param string $code 大会コード。指定しない場合はすべての大会を取得する。
+	 * @return type 大会データ。$code を指定しない場合は大会データの配列。
+	 */
 	public function get_meet($code = FALSE)
 	{
 		if ($code === FALSE)
