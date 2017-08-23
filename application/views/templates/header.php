@@ -12,3 +12,22 @@
 			<header>
 				<div>AJOCC Cross System [Beta-Version]</div>
 			</header>
+			<div id="flash_view">
+				<?php
+				if (isset($xsys_flash_error_list))
+				{
+					foreach ($xsys_flash_error_list as $e)
+					{
+						echo '<div class="flash_error">' . $e . '</div>';
+					}
+				}
+				
+				if (isset($xsys_flash_info_list))
+				{
+					foreach ($xsys_flash_info_list as $i)
+					{
+						echo '<div class="flash_info">' . $i . '</div>';
+					}
+				}
+				?>
+			</div>
