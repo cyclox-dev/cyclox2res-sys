@@ -22,11 +22,12 @@ class Meet_model extends CI_Model {
 	{
 		if ($code === FALSE)
 		{
-			$query = $this->db->get('meets');
+			$this->db->order_by('at_date', 'DESC');
+			$query = $this->db->get_where('meets', array('deleted' => 0));
 			return $query->result_array();
 		}
 		
-		$query = $this->db->get_where('meets', array('code' => $code));
+		$query = $this->db->get_where('meets', array('code' => $code, 'deleted' => 0));
 		return $query->row_array();
 	}
 }

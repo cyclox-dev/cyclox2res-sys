@@ -1,6 +1,12 @@
-<?php
-echo 'meet is,,,';
-echo '<h2>' . $meet['name'] . '</h2>';
-echo '<p>Code:' . $meet['code'] . '</p>';
-echo '<p>At:' . $meet['at_date'] . '</p>';
-echo '<p>Organized by:' . $meet['organized_by'] . '</p>';
+<div id="main">
+	<h2><?= h($meet['name']); ?></h2>
+	<p>
+		日付：<?= h($meet['at_date']); ?></br>
+		会場：<?= h($meet['location']); ?></br>
+		主催：<?= h($meet['organized_by']); ?></br>
+		大会HP：<?= h($meet['homepage']); ?></br>
+		シーズン：<?= h($meet['season_id']); ?></br>
+		シリーズ：<?= h($meet['meet_group_code']); ?></br>
+	</p>
+	
+</div>
