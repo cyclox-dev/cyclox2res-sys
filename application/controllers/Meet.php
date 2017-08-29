@@ -19,21 +19,22 @@ class Meet extends XSYS_Controller {
 	{
 		$data['meets'] = $this->meet_model->get_meet();
 		
-		$this->_fmt_render('meets/index', $data);
+		$this->_fmt_render('meet/index', $data);
 	}
 	
 	public function view($code = NULL)
 	{
 		$data = array();
 		$data['meet'] = $this->meet_model->get_meet($code);
-		$data['ecats'] = $this->race_model->get_race_of_meet($code);
-		$data['rank_ups'] = $this->categoryracer_model->get_rankuppers_of_meet($code);
 		
 		if (empty($data['meet']))
 		{
 			show_404();
 		}
 		
-		$this->_fmt_render('meets/view', $data);
+		$data['ecats'] = $this->race_model->get_race_of_meet($code);
+		$data['rank_ups'] = $this->categoryracer_model->get_rankuppers_of_meet($code);
+		
+		$this->_fmt_render('meet/view', $data);
 	}
 }
