@@ -23,7 +23,7 @@
 		<tbody>
 			<?php foreach ($ecats as $e): ?>
 				<tr>
-					<td><?= h($e['start_clock']) ?></td>
+					<td><?= h($e['prepared_start_clock']) ?></td>
 					<td><a href ="<?= site_url('race/' . h($e['ec_id'])) ?>"><?= h($e['ec_name']) ?></a></td>
 					<td><?= h($e['races_category_code']) ?></td>
 					<td><?= h($e['count(*)']) . '名' ?></td>

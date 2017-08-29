@@ -50,7 +50,7 @@ class Race_model  extends CI_Model {
 		
 		$entries = $query->result_array();
 		
-		return $this->_convert_start_clock($entries);
+		return $this->_prepare_start_clock($entries);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ class Race_model  extends CI_Model {
 	 * @param array $entries 
 	 * @return array 並び替えられた配列
 	 */
-	private function _convert_start_clock($entries)
+	private function _prepare_start_clock($entries)
 	{
 		if (empty($entries))
 		{
@@ -68,26 +68,25 @@ class Race_model  extends CI_Model {
 		// start delay を出走時間に適用
 		foreach ($entries as &$e)
 		{
-			if (!empty($e['start_delay_sec']))
+			if (!empty($e['start_clock']))
 			{
-				$min = $e['start_delay_sec'] / 60;
-				$e['start_clock'] = date('H:i:s', strtotime($e['start_clock'] . ' +' . $min . ' min'));
+				$e['prepared_start_clock'] = $this->_convert_start_clock($e['start_clock'], $e['start_delay_sec']);
 			}
 		}
 		
 		// 出走時間順に並び替え
 		uasort($entries, function($a, $b) {
-			if (empty($a['start_clock']))
+			if (empty($a['prepared_start_clock']))
 			{
-				return empty($b['start_clock']) ? 0 : -1;
+				return empty($b['prepared_start_clock']) ? 0 : -1;
 			}
-			if (empty($b['start_clock']))
+			if (empty($b['prepared_start_clock']))
 			{
 				return 1;
 			}
 			
-			$timea = DateTime::createFromFormat('H:i:s', $a['start_clock']);
-			$timeb = DateTime::createFromFormat('H:i:s', $b['start_clock']);
+			$timea = DateTime::createFromFormat('H:i:s', $a['prepared_start_clock']);
+			$timeb = DateTime::createFromFormat('H:i:s', $b['prepared_start_clock']);
 			
 			return ($timea->format('G') * 60 + $timea->format('i')) - ($timeb->format('G') * 60 + $timeb->format('i'));
 		});
@@ -95,9 +94,21 @@ class Race_model  extends CI_Model {
 		// 表記を HH:mm に変更。
 		foreach ($entries as &$e)
 		{
-			$e['start_clock'] = date('H:i', strtotime($e['start_clock']));
+			$e['prepared_start_clock'] = date('H:i', strtotime($e['prepared_start_clock']));
 		}
 		
 		return $entries;
+	}
+	
+	/**
+	 * スタート時刻にスタート遅延秒を加算した、実際のスタート時刻を H:i:s の形式でかえす。
+	 * @param strint(datetime) $start_clock スタート時刻
+	 * @param int $delay_sec 遅延秒
+	 * @return string(datetime) H:i:s 形式の時間文字列
+	 */
+	private function _convert_start_clock($start_clock, $delay_sec)
+	{
+		$min = $delay_sec / 60;
+		return date('H:i:s', strtotime($start_clock . ' +' . $min . ' min'));
 	}
 }
