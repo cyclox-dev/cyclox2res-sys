@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Meet_model
  *
@@ -33,7 +27,16 @@ class Meet_model extends CI_Model {
 			return $query->result_array();
 		}
 		
-		$query = $this->db->get_where('meets', array('code' => $code, 'deleted' => 0));
+		$cdt = array(
+			'mt.code' => $code,
+			'mt.deleted' => 0
+		);
+		
+		$query = $this->db->select('*, mg.code as mg_code, mt.name as meet_name'
+				. ', mg.name as mg_name, ss.name as ss_name')
+				->join('meet_groups as mg', 'mt.meet_group_code = mg.code', 'INNER')
+				->join('seasons as ss', 'mt.season_id = ss.id', 'INNER')
+				->get_where('meets as mt', $cdt);
 		return $query->row_array();
 	}
 }

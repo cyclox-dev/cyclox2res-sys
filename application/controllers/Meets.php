@@ -11,6 +11,8 @@ class Meets extends XSYS_Controller {
 	{
 		parent::__construct();
 		$this->load->model('meet_model');
+		$this->load->model('race_model');
+		$this->load->model('categoryracer_model');
 		$this->load->helper('url_helper');
 	}
 	
@@ -23,7 +25,10 @@ class Meets extends XSYS_Controller {
 	
 	public function view($code = NULL)
 	{
+		$data = array();
 		$data['meet'] = $this->meet_model->get_meet($code);
+		$data['entries'] = $this->race_model->get_race_of_meet($code);
+		$data['rank_ups'] = $this->categoryracer_model->get_rankuppers_of_meet($code);
 		
 		if (empty($data['meet']))
 		{
