@@ -22,6 +22,7 @@ class XSYS_Controller extends CI_Controller {
 		$this->load->library('parser');
 		$this->load->library('session');
 		$this->load->helper('html_escape');
+		$this->load->helper('url_helper');
 	}
 
 	protected function _fmt_render($view = NULL, $data = array())

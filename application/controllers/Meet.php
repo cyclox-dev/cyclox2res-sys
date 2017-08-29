@@ -13,7 +13,6 @@ class Meet extends XSYS_Controller {
 		$this->load->model('meet_model');
 		$this->load->model('race_model');
 		$this->load->model('categoryracer_model');
-		$this->load->helper('url_helper');
 	}
 	
 	public function index()
