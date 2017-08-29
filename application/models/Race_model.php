@@ -38,12 +38,12 @@ class Race_model  extends CI_Model {
 			'ec.deleted' => 0,
 			'er.deleted' => 0,
 			'rr.deleted' => 0,
-			'rank' => 1,
 		);
-		$query = $this->db->select('*, ec.name as ec_name, ec.id as ec_id')
+		$query = $this->db->select('*, count(*), ec.name as ec_name, ec.id as ec_id')
 				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
 				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')
 				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER')
+				->group_by('entry_category_id')
 				->get_where('entry_groups as eg', $cdt);
 		
 		// result_array() で取ること。meets. の情報は単一の select で良いかも（meet_group, season と一緒にでも）。

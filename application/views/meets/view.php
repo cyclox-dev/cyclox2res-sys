@@ -17,7 +17,7 @@
 				<th>スタート</th>
 				<th>レース</th>
 				<th>カテゴリー</th>
-				<th>優勝者</th>
+				<th>エントリー</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,11 +26,7 @@
 					<td><?= h($e['start_clock']) ?></td>
 					<td><a href ="<?= site_url('race/' . h($e['ec_id'])) ?>"><?= h($e['ec_name']) ?></a></td>
 					<td><?= h($e['races_category_code']) ?></td>
-					<td>
-						<a href ="<?= site_url('racer/' . h($e['racer_code'])) ?>">
-						<?= h($e['name_at_race']) ?>
-						</a>
-					</td>
+					<td><?= h($e['count(*)']) . '名' ?></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
