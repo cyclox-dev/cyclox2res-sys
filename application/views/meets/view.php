@@ -8,7 +8,7 @@
 		シリーズ：<a href="<?= site_url('meet_groups/' . h($meet['meet_group_code'])); ?>"><?= h($meet['mg_name']) ?></a></br>
 	</p>
 	<h3>レース</h3>
-	<?php if (empty($entries)): ?>
+	<?php if (empty($ecats)): ?>
 	<p>エントリー／リザルトがありません。</p>
 	<?php else: ?>
 	<table class="table table-striped">
@@ -21,7 +21,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($entries as $e): ?>
+			<?php foreach ($ecats as $e): ?>
 				<tr>
 					<td><?= h($e['start_clock']) ?></td>
 					<td><a href ="<?= site_url('race/' . h($e['ec_id'])) ?>"><?= h($e['ec_name']) ?></a></td>

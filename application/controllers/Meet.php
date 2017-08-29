@@ -26,7 +26,7 @@ class Meet extends XSYS_Controller {
 	{
 		$data = array();
 		$data['meet'] = $this->meet_model->get_meet($code);
-		$data['entries'] = $this->race_model->get_race_of_meet($code);
+		$data['ecats'] = $this->race_model->get_race_of_meet($code);
 		$data['rank_ups'] = $this->categoryracer_model->get_rankuppers_of_meet($code);
 		
 		if (empty($data['meet']))
