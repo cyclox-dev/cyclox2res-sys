@@ -14,7 +14,7 @@
 				<tr>
 					<td><?= h($mt['at_date']); ?></th>
 					<td><?= h($mt['meet_group_code']); ?></th>
-					<td><a href="<?php echo site_url('meets/' . $mt['code']); ?>"><?= h($mt['name']); ?></a></th>
+					<td><a href="<?php echo site_url('meet/' . $mt['code']); ?>"><?= h($mt['name']); ?></a></th>
 					<td><?= h($mt['location']); ?></th>
 				</tr>
 			<?php endforeach; ?>

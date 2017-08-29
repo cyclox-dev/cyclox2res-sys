@@ -5,7 +5,7 @@
  *
  * @author shun
  */
-class Meets extends XSYS_Controller {
+class Meet extends XSYS_Controller {
 	
 	public function __construct()
 	{
