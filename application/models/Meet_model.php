@@ -22,8 +22,8 @@ class Meet_model extends CI_Model {
 	{
 		if ($code === FALSE)
 		{
-			$this->db->order_by('at_date', 'DESC');
-			$query = $this->db->get_where('meets', array('deleted' => 0));
+			$query = $this->db->order_by('at_date', 'DESC')
+					->get_where('meets', array('deleted' => 0));
 			return $query->result_array();
 		}
 		
