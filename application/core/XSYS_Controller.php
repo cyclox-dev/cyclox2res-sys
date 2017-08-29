@@ -24,7 +24,7 @@ class XSYS_Controller extends CI_Controller {
 		$this->load->helper('html_escape');
 	}
 
-	protected function _fmtRender($view = NULL, $data = array())
+	protected function _fmt_render($view = NULL, $data = array())
 	{
 		if (empty($view))
 		{

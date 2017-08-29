@@ -20,7 +20,7 @@ class Meet extends XSYS_Controller {
 	{
 		$data['meets'] = $this->meet_model->get_meet();
 		
-		$this->_fmtRender('meets/index', $data);
+		$this->_fmt_render('meets/index', $data);
 	}
 	
 	public function view($code = NULL)
@@ -35,6 +35,6 @@ class Meet extends XSYS_Controller {
 			show_404();
 		}
 		
-		$this->_fmtRender('meets/view', $data);
+		$this->_fmt_render('meets/view', $data);
 	}
 }
