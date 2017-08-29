@@ -4,8 +4,7 @@
 		日付：<?= h($meet['at_date']) ?></br>
 		会場：<?= h($meet['location']) ?></br>
 		主催：<?= h($meet['organized_by']) ?></br>
-		大会HP：<a href="<?= $meet['homepage']; ?>"><?= h($meet['homepage']) ?></a></br>
-		シーズン：<a href="<?= site_url('seasons/' . h($meet['season_id'])); ?>"><?= h($meet['ss_name']) ?></a></br>
+		大会HP：<a href="<?= $meet['meet_hp']; ?>"><?= h($meet['meet_hp']) ?></a></br>
 		シリーズ：<a href="<?= site_url('meet_groups/' . h($meet['meet_group_code'])); ?>"><?= h($meet['mg_name']) ?></a></br>
 	</p>
 	<h3>レース</h3>

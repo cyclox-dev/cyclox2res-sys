@@ -32,7 +32,7 @@ class Meet_model extends CI_Model {
 			'mt.deleted' => 0
 		);
 		
-		$query = $this->db->select('*, mg.code as mg_code, mt.name as meet_name'
+		$query = $this->db->select('*, mg.code as mg_code, mt.name as meet_name, mt.homepage as meet_hp'
 				. ', mg.name as mg_name, ss.name as ss_name')
 				->join('meet_groups as mg', 'mt.meet_group_code = mg.code', 'INNER')
 				->join('seasons as ss', 'mt.season_id = ss.id', 'INNER')
