@@ -29,9 +29,12 @@ class Race extends XSYS_Controller {
 		$data['results'] = $this->result_model->get_results($ecat_id);
 		$data['rankuppers'] = $this->categoryracer_model->get_rankuppers_of_ecat($ecat_id);
 		
+		// 残留ポイント表記があるかチェック
+		// 人数カウント
 		$entried = 0;
 		$started = 0;
 		$fin = 0;
+		$has_holdpoints = FALSE;
 		foreach ($data['results'] as $r)
 		{
 			++$entried;
@@ -43,10 +46,16 @@ class Race extends XSYS_Controller {
 					++$fin;
 				}
 			}
+			
+			if (!empty($r['hold_points_exp']))
+			{
+				$has_holdpoints = TRUE;
+			}
 		}
 		$data['entried'] = $entried;
 		$data['started'] = $started;
 		$data['fin'] = $fin;
+		$data['has_holdpoints'] = $has_holdpoints;
 		
 		$this->_fmt_render('race/view', $data);
 	}

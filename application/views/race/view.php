@@ -22,9 +22,11 @@
 				<th>周回数</th>
 				<th>タイム</th>
 				<th>順位%</th>
+				<?php if ($has_holdpoints): ?>
 				<th>残留Pt</th>
+				<?php endif; ?>
 				<th>AjoccPt</th>
-				<th>備考</th>
+				<th>Note</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,9 +36,10 @@
 					<td><?= h($r['status_code']) ?></td>
 					<td><?= h($r['body_number']) ?></td>
 					<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
-					<td><?= h($r['lap']) ?></td>
+					<td><?php if (!empty($r['lap'])) echo h($r['lap']); ?></td>
 					<td><?php if (!empty($r['time'])) echo h($r['time']); ?></td>
 					<td><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
+					<?php if ($has_holdpoints): ?>
 					<td>
 						<?php
 						$exp = '';
@@ -55,6 +58,7 @@
 						}
 						?>
 					</td>
+					<?php endif; ?>
 					<td>
 						<?php
 						if (!empty($r['ajocc_pt']))
