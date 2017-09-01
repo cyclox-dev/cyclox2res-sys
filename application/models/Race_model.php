@@ -63,13 +63,39 @@ class Race_model extends CI_Model {
 		$query = $this->db->select('*, count(*), ec.name as ec_name, ec.id as ec_id')
 				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
 				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')
-				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER')
+				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER') // result があること。カウントに必要。
 				->group_by('entry_category_id')
 				->get_where('entry_groups as eg', $cdt);
 		
-		// result_array() で取ること。meets. の情報は単一の select で良いかも（meet_group, season と一緒にでも）。
-		
 		$entries = $query->result_array();
+		
+		// 優勝者を取得 MEMO: 上記の処理で同時に取得しようとすると rank=1 がいない場合に取得できなくなる。
+		$cdt['rr.rank'] = 1;
+		$cdt['rr.deleted'] = 0;
+		$query = $this->db->select('ec.id as ec_id, racer_code, er.name_at_race, er.team_name')
+				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
+				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')
+				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER')
+				->get_where('entry_groups as eg', $cdt);
+		$tops = $query->result_array();
+		
+		foreach ($entries as &$e)
+		{
+			foreach ($tops as $t)
+			{
+				if ($t['ec_id'] == $e['ec_id'])
+				{
+					$e['top'] = array(
+						'racer_code' => $t['racer_code'],
+						'name' => $t['name_at_race'],
+						'team' => $t['team_name']
+					);
+					break;
+				}
+			}
+		}
+		
+		var_dump($entries);
 		
 		return $this->_prepare_start_clock($entries);
 	}
