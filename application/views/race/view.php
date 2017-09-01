@@ -4,9 +4,9 @@
 	<p>
 		スタート：<?= h($ecat['prepared_start_clock']) ?></br>
 		レースカテゴリー：<?= h($ecat['races_category_code']) ?></br>
-		<?php
-		echo $entried. ' Entried／' . $started . ' Started／' . $fin . ' Finished(' . sprintf('%2.1f', $fin / $started * 100) . '%)';
-		?>
+		エントリー：<?= h($entried) . '名' ?></br>
+		スタート：<?= h($started) . '名' ?></br>
+		完走：<?= h($fin) . '名（完走率' . sprintf('%2.1f', $fin / $started * 100) . '%）' ?></br>
 	</p>
 	<h3>リザルト</h3>
 	<?php if (empty($results)): ?>
