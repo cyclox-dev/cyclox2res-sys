@@ -14,4 +14,11 @@ footer {
   background-color: #99958D;
   padding: 0.5em 1em; }
 
+h2.with_pop {
+  margin-top: 0em; }
+
+p.title_pop {
+  font-size: 0.8em;
+  margin-bottom: 0em; }
+
 /*# sourceMappingURL=main.css.map */

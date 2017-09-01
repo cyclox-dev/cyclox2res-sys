@@ -1,6 +1,6 @@
 <div id="main">
-	<p><?= h($ecat['meet_name']) . '（' . h($ecat['meet_group_name']) . '）' ?></p>
-	<h2><?= h($ecat['ec_name']); ?></h2>
+	<p class="title_pop"><?= h($ecat['meet_name']) . '（' . h($ecat['meet_group_name']) . '）' ?></p>
+	<h2 class="with_pop"><?= h($ecat['ec_name']); ?></h2>
 	<p>
 		スタート：<?= h($ecat['prepared_start_clock']) ?></br>
 		レースカテゴリー：<?= h($ecat['races_category_code']) ?></br>
