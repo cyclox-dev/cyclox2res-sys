@@ -95,8 +95,6 @@ class Race_model extends CI_Model {
 			}
 		}
 		
-		var_dump($entries);
-		
 		return $this->_prepare_start_clock($entries);
 	}
 	
