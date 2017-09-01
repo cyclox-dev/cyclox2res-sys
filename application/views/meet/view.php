@@ -45,7 +45,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>選手Code／氏名</th>
+				<th>選手</th>
 				<th>チーム</th>
 				<th>レース</th>
 				<th>昇格先カテゴリー</th>
@@ -54,7 +54,7 @@
 		<tbody>
 			<?php foreach ($rank_ups as $r): ?>
 				<tr>
-					<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['racer_code']) . '／' . h($r['name_at_race']) ?></a></td>
+					<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 					<td><?= h($r['team_name']) ?></td>
 					<td><a href ="<?= site_url('race/' . h($r['entry_category_id'])) ?>"><?= h($r['ec_name']) ?></a></td>
 					<td><?= h($r['cr_cat_code']) ?></td>
