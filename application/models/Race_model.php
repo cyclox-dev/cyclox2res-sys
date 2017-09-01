@@ -1,22 +1,43 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Race_model
  *
  * @author shun
  */
-class Race_model  extends CI_Model {
+class Race_model extends CI_Model {
 	
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->database();
+	}
+	
+	/**
+	 * 指定 entry category id のレース情報をかえす
+	 * @param int $ecat_id entry category id
+	 * @return array レース情報
+	 */
+	public function get_race_info($ecat_id)
+	{
+		$cdt = array(
+			'ec.deleted' => 0,
+			'eg.deleted' => 0,
+			'ec.id' => $ecat_id,
+		);
+		
+		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name, mg.name as meet_group_name')
+				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')
+				->join('meets as mt', 'mt.code = eg.meet_code', 'INNER')
+				->join('meet_groups as mg', 'mg.code = mt.meet_group_code', 'INNER')
+				->get_where('entry_categories as ec', $cdt);
+		
+		$ecat = $query->row_array();
+		
+		$ecat['prepared_start_clock'] = date('H:i'
+				, strtotime($this->_convert_start_clock($ecat['start_clock'], $ecat['start_delay_sec'])));
+		
+		return $ecat;
 	}
 	
 	/**
