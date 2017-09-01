@@ -18,7 +18,8 @@
 				<th>順位</th>
 				<th>Status</th>
 				<th>Bib</th>
-				<th>選手名</th>
+				<th>選手</th>
+				<th>チーム</th>
 				<th>周回数</th>
 				<th>タイム</th>
 				<th>順位%</th>
@@ -36,6 +37,7 @@
 					<td><?= h($r['status_code']) ?></td>
 					<td><?= h($r['body_number']) ?></td>
 					<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
+					<td><?= h($r['team_name']) ?></td>
 					<td><?php if (!empty($r['lap'])) echo h($r['lap']); ?></td>
 					<td><?php if (!empty($r['time'])) echo h($r['time']); ?></td>
 					<td><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
@@ -81,4 +83,5 @@
 		</tbody>
 	</table>
 	<?php endif; ?>
+	<p class="proviso">※選手名はレース時点のものを表示しています。</p>
 </div>
