@@ -82,6 +82,6 @@
 			<?php endforeach; ?>
 		</tbody>
 	</table>
-	<?php endif; ?>
 	<p class="proviso">※選手名はレース時点のものを表示しています。</p>
+	<?php endif; ?>
 </div>
