@@ -25,6 +25,10 @@ class Race extends XSYS_Controller {
 		{
 			show_404();
 		}
+		if (XSYS_const::NONVISIBLE_BEFORE1718 && $data['ecat']['at_date'] < '2017-04-01')
+		{
+			show_404();
+		}
 		
 		$data['results'] = $this->result_model->get_results($ecat_id);
 		$data['rankuppers'] = $this->categoryracer_model->get_rankuppers_of_ecat($ecat_id);

@@ -8,4 +8,6 @@
 class XSYS_const {
 	const FLASH_KEY_ERROR =  '_FLASH_ERROR';
 	const FLASH_KEY_INFO = '_FLASH_INFO';
+	
+	const NONVISIBLE_BEFORE1718 = TRUE;
 }
