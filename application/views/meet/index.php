@@ -1,5 +1,8 @@
 <div id="main">
 	<h2>大会リスト</h2>
+	<?php if (empty($meets)): ?>
+	<p>表示する大会がありません。</p>
+	<?php else: ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -20,4 +23,5 @@
 			<?php endforeach; ?>
 		</tbody>
 	</table>
+	<?php endif; ?>
 </div>
