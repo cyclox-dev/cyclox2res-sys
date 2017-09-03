@@ -1,5 +1,5 @@
 <?php
-class Pages extends CI_Controller {
+class Pages extends XSYS_Controller {
 
     public function view($page = 'home')
     {
@@ -11,9 +11,7 @@ class Pages extends CI_Controller {
     
             $data['title'] = ucfirst($page); // 頭文字を大文字に
     
-            $this->load->view('templates/header', $data);
-            $this->load->view('pages/'.$page, $data);
-            $this->load->view('templates/footer', $data);
+			$this->_fmt_render('pages/'.$page, $data);
     }
 
 }
