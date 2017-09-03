@@ -18,8 +18,13 @@ class Race_model extends CI_Model {
 	 * @param int $ecat_id entry category id
 	 * @return array レース情報
 	 */
-	public function get_race_info($ecat_id)
+	public function get_race_info($ecat_id = NULL)
 	{
+		if (empty($ecat_id))
+		{
+			return null;
+		}
+		
 		$cdt = array(
 			'ec.deleted' => 0,
 			'eg.deleted' => 0,
