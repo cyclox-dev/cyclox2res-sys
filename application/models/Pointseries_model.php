@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * Description of Pointseries_model
+ *
+ * @author shun
+ */
+class Pointseries_model extends CI_Model {
+	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+	}
+	
+	/**
+	 * 指定出走カテゴリーのポイントシリーズ取得ポイントをかえす。
+	 * @param int $ecat_id 出走カテゴリー ID
+	 * @return array racer_result_id(key:rr_id) をキーとするマップ。value は array。
+	 *		$cat_id が無効な場合、NULL をかえす。
+	 */
+	public function get_psrmap_of_ecat($ecat_id = NULL)
+	{
+		if (empty($ecat_id))
+		{
+			return NULL;
+		}
+		
+		$cdt = array(
+			'ec.deleted' => 0,
+			'er.deleted' => 0,
+			'rr.deleted' => 0,
+			'ec.id' => $ecat_id,
+		);
+		
+		$query = $this->db->select('*, rr.id as rr_id')
+				->join('entry_racers as er', 'rr.entry_racer_id = er.id', 'INNER')
+				->join('entry_categories as ec', 'er.entry_category_id = ec.id', 'INNER')
+				->join('point_series_racers as psr', 'rr.id = psr.racer_result_id', 'INNER')
+				->get_where('racer_results as rr', $cdt);
+		
+		$points = $query->result_array();
+		
+		$rmap = array();
+		
+		foreach ($points as $pt)
+		{
+			$rid = $pt['rr_id'];
+			if (empty($rmap[$rid]))
+			{
+				$rmap[$rid] = array();
+			}
+			
+			$rmap[$rid][] = $pt;
+		}
+		
+		return $rmap;
+	}
+	
+	/**
+	 * 指定 ID のポイントシリーズ設定情報をかえす
+	 * @param int $series_id シリーズ ID
+	 * @return array ポイントシリーズ情報
+	 */
+	public function get_series_info($series_id)
+	{
+		$cdt = array(
+			'id' => $series_id,
+			'deleted' => 0
+		);
+		
+		$query = $this->db->select('*')
+				->get_where('point_series', $cdt);
+		
+		return $query->row_array();
+	}
+}

@@ -27,6 +27,12 @@
 				<th>残留Pt</th>
 				<?php endif; ?>
 				<th>AjoccPt</th>
+				<?php
+				foreach ($ps_titles as $t)
+				{
+					echo '<th>' . $t['name'] . '</th>';
+				}
+				?>
 				<th>Note</th>
 			</tr>
 		</thead>
@@ -69,6 +75,22 @@
 						}
 						?>
 					</td>
+					<?php
+					for ($i = 0; $i < sizeof($ps_titles); $i++)
+					{
+						echo '<td>';
+						if (!empty($r['ps_points'][$i]))
+						{
+							echo $r['ps_points'][$i]['pt'];
+							if (!empty($r['ps_points'][$i]['bonus']))
+							{
+								echo '+' . $r['ps_points'][$i]['bonus'];
+							}
+							echo 'pt';
+						}
+						echo '</td>';
+					}
+					?>
 					<td>
 						<?php
 						if (!empty($rankuppers[$r['rr_id']]))

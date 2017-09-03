@@ -14,6 +14,7 @@ class Race extends XSYS_Controller {
 		$this->load->model('race_model');
 		$this->load->model('result_model');
 		$this->load->model('categoryracer_model');
+		$this->load->model('pointseries_model');
 	}
 	
 	public function view($ecat_id = NULL)
@@ -30,7 +31,7 @@ class Race extends XSYS_Controller {
 			show_404();
 		}
 		
-		$data['results'] = $this->result_model->get_results($ecat_id);
+		$results = $this->result_model->get_results($ecat_id);
 		$data['rankuppers'] = $this->categoryracer_model->get_rankuppers_of_ecat($ecat_id);
 		
 		// 残留ポイント表記があるかチェック
@@ -39,7 +40,7 @@ class Race extends XSYS_Controller {
 		$started = 0;
 		$fin = 0;
 		$has_holdpoints = FALSE;
-		foreach ($data['results'] as $r)
+		foreach ($results as $r)
 		{
 			++$entried;
 			if ($r['status'] != RacerResultStatus::$DNS->val())
@@ -60,6 +61,51 @@ class Race extends XSYS_Controller {
 		$data['started'] = $started;
 		$data['fin'] = $fin;
 		$data['has_holdpoints'] = $has_holdpoints;
+		
+		// シリーズポイント取得状況について取得
+		$psrs_map = $this->pointseries_model->get_psrmap_of_ecat($ecat_id);
+		
+		$ps_titles = array();
+		foreach ($results as &$result)
+		{
+			$rid = $result['rr_id'];
+			if (empty($psrs_map[$rid])) continue;
+			
+			foreach ($psrs_map[$rid] as $psr)
+			{
+				$finds = FALSE;
+				$index = 0;
+				foreach ($ps_titles as $t)
+				{
+					if ($psr['point_series_id'] == $t['id'])
+					{
+						$finds = TRUE;
+						break;
+					}
+					++$index;
+				}
+				
+				if (!$finds)
+				{
+					$ps = $this->pointseries_model->get_series_info($psr['point_series_id']);
+					$ps_titles[$index] = array('id' => $psr['point_series_id'], 'name' => $ps['short_name']);
+				}
+				
+				if (empty($result['ps_points']))
+				{
+					$result['ps_points'] = array();
+				}
+				
+				$result['ps_points'][$index] = array(
+					'pt' => $psr['point'],
+					'bonus' => $psr['bonus']
+				);
+			}
+		}
+		
+		//var_dump(json_encode($results));
+		$data['results'] = $results;
+		$data['ps_titles'] = $ps_titles;
 		
 		$this->_fmt_render('race/view', $data);
 	}
