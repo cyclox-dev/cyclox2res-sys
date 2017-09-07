@@ -57,9 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['meet/(:any)'] = 'meet/view/$1';
 $route['meet'] = 'meet';
 $route['race/(:any)'] = 'race/view/$1';
+$route['racer/(:any)'] = 'racer/view/$1';
 
-$route['news/create'] = 'news/create';
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';

@@ -14,7 +14,7 @@ footer {
   background-color: #99958D;
   padding: 0.5em 1em; }
 
-h2.with_pop {
+.with_pop {
   margin-top: 0em; }
 
 p.title_pop {
@@ -23,5 +23,11 @@ p.title_pop {
 
 p.proviso {
   font-size: 0.8em; }
+
+.dl-horizontal_al > dt {
+  text-align: left;
+  width: 110px; }
+.dl-horizontal_al > dd {
+  margin-left: 110px; }
 
 /*# sourceMappingURL=main.css.map */

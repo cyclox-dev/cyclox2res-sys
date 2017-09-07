@@ -3,7 +3,6 @@
     Author     : shun
 */
 
-
 header {
     background-color: #FAFAF6;
     padding: 0.5em 1em;
@@ -20,7 +19,7 @@ footer {
     padding: 0.5em 1em;
 }
 
-h2.with_pop {
+.with_pop {
     margin-top: 0em;
 }
 p.title_pop {
@@ -32,4 +31,13 @@ p.proviso {
     font-size: 0.8em;
 }
 
+.dl-horizontal_al {
+    > dt {
+        text-align: left;
+        width: 110px;
+    }
+    > dd {
+        margin-left: 110px;
+    }
+}
 
