@@ -86,4 +86,91 @@ class Categoryracer_model extends CI_Model {
 		
 		return $retMap;
 	}
+	
+	/**
+	 * 指定選手のカテゴリー所属をかえす
+	 * @param string $racer_code 選手コード
+	 * @return array カテゴリー所属
+	 */
+	public function get_catbinds($racer_code = NULL)
+	{
+		$cdt = array(
+			'cr.racer_code' => $racer_code,
+			//'r.deleted' => 0, <-- 削除済み選手も表示する。
+			'cr.deleted' => 0,
+		);
+		
+		$query = $this->db->select('*')
+				->join('meets as mt', 'mt.code = cr.meet_code', 'LEFT')
+				->order_by('cr.cancel_date DESC')
+				->get_where('category_racers as cr', $cdt);
+		
+		$cats = $query->result_array();
+		return $this->_arrange_cat_binds($cats);
+	}
+	
+	/**
+	 * カテゴリー所属を現在所属、過去の、未来の、に分別し、それぞれ並び替える。
+	 * @param array $cats カテゴリー所属リスト
+	 * @return array 並び替え結果。key: on, old, future に振り分けられる。
+	 */
+	private function _arrange_cat_binds($cats)
+	{
+		if (empty($cats))
+		{
+			return array();
+		}
+		
+		$today = date('Y-m-d');
+		
+		$future = array();
+		$old = array();
+		$on = array();
+		
+		foreach ($cats as $c)
+		{
+			$c['result_linkable'] = (!empty($c['racer_result_id']) && !empty($c['meet_code'])
+					&& $c['at_date'] > date('2017-03-31')
+					&& $c['reason_id'] == CategoryReason::$RESULT_UP->ID());
+			
+			if ($c['apply_date'] > $today)
+			{
+				$future[] = $c;
+			}
+			else if (empty($c['cancel_date']) || $c['cancel_date'] >= $today)
+			{
+				$on[] = $c;
+			}
+			else
+			{
+				$old[] = $c;
+			}
+		}
+		
+		// 過去所属はモデルの order by に依存
+		
+		// 未来所属は apply date 順
+		if (sizeof($future) > 1)
+		{
+			usort($future, function($a, $b) {
+				return $a['apply_date'] < $b['apply_date'];
+			});
+		}
+		
+		// 現在所属も apply date 順
+		if (sizeof($on) > 1)
+		{
+			usort($on, function($a, $b) {
+				return $a['apply_date'] < $b['apply_date'];
+			});
+		}
+		
+		$ret = array(
+			'on' => $on,
+			'old' => $old,
+			'future' => $future,
+		);
+		
+		return $ret;
+	}
 }
