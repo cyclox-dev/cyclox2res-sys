@@ -100,8 +100,9 @@ class Categoryracer_model extends CI_Model {
 			'cr.deleted' => 0,
 		);
 		
-		$query = $this->db->select('*')
+		$query = $this->db->select('*, mt.short_name as meet_name, ss.short_name as season_short_name')
 				->join('meets as mt', 'mt.code = cr.meet_code', 'LEFT')
+				->join('seasons as ss', 'ss.id = mt.season_id', 'LEFT')
 				->order_by('cr.cancel_date DESC')
 				->get_where('category_racers as cr', $cdt);
 		
@@ -129,7 +130,7 @@ class Categoryracer_model extends CI_Model {
 		
 		foreach ($cats as $c)
 		{
-			$c['result_linkable'] = (!empty($c['racer_result_id']) && !empty($c['meet_code'])
+			$c['is_by_rankup'] = (!empty($c['racer_result_id']) && !empty($c['meet_code'])
 					&& $c['at_date'] > date('2017-03-31')
 					&& $c['reason_id'] == CategoryReason::$RESULT_UP->ID());
 			

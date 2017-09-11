@@ -29,6 +29,7 @@
 				<tr>
 					<th>カテゴリー</th>
 					<th>所属期間</th>
+					<th>備考</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -37,12 +38,11 @@
 					<td><?= h($oncat['category_code']) ?></td>
 					<td><?= h($oncat['apply_date'] . '〜' . $oncat['cancel_date']) ?></td>
 					<td>
-						<?php
-						if ($oncat['result_linkable'])
-						{
-							echo '関連する大会データを閲覧';
-						}
-						?>
+						<?php if ($oncat['is_by_rankup']): ?>
+						<a href="<?= site_url('meet/' . h($oncat['code'])) ?>">
+						<?= h($oncat['season_short_name']) . h($oncat['meet_name']) ?>
+						</a>で昇格
+						<?php endif; ?>
 					</td>
 				</tr>
 				<?php endforeach; ?>
@@ -71,7 +71,6 @@
 								<tr>
 									<td><?= h($fcut['category_code']) ?></td>
 									<td><?= h($fcut['apply_date'] . '〜' . $fcut['cancel_date']) ?></td>
-									<td></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
@@ -96,6 +95,7 @@
 							<tr>
 								<th>カテゴリー</th>
 								<th>所属期間</th>
+								<th>備考</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -104,11 +104,11 @@
 									<td><?= h($oldcat['category_code']) ?></td>
 									<td><?= h($oldcat['apply_date'] . '〜' . $oldcat['cancel_date']) ?></td>
 									<td>
-										<?php
-										if ($oldcat['result_linkable']) {
-											echo '関連する大会データを閲覧';
-										}
-										?>
+										<?php if ($oldcat['is_by_rankup']): ?>
+										<a href="<?= site_url('meet/' . h($oldcat['code'])) ?>">
+										<?= h($oldcat['season_short_name']) . h($oldcat['meet_name']) ?>
+										</a>で昇格
+										<?php endif; ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -119,4 +119,5 @@
 		</div>
 	</div>
 	<?php endif; ?>
+	<p class="proviso">※15-16シーズン以降のカテゴリー所属データのみを表示しています。</p>
 </div>
