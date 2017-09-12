@@ -54,7 +54,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" href="#collapse1">将来所属予定のカテゴリー</a>
+					<a data-toggle="collapse" href="#collapse1">
+						将来所属予定のカテゴリー
+						<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+					</a>
 				</h4>
 			</div>
 			<div id="collapse1" class="panel-collapse collapse">
@@ -85,7 +88,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" href="#collapse2">過去に所属したカテゴリー</a>
+					<a data-toggle="collapse" href="#collapse2">
+						過去に所属したカテゴリー
+						<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+					</a>
 				</h4>
 			</div>
 			<div id="collapse2" class="panel-collapse collapse">
@@ -121,3 +127,22 @@
 	<?php endif; ?>
 	<p class="proviso">※15-16シーズン以降のカテゴリー所属データのみを表示しています。</p>
 </div>
+<script>
+	(function($) {
+		'use strict';
+		$('#collapse1, #collapse2').on({
+			// 折り畳み開く処理
+			'show.bs.collapse': function () {
+				$('a[href="#' + this.id + '"] span.glyphicon-chevron-down')
+						.removeClass('glyphicon-chevron-down')
+						.addClass('glyphicon-chevron-up');
+			},
+			// 折り畳み閉じる処理
+			'hide.bs.collapse': function () {
+				$('a[href="#' + this.id + '"] span.glyphicon-chevron-up')
+						.removeClass('glyphicon-chevron-up')
+						.addClass('glyphicon-chevron-down');
+			}
+		});
+	})(jQuery);
+</script>
