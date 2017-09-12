@@ -111,9 +111,9 @@
 									<td><?= h($oldcat['apply_date'] . '〜' . $oldcat['cancel_date']) ?></td>
 									<td>
 										<?php if ($oldcat['is_by_rankup']): ?>
-										<a href="<?= site_url('meet/' . h($oldcat['code'])) ?>">
-										<?= h($oldcat['season_short_name']) . h($oldcat['meet_name']) ?>
-										</a>で昇格
+											<a href="<?= site_url('meet/' . h($oldcat['code'])) ?>">
+												<?= h($oldcat['season_short_name']) . h($oldcat['meet_name']) ?>
+											</a>で昇格
 										<?php endif; ?>
 									</td>
 								</tr>
