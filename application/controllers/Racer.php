@@ -12,6 +12,7 @@ class Racer  extends XSYS_Controller {
 		parent::__construct();
 		$this->load->model('racer_model');
 		$this->load->model('categoryracer_model');
+		$this->load->model('result_model');
 	}
 	
 	public function view($code = NULL)
@@ -26,6 +27,7 @@ class Racer  extends XSYS_Controller {
 		$data = array('racer' => $racer);
 		
 		$data['cats'] = $this->categoryracer_model->get_catbinds($code);
+		$data['results'] = $this->result_model->get_result_of_racer($code);
 		
 		$this->_fmt_render('racer/view', $data);
 	}

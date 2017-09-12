@@ -126,6 +126,63 @@
 	</div>
 	<?php endif; ?>
 	<p class="proviso">※15-16シーズン以降のカテゴリー所属データのみを表示しています。</p>
+	<h3>リザルト</h3>
+	<?php if (empty($results)): ?>
+		<?php echo '表示可能なリザルトがありません。'; ?>
+	<?php else: ?>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>日付</th>
+					<th>レース</th>
+					<th>順位</th>
+					<th>順位%</th>
+					<th>残留Pt</th>
+					<th>AjoccPt</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($results as $r): ?>
+					<tr>
+						<td><?= h(date('Y/m/d', strtotime($r['at_date']))) ?></td>
+						<td>
+							<a href="<?= site_url('race/' . h($r['ec_id'])) ?>">
+								<?= h($r['meet_name'] . ' ' . $r['race_name']) ?>
+							</a>
+						</td>
+						<td><?= h($r['rank_exp']) ?></td>
+						<td><?php
+							if (!empty($r['rank_per']))
+							{
+								echo h($r['rank_per'] . '%');
+							}
+						?></td>
+						<td>
+							<?php
+							$exp = '';
+							if (!empty($r['hps']))
+							{
+								foreach ($r['hps'] as $hp)
+								{
+									if (!empty($exp))
+									{
+										$exp .= ',';
+									}
+
+									$exp .= $hp['pt'] . 'pt/' . $hp['cat'];
+								}
+								echo h($exp);
+							}
+							?>
+						</td>
+						<td><?= h($r['ajocc_pt_exp']) ?></td>
+						<td><?= h('') ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	<?php endif; ?>
 </div>
 <script>
 	(function($) {

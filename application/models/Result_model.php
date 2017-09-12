@@ -39,7 +39,7 @@ class Result_model extends CI_Model {
 		
 		$results = $query->result_array();
 		
-		$hp_map = $this->_get_holdpoints_of_ecat($ecat_id);
+		$hp_map = $this->_get_holdpoints(array('entry_category_id' => $ecat_id));
 		
 		// result.status, result.time を表現に。
 		foreach ($results as &$r)
@@ -61,18 +61,80 @@ class Result_model extends CI_Model {
 	}
 	
 	/**
-	 * 
-	 * @param int $ecat_id 出走カテゴリー ID
+	 * 指定の選手コードの選手のリザルトをかえす
+	 * @param string $code 選手コード
+	 * @return array リザルトの配列
+	 */
+	public function get_result_of_racer($code = NULL)
+	{
+		if (empty($code))
+		{
+			return array();
+		}
+		
+		$cdt = array(
+			'er.racer_code' => $code,
+			'mt.at_date >' => '2017-03-31',
+			'er.deleted' => 0,
+			'ec.deleted' => 0,
+			'eg.deleted' => 0,
+			'mt.deleted' => 0,
+			'rr.deleted' => 0,
+		);
+		
+		$query = $this->db->select('*, mt.short_name as meet_name, ec.name as race_name'
+				. ', ec.id as ec_id, rr.status as result_status, rr.id as rr_id')
+				->join('entry_categories as ec', 'ec.id = er.entry_category_id', 'INNER')
+				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')
+				->join('meets as mt', 'mt.code = eg.meet_code', 'INNER')
+				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER')
+				->order_by('at_date', 'ASC')
+				->get_where('entry_racers as er', $cdt);
+		//var_dump(json_encode($query->result_array()));
+		
+		$result = $query->result_array();
+		
+		$hpmap = $this->_get_holdpoints(array('racer_code' => $code));
+		
+		foreach ($result as &$r)
+		{
+			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['result_status']);
+			
+			if (empty($r['ajocc_pt']))
+			{
+				$r['ajocc_pt_exp'] = '';
+			}
+			else
+			{
+				$r['ajocc_pt_exp'] = $r['ajocc_pt'] . 'pt/' . $r['as_category'];
+			}
+			
+			if (!empty($hpmap[$r['rr_id']]))
+			{
+				$r['hps'] = $hpmap[$r['rr_id']];
+			}
+		}
+		
+		return $result;
+	}
+	
+	/**
+	 * 指定条件の残留ポイントマップをかえす
+	 * @param array $condition 追加の条件式
 	 * @return array racer_result_id をキーとする残留ポイント表現文字列のマップ
 	 */
-	public function _get_holdpoints_of_ecat($ecat_id)
+	private function _get_holdpoints($condition)
 	{
+		$cdt = $condition;
+		if (empty($cdt))
+		{
+			$cdt = array();
+		}
+		
 		// 2017-18 までの残留ポイント
-		$cdt = array(
-			'er.deleted' => 0,
-			'rr.deleted' => 0,
-			'entry_category_id' => $ecat_id,
-		);
+		$cdt['er.deleted'] = 0;
+		$cdt['rr.deleted'] = 0;
+		$cdt['rr.created >'] = '2017-03-31'; // 簡易的に期間を制限
 		
 		$query = $this->db->select('hp.racer_result_id, hp.point, hp.category_code')
 				->join('racer_results as rr', 'hp.racer_result_id = rr.id', 'INNER')
