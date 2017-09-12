@@ -49,9 +49,9 @@
 					<td>
 						<?php
 						$exp = '';
-						if (!empty($r['hold_points_exp']))
+						if (!empty($r['hps']))
 						{
-							foreach ($r['hold_points_exp'] as $hp)
+							foreach ($r['hps'] as $hp)
 							{
 								if (!empty($exp))
 								{

@@ -53,7 +53,7 @@ class Result_model extends CI_Model {
 			
 			if (!empty($hp_map[$r['rr_id']]))
 			{
-				$r['hold_points_exp'] = $hp_map[$r['rr_id']];
+				$r['hps'] = $hp_map[$r['rr_id']];
 			}
 		}
 		

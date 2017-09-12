@@ -52,7 +52,7 @@ class Race extends XSYS_Controller {
 				}
 			}
 			
-			if (!empty($r['hold_points_exp']))
+			if (!empty($r['hps']))
 			{
 				$has_holdpoints = TRUE;
 			}
