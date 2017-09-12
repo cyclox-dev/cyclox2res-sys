@@ -122,7 +122,7 @@ class Categoryracer_model extends CI_Model {
 			return array();
 		}
 		
-		$today = date('Y-m-d');
+		$today = date('Y/m/d');
 		
 		$future = array();
 		$old = array();
@@ -130,6 +130,16 @@ class Categoryracer_model extends CI_Model {
 		
 		foreach ($cats as $c)
 		{
+			if (!empty($c['apply_date']))
+			{
+				$c['apply_date'] = date('Y/m/d', strtotime($c['apply_date']));
+			}
+			
+			if (!empty($c['cancel_date']))
+			{
+				$c['cancel_date'] = date('Y/m/d', strtotime($c['cancel_date']));
+			}
+			
 			$c['is_by_rankup'] = (!empty($c['racer_result_id']) && !empty($c['meet_code'])
 					&& $c['at_date'] > date('2017-03-31')
 					&& $c['reason_id'] == CategoryReason::$RESULT_UP->ID());
