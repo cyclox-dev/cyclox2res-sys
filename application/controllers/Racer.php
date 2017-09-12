@@ -27,8 +27,43 @@ class Racer  extends XSYS_Controller {
 		$data = array('racer' => $racer);
 		
 		$data['cats'] = $this->categoryracer_model->get_catbinds($code);
-		$data['results'] = $this->result_model->get_result_of_racer($code);
 		
+		$results = $this->result_model->get_result_of_racer($code);
+		
+		$rankup_to = $this->_pull_rankup_tos($data['cats']['on']);
+		$rankup_to += $this->_pull_rankup_tos($data['cats']['old']);
+		
+		foreach ($results as &$r)
+		{
+			if (!empty($rankup_to[$r['rr_id']]))
+			{
+				$r['rank_up_to'] = $rankup_to[$r['rr_id']];
+			}
+		}
+		
+		$data['results'] = $results;
 		$this->_fmt_render('racer/view', $data);
+	}
+	
+	/**
+	 * 昇格したリザルトマップをかえす
+	 * @param array $catbinds カテゴリー所属配列
+	 * @return array key:result_id, val:昇格先カテゴリーとするマップ
+	 */
+	private function _pull_rankup_tos($catbinds)
+	{
+		$ret = array();
+		
+		foreach ($catbinds as $bind)
+		{
+			if ($bind['is_by_rankup'])
+			{
+				$ret[$bind['racer_result_id']] = $bind['category_code'];
+			}
+		}
+		
+		return $ret;
+		
+		
 	}
 }

@@ -177,7 +177,12 @@
 							?>
 						</td>
 						<td><?= h($r['ajocc_pt_exp']) ?></td>
-						<td><?= h('') ?></td>
+						<td><?php
+							if (!empty($r['rank_up_to']))
+							{
+								echo h($r['rank_up_to'] . 'へ昇格');
+							}
+						?></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
