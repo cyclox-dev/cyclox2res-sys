@@ -16,7 +16,6 @@
 		<thead>
 			<tr>
 				<th>順位</th>
-				<th>Status</th>
 				<th>Bib</th>
 				<th>選手</th>
 				<th>チーム</th>
@@ -39,8 +38,7 @@
 		<tbody>
 			<?php foreach ($results as $r): ?>
 				<tr>
-					<td><?= h($r['rank']) ?></td>
-					<td><?= h($r['status_code']) ?></td>
+					<td><?= h($r['rank_exp']) ?></td>
 					<td><?= h($r['body_number']) ?></td>
 					<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 					<td><?= h($r['team_name']) ?></td>

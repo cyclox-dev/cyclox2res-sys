@@ -2,6 +2,7 @@
 
 require_once(APPPATH . 'etc/cyclox/Const/RacerResultStatus.php');
 require_once(APPPATH . 'etc/cyclox/Util/Util.php');
+require_once(APPPATH . 'etc/util/Xsys_util.php');
 
 /**
  * Description of Result_model
@@ -43,7 +44,7 @@ class Result_model extends CI_Model {
 		// result.status, result.time を表現に。
 		foreach ($results as &$r)
 		{
-			$r['status_code'] = RacerResultStatus::ofVal($r['status'])->code();
+			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['status']);
 			
 			if (!empty($r['goal_milli_sec']))
 			{

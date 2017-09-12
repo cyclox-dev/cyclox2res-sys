@@ -25,12 +25,12 @@ class RacerResultStatus
 	
 	public static function init()
 	{
-		self::$DNS = new RacerResultStatus(0, '出走せず', 'DNS', 0, false);
-		self::$FIN = new RacerResultStatus(1, 'ゴール到達', 'FIN', 100, true);
-		self::$DNF = new RacerResultStatus(2, 'ゴールできず', 'DNF', 30, false);
-		self::$DNQ = new RacerResultStatus(3, '失格(除外)', 'DNQ', 10, false);
-		self::$LAPOUT = new RacerResultStatus(4, '周回遅れラップアウト', 'DNF(Lap-Out)', 60, true);
-		self::$LAPOUT80 = new RacerResultStatus(5, '80%ラップアウト適用', 'DNF(80%Out)', 65, true);
+		self::$DNS = new RacerResultStatus(0, '出走せず', 'DNS', 0, false, 'DNS');
+		self::$FIN = new RacerResultStatus(1, 'ゴール到達', 'FIN', 100, true, 'FIN');
+		self::$DNF = new RacerResultStatus(2, 'ゴールできず', 'DNF', 30, false, 'DNF');
+		self::$DNQ = new RacerResultStatus(3, '失格(除外)', 'DNQ', 10, false, 'DSQ');
+		self::$LAPOUT = new RacerResultStatus(4, '周回遅れラップアウト', 'DNF(Lap-Out)', 60, true, 'LapOut');
+		self::$LAPOUT80 = new RacerResultStatus(5, '80%ラップアウト適用', 'DNF(80%Out)', 65, true, '80%Out');
 		
 		self::$statuses = array(
 			self::$DNS,
@@ -47,14 +47,16 @@ class RacerResultStatus
 	private $code;
 	private $rank;
 	private $isLankedStatus;
+	private $shortCode;
 	
-	private function __construct($v, $m, $c, $l, $is)
+	private function __construct($v, $m, $c, $l, $is, $sc)
 	{
 		$this->val = $v;
 		$this->msg = $m;
 		$this->code = $c;
 		$this->rank = $l;
 		$this->isLankedStatus = $is;
+		$this->shortCode = $sc;
 	}
 	
 	/**
@@ -81,5 +83,7 @@ class RacerResultStatus
     public function rank() { return $this->rank; }
     /** @return boolean 順位適用となるステータスであるか */
     public function isLankedStatus() { return $this->isLankedStatus; }
+	/** @return string 短めコード */
+	public function shortCode() { return $this->shortCode; }
 }
 RacerResultStatus::init();
