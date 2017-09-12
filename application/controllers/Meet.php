@@ -19,19 +19,6 @@ class Meet extends XSYS_Controller {
 	{
 		$data['meets'] = $this->meet_model->get_meet();
 		
-		if (XSYS_const::NONVISIBLE_BEFORE1718)
-		{
-			$mts = array();
-			foreach ($data['meets'] as $m)
-			{
-				if ($m['at_date'] >= '2017-04-01')
-				{
-					$mts[] = $m;
-				}
-			}
-			$data['meets'] = $mts;
-		}
-				
 		$this->_fmt_render('meet/index', $data);
 	}
 	

@@ -22,8 +22,17 @@ class Meet_model extends CI_Model {
 	{
 		if ($code === FALSE)
 		{
+			$cdt = array(
+				'deleted' => 0,
+			);
+			
+			if (XSYS_const::NONVISIBLE_BEFORE1718)
+			{
+				$cdt['at_date >'] = '2017-03-31';
+			}
+			
 			$query = $this->db->order_by('at_date', 'DESC')
-					->get_where('meets', array('deleted' => 0));
+					->get_where('meets', $cdt);
 			return $query->result_array();
 		}
 		
