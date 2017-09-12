@@ -44,7 +44,7 @@ class Result_model extends CI_Model {
 		// result.status, result.time を表現に。
 		foreach ($results as &$r)
 		{
-			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['status']);
+			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['status'], $r['entry_status']);
 			
 			if (!empty($r['goal_milli_sec']))
 			{
@@ -98,7 +98,7 @@ class Result_model extends CI_Model {
 		
 		foreach ($result as &$r)
 		{
-			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['result_status']);
+			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['result_status'], $r['entry_status']);
 			
 			if (empty($r['ajocc_pt']))
 			{

@@ -1,6 +1,7 @@
 <?php
 
 require_once(APPPATH . 'etc/cyclox/Const/RacerResultStatus.php');
+require_once(APPPATH . 'etc/cyclox/Const/RacerEntryStatus.php');
 
 /**
  * Corss system 用 Util クラス
@@ -9,7 +10,14 @@ require_once(APPPATH . 'etc/cyclox/Const/RacerResultStatus.php');
  */
 class Xsys_util {
 	
-	public static function rank_express($rank, $result_status)
+	/**
+	 * リザルト表現（順位や DNF など）を返す
+	 * @param int $rank 順位
+	 * @param int $result_status RacerResultStatus の val 値
+	 * @param int $entry_status RacerEntryStatus の val 値
+	 * @return string リザルト表現
+	 */
+	public static function rank_express($rank, $result_status, $entry_status)
 	{
 		if (empty($rank))
 		{
@@ -24,6 +32,11 @@ class Xsys_util {
 			{
 				$exp .= ' (' . RacerResultStatus::ofVal($result_status)->shortCode() . ')';
 			}
+		}
+		
+		if ($entry_status == RacerEntryStatus::$OPEN->val())
+		{
+			$exp .= '/OPEN';
 		}
 		
 		return $exp;
