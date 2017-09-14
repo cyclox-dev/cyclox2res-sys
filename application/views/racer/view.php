@@ -187,6 +187,7 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+	<p class="proviso">※17-18シーズン以降のリザルトのみを表示しています。</p>
 	<?php endif; ?>
 </div>
 <script>
