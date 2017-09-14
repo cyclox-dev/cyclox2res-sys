@@ -1,12 +1,12 @@
 <div id="main">
 	<h2><?= h($meet['meet_name']); ?></h2>
-	<p>
-		日付：<?= h($meet['at_date']) ?></br>
-		会場：<?= h($meet['location']) ?></br>
-		主催：<?= h($meet['organized_by']) ?></br>
-		大会HP：<a href="<?= $meet['meet_hp']; ?>"><?= h($meet['meet_hp']) ?></a></br>
-		シリーズ：<a href="<?= site_url('meet_groups/' . h($meet['meet_group_code'])); ?>"><?= h($meet['mg_name']) ?></a></br>
-	</p>
+	<dl class="dl-horizontal dl-horizontal_al">
+		<dt>日付</dt><dd><?= h($meet['at_date']) ?></dd>
+		<dt>会場</dt><dd><?= h($meet['location']) ?></dd>
+		<dt>主催</dt><dd><?= h($meet['organized_by']) ?></dd>
+		<dt>大会HP</dt><dd><a href="<?= $meet['meet_hp']; ?>"><?= h($meet['meet_hp']) ?></a></dd>
+		<dt>シリーズ</dt><dd><a href="<?= site_url('meet_groups/' . h($meet['meet_group_code'])); ?>"><?= h($meet['mg_name']) ?></a></dd>
+	</dl>
 	<h3>レース</h3>
 	<?php if (empty($ecats)): ?>
 	<p>エントリー／リザルトがありません。</p>

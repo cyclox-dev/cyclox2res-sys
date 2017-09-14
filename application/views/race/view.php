@@ -1,13 +1,18 @@
 <div id="main">
-	<p class="title_pop"><?= h($ecat['meet_name']) . '（' . h($ecat['meet_group_name']) . '）' ?></p>
-	<h2 class="with_pop"><?= h($ecat['ec_name']); ?></h2>
-	<p>
-		スタート：<?= h($ecat['prepared_start_clock']) ?></br>
-		レースカテゴリー：<?= h($ecat['races_category_code']) ?></br>
-		エントリー：<?= h($entried) . '名' ?></br>
-		スタート：<?= h($started) . '名' ?></br>
-		完走：<?= h($fin) . '名（完走率' . sprintf('%2.1f', $fin / $started * 100) . '%）' ?></br>
+	
+	<p class="title_pop">
+		<a href ="<?= site_url('meet/' . h($ecat['meet_code'])) ?>">
+			<?= h($ecat['meet_name']) . '（' . h($ecat['meet_group_name']) . '）' ?>
+		</a>
 	</p>
+	<h2 class="with_pop"><?= h($ecat['ec_name']); ?></h2>
+	<dl class="dl-horizontal dl-horizontal_al">
+		<dt>スタート時刻</dt><dd><?= h($ecat['prepared_start_clock']) ?></dd>
+		<dt>カテゴリー</dt><dd><?= h($ecat['races_category_code']) ?></dd>
+		<dt>エントリー</dt><dd><?= h($entried) . '名' ?></dd>
+		<dt>スタート</dt><dd><?= h($started) . '名' ?></dd>
+		<dt>完走</dt><dd><?= h($fin) . '名（完走率' . sprintf('%2.1f', $fin / $started * 100) . '%）' ?></dd>
+	</dl>
 	<h3>リザルト</h3>
 	<?php if (empty($results)): ?>
 	<p>エントリー／リザルトがありません。</p>
