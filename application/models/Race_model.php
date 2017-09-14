@@ -31,7 +31,8 @@ class Race_model extends CI_Model {
 			'ec.id' => $ecat_id,
 		);
 		
-		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name, mg.name as meet_group_name')
+		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name, mg.name as meet_group_name'
+				. ', mt.code as meet_code')
 				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')
 				->join('meets as mt', 'mt.code = eg.meet_code', 'INNER')
 				->join('meet_groups as mg', 'mg.code = mt.meet_group_code', 'INNER')
