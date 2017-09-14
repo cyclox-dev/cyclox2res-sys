@@ -16,7 +16,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<div>AJOCC Cross System [Beta-Version]</div>
+				<div><a href="<?= site_url() ?>">AJOCC Cross System [Beta-Version]</a></div>
 			</header>
 			<div id="flash_view">
 				<?php
