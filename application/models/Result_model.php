@@ -46,11 +46,6 @@ class Result_model extends CI_Model {
 		{
 			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['status'], $r['entry_status']);
 			
-			if (!empty($r['goal_milli_sec']))
-			{
-				$r['time'] = Util::milli2Time($r['goal_milli_sec'], false, 1);
-			}
-			
 			if (!empty($hp_map[$r['rr_id']]))
 			{
 				$r['hps'] = $hp_map[$r['rr_id']];

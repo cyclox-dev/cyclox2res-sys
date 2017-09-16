@@ -62,17 +62,17 @@ class Util
 	 * ミリ秒を時間フォーマットしたもの（H:m:s.SSS など）をかえす。
 	 * @param int $milliSec ミリ秒
 	 * @param bool $fillsAllHms 1時間にみたない場合でも H:m;s まですべて埋めるか。
-	 * @param bool $milliFigure 小数点の桁数（1〜3桁）
+	 * @param bool $milliFigure 小数点の桁数（0〜3桁）
 	 */
 	public static function milli2Time($milliSec, $fillsAllHms = false, $milliFigure = 3)
 	{
 		$milli = $milliSec % 1000;
 		$sec = floor($milliSec / 1000);
 		
-		if (!$fillsAllHms) {
+		if ($sec < 3600 && $fillsAllHms === false) {
 			if ($sec < 60) {
 				$exp = $sec;
-			} else if ($sec < 3600) {
+			} else {
 				$secInMin = $sec % 60;
 				$min = floor($sec / 60);
 				$exp = $min . ':' . sprintf('%02d', $secInMin);
@@ -87,6 +87,37 @@ class Util
 
 			$exp = $hour . ':' . sprintf('%02d', $minInHour) . ':' . sprintf('%02d', $secInMin);
 		}
+		
+		if ($milliFigure >= 3)
+		{
+			$exp .= '.' . sprintf('%03d', $milli);
+		}
+		else if ($milliFigure == 2)
+		{
+			$exp .= '.' . sprintf('%02d', $milli / 10);
+		}
+		else if ($milliFigure == 1)
+		{
+			$exp .= '.' . sprintf('%01d', $milli / 100);
+		}
+		
+		return $exp;
+	}
+	
+	/**
+	 * ミリ秒を m:ss.(SSS) に時間フォーマットしたものをかえす。
+	 * @param int $milliSec ミリ秒
+	 * @param bool $milliFigure 小数点の桁数（0〜3桁）
+	 */
+	public static function milli2Mss($milliSec, $milliFigure = 3)
+	{
+		$milli = $milliSec % 1000;
+		$sec = floor($milliSec / 1000);
+		
+		$secInMin = $sec % 60;
+		$min = floor($sec / 60);
+		$exp = $min . ':' . sprintf('%02d', $secInMin);
+
 		
 		if ($milliFigure >= 3)
 		{

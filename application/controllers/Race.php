@@ -1,5 +1,7 @@
 <?php
 
+require_once(APPPATH . 'etc/cyclox/Const/RacerResultStatus.php');
+
 /**
  * Description of Race
  *
@@ -56,11 +58,27 @@ class Race extends XSYS_Controller {
 			{
 				$has_holdpoints = TRUE;
 			}
+			
+			if ($r['rank'] == 1)
+			{
+				$data['ecat']['race_lap'] = $r['lap'];
+				$top_milli = $r['goal_milli_sec'];
+				$top_lap = $r['lap'];
+			}
 		}
 		$data['entried'] = $entried;
 		$data['started'] = $started;
 		$data['fin'] = $fin;
 		$data['has_holdpoints'] = $has_holdpoints;
+		
+		// time/gap の設定
+		if (!empty($top_milli))
+		{
+			foreach ($results as &$r)
+			{
+				$r['time_gap'] = $this->_get_result_timegaps($r, $top_lap, $top_milli);
+			}
+		}
 		
 		// シリーズポイント取得状況について取得
 		$psrs_map = $this->pointseries_model->get_psrmap_of_ecat($ecat_id);
@@ -108,5 +126,57 @@ class Race extends XSYS_Controller {
 		$data['ps_titles'] = $ps_titles;
 		
 		$this->_fmt_render('race/view', $data);
+	}
+	
+	/**
+	 * リザルトとして表示する time/gap 表現をかえす。トップ選手はタイム。それ以外は遅刻タイムもしくは不足ラップ。
+	 * @param array $r リザルト
+	 * @param int $top_lap レースのトップ周回数
+	 * @param int $top_milli レーストップのゴールタイム
+	 * @return string time/gap 表現
+	 */
+	private function _get_result_timegaps($r, $top_lap, $top_milli)
+	{
+		$rrs = RacerResultStatus::ofVal($r['status']);
+
+		if ($rrs->isLankedStatus())
+		{
+			if ($rrs === RacerResultStatus::$FIN && $r['lap'] == $top_lap)
+			{
+				if (empty($r['goal_milli_sec']))
+				{
+					return 'Unknown';
+				}
+
+				$goal_milli = $r['goal_milli_sec'];
+
+				if ($goal_milli == $top_milli && $r['rank'] == 1)
+				{
+					return Util::milli2Time($r['goal_milli_sec'], false, 1);
+				}
+				else
+				{
+					// time gap
+					if ($r['goal_milli_sec'] < $top_milli)
+					{
+						// unlikely...
+						return '-' . Util::milli2Mss($top_milli - $r['goal_milli_sec'], 0);
+					}
+					else
+					{
+						return '+' . Util::milli2Mss($r['goal_milli_sec'] - $top_milli, 0);
+					}
+				}
+			}
+			else if (isset($r['lap']))
+			{
+				$lap_gap = $r['lap'] - $top_lap;
+				$gap_str =  ($lap_gap > 0) ? '+' : '';
+				
+				return $gap_str . $lap_gap . 'Lap';
+			}
+		}
+		
+		return '';
 	}
 }

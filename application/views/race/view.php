@@ -12,6 +12,7 @@
 		<dt>エントリー</dt><dd><?= h($entried) . '名' ?></dd>
 		<dt>スタート</dt><dd><?= h($started) . '名' ?></dd>
 		<dt>完走</dt><dd><?= h($fin) . '名（完走率' . sprintf('%2.1f', $fin / $started * 100) . '%）' ?></dd>
+		<dt>周回数</dt><dd><?= h($ecat['race_lap'] . 'Lap') ?></dd>
 	</dl>
 	<h3>リザルト</h3>
 	<?php if (empty($results)): ?>
@@ -24,8 +25,7 @@
 				<th>Bib</th>
 				<th>選手</th>
 				<th>チーム</th>
-				<th>周回数</th>
-				<th>タイム</th>
+				<th>Time/Gap</th>
 				<th>順位%</th>
 				<?php if ($has_holdpoints): ?>
 				<th>残留Pt</th>
@@ -47,8 +47,7 @@
 					<td><?= h($r['body_number']) ?></td>
 					<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 					<td><?= h($r['team_name']) ?></td>
-					<td><?php if (!empty($r['lap'])) echo h($r['lap']); ?></td>
-					<td><?php if (!empty($r['time'])) echo h($r['time']); ?></td>
+					<td><?= h($r['time_gap']); ?></td>
 					<td><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
 					<?php if ($has_holdpoints): ?>
 					<td>
