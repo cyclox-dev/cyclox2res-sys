@@ -62,7 +62,8 @@ class Util
 	 * ミリ秒を時間フォーマットしたもの（H:m:s.SSS など）をかえす。
 	 * @param int $milliSec ミリ秒
 	 * @param bool $fillsAllHms 1時間にみたない場合でも H:m;s まですべて埋めるか。
-	 * @param bool $milliFigure 小数点の桁数（0〜3桁）
+	 * @param int $milliFigure 小数点の桁数（0〜3桁）
+	 * @return string 時間表現
 	 */
 	public static function milli2Time($milliSec, $fillsAllHms = false, $milliFigure = 3)
 	{

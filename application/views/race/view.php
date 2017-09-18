@@ -12,7 +12,9 @@
 		<dt>エントリー</dt><dd><?= h($entried) . '名' ?></dd>
 		<dt>スタート</dt><dd><?= h($started) . '名' ?></dd>
 		<dt>完走</dt><dd><?= h($fin) . '名（完走率' . sprintf('%2.1f', $fin / $started * 100) . '%）' ?></dd>
+		<?php if (!empty($ecat['race_lap'])): ?>
 		<dt>周回数</dt><dd><?= h($ecat['race_lap'] . 'Lap') ?></dd>
+		<?php endif; ?>
 	</dl>
 	<h3>リザルト</h3>
 	<?php if (empty($results)): ?>
