@@ -22,16 +22,17 @@ class Race extends XSYS_Controller {
 	public function view($ecat_id = NULL)
 	{
 		$data = array();
-		$data['ecat'] = $this->race_model->get_race_info($ecat_id);
+		$ecat = $this->race_model->get_race_info($ecat_id);
 		
-		if (empty($data['ecat']))
+		if (empty($ecat))
 		{
 			show_404();
 		}
-		if (XSYS_const::NONVISIBLE_BEFORE1718 && $data['ecat']['at_date'] < '2017-04-01')
+		if (XSYS_const::NONVISIBLE_BEFORE1718 && $ecat['at_date'] < '2017-04-01')
 		{
 			show_404();
 		}
+		$data['ecat'] = $ecat;
 		
 		$results = $this->result_model->get_results($ecat_id);
 		$data['rankuppers'] = $this->categoryracer_model->get_rankuppers_of_ecat($ecat_id);
@@ -77,6 +78,41 @@ class Race extends XSYS_Controller {
 			foreach ($results as &$r)
 			{
 				$r['time_gap'] = $this->_get_result_timegaps($r, $top_lap, $top_milli);
+			}
+		}
+		
+		// ラップタイムの設定
+		$lap_map = $this->result_model->get_laps_of_ecat($ecat_id);
+		
+		$lap_max = -1;
+		$lap_min = 0;
+		foreach (array_values($lap_map) as $laps)
+		{
+			foreach (array_keys($laps) as $x)
+			{
+				if ($x > $lap_max)
+				{
+					$lap_max = $x;
+				}
+			}
+		}
+		
+		if ($lap_min <= $lap_max)
+		{
+			$lap_plus = (!is_null($ecat['sf_dist']) && $ecat['sf_dist'] > 0) ? 0 : 1;
+			$lap_plus += $ecat['skip_lap_count'];
+			
+			$data['lap_max'] = $lap_max + $lap_plus;
+			$data['lap_min'] = $lap_min + $lap_plus;
+			$data['has_laps'] = TRUE;
+		}
+		
+		foreach ($results as &$r)
+		{
+			$rrid = $r['rr_id'];
+			if (!empty($lap_map[$rrid]))
+			{
+				$r['lap_times'] = $lap_map[$rrid];
 			}
 		}
 		

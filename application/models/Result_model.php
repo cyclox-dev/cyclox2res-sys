@@ -56,6 +56,45 @@ class Result_model extends CI_Model {
 	}
 	
 	/**
+	 * 指定出走カテゴリーのリザルトのラップタイムをかえす
+	 * @param int  $ecat_id 出走カテゴリー ID
+	 * @return array ラップタイム配列
+	 */
+	public function get_laps_of_ecat($ecat_id)
+	{
+		$cdt = array(
+			'ec.deleted' => 0,
+			'er.deleted' => 0,
+			'rr.deleted' => 0,
+			'ec.id' => $ecat_id,
+		);
+		
+		$query = $this->db->select('*, rr.id as rr_id')
+				->join('entry_racers as er', 'rr.entry_racer_id = er.id', 'INNER')
+				->join('entry_categories as ec', 'er.entry_category_id = ec.id', 'INNER')
+				->join('time_records as tr', 'tr.racer_result_id = rr.id', 'INNER')
+				->order_by('tr.lap ASC')
+				->get_where('racer_results as rr', $cdt);
+		$results = $query->result_array();
+		
+		$map = array();
+		
+		// result.status, result.time を表現に。
+		foreach ($results as $r)
+		{
+			$rrid = $r['racer_result_id'];
+			$time_list = empty($map[$rrid]) ? array() : $map[$rrid];
+			
+			$lap = $r['lap'];
+			$time_list[$lap] = Util::milli2Time($r['time_milli'], false, 1);
+			
+			$map[$rrid] = $time_list;
+		}
+		
+		return $map;
+	}
+	
+	/**
 	 * 指定の選手コードの選手のリザルトをかえす
 	 * @param string $code 選手コード
 	 * @return array リザルトの配列

@@ -13,99 +13,151 @@
 		<dt>スタート</dt><dd><?= h($started) . '名' ?></dd>
 		<dt>完走</dt><dd><?= h($fin) . '名（完走率' . sprintf('%2.1f', $fin / $started * 100) . '%）' ?></dd>
 		<?php if (!empty($ecat['race_lap'])): ?>
-		<dt>周回数</dt><dd><?= h($ecat['race_lap'] . 'Lap') ?></dd>
+			<dt>周回数</dt><dd><?= h($ecat['race_lap'] . 'Lap') ?></dd>
 		<?php endif; ?>
 	</dl>
 	<h3>リザルト</h3>
 	<?php if (empty($results)): ?>
-	<p>エントリー／リザルトがありません。</p>
+		<p>エントリー／リザルトがありません。</p>
 	<?php else: ?>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>順位</th>
-				<th>選手</th>
-				<th>チーム</th>
-				<th>Time/Gap</th>
-				<th>順位%</th>
-				<?php if ($has_holdpoints): ?>
-				<th>残留Pt</th>
-				<?php endif; ?>
-				<th>AjoccPt</th>
-				<?php
-				foreach ($ps_titles as $t)
-				{
-					echo '<th>' . $t['name'] . '</th>';
-				}
-				?>
-				<th>Note</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($results as $r): ?>
+		<table class="table table-striped">
+			<thead>
 				<tr>
-					<td><?= h($r['rank_exp']) ?></td>
-					<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
-					<td><?= h($r['team_name']) ?></td>
-					<td><?= h($r['time_gap']); ?></td>
-					<td><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
+					<th>順位</th>
+					<th>選手</th>
+					<th>チーム</th>
+					<th>Time/Gap</th>
+					<th>順位%</th>
 					<?php if ($has_holdpoints): ?>
-					<td>
-						<?php
-						$exp = '';
-						if (!empty($r['hps']))
-						{
-							foreach ($r['hps'] as $hp)
-							{
-								if (!empty($exp))
-								{
-									$exp .= ',';
-								}
-
-								$exp .= $hp['pt'] . 'pt/' . $hp['cat'];
-							}
-							echo h($exp);
-						}
-						?>
-					</td>
+					<th>残留Pt</th>
 					<?php endif; ?>
-					<td>
-						<?php
-						if (!empty($r['ajocc_pt']))
-						{
-							echo h($r['ajocc_pt']) . 'pt/' . h($r['as_category']);
-						}
-						?>
-					</td>
+					<th>AjoccPt</th>
 					<?php
-					for ($i = 0; $i < sizeof($ps_titles); $i++)
+					foreach ($ps_titles as $t)
 					{
-						echo '<td>';
-						if (!empty($r['ps_points'][$i]))
-						{
-							echo $r['ps_points'][$i]['pt'];
-							if (!empty($r['ps_points'][$i]['bonus']))
-							{
-								echo '+' . $r['ps_points'][$i]['bonus'];
-							}
-							echo 'pt';
-						}
-						echo '</td>';
+						echo '<th>' . $t['name'] . '</th>';
 					}
 					?>
-					<td>
+					<th>Note</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($results as $r): ?>
+					<tr>
+						<td><?= h($r['rank_exp']) ?></td>
+						<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
+						<td><?= h($r['team_name']) ?></td>
+						<td><?= h($r['time_gap']); ?></td>
+						<td><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
+						<?php if ($has_holdpoints): ?>
+						<td>
+							<?php
+							$exp = '';
+							if (!empty($r['hps']))
+							{
+								foreach ($r['hps'] as $hp)
+								{
+									if (!empty($exp))
+									{
+										$exp .= ',';
+									}
+
+									$exp .= $hp['pt'] . 'pt/' . $hp['cat'];
+								}
+								echo h($exp);
+							}
+							?>
+						</td>
+						<?php endif; ?>
+						<td>
+							<?php
+							if (!empty($r['ajocc_pt']))
+							{
+								echo h($r['ajocc_pt']) . 'pt/' . h($r['as_category']);
+							}
+							?>
+						</td>
 						<?php
-						if (!empty($rankuppers[$r['rr_id']]))
+						for ($i = 0; $i < sizeof($ps_titles); $i++)
 						{
-							$cr = $rankuppers[$r['rr_id']];
-							echo h($cr['category_code']) . 'へ昇格';
+							echo '<td>';
+							if (!empty($r['ps_points'][$i]))
+							{
+								echo $r['ps_points'][$i]['pt'];
+								if (!empty($r['ps_points'][$i]['bonus']))
+								{
+									echo '+' . $r['ps_points'][$i]['bonus'];
+								}
+								echo 'pt';
+							}
+							echo '</td>';
 						}
 						?>
-					</td>
-				</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
-	<p class="proviso">※選手名はレース時点のものを表示しています。</p>
+						<td>
+							<?php
+							if (!empty($rankuppers[$r['rr_id']]))
+							{
+								$cr = $rankuppers[$r['rr_id']];
+								echo h($cr['category_code']) . 'へ昇格';
+							}
+							?>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<h3>ラップタイム</h3>
+		<?php if (empty($has_laps)): ?>
+			<p>表示できるラップデータがありません。</p>
+		<?php else: ?>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>順位</th>
+						<th>選手</th>
+						<?php for ($i = $lap_min; $i <= $lap_max; $i++): ?>
+						<th>
+							<div class="text-right">
+								<?php
+								if ($i == 0)
+								{
+									echo 'StartLoop';
+								}
+								else
+								{
+									echo $i . '周';
+								}
+								?>
+							</div>
+						<?php endfor; ?>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($results as $r): ?>
+						<tr>
+							<td><?= h($r['rank_exp']) ?></td>
+							<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
+								<?php 
+									$n = $lap_max - ($lap_min - 1);
+									for ($i = 0; $i <= $n; $i++):
+								?>
+								<td>
+									<div class="text-right">
+									<?php
+										if (!empty($r['lap_times']) && !empty($r['lap_times'][$i]))
+										{
+											echo $r['lap_times'][$i];
+										}
+									?>
+									</div>
+								</td>
+								<?php endfor; ?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+		<p class="proviso">※選手名はレース時点のものを表示しています。</p>
 	<?php endif; ?>
 </div>
