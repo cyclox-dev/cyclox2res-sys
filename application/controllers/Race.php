@@ -85,7 +85,7 @@ class Race extends XSYS_Controller {
 		$lap_map = $this->result_model->get_laps_of_ecat($ecat_id);
 		
 		$lap_max = -1;
-		$lap_min = 0;
+		$lap_min = PHP_INT_MAX;
 		foreach (array_values($lap_map) as $laps)
 		{
 			foreach (array_keys($laps) as $x)
@@ -94,16 +94,18 @@ class Race extends XSYS_Controller {
 				{
 					$lap_max = $x;
 				}
+				if ($x < $lap_min)
+				{
+					$lap_min = $x;
+				}
 			}
 		}
 		
+		$data['lap_max'] = $lap_max;
+		$data['lap_min'] = $lap_min;
+		
 		if ($lap_min <= $lap_max)
 		{
-			$lap_plus = (!is_null($ecat['sf_dist']) && $ecat['sf_dist'] > 0) ? 0 : 1;
-			$lap_plus += $ecat['skip_lap_count'];
-			
-			$data['lap_max'] = $lap_max + $lap_plus;
-			$data['lap_min'] = $lap_min + $lap_plus;
 			$data['has_laps'] = TRUE;
 		}
 		

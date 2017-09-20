@@ -138,8 +138,7 @@
 							<td><?= h($r['rank_exp']) ?></td>
 							<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 								<?php 
-									$n = $lap_max - ($lap_min - 1);
-									for ($i = 0; $i <= $n; $i++):
+									for ($i = $lap_min; $i <= $lap_max; $i++):
 								?>
 								<td>
 									<div class="text-right">
