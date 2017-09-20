@@ -55,7 +55,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['meet/(:any)'] = 'meet/view/$1';
-$route['meet'] = 'meet';
+$route['meets/index'] = 'meet/index';
+$route['meets'] = 'meet';
+$route['meets/(:any)'] = 'meet/index/$1';
 $route['race/(:any)'] = 'race/view/$1';
 $route['racer/(:any)'] = 'racer/view/$1';
 

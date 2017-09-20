@@ -15,25 +15,14 @@ class Meet_model extends CI_Model {
 	
 	/**
 	 * 大会を取得する。deleted は含まない。
-	 * @param string $code 大会コード。指定しない場合はすべての大会を取得する。
-	 * @return type 大会データ。$code を指定しない場合は大会データの配列。
+	 * @param string $code 大会コード。
+	 * @return array 大会データ
 	 */
 	public function get_meet($code = FALSE)
 	{
 		if ($code === FALSE)
 		{
-			$cdt = array(
-				'deleted' => 0,
-			);
-			
-			if (XSYS_const::NONVISIBLE_BEFORE1718)
-			{
-				$cdt['at_date >'] = '2017-03-31';
-			}
-			
-			$query = $this->db->order_by('at_date', 'DESC')
-					->get_where('meets', $cdt);
-			return $query->result_array();
+			return array();
 		}
 		
 		$cdt = array(
@@ -47,5 +36,37 @@ class Meet_model extends CI_Model {
 				->join('seasons as ss', 'mt.season_id = ss.id', 'INNER')
 				->get_where('meets as mt', $cdt);
 		return $query->row_array();
+	}
+	
+	/**
+	 * 大会を取得する。deleted は含まない。
+	 * @param string $code 大会グループコード。指定しない場合はすべての大会を取得する。
+	 * @return array 大会データの配列。$code を指定しない場合は大会データの配列。
+	 */
+	public function get_meets($code = FALSE)
+	{
+		$cdt = array(
+			'meets.deleted' => 0,
+		);
+
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$cdt['at_date >'] = '2017-03-31';
+		}
+		
+		$query = $this->db->order_by('at_date', 'DESC');
+		
+		if (!empty($code))
+		{
+			$cdt['meet_group_code'] = $code;
+		}
+		
+		$query = $query->select('*, meets.name as mt_name, meets.code as mt_code'
+				. ', mg.name as mg_name, mg.short_name as mg_short_name')
+				->join('meet_groups as mg', 'mg.code = meets.meet_group_code', 'INNER');
+	
+		$query = $query->get_where('meets', $cdt);
+		
+		return $query->result_array();
 	}
 }

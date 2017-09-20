@@ -15,9 +15,10 @@ class Meet extends XSYS_Controller {
 		$this->load->model('categoryracer_model');
 	}
 	
-	public function index()
+	public function index($meet_group_code = null)
 	{
-		$data['meets'] = $this->meet_model->get_meet();
+		$data['meets'] = $this->meet_model->get_meets($meet_group_code);
+		$data['mg_limited'] = !empty($meet_group_code);
 		
 		$this->_fmt_render('meet/index', $data);
 	}
