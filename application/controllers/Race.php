@@ -177,7 +177,7 @@ class Race extends XSYS_Controller {
 	{
 		$rrs = RacerResultStatus::ofVal($r['status']);
 
-		if ($rrs->isLankedStatus())
+		if ($rrs->isRankedStatus())
 		{
 			if ($rrs === RacerResultStatus::$FIN && $r['lap'] == $top_lap)
 			{

@@ -46,7 +46,7 @@ class RacerResultStatus
 	private $msg;
 	private $code;
 	private $rank;
-	private $isLankedStatus;
+	private $isRankedStatus;
 	private $shortCode;
 	
 	private function __construct($v, $m, $c, $l, $is, $sc)
@@ -55,7 +55,7 @@ class RacerResultStatus
 		$this->msg = $m;
 		$this->code = $c;
 		$this->rank = $l;
-		$this->isLankedStatus = $is;
+		$this->isRankedStatus = $is;
 		$this->shortCode = $sc;
 	}
 	
@@ -82,7 +82,7 @@ class RacerResultStatus
     /** @return int ステータス自体の順位 */
     public function rank() { return $this->rank; }
     /** @return boolean 順位適用となるステータスであるか */
-    public function isLankedStatus() { return $this->isLankedStatus; }
+    public function isRankedStatus() { return $this->isRankedStatus; }
 	/** @return string 短めコード */
 	public function shortCode() { return $this->shortCode; }
 }
