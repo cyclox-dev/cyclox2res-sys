@@ -1,5 +1,5 @@
 <div id="main">
-	<h2 class="with_pop"><?= $racer['family_name'] . ' ' . $racer['first_name']; ?></h2>
+	<h2><?= $racer['family_name'] . ' ' . $racer['first_name']; ?></h2>
 	<?php
 	if ($racer['deleted'])
 	{
@@ -12,16 +12,41 @@
 				. ' の選手データに統合されています。</p>';
 	}
 	?>
-	<dl class="dl-horizontal dl-horizontal_al">
-		<dt>選手コード</dt><dd><?= h($racer['code']) ?></dd>
-		<dt>ナマエ</dt><dd><?= h($racer['family_name_kana'] . ' ' . $racer['first_name_kana']) ?></dd>
-		<dt>Name</dt><dd><?= h($racer['first_name_en'] . ' ' . $racer['family_name_en']) ?></dd>
-		<dt>チーム</dt><dd><?= h($racer['team']) ?></dd>
-		<dt>性別</dt><dd><?= h($racer['gender_exp']->express()) ?></dd>
-		<dt>国籍</dt><dd><?= h($racer['nationality_code']) ?></dd>
-		<dt>JCF No.</dt><dd><?= h($racer['jcf_number']) ?></dd>
-	</dl>
-	<div class="clearfix"></div>
+	<div class="row">
+		<div class="col-sm-8">
+			<dl class="dl-horizontal dl-horizontal_al">
+				<dt>選手コード</dt><dd><?= h($racer['code']) ?></dd>
+				<dt>ナマエ</dt><dd><?= h($racer['family_name_kana'] . ' ' . $racer['first_name_kana']) ?></dd>
+				<dt>Name</dt><dd><?= h($racer['first_name_en'] . ' ' . $racer['family_name_en']) ?></dd>
+				<dt>チーム</dt><dd><?= h($racer['team']) ?></dd>
+				<dt>性別</dt><dd><?= h($racer['gender_exp']->express()) ?></dd>
+				<dt>国籍</dt><dd><?= h($racer['nationality_code']) ?></dd>
+				<dt>JCF No.</dt><dd><?= h($racer['jcf_number']) ?></dd>
+			</dl>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-sm-4">
+			<dl class="dl-horizontal dl-horizontal_al">
+				<?php foreach ($rankings as $ranking): ?>
+				<dt>
+					<a href="<?= site_url('point_series/' . h($ranking['point_series_id'])) ?>">
+						<?= h($ranking['name']) ?>
+					</a>
+				</dt>
+				<dd><?php
+					echo h($ranking['rank']) . '位';
+					if (!empty($ranking['sumup_json']))
+					{
+						// 第1要素を表示する。
+						$total = json_decode($ranking['sumup_json'])[0];
+						echo '(' . $total . 'pt)';
+					}
+				?></dd>
+				<?php endforeach; ?>
+			</dl>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 	<h3>カテゴリー所属</h3>
 	<?php if (!empty($cats['on'])): ?>
 		<table class="table table-striped">
