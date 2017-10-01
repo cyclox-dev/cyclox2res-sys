@@ -74,4 +74,51 @@ class Pointseries_model extends CI_Model {
 		
 		return $query->row_array();
 	}
+	
+	/**
+	 * 指定選手のポイントシリーズ順位データをかえす
+	 * @param string $code 選手コード
+	 * @return array 順位データ
+	 */
+	public function get_racers_ranks($code)
+	{
+		if (empty($code))
+		{
+			return array();
+		}
+		
+		$query = $this->db->select('*')
+				->join('point_series as ps', 'ps.id = psr_set.point_series_id', 'INNER')
+				->get_where('tmp_point_series_racer_sets as psr_set', array('racer_code' => $code));
+		
+		$points = $query->result_array();
+		//var_dump(json_encode($points));
+		
+		return $points;
+	}
+	
+	/**
+	 * 指定ポイントシリーズの最新のランキングデータをかえす
+	 * @param int $id ポイントシリーズ ID
+	 * @return array ranking, series の2つのキーを持つ配列
+	 */
+	public function get_ranking($id)
+	{
+		if (empty($id))
+		{
+			return array();
+		}
+		
+		$query = $this->db->select('*')
+				->order_by('rank', 'ASC')
+				->get_where('tmp_point_series_racer_sets as psr_set', array('point_series_id' => $id));
+		
+		$ret = array('ranking' => $query->result_array());
+		
+		$query = $this->db->select('*')
+				->get_where('point_series as ps', array('id' => $id, 'deleted' => 0));
+		$ret['series'] = $query->row_array();
+		
+		return $ret;
+	}
 }
