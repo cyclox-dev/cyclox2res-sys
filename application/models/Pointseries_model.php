@@ -125,15 +125,28 @@ class Pointseries_model extends CI_Model {
 			return array();
 		}
 		
+		$ret = array();
+		
+		$query = $this->db->select('*, ps.name as ps_name')
+				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
+				->get_where('point_series as ps', array('ps.id' => $id, 'ps.deleted' => 0));
+		$series = $query->row_array();
+		//var_dump(json_encode($series, JSON_UNESCAPED_UNICODE));
+		
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			if (!empty($series['season_id']) && $series['start_date'] < '2017-04-01')
+			{
+				return array();
+			}
+		}
+		
+		$ret['series'] = $series;
+		
 		$query = $this->db->select('*')
 				->order_by('rank', 'ASC')
 				->get_where('tmp_point_series_racer_sets as psr_set', array('point_series_id' => $id));
-		
-		$ret = array('ranking' => $query->result_array());
-		
-		$query = $this->db->select('*')
-				->get_where('point_series as ps', array('id' => $id, 'deleted' => 0));
-		$ret['series'] = $query->row_array();
+		$ret['ranking'] = $query->result_array();
 		
 		return $ret;
 	}

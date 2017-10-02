@@ -1,5 +1,5 @@
 <div id="main">
-	<h2><?= h($series['name']) ?></h2>
+	<h2><?= h($series['ps_name']) ?></h2>
 	<?php /* 情報は表示しない（タイトルのみ）
 	<dl class="dl-horizontal dl-horizontal_al">
 		<dt></dt><dd><?= h($series['']) ?></dd>
@@ -75,6 +75,4 @@
 			</tbody>
 		</table>
 	<?php endif; ?>
-
-
 </div>

@@ -23,6 +23,11 @@ class Point_series extends XSYS_Controller {
 	{
 		$ranking = $this->pointseries_model->get_ranking($id);
 		
+		if (empty($ranking))
+		{
+			show_404();
+		}
+		
 		$this->_fmt_render('point_series/view', $ranking);
 	}
 }
