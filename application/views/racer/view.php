@@ -30,7 +30,7 @@
 				<?php foreach ($rankings as $ranking): ?>
 				<dt>
 					<a href="<?= site_url('point_series/' . h($ranking['point_series_id'])) ?>">
-						<?= h($ranking['name']) ?>
+						<?= h($ranking['ps_name']) ?>
 					</a>
 				</dt>
 				<dd><?php

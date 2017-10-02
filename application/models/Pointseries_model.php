@@ -87,12 +87,28 @@ class Pointseries_model extends CI_Model {
 			return array();
 		}
 		
-		$query = $this->db->select('*')
+		$query = $this->db->select('*, ps.name as ps_name')
 				->join('point_series as ps', 'ps.id = psr_set.point_series_id', 'INNER')
+				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
 				->get_where('tmp_point_series_racer_sets as psr_set', array('racer_code' => $code));
 		
 		$points = $query->result_array();
 		//var_dump(json_encode($points));
+		
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$limited = array();
+
+			foreach ($points as $p)
+			{
+				if (empty($p['season_id']) || $p['start_date'] >= '2017-04-01')
+				{
+					$limited[] = $p;
+				}
+			}
+
+			$points = $limited;
+		}
 		
 		return $points;
 	}
