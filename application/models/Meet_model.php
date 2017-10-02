@@ -54,18 +54,18 @@ class Meet_model extends CI_Model {
 			$cdt['at_date >'] = '2017-03-31';
 		}
 		
-		$query = $this->db->order_by('at_date', 'DESC');
+		$this->db->order_by('at_date', 'DESC');
 		
 		if (!empty($code))
 		{
 			$cdt['meet_group_code'] = $code;
 		}
 		
-		$query = $query->select('*, meets.name as mt_name, meets.code as mt_code'
+		$this->db->select('*, meets.name as mt_name, meets.code as mt_code'
 				. ', mg.name as mg_name, mg.short_name as mg_short_name')
 				->join('meet_groups as mg', 'mg.code = meets.meet_group_code', 'INNER');
 	
-		$query = $query->get_where('meets', $cdt);
+		$query = $this->db->get_where('meets', $cdt);
 		
 		return $query->result_array();
 	}
