@@ -28,10 +28,6 @@ class Race extends XSYS_Controller {
 		{
 			show_404();
 		}
-		if (XSYS_const::NONVISIBLE_BEFORE1718 && $ecat['at_date'] < '2017-04-01')
-		{
-			show_404();
-		}
 		$data['ecat'] = $ecat;
 		
 		$results = $this->result_model->get_results($ecat_id);

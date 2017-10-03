@@ -29,6 +29,10 @@ class Meet_model extends CI_Model {
 			'mt.code' => $code,
 			'mt.deleted' => 0
 		);
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$cdt['at_date >'] = '2017-03-31';
+		}
 		
 		$query = $this->db->select('*, mg.code as mg_code, mt.name as meet_name, mt.homepage as meet_hp'
 				. ', mg.name as mg_name, ss.name as ss_name')

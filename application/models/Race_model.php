@@ -30,6 +30,10 @@ class Race_model extends CI_Model {
 			'eg.deleted' => 0,
 			'ec.id' => $ecat_id,
 		);
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$cdt['at_date >'] = '2017-03-31';
+		}
 		
 		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name, mg.name as meet_group_name'
 				. ', mt.code as meet_code, mt.start_frac_distance as meet_sfd, eg.start_frac_distance as eg_sfd')
@@ -39,6 +43,10 @@ class Race_model extends CI_Model {
 				->get_where('entry_categories as ec', $cdt);
 		
 		$ecat = $query->row_array();
+		if (empty($ecat))
+		{
+			return null;
+		}
 		
 		$ecat['prepared_start_clock'] = date('H:i'
 				, strtotime($this->_convert_start_clock($ecat['start_clock'], $ecat['start_delay_sec'])));

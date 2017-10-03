@@ -32,10 +32,6 @@ class Meet extends XSYS_Controller {
 		{
 			show_404();
 		}
-		if (XSYS_const::NONVISIBLE_BEFORE1718 && $data['meet']['at_date'] < '2017-04-01')
-		{
-			show_404();
-		}
 		
 		$data['ecats'] = $this->race_model->get_race_of_meet($code);
 		$data['rank_ups'] = $this->categoryracer_model->get_rankuppers_of_meet($code);
