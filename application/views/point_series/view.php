@@ -11,28 +11,34 @@
 	<?php if (empty($ranking)): ?>
 		<p>ランキングデータがありません。</p>
 	<?php else: ?>
-		<?php $r = $ranking[0]; ?>
-		<p><?= $r['modified'] . '更新' ?></p>
+		<p><?= $title_row['modified'] . '更新' ?></p>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>順位</th>
-					<th><?= h($r['name']) ?></th>
-					<th><?= h($r['team']) ?></th>
+					<th><?= h($title_row['name']) ?></th>
+					<th><?= h($title_row['team']) ?></th>
 					<?php
-						$titles = json_decode($r['point_json']);
+						$titles = $title_row['pt_titles'];
 						$point_count = count($titles);
 						foreach ($titles as $t)
 						{
-							echo '<th><a href="';
-							echo site_url('meet/' . h($t->code));
-							echo '">' . $t->name . '</a></th>';
+							echo '<th>';
+							if (!empty($t['code']))
+							{
+								echo '<a href="' . site_url('meet/' . h($t['code'])) . '">' . h($t['name']) . '</a>';
+							}
+							else
+							{
+								echo h($t['name']);
+							}
+							echo '</th>';
 						}
 					?>
 					<?php
-						$titles = json_decode($r['sumup_json']);
-						$sumup_count = count($titles);
-						foreach ($titles as $t)
+						$sumup_titles = $title_row['sumup_titles'];
+						$sumup_count = count($sumup_titles);
+						foreach ($sumup_titles as $t)
 						{
 							echo '<th>' . $t . '</th>';
 						}
@@ -40,8 +46,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php for ($i = 1; $i < count($ranking); $i++): ?>
-				<?php $r = $ranking[$i]; ?>
+				<?php foreach ($ranking as $r): ?>
 					<tr>
 						<td><?= h($r['rank']) ?></td>
 						<td><a href="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name']) ?></a></td>
@@ -71,7 +76,7 @@
 							}
 						?>
 					</tr>
-				<?php endfor; ?>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 	<?php endif; ?>
