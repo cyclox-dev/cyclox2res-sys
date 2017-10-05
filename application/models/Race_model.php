@@ -28,6 +28,7 @@ class Race_model extends CI_Model {
 		$cdt = array(
 			'ec.deleted' => 0,
 			'eg.deleted' => 0,
+			'mt.deleted' => 0,
 			'ec.id' => $ecat_id,
 		);
 		if (XSYS_const::NONVISIBLE_BEFORE1718)
@@ -54,6 +55,38 @@ class Race_model extends CI_Model {
 		$ecat['sf_dist'] = is_null($ecat['eg_sfd']) ? $ecat['meet_sfd'] : $ecat['eg_sfd'];
 		
 		return $ecat;
+	}
+	
+	public function get_race_id($meet_code, $ecat_name)
+	{
+		var_dump($meet_code . ' ' . $ecat_name);
+		
+		if (empty($meet_code) || empty($ecat_name))
+		{
+			return null;
+		}
+		
+		$cdt = array(
+			'mt.deleted' => 0,
+			'ec.deleted' => 0,
+			'eg.deleted' => 0,
+			'mt.code' => $meet_code,
+			'ec.name' => $ecat_name,
+		);
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$cdt['at_date >'] = '2017-03-31';
+		}
+		
+		$query = $this->db->select('*, ec.id as ec_id')
+				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')
+				->join('meets as mt', 'mt.code = eg.meet_code', 'INNER')
+				->order_by('ec.modified', 'DESC') // もっとも新しい ecat を取得する
+				->get_where('entry_categories as ec', $cdt);
+		
+		$ecat = $query->first_row('array');
+		
+		return empty($ecat['ec_id']) ? null : $ecat['ec_id'];
 	}
 	
 	/**

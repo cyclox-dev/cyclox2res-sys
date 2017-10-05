@@ -58,8 +58,12 @@ $route['meet/(:any)'] = 'meet/view/$1';
 $route['meets/index'] = 'meet/index';
 $route['meets'] = 'meet';
 $route['meets/(:any)'] = 'meet/index/$1';
-$route['race/(:any)'] = 'race/view/$1';
+
+$route['race/(:num)'] = 'race/view/$1';
+$route['race/(:any)/(:any)'] = 'race/view_race/$1/$2';
+
 $route['racer/(:any)'] = 'racer/view/$1';
+
 $route['point_series/(:any)'] = 'point_series/view/$1';
 
 $route['(:any)'] = 'pages/view/$1';

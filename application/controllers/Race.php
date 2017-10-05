@@ -13,6 +13,8 @@ class Race extends XSYS_Controller {
 	{
 		parent::__construct();
 		
+		$this->load->helper('url');
+		
 		$this->load->model('race_model');
 		$this->load->model('result_model');
 		$this->load->model('categoryracer_model');
@@ -21,13 +23,14 @@ class Race extends XSYS_Controller {
 	
 	public function view($ecat_id = NULL)
 	{
-		$data = array();
 		$ecat = $this->race_model->get_race_info($ecat_id);
 		
 		if (empty($ecat))
 		{
 			show_404();
 		}
+		
+		$data = array();
 		$data['ecat'] = $ecat;
 		
 		$results = $this->result_model->get_results($ecat_id);
@@ -160,6 +163,23 @@ class Race extends XSYS_Controller {
 		$data['ps_titles'] = $ps_titles;
 		
 		$this->_fmt_render('race/view', $data);
+	}
+	
+	/**
+	 * 大会コード、entry category name によりレースを検索し、表示する。
+	 * @param string $meet_code
+	 * @param string $ecat_name
+	 */
+	public function view_race($meet_code, $ecat_name)
+	{
+		$ecat_id = $this->race_model->get_race_id($meet_code, $ecat_name);
+		var_dump($ecat_id);
+		/*if (empty($ecat_id))
+		{
+			show_404();
+		}//*/
+		
+		redirect('/race/' . $ecat_id);
 	}
 	
 	/**

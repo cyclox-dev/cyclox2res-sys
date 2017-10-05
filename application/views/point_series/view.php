@@ -26,7 +26,7 @@
 							echo '<th>';
 							if (!empty($t['code']))
 							{
-								echo '<a href="' . site_url('meet/' . h($t['code'])) . '">' . h($t['name']) . '</a>';
+								echo '<a href="' . site_url('race/' . h($t['code']) . '/' . h($t['entry_category_name'])) . '">' . h($t['name']) . '</a>';
 							}
 							else
 							{
