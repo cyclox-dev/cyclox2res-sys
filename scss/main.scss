@@ -3,6 +3,8 @@
     Author     : shun
 */
 
+$light_gray: #DDDDDD;
+
 header {
     background-color: #FAFAF6;
     padding: 0.5em 1em;
@@ -33,6 +35,25 @@ p.proviso {
     text-align: right;
 }
 
+.point_series_index {
+    .rankings {
+        h4 {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            padding: 6px 6px;
+            background-color: $light_gray;
+        }
+    }
+    .point_series {
+        margin-bottom: 15px;
+        .racers_row {
+            .team {
+                margin-left: 2em;
+            }
+        }
+    }
+}
+
 .racer_view {
     .racer {
         .dl-horizontal {
@@ -58,11 +79,3 @@ p.proviso {
     }
 }
 
-
-.point_series {
-    .racers_row {
-        .team {
-            margin-left: 2em;
-        }
-    }
-}

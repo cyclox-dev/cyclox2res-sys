@@ -1,8 +1,8 @@
 <div id="main">
-	<div>
+	<div class="point_series_index">
 		<h2>ポイントシリーズ</h2>
 		<p class="proviso">（* はU23以下の選手です。）</p>
-		<div>
+		<div class="rankings">
 			<?php foreach($rankings as $r): ?>
 				<div>
 					<h4><a href='<?= site_url('point_series/') . h($r[0]['ps_id']) ?>'><?= h($r[0]['ps_name']) ?></a></h4>
@@ -10,7 +10,8 @@
 						<?php foreach ($r as $psrs): ?>
 						<div class="col-sm-4 racers_row">
 							<div>
-								<?= h($psrs['rank']) . '位 ' . h($psrs['name']) ?>
+								<?= h($psrs['rank']) . '位 ' ?>
+								<a href="<?= site_url('racer/') . h($psrs['racer_code']) ?>"><?= h($psrs['name']) ?></a>
 								<?php
 									$ded = json_decode($psrs['sumup_json']);
 									if (!empty($ded))

@@ -26,6 +26,16 @@ p.proviso {
   font-size: 0.8em;
   text-align: right; }
 
+.point_series_index .rankings h4 {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding: 6px 6px;
+  background-color: #DDDDDD; }
+.point_series_index .point_series {
+  margin-bottom: 15px; }
+  .point_series_index .point_series .racers_row .team {
+    margin-left: 2em; }
+
 .racer_view .racer .dl-horizontal > dt {
   text-align: left;
   width: 110px; }
@@ -36,8 +46,5 @@ p.proviso {
   width: 210px; }
 .racer_view .ranking .dl-horizontal > dd {
   margin-left: 210px; }
-
-.point_series .racers_row .team {
-  margin-left: 2em; }
 
 /*# sourceMappingURL=main.css.map */
