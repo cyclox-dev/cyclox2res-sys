@@ -65,6 +65,7 @@ $route['race/(:any)/(:any)'] = 'race/view_race/$1/$2';
 $route['racer/(:any)'] = 'racer/view/$1';
 
 $route['point_series/(:any)'] = 'point_series/view/$1';
+$route['point_series'] = 'point_series';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';

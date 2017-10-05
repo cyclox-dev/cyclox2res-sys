@@ -7,7 +7,8 @@ header {
   padding: 0.5em 1em; }
 
 #main {
-  padding: 0.5em 2em; }
+  padding: 0.5em 2em;
+  margin-bottom: 2em; }
 
 footer {
   color: #FFFFFF;
@@ -30,5 +31,8 @@ p.proviso {
   width: 110px; }
 .dl-horizontal_al > dd {
   margin-left: 110px; }
+
+.point_series .racers_row .team {
+  margin-left: 2em; }
 
 /*# sourceMappingURL=main.css.map */

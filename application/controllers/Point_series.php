@@ -19,6 +19,12 @@ class Point_series extends XSYS_Controller {
 		$this->load->model('pointseries_model');
 	}
 	
+	public function index()
+	{
+		$rankings = $this->pointseries_model->get_rankings();
+		$this->_fmt_render('point_series/index', array('rankings' => $rankings));
+	}
+	
 	public function view($id = NULL)
 	{
 		$ranking = $this->pointseries_model->get_ranking($id);

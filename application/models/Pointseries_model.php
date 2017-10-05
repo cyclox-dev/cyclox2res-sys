@@ -114,6 +114,96 @@ class Pointseries_model extends CI_Model {
 	}
 	
 	/**
+	 * ポイントシリーズと3位までの情報をかえす
+	 * @return array ポイントシリーズ情報
+	 */
+	public function get_rankings()
+	{
+		$cdt = array(
+			'deleted' => 0,
+			'season_id' => NULL,
+			'psrs.rank is not null',
+			'psrs.rank <=' => 3,
+			'psrs.rank >' => 0, // タイトル行除去
+		);
+		
+		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id')
+				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
+				->order_by('rank', 'ASC')
+				->get_where('point_series as ps', $cdt);
+		$noSsSeries = $query->result_array();
+		$noSsSeries = $this->_pack($noSsSeries);
+		
+		$cdt = array(
+			'ps.deleted' => 0,
+			'season_id is not NULL',
+			'psrs.rank is not null',
+			'psrs.rank <=' => 3,
+			'psrs.rank >' => 0, // タイトル行除去
+		);
+		
+		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id')
+				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
+				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
+				->order_by('end_date', 'DESC')
+				->order_by('rank', 'ASC')
+				->get_where('point_series as ps', $cdt);
+		$ssSeries = $query->result_array();
+		
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$tmp = array();
+			foreach ($ssSeries as $s)
+			{
+				if ($s['end_date'] > '2017-03-31')
+				{
+					$tmp[] = $s;
+				}
+			}
+			$ssSeries = $tmp;
+		}
+		
+		$ssSeries = $this->_pack($ssSeries);
+		
+		return array_merge($noSsSeries, $ssSeries);
+	}
+	
+	/**
+	 * tmp_point_series_racer_sets データをまとめたシリーズをかえす
+	 * @param array $series シリーズのデータの配列
+	 */
+	private function _pack($series)
+	{
+		$ret = array();
+		
+		// とりあえず ps.id 取得
+		$psids = array();
+		foreach ($series as $s)
+		{
+			if (!in_array($s['ps_id'], $psids))
+			{
+				$psids[] = $s['ps_id'];
+			}
+		}
+		
+		// ps.id ごとにまとめる
+		foreach ($psids as $psid)
+		{
+			$tmp = array();
+			foreach ($series as $s)
+			{
+				if ($s['ps_id'] == $psid)
+				{
+					$tmp[] = $s;
+				}
+			}
+			$ret[] = $tmp;
+		}
+		
+		return $ret;
+	}
+	
+	/**
 	 * 指定ポイントシリーズの最新のランキングデータをかえす
 	 * @param int $id ポイントシリーズ ID
 	 * @return array ranking, series の2つのキーを持つ配列
