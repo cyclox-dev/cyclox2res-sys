@@ -12,6 +12,7 @@
 		<p>ランキングデータがありません。</p>
 	<?php else: ?>
 		<p><?= $title_row['modified'] . '更新' ?></p>
+		<p class="proviso">（* はU23以下の選手です。）</p>
 		<table class="table table-striped">
 			<thead>
 				<tr>
