@@ -26,11 +26,16 @@ p.proviso {
   font-size: 0.8em;
   text-align: right; }
 
-.dl-horizontal_al > dt {
+.racer_view .racer .dl-horizontal > dt {
   text-align: left;
   width: 110px; }
-.dl-horizontal_al > dd {
+.racer_view .racer .dl-horizontal > dd {
   margin-left: 110px; }
+.racer_view .ranking .dl-horizontal > dt {
+  text-align: left;
+  width: 210px; }
+.racer_view .ranking .dl-horizontal > dd {
+  margin-left: 210px; }
 
 .point_series .racers_row .team {
   margin-left: 2em; }

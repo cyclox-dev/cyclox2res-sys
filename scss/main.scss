@@ -33,15 +33,31 @@ p.proviso {
     text-align: right;
 }
 
-.dl-horizontal_al {
-    > dt {
-        text-align: left;
-        width: 110px;
+.racer_view {
+    .racer {
+        .dl-horizontal {
+            > dt {
+                text-align: left;
+                width: 110px;
+            }
+            > dd {
+                margin-left: 110px;
+            }
+        }
     }
-    > dd {
-        margin-left: 110px;
+    .ranking {
+        .dl-horizontal {
+            > dt {
+                text-align: left;
+                width: 210px;
+            }
+            > dd {
+                margin-left: 210px;
+            }
+        }
     }
 }
+
 
 .point_series {
     .racers_row {
