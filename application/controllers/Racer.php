@@ -32,14 +32,26 @@ class Racer extends XSYS_Controller {
 		
 		$results = $this->result_model->get_result_of_racer($code);
 		
-		$rankup_to = $this->_pull_rankup_tos($data['cats']['on']);
-		$rankup_to += $this->_pull_rankup_tos($data['cats']['old']);
+		$rankup_to = array();
 		
-		foreach ($results as &$r)
+		if (!empty($data['cats']['on']))
 		{
-			if (!empty($rankup_to[$r['rr_id']]))
+			$rankup_to = $this->_pull_rankup_tos($data['cats']['on']);
+		}
+		
+		if (!empty($data['cats']['old']))
+		{
+			$rankup_to += $this->_pull_rankup_tos($data['cats']['old']);
+		}
+		
+		if (!empty($rankup_to))
+		{
+			foreach ($results as &$r)
 			{
-				$r['rank_up_to'] = $rankup_to[$r['rr_id']];
+				if (!empty($rankup_to[$r['rr_id']]))
+				{
+					$r['rank_up_to'] = $rankup_to[$r['rr_id']];
+				}
 			}
 		}
 		
