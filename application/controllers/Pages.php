@@ -7,6 +7,7 @@ class Pages extends XSYS_Controller
 		parent::__construct();
 		
 		$this->load->model('basedata_model');
+		$this->load->model('meet_model');
 		
 		$this->load->helper('form');
 	}
@@ -17,6 +18,7 @@ class Pages extends XSYS_Controller
 		$data = array();
 		
 		$data['cats'] = $this->basedata_model->get_categories();
+		$data['meets'] = $this->meet_model->get_meets(FALSE, 15, TRUE);
 		
 		$this->_fmt_render('pages/home', $data);
 	}

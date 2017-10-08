@@ -45,13 +45,20 @@ class Meet_model extends CI_Model {
 	/**
 	 * 大会を取得する。deleted は含まない。
 	 * @param string $code 大会グループコード。指定しない場合はすべての大会を取得する。
+	 * @param int $limit 取得件数上限値
+	 * @param bool $cuts_futures 未来に開催されるレースを含ませるか
 	 * @return array 大会データの配列。$code を指定しない場合は大会データの配列。
 	 */
-	public function get_meets($code = FALSE)
+	public function get_meets($code = FALSE, $limit = FALSE, $cuts_futures = FALSE)
 	{
 		$cdt = array(
 			'meets.deleted' => 0,
 		);
+		
+		if ($cuts_futures)
+		{
+			$cdt['at_date <'] = date('Y-m-d');
+		}
 
 		if (XSYS_const::NONVISIBLE_BEFORE1718)
 		{
@@ -69,6 +76,11 @@ class Meet_model extends CI_Model {
 				. ', mg.name as mg_name, mg.short_name as mg_short_name')
 				->join('meet_groups as mg', 'mg.code = meets.meet_group_code', 'INNER');
 	
+		if (!empty($limit) && is_int($limit))
+		{
+			$this->db->limit($limit, 0);
+		}
+		
 		$query = $this->db->get_where('meets', $cdt);
 		
 		return $query->result_array();
