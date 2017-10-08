@@ -17,6 +17,8 @@ class Point_series extends XSYS_Controller {
 	{
 		parent::__construct();
 		$this->load->model('pointseries_model');
+		
+		$this->load->helper('date');
 	}
 	
 	public function index()

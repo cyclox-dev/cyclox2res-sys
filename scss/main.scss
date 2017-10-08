@@ -37,11 +37,19 @@ p.proviso {
 
 .point_series_index {
     .rankings {
-        h4 {
+        .ps_title {
             margin-top: 6px;
             margin-bottom: 6px;
             padding: 6px 6px;
             background-color: $light_gray;
+            vertical-align: baseline;
+            h4 {
+                display: inline;
+            }
+            span {
+                font-size: 0.8em;
+                
+            }
         }
     }
     .point_series {

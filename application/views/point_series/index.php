@@ -5,7 +5,15 @@
 		<div class="rankings">
 			<?php foreach($rankings as $r): ?>
 				<div>
-					<h4><a href='<?= site_url('point_series/') . h($r[0]['ps_id']) ?>'><?= h($r[0]['ps_name']) ?></a></h4>
+					<div class="ps_title">
+						<h4><a href='<?= site_url('point_series/') . h($r[0]['ps_id']) ?>'><?= h($r[0]['ps_name']) ?></a></h4>
+						<span><?php
+							if (!empty($r[0]['modified']))
+							{
+								echo nice_date($r[0]['modified'], 'Y/m/d H:i') . '更新';
+							}
+						?></span>
+					</div>
 					<div class='row point_series'>
 						<?php foreach ($r as $psrs): ?>
 						<div class="col-sm-4 racers_row">

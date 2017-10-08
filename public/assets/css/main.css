@@ -26,11 +26,16 @@ p.proviso {
   font-size: 0.8em;
   text-align: right; }
 
-.point_series_index .rankings h4 {
+.point_series_index .rankings .ps_title {
   margin-top: 6px;
   margin-bottom: 6px;
   padding: 6px 6px;
-  background-color: #DDDDDD; }
+  background-color: #DDDDDD;
+  vertical-align: baseline; }
+  .point_series_index .rankings .ps_title h4 {
+    display: inline; }
+  .point_series_index .rankings .ps_title span {
+    font-size: 0.8em; }
 .point_series_index .point_series {
   margin-bottom: 15px; }
   .point_series_index .point_series .racers_row .team {
