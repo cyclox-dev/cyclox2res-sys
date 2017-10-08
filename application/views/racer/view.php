@@ -1,6 +1,5 @@
 <div id="main">
 	<div class="racer_view">
-		<h2><?= $racer['family_name'] . ' ' . $racer['first_name']; ?></h2>
 		<?php
 		if ($racer['deleted'])
 		{
@@ -15,6 +14,7 @@
 		?>
 		<div class="row">
 			<div class="col-sm-6 racer">
+				<h2><?= $racer['family_name'] . ' ' . $racer['first_name']; ?></h2>
 				<dl class="dl-horizontal">
 					<dt>選手コード</dt><dd><?= h($racer['code']) ?></dd>
 					<dt>ナマエ</dt><dd><?= h($racer['family_name_kana'] . ' ' . $racer['first_name_kana']) ?></dd>
@@ -26,7 +26,9 @@
 				</dl>
 				<div class="clearfix"></div>
 			</div>
+			<?php if (!empty($rankings)): ?>
 			<div class="col-sm-6 ranking">
+				<h3>ランキング</h3>
 				<dl class="dl-horizontal">
 					<?php foreach ($rankings as $ranking): ?>
 					<dt>
@@ -47,6 +49,7 @@
 				</dl>
 				<div class="clearfix"></div>
 			</div>
+			<?php endif; ?>
 		</div>
 		<h3>カテゴリー所属</h3>
 		<?php if (!empty($cats['on'])): ?>
