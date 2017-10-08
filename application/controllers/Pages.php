@@ -6,6 +6,8 @@ class Pages extends XSYS_Controller
 	{
 		parent::__construct();
 		
+		$this->load->model('basedata_model');
+		
 		$this->load->helper('form');
 	}
 	
@@ -13,6 +15,8 @@ class Pages extends XSYS_Controller
 	public function home()
 	{
 		$data = array();
+		
+		$data['cats'] = $this->basedata_model->get_categories();
 		
 		$this->_fmt_render('pages/home', $data);
 	}

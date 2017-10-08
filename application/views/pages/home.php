@@ -11,9 +11,10 @@
 				<div class="form-group">
 					<div class="col-sm-5">
 						<select class="form-control">
-							<option>カテゴリー指定なし</option>
-							<option>選択肢２</option>
-							<option>選択肢３</option>
+							<option value="empty">カテゴリー指定なし</option>
+							<?php foreach ($cats as $cat): ?>
+							<option value="<?= h($cat['code']) ?>"><?= h($cat['short_name']) ?></option>
+							<?php endforeach; ?>
 						</select>
 					</div>
 					<div id="contains_noentry" class="col-sm-7 checkbox">
