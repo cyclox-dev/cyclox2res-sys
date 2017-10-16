@@ -14,6 +14,29 @@ class Meet_model extends CI_Model {
 	}
 	
 	/**
+	 * 指定の大会グループをかえす
+	 * @param string $group_code 大会グループコード
+	 * @return array 大会グループ
+	 */
+	public function get_meet_group($code = FALSE)
+	{
+		if (empty($code))
+		{
+			return array();
+		}
+		
+		$cdt = array(
+			'code' => $code,
+			'deleted' => 0
+		);
+		
+		$query = $this->db->select('*')
+				->get_where('meet_groups', $cdt);
+		
+		return $query->row_array();
+	}
+	
+	/**
 	 * 大会を取得する。deleted は含まない。
 	 * @param string $code 大会コード。
 	 * @return array 大会データ

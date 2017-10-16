@@ -20,7 +20,11 @@ class Meet extends XSYS_Controller {
 		$cuts_futures = empty($meet_group_code);
 		
 		$data['meets'] = $this->meet_model->get_meets($meet_group_code, FALSE, $cuts_futures);
-		$data['mg_limited'] = !empty($meet_group_code);
+		
+		if (!empty($meet_group_code))
+		{
+			$data['meet_group'] = $this->meet_model->get_meet_group($meet_group_code);
+		}
 		
 		$this->_fmt_render('meet/index', $data);
 	}
