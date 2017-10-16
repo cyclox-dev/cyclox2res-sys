@@ -172,14 +172,14 @@ class Race extends XSYS_Controller {
 	 */
 	public function view_race($meet_code, $ecat_name)
 	{
-		$ecat_id = $this->race_model->get_race_id($meet_code, $ecat_name);
-		var_dump($ecat_id);
-		/*if (empty($ecat_id))
+		$ecat_id = $this->race_model->get_race_id($meet_code, urldecode($ecat_name));
+		
+		if (empty($ecat_id))
 		{
 			show_404();
-		}//*/
+		}
 		
-		redirect('/race/' . $ecat_id);
+		$this->view($ecat_id);
 	}
 	
 	/**

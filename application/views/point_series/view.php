@@ -27,7 +27,15 @@
 							echo '<th>';
 							if (!empty($t['code']))
 							{
-								echo '<a href="' . site_url('race/' . h($t['code']) . '/' . h($t['entry_category_name'])) . '">' . h($t['name']) . '</a>';
+								if (isset($t['entry_category_name']))
+								{
+									$path = site_url('race/' . h($t['code']) . '/' . h(urlencode($t['entry_category_name'])));
+								}
+								else
+								{
+									$path = site_url('meet/' . h($t['code']));
+								}
+								echo '<a href="' . $path . '">' . h($t['name']) . '</a>';
 							}
 							else
 							{

@@ -57,10 +57,14 @@ class Race_model extends CI_Model {
 		return $ecat;
 	}
 	
+	/**
+	 * 出走カテゴリー ID をかえす
+	 * @param string $meet_code 大会
+	 * @param string $ecat_name 出走カテゴリー名
+	 * @return int id。見つからない場合などは null をかえす。
+	 */
 	public function get_race_id($meet_code, $ecat_name)
 	{
-		var_dump($meet_code . ' ' . $ecat_name);
-		
 		if (empty($meet_code) || empty($ecat_name))
 		{
 			return null;
