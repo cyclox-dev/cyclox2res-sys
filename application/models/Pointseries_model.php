@@ -31,12 +31,14 @@ class Pointseries_model extends CI_Model {
 			'er.deleted' => 0,
 			'rr.deleted' => 0,
 			'ec.id' => $ecat_id,
+			'ps.is_active' => 1,
 		);
 		
 		$query = $this->db->select('*, rr.id as rr_id')
 				->join('entry_racers as er', 'rr.entry_racer_id = er.id', 'INNER')
 				->join('entry_categories as ec', 'er.entry_category_id = ec.id', 'INNER')
 				->join('point_series_racers as psr', 'rr.id = psr.racer_result_id', 'INNER')
+				->join('point_series as ps', 'psr.point_series_id = ps.id', 'INNER')
 				->get_where('racer_results as rr', $cdt);
 		
 		$points = $query->result_array();
@@ -66,7 +68,8 @@ class Pointseries_model extends CI_Model {
 	{
 		$cdt = array(
 			'id' => $series_id,
-			'deleted' => 0
+			'deleted' => 0,
+			'is_active' => 1,
 		);
 		
 		$query = $this->db->select('*')
@@ -90,7 +93,7 @@ class Pointseries_model extends CI_Model {
 		$query = $this->db->select('*, ps.name as ps_name')
 				->join('point_series as ps', 'ps.id = psr_set.point_series_id', 'INNER')
 				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
-				->get_where('tmp_point_series_racer_sets as psr_set', array('racer_code' => $code));
+				->get_where('tmp_point_series_racer_sets as psr_set', array('racer_code' => $code, 'ps.is_active' => 1));
 		
 		$points = $query->result_array();
 		//var_dump(json_encode($points));
@@ -122,12 +125,12 @@ class Pointseries_model extends CI_Model {
 		$cdt = array(
 			'deleted' => 0,
 			'season_id' => NULL,
-			'psrs.rank is not null',
 			'psrs.rank <=' => 3,
 			'psrs.rank >' => 0, // タイトル行除去
+			'ps.is_active' => 1,
 		);
 		
-		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id')
+		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name')
 				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
 				->order_by('rank', 'ASC')
 				->get_where('point_series as ps', $cdt);
@@ -137,14 +140,14 @@ class Pointseries_model extends CI_Model {
 		$cdt = array(
 			'ps.deleted' => 0,
 			'season_id is not NULL',
-			'psrs.rank is not null',
 			'psrs.rank <=' => 3,
 			'psrs.rank >' => 0, // タイトル行除去
+			'ps.is_active' => 1,
 		);
 		
-		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id')
+		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name')
 				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
-				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
+				->join('seasons as ss', 'ss.id = ps.season_id', 'INNER')
 				->order_by('end_date', 'DESC')
 				->order_by('rank', 'ASC')
 				->get_where('point_series as ps', $cdt);

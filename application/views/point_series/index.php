@@ -15,11 +15,18 @@
 						?></span>
 					</div>
 					<div class='row point_series'>
+						<?php $pre_rank = -1 ?>
 						<?php foreach ($r as $psrs): ?>
-						<div class="col-sm-4 racers_row">
+						<?php if ($psrs['rank'] != $pre_rank): ?>
+							<?php if ($pre_rank != -1): ?>
+					</div>
+							<?php endif; ?>
+							<div class="col-sm-4 racers_row">
+							<?php $pre_rank = $psrs['rank']; ?>
+						<?php endif; ?>
 							<div>
 								<?= h($psrs['rank']) . '位 ' ?>
-								<a href="<?= site_url('racer/') . h($psrs['racer_code']) ?>"><?= h($psrs['name']) ?></a>
+								<a href="<?= site_url('racer/') . h($psrs['racer_code']) ?>"><?= h($psrs['psrs_name']) ?></a>
 								<?php
 									$ded = json_decode($psrs['sumup_json']);
 									if (!empty($ded))
@@ -29,8 +36,8 @@
 								?>
 							</div>
 							<div class="team"><?= h($psrs['team']) ?></div>
-						</div>
 						<?php endforeach; ?>
+						</div>
 					</div>
 				</div>
 			<?php endforeach; ?>
