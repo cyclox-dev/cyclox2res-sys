@@ -35,7 +35,7 @@
 					<?php
 					foreach ($ps_titles as $t)
 					{
-						echo '<th>' . $t['name'] . '</th>';
+						echo '<th><a href="' . site_url('/point_series/') . $t['id'] . '">' . $t['name'] . '</a></th>';
 					}
 					?>
 					<th>Note</th>
