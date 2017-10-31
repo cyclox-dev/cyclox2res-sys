@@ -6,10 +6,10 @@ class Pages extends XSYS_Controller
 	{
 		parent::__construct();
 		
+		$this->load->helper('form');
+		
 		$this->load->model('basedata_model');
 		$this->load->model('meet_model');
-		
-		$this->load->helper('form');
 	}
 	
 	// use as top page.
@@ -20,6 +20,7 @@ class Pages extends XSYS_Controller
 		$data['cats'] = $this->basedata_model->get_categories();
 		$data['meets'] = $this->meet_model->get_meets(FALSE, 15, TRUE);
 		
+		$data['rider_search_div'] = $this->parser->parse('racer/sub/rider_search', array(), TRUE); // 第2引数 NULL だとエラーになる。
 		$this->_fmt_render('pages/home', $data);
 	}
 	

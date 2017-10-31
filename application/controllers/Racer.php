@@ -12,6 +12,7 @@ class Racer extends XSYS_Controller {
 		parent::__construct();
 		
 		$this->load->library('session');
+		$this->load->helper('form');
 		
 		$this->load->model('racer_model');
 		$this->load->model('categoryracer_model');
@@ -98,6 +99,7 @@ class Racer extends XSYS_Controller {
 			$data['racers'] = $this->racer_model->get_racers($swords, $cat);
 		}
 		
+		$data['rider_search_div'] = $this->parser->parse('racer/sub/rider_search', array(), TRUE); // 第2引数 NULL だとエラーになる。
 		$this->_fmt_render('racer/index', $data);
 	}
 }
