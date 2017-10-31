@@ -24,7 +24,7 @@
 				{
 					foreach ($xsys_flash_error_list as $e)
 					{
-						echo '<div class="flash_error">' . $e . '</div>';
+						echo '<div class="alert alert-danger" role="alert">' . $e . '</div>';
 					}
 				}
 				
@@ -32,7 +32,7 @@
 				{
 					foreach ($xsys_flash_info_list as $i)
 					{
-						echo '<div class="flash_info">' . $i . '</div>';
+						echo '<div class="alert alert-info" role="alert">' . $i . '</div>';
 					}
 				}
 				?>

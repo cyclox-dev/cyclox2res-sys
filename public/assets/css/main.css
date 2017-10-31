@@ -26,9 +26,15 @@ p.proviso {
   font-size: 0.8em;
   text-align: right; }
 
-#page_home .rider_search #search_send {
+.alert {
+  margin-bottom: 0px; }
+
+#flash_view {
+  padding: 10px 10px; }
+
+#rider_search #search_send {
   width: 130px; }
-#page_home .rider_search #contains_noentry {
+#rider_search #contains_noentry {
   font-size: 0.9em; }
 
 .point_series_index .rankings .ps_title {

@@ -35,14 +35,20 @@ p.proviso {
     text-align: right;
 }
 
-#page_home {
-    .rider_search {
-        #search_send {
-            width: 130px;
-        }
-        #contains_noentry {
-            font-size: 0.9em;
-        }
+.alert {
+    margin-bottom: 0px;
+}
+
+#flash_view {
+    padding: 10px 10px;
+}
+
+#rider_search {
+    #search_send {
+        width: 130px;
+    }
+    #contains_noentry {
+        font-size: 0.9em;
     }
 }
 
