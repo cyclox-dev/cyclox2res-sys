@@ -40,4 +40,14 @@ class Racer_model extends CI_Model {
 		
 		return $racer;
 	}
+	
+	public function trying()
+	{
+		$this->load->helper('url');
+		
+		var_dump($this->input->post('search_words'));
+		var_dump($this->input->post('andor'));
+		
+		return false;
+	}
 }

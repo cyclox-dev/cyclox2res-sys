@@ -10,6 +10,9 @@ class Racer extends XSYS_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		
+		$this->load->library('session');
+		
 		$this->load->model('racer_model');
 		$this->load->model('categoryracer_model');
 		$this->load->model('result_model');
@@ -77,7 +80,24 @@ class Racer extends XSYS_Controller {
 		}
 		
 		return $ret;
+	}
+	
+	public function search()
+	{
+		$swords = $this->input->post('search_words');
+		$cat = $this->input->post('category');
 		
+		if (empty($swords) && $cat === 'empty')
+		{
+			// 全データになってしまうため、無しとする。
+			$this->_add_flash_error('少なくともキーワードかカテゴリーを指定して下さい。');
+			$data['racers'] = FALSE;
+		}
+		else
+		{
+			$data['racers'] = $this->racer_model->get_racers($swords, $cat);
+		}
 		
+		$this->_fmt_render('racer/index', $data);
 	}
 }
