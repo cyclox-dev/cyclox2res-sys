@@ -92,7 +92,7 @@ class Racer extends XSYS_Controller {
 		if (empty($swords) && $cat === 'empty')
 		{
 			// 全データになってしまうため、無しとする。
-			$data['racers'] = 'キーワードもしくはカテゴリーを入力し、検索して下さい。';
+			$data['racers'] = FALSE;
 		}
 		else
 		{
