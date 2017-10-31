@@ -15,6 +15,7 @@ class Racer extends XSYS_Controller {
 		$this->load->helper('form');
 		
 		$this->load->model('racer_model');
+		$this->load->model('basedata_model');
 		$this->load->model('categoryracer_model');
 		$this->load->model('result_model');
 		$this->load->model('pointseries_model');
@@ -91,15 +92,16 @@ class Racer extends XSYS_Controller {
 		if (empty($swords) && $cat === 'empty')
 		{
 			// 全データになってしまうため、無しとする。
-			$this->_add_flash_error('少なくともキーワードかカテゴリーを指定して下さい。');
-			$data['racers'] = FALSE;
+			$data['racers'] = 'キーワードもしくはカテゴリーを入力し、検索して下さい。';
 		}
 		else
 		{
 			$data['racers'] = $this->racer_model->get_racers($swords, $cat);
 		}
 		
-		$data['rider_search_div'] = $this->parser->parse('racer/sub/rider_search', array(), TRUE); // 第2引数 NULL だとエラーになる。
+		$data['cats'] = $this->basedata_model->get_categories();
+		
+		$data['rider_search_div'] = $this->parser->parse('racer/sub/rider_search', $data, TRUE);
 		$this->_fmt_render('racer/index', $data);
 	}
 }
