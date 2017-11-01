@@ -122,8 +122,10 @@ class Racer extends XSYS_Controller {
 	
 	public function index()
 	{
-		$swords = $this->input->get('search_words');
 		$cat = $this->input->get('category');
+		$eqafter156 = $this->input->get('eqafter156');
+		$swords = $this->input->get('search_words');
+		$andor = $this->input->get('andor');
 		
 		if (empty($swords) && $cat === 'empty')
 		{
@@ -132,13 +134,13 @@ class Racer extends XSYS_Controller {
 		}
 		else
 		{
-			$data['racers'] = $this->racer_model->get_racers($swords, $cat);
+			$is_eqafter156 = ($eqafter156 === 'on');
+			$data['racers'] = $this->racer_model->get_racers($swords, $cat, $is_eqafter156, $andor);
 		}
 		
 		$data['cat_code'] = $cat;
-		$data['eqafter156'] = $this->input->get('eqafter156');
+		$data['eqafter156'] = $eqafter156;
 		$data['search_words'] = $swords;
-		$andor = $this->input->get('andor');
 		$data['andor'] = empty($andor) ? 'and' : $andor;
 		
 		$data['cats'] = $this->basedata_model->get_categories();

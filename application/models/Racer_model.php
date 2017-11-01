@@ -45,9 +45,11 @@ class Racer_model extends CI_Model {
 	 * 指定の選手配列をかえす
 	 * @param string $search_word 検索ワード
 	 * @param string $category_code カテゴリーコード
+	 * @param boolean $eqafter156 15-16以降のデータに絞るか
+	 * @param string andor 'and' もしくはそれ以外の文字列
 	 * @return array 選手情報配列。
 	 */
-	public function get_racers($search_word, $category_code)
+	public function get_racers($search_word, $category_code, $eqafter156, $andor)
 	{
 		
 		
