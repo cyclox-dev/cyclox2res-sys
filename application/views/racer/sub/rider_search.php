@@ -10,28 +10,28 @@
 				<select class="form-control" name="category">
 					<option value="empty">カテゴリー指定なし</option>
 					<?php foreach ($cats as $cat): ?>
-					<option value="<?= h($cat['code']) ?>"><?= h($cat['short_name']) ?></option>
+					<option value="<?= h($cat['code']) ?>"<?php if (isset($cat_code) && $cat['code'] == $cat_code) echo ' selected="true"'; ?>><?= h($cat['short_name']) ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
 			<div id="contains_noentry" class="col-sm-7 checkbox">
 				<label>
-					<input type="checkbox" checked="checked" name="eqafter156" value="contains_noentry">15-16シーズン以降に活動している選手のみ検索する
+					<input type="checkbox" name="eqafter156" <?php if ($eqafter156 === 'on') echo 'checked="checked"'; ?>>2015-16以降に活動している選手のみ検索する
 				</label>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-12">
-				<input type="input" class="form-control" name="search_words" placeholder="キーワード">
+				<input type="input" class="form-control" name="search_words" value="<?php if (isset($search_words)) echo $search_words; ?>" placeholder="キーワード">
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="text-center">
 				<label class="radio-inline">
-					<input type="radio" name="andor" value="and" checked="checked">AND検索
+					<input type="radio" name="andor" value="and" <?php echo ($andor === 'and') ? 'checked="checked"' : ''; ?>>AND検索
 				</label>
 				<label class="radio-inline">
-					<input type="radio" name="andor" value="or">OR検索
+					<input type="radio" name="andor" value="or" <?php echo ($andor !== 'and') ? 'checked="checked"' : ''; ?>>OR検索
 				</label>
 			</div>
 		</div>

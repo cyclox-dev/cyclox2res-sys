@@ -20,6 +20,9 @@ class Pages extends XSYS_Controller
 		$data['cats'] = $this->basedata_model->get_categories();
 		$data['meets'] = $this->meet_model->get_meets(FALSE, 15, TRUE);
 		
+		$data['eqafter156'] = 'on';
+		$data['andor'] = 'and';
+		
 		$data['rider_search_div'] = $this->parser->parse('racer/sub/rider_search', $data, TRUE);
 		$this->_fmt_render('pages/home', $data);
 	}

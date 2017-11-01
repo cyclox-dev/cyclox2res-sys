@@ -41,13 +41,16 @@ class Racer_model extends CI_Model {
 		return $racer;
 	}
 	
-	public function trying()
+	/**
+	 * 指定の選手配列をかえす
+	 * @param string $search_word 検索ワード
+	 * @param string $category_code カテゴリーコード
+	 * @return array 選手情報配列。
+	 */
+	public function get_racers($search_word, $category_code)
 	{
-		$this->load->helper('url');
 		
-		var_dump($this->input->post('search_words'));
-		var_dump($this->input->post('andor'));
 		
-		return false;
+		return NULL;
 	}
 }
