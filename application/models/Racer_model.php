@@ -50,8 +50,9 @@ class Racer_model extends CI_Model {
 	 */
 	public function get_racers($search_word, $andor = 'and', $category_code = FALSE)
 	{
-		$this->db->select('*')->from('racers')
-				->where('racers.deleted', 0);
+		$this->db->select('code, family_name, first_name, team, gender, nationality_code, jcf_number')->from('racers')
+				->where('racers.deleted', 0)
+				->order_by('code');
 		
 		if (!empty($search_word))
 		{
@@ -106,7 +107,15 @@ class Racer_model extends CI_Model {
 					->where('cr.category_code', $category_code);
 		}
 		
+		$this->db->distinct();
 		$query = $this->db->get();
-		return $query->result_array();
+		$racers = $query->result_array();
+		
+		foreach ($racers as &$racer)
+		{
+			$racer['gender_exp'] = Gender::genderAt($racer['gender'])->charExp();
+		}
+		
+		return $racers;
 	}
 }
