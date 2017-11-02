@@ -90,11 +90,9 @@ class Racer extends XSYS_Controller {
 		$swords = $this->input->post('search_words');
 		$cat = $this->input->post('category');
 		$andor = $this->input->post('andor');
-		$eqafter156 = $this->input->post('eqafter156');
 		
 		$query_part = '';
 		$query_part = $this->_add_url_querystr($query_part, 'category', $cat);
-		$query_part = $this->_add_url_querystr($query_part, 'eqafter156', $eqafter156);
 		$query_part = $this->_add_url_querystr($query_part, 'search_words', $swords);
 		$query_part = $this->_add_url_querystr($query_part, 'andor', $andor);
 		
@@ -123,7 +121,6 @@ class Racer extends XSYS_Controller {
 	public function index()
 	{
 		$cat = $this->input->get('category');
-		$eqafter156 = $this->input->get('eqafter156');
 		$swords = $this->input->get('search_words');
 		$andor = $this->input->get('andor');
 		
@@ -134,13 +131,11 @@ class Racer extends XSYS_Controller {
 		}
 		else
 		{
-			$is_eqafter156 = ($eqafter156 === 'on');
 			$cat_code = ($cat === 'empty') ? NULL : $cat;
-			$data['racers'] = $this->racer_model->get_racers($swords, $andor, $cat_code, $is_eqafter156);
+			$data['racers'] = $this->racer_model->get_racers($swords, $andor, $cat_code);
 		}
 		
 		$data['cat_code'] = $cat;
-		$data['eqafter156'] = $eqafter156;
 		$data['search_words'] = $swords;
 		$data['andor'] = empty($andor) ? 'and' : $andor;
 		

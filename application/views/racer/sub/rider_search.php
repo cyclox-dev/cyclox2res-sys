@@ -10,14 +10,9 @@
 				<select class="form-control" name="category">
 					<option value="empty">カテゴリー指定なし</option>
 					<?php foreach ($cats as $cat): ?>
-					<option value="<?= h($cat['code']) ?>"<?php if (isset($cat_code) && $cat['code'] == $cat_code) echo ' selected="true"'; ?>><?= h($cat['short_name']) ?></option>
+					<option value="<?= h($cat['code']) ?>"<?php if (isset($cat_code) && $cat['code'] == $cat_code) echo ' selected="true"'; ?>><?= h($cat['name']) ?></option>
 					<?php endforeach; ?>
 				</select>
-			</div>
-			<div id="contains_noentry" class="col-sm-7 checkbox">
-				<label>
-					<input type="checkbox" name="eqafter156" <?php if ($eqafter156 === 'on') echo 'checked="checked"'; ?>>2015-16以降に活動している選手のみ検索する
-				</label>
 			</div>
 		</div>
 		<div class="form-group">

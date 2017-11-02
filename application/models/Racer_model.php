@@ -46,10 +46,9 @@ class Racer_model extends CI_Model {
 	 * @param string $search_word 検索ワード
 	 * @param string andor 'and' もしくはそれ以外の文字列
 	 * @param string $category_code カテゴリーコード
-	 * @param boolean $eqafter156 15-16以降のデータに絞るか
 	 * @return array 選手情報配列。
 	 */
-	public function get_racers($search_word, $andor = 'and', $category_code = FALSE, $eqafter156 = TRUE)
+	public function get_racers($search_word, $andor = 'and', $category_code = FALSE)
 	{
 		$this->db->select('*')->from('racers')
 				->where('racers.deleted', 0);
@@ -108,7 +107,6 @@ class Racer_model extends CI_Model {
 		}
 		
 		$query = $this->db->get();
-		print_r($this->db->last_query());
 		return $query->result_array();
 	}
 }
