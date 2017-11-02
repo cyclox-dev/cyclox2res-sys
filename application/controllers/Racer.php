@@ -135,7 +135,8 @@ class Racer extends XSYS_Controller {
 		else
 		{
 			$is_eqafter156 = ($eqafter156 === 'on');
-			$data['racers'] = $this->racer_model->get_racers($swords, $cat, $is_eqafter156, $andor);
+			$cat_code = ($cat === 'empty') ? NULL : $cat;
+			$data['racers'] = $this->racer_model->get_racers($swords, $andor, $cat_code, $is_eqafter156);
 		}
 		
 		$data['cat_code'] = $cat;

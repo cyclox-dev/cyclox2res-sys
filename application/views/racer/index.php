@@ -5,10 +5,11 @@
 			<div class="alert alert-danger" role="alert">キーワードもしくはカテゴリーを入力し、検索して下さい。</div>
 		<?php elseif (empty($racers)): ?>
 			<p>対象となる選手が見つかりませんでした。</p>
-			<p>※英数字の半角と全角は別物として扱われます。</br>※登録されていないデータは表示されません。</p>
+			<p>※英数字の半角と全角は別物として検索されます。</br>※選手コードはすべて半角です。</p>
 		<?php else: ?>
-		検索！
-		
+		<?php foreach ($racers as $r): ?>
+			<?= $r['first_name']; ?>
+		<?php endforeach; ?>
 		<?php endif; ?>
 	</div>
 </div>
