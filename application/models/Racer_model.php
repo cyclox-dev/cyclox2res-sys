@@ -59,45 +59,7 @@ class Racer_model extends CI_Model {
 			$str = trim(mb_convert_kana($search_word, 's', 'UTF-8')); // 全角-->半角スペース変換
 			$words = explode(' ', $str); // スペースでの分割
 
-			$COL_NAMES = array('code', 'family_name', 'family_name_kana', 'family_name_en'
-				, 'first_name', 'first_name_kana', 'first_name_en', 'team');
-
-			$with_and = (empty($andor) || $andor === 'and');
-			$is_first = TRUE;
-
-			foreach ($words as $word)
-			{
-				if ($is_first || $with_and)
-				{
-					$this->db->group_start();
-					$is_first = FALSE;
-				}
-				else
-				{
-					$this->db->or_group_start();
-				}
-
-				$hanKw = mb_convert_kana($word, 'rn');
-				$zenKw = mb_convert_kana($word, 'RN');
-
-				$str = '';
-				foreach ($COL_NAMES as $col_name)
-				{
-					$this->db->or_like($col_name, $word);
-
-					if ($hanKw != $word)
-					{
-						$this->db->or_like($col_name, $hanKw);
-					}
-
-					if ($zenKw != $word)
-					{
-						$this->db->or_like($col_name, $zenKw);
-					}
-				}
-
-				$this->db->group_end();
-			}
+			$this->_set_word_search_condition($words, $andor);
 		}
 		
 		if (!empty($category_code))
@@ -117,5 +79,52 @@ class Racer_model extends CI_Model {
 		}
 		
 		return $racers;
+	}
+	
+	/**
+	 * $this->db->xx() を呼び、キーワード検索のための条件をセットする
+	 * @param array(string) $words キーワードとなる文字列の配列
+	 * @param string $andor 'and' もしくはそれ以外の文字列
+	 */
+	private function _set_word_search_condition($words, $andor)
+	{
+		$COL_NAMES = array('code', 'family_name', 'family_name_kana', 'family_name_en'
+				, 'first_name', 'first_name_kana', 'first_name_en', 'team');
+
+		$with_and = (empty($andor) || $andor === 'and');
+		$is_first = TRUE;
+
+		foreach ($words as $word)
+		{
+			if ($is_first || $with_and)
+			{
+				$this->db->group_start();
+				$is_first = FALSE;
+			}
+			else
+			{
+				$this->db->or_group_start();
+			}
+
+			$hanKw = mb_convert_kana($word, 'rn');
+			$zenKw = mb_convert_kana($word, 'RN');
+
+			foreach ($COL_NAMES as $col_name)
+			{
+				$this->db->or_like($col_name, $word);
+
+				if ($hanKw != $word)
+				{
+					$this->db->or_like($col_name, $hanKw);
+				}
+
+				if ($zenKw != $word)
+				{
+					$this->db->or_like($col_name, $zenKw);
+				}
+			}
+
+			$this->db->group_end();
+		}
 	}
 }
