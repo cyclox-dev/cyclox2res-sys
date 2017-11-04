@@ -17,8 +17,11 @@ class Pages extends XSYS_Controller
 	{
 		$data = array();
 		
+		$meet_count = $this->config->item('meet_count_top_page');
+		$meet_count = empty($meet_count) ? 10 : $meet_count;
+		
 		$data['cats'] = $this->basedata_model->get_categories();
-		$data['meets'] = $this->meet_model->get_meets(FALSE, 15, TRUE);
+		$data['meets'] = $this->meet_model->get_meets(FALSE, $meet_count, TRUE);
 		
 		$data['andor'] = 'and';
 		

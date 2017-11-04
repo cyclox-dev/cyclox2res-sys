@@ -25,6 +25,7 @@
 					<?php endforeach; ?>
 				</tbody>
 			</table>
+			<p><?= anchor('meets', '> その他の大会を見る'); ?>
 		<?php endif; ?>
 
 
