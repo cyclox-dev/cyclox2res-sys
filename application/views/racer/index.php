@@ -26,7 +26,7 @@
 					<td><?= h($r['team']) ?></td>
 					<td><?= h($r['gender_exp']) ?></td>
 					<td><?= h($r['nationality_code']) ?></td>
-					<td><?= h('カテゴリー！！！') ?></td>
+					<td><?= h($r['cats']) ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
