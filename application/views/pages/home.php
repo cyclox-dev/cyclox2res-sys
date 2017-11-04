@@ -25,9 +25,9 @@
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-			<p><?= anchor('meets', '> その他の大会を見る'); ?>
+			<p><?= anchor('meets', '> 大会一覧'); ?>
 		<?php endif; ?>
-
-
+		<p><?= anchor('point_series', '> ポイントシリーズ一覧'); ?>
+		<p>> AJOCC Point シリーズ </p>
 	</div>
 </div>
