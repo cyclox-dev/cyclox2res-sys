@@ -11,7 +11,6 @@ class Racer extends XSYS_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->library('session');
 		$this->load->helper('form');
 		$this->load->helper('url');
 		
