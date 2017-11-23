@@ -9,7 +9,7 @@
 				<?php if (!empty($setting_r['__name__'])) echo '<h4>' . h($setting_r['__name__']) . '</h4>'; ?>
 				<?php unset($setting_r['__name__']); ?>
 				<?php foreach ($setting_r as $cat): ?>
-					<?= anchor('ajocc_point/' . $ss_id . '/' . $set_id . '/' . h($cat['code']), h($cat['name'])); ?>
+					<?= anchor('ajocc_ranking/' . $ss_id . '/' . $set_id . '/' . h($cat['code']), h($cat['name'])); ?>
 				<?php endforeach; ?>
 			<?php endforeach; ?>
 		<?php endforeach; ?>
