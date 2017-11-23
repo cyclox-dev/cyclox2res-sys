@@ -69,5 +69,9 @@ $route['racer/(:any)'] = 'racer/view/$1';
 $route['point_series/(:any)'] = 'point_series/view/$1';
 $route['point_series'] = 'point_series';
 
+$route['ajocc_ranking/(:any)'] = 'ajocc_ranking/view/$1';
+$route['ajocc_ranking'] = 'ajocc_ranking';
+
+
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/home';
