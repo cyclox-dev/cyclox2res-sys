@@ -66,4 +66,43 @@ class Ajoccranking_model extends CI_Model {
 		return $rankings;
 	}
 	
+	/**
+	 * 指定の ajocc point ranking を取得する
+	 * @param type $season_id
+	 * @param type $local_setting_id
+	 * @param type $category_code
+	 * @return array 対象の ajocc point set の配列
+	 */
+	public function get_ranking($season_id, $local_setting_id, $category_code)
+	{
+		$cdt = [
+			'season_id' => $season_id,
+			'category_code' => $category_code,
+		];
+		
+		$lsid = empty($local_setting_id) ? NULL : $local_setting_id;
+		$cdt['ajoccpt_local_setting_id'] = $lsid;
+		
+		$query = $this->db->select('*')
+				->order_by('sets.rank', 'ASC')
+				->get_where('tmp_ajoccpt_racer_sets as sets', $cdt);
+		$sets = $query->result_array();
+		
+		$ret = [];
+		$ret['title_row'] = $sets[0];
+		$ret['ranking'] = array_slice($sets, 1);
+		
+		if (!empty($local_setting_id))
+		{
+			$query = $this->db->select('*')
+					->get_where('ajoccpt_local_settings', ['id' => $local_setting_id]);
+			$ret['local_setting'] = $query->row_array();
+		}
+		
+		$query = $this->db->select('*')
+				->get_where('seasons', ['id' => $season_id]);
+		$ret['season'] = $query->row_array();
+		
+		return $ret;
+	}
 }

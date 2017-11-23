@@ -28,8 +28,10 @@ class Ajocc_ranking extends XSYS_Controller {
 		$this->_fmt_render('ajocc_ranking/index', $data);
 	}
 	
-	public function view($category_code, $local_setting_id)
+	public function view($season_id, $local_setting_id, $category_code)
 	{
+		$data = $this->ajoccranking_model->get_ranking($season_id, $local_setting_id, $category_code);
 		
+		$this->_fmt_render('ajocc_ranking/view', $data);
 	}
 }

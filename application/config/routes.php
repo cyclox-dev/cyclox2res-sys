@@ -69,7 +69,7 @@ $route['racer/(:any)'] = 'racer/view/$1';
 $route['point_series/(:any)'] = 'point_series/view/$1';
 $route['point_series'] = 'point_series';
 
-$route['ajocc_ranking/(:any)'] = 'ajocc_ranking/view/$1';
+$route['ajocc_ranking/(:num)/(:num)/(:any)'] = 'ajocc_ranking/view/$1/$2/$3';
 $route['ajocc_ranking'] = 'ajocc_ranking';
 
 
