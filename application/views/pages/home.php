@@ -28,6 +28,6 @@
 			<p><?= anchor('meets', '> 大会一覧'); ?>
 		<?php endif; ?>
 		<p><?= anchor('point_series', '> ポイントシリーズ一覧'); ?>
-		<p>> AJOCC Point シリーズ </p>
+		<p><?= anchor('ajocc_ranking', '> AJOCC Point ランキング'); ?> </p>
 	</div>
 </div>
