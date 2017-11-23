@@ -62,4 +62,14 @@ p.proviso {
 .racer_view .ranking .dl-horizontal > dd {
   margin-left: 210px; }
 
+#ajocc_ranking_view table {
+  font-size: small; }
+#ajocc_ranking_view td {
+  white-space: nowrap; }
+
+#point_series_view table {
+  font-size: small; }
+#point_series_view td {
+  white-space: nowrap; }
+
 /*# sourceMappingURL=main.css.map */
