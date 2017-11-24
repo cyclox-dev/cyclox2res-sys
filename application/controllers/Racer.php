@@ -19,6 +19,7 @@ class Racer extends XSYS_Controller {
 		$this->load->model('categoryracer_model');
 		$this->load->model('result_model');
 		$this->load->model('pointseries_model');
+		$this->load->model('ajoccranking_model');
 	}
 	
 	public function view($code = NULL)
@@ -33,6 +34,7 @@ class Racer extends XSYS_Controller {
 		$data = array('racer' => $racer);
 		
 		$data['rankings'] = $this->pointseries_model->get_racers_ranks($code);
+		$data['ajocc_rankings'] = $this->ajoccranking_model->get_racers_ranks($code);
 		$data['cats'] = $this->categoryracer_model->get_catbinds($code);
 		
 		$results = $this->result_model->get_result_of_racer($code);

@@ -105,4 +105,23 @@ class Ajoccranking_model extends CI_Model {
 		
 		return $ret;
 	}
+	
+	/**
+	 * 指定選手の ajocc ranking 情報を得る
+	 * @param type $racer_code
+	 * @return array ajocc ranking 情報
+	 */
+	public function get_racers_ranks($racer_code)
+	{
+		$cdt = [
+			'racer_code' => $racer_code,
+		];
+		
+		$query = $this->db->select('*, als.id as als_id, als.name as als_name, ss.id as ss_id, ss.name as season_name')
+				->join('ajoccpt_local_settings as als', 'als.id = sets.ajoccpt_local_setting_id', 'LEFT')
+				->join('seasons as ss', 'ss.id = sets.season_id', 'INNER')
+				->order_by('sets.season_id DESC, category_code ASC, ajoccpt_local_setting_id ASC')
+				->get_where('tmp_ajoccpt_racer_sets as sets', $cdt);
+		return $query->result_array();
+	}
 }

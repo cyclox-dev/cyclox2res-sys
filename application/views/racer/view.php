@@ -28,25 +28,68 @@
 			</div>
 			<?php if (!empty($rankings)): ?>
 			<div class="col-sm-6 ranking">
-				<h3>ランキング</h3>
-				<dl class="dl-horizontal">
-					<?php foreach ($rankings as $ranking): ?>
-					<dt>
-						<a href="<?= site_url('point_series/' . h($ranking['point_series_id'])) ?>">
-							<?= h($ranking['ps_name']) ?>
-						</a>
-					</dt>
-					<dd><?php
-						echo h($ranking['rank']) . '位';
-						if (!empty($ranking['sumup_json']))
-						{
-							// 第1要素を表示する。
-							$total = json_decode($ranking['sumup_json'])[0];
-							echo '(' . $total . 'pt)';
-						}
-					?></dd>
-					<?php endforeach; ?>
-				</dl>
+				<div id="series_ranking">
+					<h3>ランキング</h3>
+					<?php if (empty($rankings)): ?>
+					<p>取得ポイントがありません。</p>
+					<?php else: ?>
+					<dl class="dl-horizontal">
+						<?php foreach ($rankings as $ranking): ?>
+						<dt>
+							<a href="<?= site_url('point_series/' . h($ranking['point_series_id'])) ?>">
+								<?= h($ranking['ps_name']) ?>
+							</a>
+						</dt>
+						<dd><?php
+							echo h($ranking['rank']) . '位';
+							if (!empty($ranking['sumup_json']))
+							{
+								// 第1要素を表示する。
+								$total = json_decode($ranking['sumup_json'])[0];
+								echo '(' . $total . 'pt)';
+							}
+						?></dd>
+						<?php endforeach; ?>
+					</dl>
+					<?php endif; ?>
+				</div>
+				<div id="ajocc_ranking">
+					<h3>AJOCC ポイント</h3>
+					<?php if (empty($ajocc_rankings)): ?>
+					<p>取得ポイントがありません。</p>
+					<?php else: ?>
+					<dl class="dl-horizontal">
+						<?php foreach ($ajocc_rankings as $ranking): ?>
+						<dt>
+							<?php
+							$title = h($ranking['season_name']) . ' ' . h($ranking['category_code']);
+							
+							$als_id = 0;
+							if (!empty($ranking['als_id']))
+							{
+								$title .= ' - ' . h($ranking['als_name']);
+								$als_id = h($ranking['als_id']);
+							}
+							
+							$link_to = 'ajocc_ranking/' . h($ranking['ss_id']) . '/' . $als_id
+									. '/' . h($ranking['category_code']);
+							
+							echo anchor($link_to, $title);
+							?>
+						</dt>
+						<dd><?php
+							echo h($ranking['rank']) . '位';
+							if (!empty($ranking['sumup_json']))
+							{
+								// 第1要素を表示する。
+								$total = json_decode($ranking['sumup_json'])[0];
+								echo '(' . $total . 'pt)';
+							}
+						?></dd>
+						<?php endforeach; ?>
+					</dl>
+					<?php endif; ?>
+				</div>
 				<div class="clearfix"></div>
 			</div>
 			<?php endif; ?>
