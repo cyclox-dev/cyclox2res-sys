@@ -64,12 +64,18 @@ p.proviso {
 
 #ajocc_ranking_view table {
   font-size: small; }
-#ajocc_ranking_view td {
-  white-space: nowrap; }
+  #ajocc_ranking_view table tr {
+    padding: 4px; }
+  #ajocc_ranking_view table td {
+    white-space: nowrap;
+    padding: 4px; }
 
 #point_series_view table {
   font-size: small; }
-#point_series_view td {
-  white-space: nowrap; }
+  #point_series_view table tr {
+    padding: 4px; }
+  #point_series_view table td {
+    white-space: nowrap;
+    padding: 4px; }
 
 /*# sourceMappingURL=main.css.map */

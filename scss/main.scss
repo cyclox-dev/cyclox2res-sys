@@ -105,17 +105,26 @@ p.proviso {
 #ajocc_ranking_view {
     table {
         font-size: small;
+        tr {
+            padding: 4px;
+        }
+        td {
+            white-space: nowrap;
+            padding: 4px;
+        }
     }
-    td {
-        white-space: nowrap;
-    }
+    
 }
 
 #point_series_view {
     table {
         font-size: small;
-    }
-    td {
-        white-space: nowrap;
+        tr {
+            padding: 4px;
+        }
+        td {
+            white-space: nowrap;
+            padding: 4px;
+        }
     }
 }
