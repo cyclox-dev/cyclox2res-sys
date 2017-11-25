@@ -122,7 +122,7 @@ class Result_model extends CI_Model {
 				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')
 				->join('meets as mt', 'mt.code = eg.meet_code', 'INNER')
 				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER')
-				->order_by('at_date', 'ASC')
+				->order_by('at_date', 'DESC')
 				->get_where('entry_racers as er', $cdt);
 		//var_dump(json_encode($query->result_array()));
 		
