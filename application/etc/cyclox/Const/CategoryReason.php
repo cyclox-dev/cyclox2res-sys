@@ -4,7 +4,7 @@
  *  created at 2015/06/12 by shun
  */
 
-require_once(APPPATH . 'etc/Cyclox/const/CategoryChangeFlag.php');
+require_once(APPPATH . 'etc/cyclox/Const/CategoryChangeFlag.php');
 
 /**
  * カテゴリー適用理由

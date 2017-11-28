@@ -1,6 +1,6 @@
 <?php
 
-require_once(APPPATH . 'etc/cyclox/const/CategoryReason.php');
+require_once(APPPATH . 'etc/cyclox/Const/CategoryReason.php');
 
 /**
  * Description of Categoryracer_model
