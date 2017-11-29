@@ -113,7 +113,8 @@ class Race_model extends CI_Model {
 			'er.deleted' => 0,
 			'rr.deleted' => 0,
 		);
-		$query = $this->db->select('*, count(*), ec.name as ec_name, ec.id as ec_id')
+		$query = $this->db->select('start_clock, start_delay_sec'
+				.', count(*), ec.name as ec_name, ec.id as ec_id')
 				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
 				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')
 				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER') // result があること。カウントに必要。
