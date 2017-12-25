@@ -123,19 +123,20 @@ class Pointseries_model extends CI_Model {
 	public function get_rankings()
 	{
 		$cdt = array(
-			'deleted' => 0,
+			'ps.deleted' => 0,
 			'season_id' => NULL,
 			'psrs.rank <=' => 3,
 			'psrs.rank >' => 0, // タイトル行除去
 			'ps.is_active' => 1,
 		);
 		
-		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name')
+		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name, psg.name as psg_name')
 				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
-				->order_by('rank', 'ASC')
+				->join('point_series_groups as psg', 'psg.id = ps.point_series_group_id', 'LEFT')
+				->order_by('psg.priority_value DESC, ps.point_series_group_id ASC, psrs.point_series_id ASC, psrs.rank ASC')
 				->get_where('point_series as ps', $cdt);
 		$noSsSeries = $query->result_array();
-		$noSsSeries = $this->_pack($noSsSeries);
+		$noSsSeries = $this->_packByPsId($noSsSeries);
 		
 		$cdt = array(
 			'ps.deleted' => 0,
@@ -145,11 +146,12 @@ class Pointseries_model extends CI_Model {
 			'ps.is_active' => 1,
 		);
 		
-		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name')
+		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name, psg.name as psg_name'
+				. ', ss.id as season_id, ss.name as season_name')
 				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
+				->join('point_series_groups as psg', 'psg.id = ps.point_series_group_id', 'LEFT')
 				->join('seasons as ss', 'ss.id = ps.season_id', 'INNER')
-				->order_by('end_date', 'DESC')
-				->order_by('rank', 'ASC')
+				->order_by('ss.end_date DESC, psg.priority_value DESC, ps.point_series_group_id ASC, psrs.point_series_id ASC, psrs.rank ASC')
 				->get_where('point_series as ps', $cdt);
 		$ssSeries = $query->result_array();
 		
@@ -166,7 +168,7 @@ class Pointseries_model extends CI_Model {
 			$ssSeries = $tmp;
 		}
 		
-		$ssSeries = $this->_pack($ssSeries);
+		$ssSeries = $this->_packByPsId($ssSeries);
 		
 		return array_merge($noSsSeries, $ssSeries);
 	}
@@ -175,33 +177,57 @@ class Pointseries_model extends CI_Model {
 	 * tmp_point_series_racer_sets データをまとめたシリーズをかえす
 	 * @param array $series シリーズのデータの配列
 	 */
-	private function _pack($series)
+	private function _packByPsId($series)
 	{
+		if (empty($series))
+		{
+			return array();
+		}
+		
 		$ret = array();
 		
-		// とりあえず ps.id 取得
-		$psids = array();
+		$psg_id = $series[0]['point_series_group_id'];
+		$ps_id = $series[0]['ps_id'];
+		$psg_pack = [
+			'list' => array(),
+			'psg_name' => $series[0]['psg_name'],
+			'season_id' => $series[0]['season_id'],
+		];
+		$psg_pack['season_name'] = isset($series[0]['season_name']) ? $series[0]['season_name'] : '';
+		$ps_pack = array();
+		
+		// psg_id --> ps_id ごとにまとめる
 		foreach ($series as $s)
 		{
-			if (!in_array($s['ps_id'], $psids))
+			
+			
+			if ($s['ps_id'] != $ps_id)
 			{
-				$psids[] = $s['ps_id'];
-			}
-		}
-		
-		// ps.id ごとにまとめる
-		foreach ($psids as $psid)
-		{
-			$tmp = array();
-			foreach ($series as $s)
-			{
-				if ($s['ps_id'] == $psid)
+				$psg_pack['list'][] = $ps_pack;
+				$ps_pack = array();
+				$ps_id = $s['ps_id'];
+				
+				if ($s['point_series_group_id'] != $psg_id)
 				{
-					$tmp[] = $s;
+					if (!empty($psg_pack['list']))
+					{
+						$ret[] = $psg_pack;
+					}
+
+					$psg_pack = [
+						'list' => array(),
+						'psg_name' => $s['psg_name'],
+						'season_id' => $s['season_id'],
+					];
+					$psg_pack['season_name'] = isset($s['season_name']) ? $s['season_name'] : '';
+					$psg_id = $s['point_series_group_id'];
 				}
 			}
-			$ret[] = $tmp;
+			
+			$ps_pack[] = $s;
 		}
+		$psg_pack['list'][] = $ps_pack;
+		$ret[] = $psg_pack;
 		
 		return $ret;
 	}
