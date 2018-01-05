@@ -91,7 +91,7 @@ class Pointseries_model extends CI_Model {
 		}
 		
 		$query = $this->db->select('*, ps.name as ps_name')
-				->join('point_series as ps', 'ps.id = psr_set.point_series_id', 'INNER')
+				->join('point_series as ps', 'psr_set.point_series_id = ps.id and psr_set.set_group_id = ps.public_psrset_group_id', 'INNER')
 				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
 				->get_where('tmp_point_series_racer_sets as psr_set', array('racer_code' => $code, 'ps.is_active' => 1));
 		
@@ -131,7 +131,7 @@ class Pointseries_model extends CI_Model {
 		);
 		
 		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name, psg.name as psg_name')
-				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
+				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id and psrs.set_group_id = ps.public_psrset_group_id', 'INNER')
 				->join('point_series_groups as psg', 'psg.id = ps.point_series_group_id', 'LEFT')
 				->order_by('psg.priority_value DESC, ps.point_series_group_id ASC, psrs.point_series_id ASC, psrs.rank ASC')
 				->get_where('point_series as ps', $cdt);
@@ -148,7 +148,7 @@ class Pointseries_model extends CI_Model {
 		
 		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name, psg.name as psg_name'
 				. ', ss.id as season_id, ss.name as season_name')
-				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id', 'INNER')
+				->join('tmp_point_series_racer_sets as psrs', 'psrs.point_series_id = ps.id and psrs.set_group_id = ps.public_psrset_group_id', 'INNER')
 				->join('point_series_groups as psg', 'psg.id = ps.point_series_group_id', 'LEFT')
 				->join('seasons as ss', 'ss.id = ps.season_id', 'INNER')
 				->order_by('ss.end_date DESC, psg.priority_value DESC, ps.point_series_group_id ASC, psrs.point_series_id ASC, psrs.rank ASC')
@@ -262,9 +262,14 @@ class Pointseries_model extends CI_Model {
 		
 		$ret['series'] = $series;
 		
+		$cdt = [
+			'point_series_id' => $id,
+			'set_group_id' => $series['public_psrset_group_id'],
+		];
+		
 		$query = $this->db->select('*')
 				->order_by('rank', 'ASC')
-				->get_where('tmp_point_series_racer_sets as psr_set', array('point_series_id' => $id));
+				->get_where('tmp_point_series_racer_sets as psr_set', $cdt);
 		$result = $query->result_array();
 		
 		if (empty($result))

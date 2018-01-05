@@ -12,7 +12,7 @@
 		<?php if (empty($ranking)): ?>
 			<p>ランキングデータがありません。</p>
 		<?php else: ?>
-			<p><?= $title_row['modified'] . '更新' ?></p>
+			<p><?= $series['published_at'] . '更新' ?></p>
 			<p class="proviso">（* はU23以下の選手です。）</p>
 			<table class="table table-striped table-bordered">
 				<thead>
