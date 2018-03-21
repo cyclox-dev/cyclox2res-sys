@@ -272,35 +272,33 @@ class Pointseries_model extends CI_Model {
 				->get_where('tmp_point_series_racer_sets as psr_set', $cdt);
 		$result = $query->result_array();
 		
-		if (empty($result))
+		if (!empty($result))
 		{
-			return array();
-		}
-		
-		$title_row = $result[0];
-		
-		$titles = json_decode($title_row['point_json'], TRUE);
-		if (XSYS_const::NONVISIBLE_BEFORE1718)
-		{
-			foreach ($titles as &$t)
+			$title_row = $result[0];
+
+			$titles = json_decode($title_row['point_json'], TRUE);
+			if (XSYS_const::NONVISIBLE_BEFORE1718)
 			{
-				if ($t['at_date'] < '2017-04-01')
+				foreach ($titles as &$t)
 				{
-					unset($t['code']);
-					unset($t['entry_category_name']);
+					if ($t['at_date'] < '2017-04-01')
+					{
+						unset($t['code']);
+						unset($t['entry_category_name']);
+					}
 				}
 			}
-		}
-		unset($t);
-		
-		$title_row['pt_titles'] = $titles;
-		$title_row['sumup_titles'] = json_decode($title_row['sumup_json'], TRUE);
-		$ret['title_row'] = $title_row;
+			unset($t);
 
-		unset($result[0]);
-		$result = array_values($result); // index を詰める
-		
-		$ret['ranking'] = $result;
+			$title_row['pt_titles'] = $titles;
+			$title_row['sumup_titles'] = json_decode($title_row['sumup_json'], TRUE);
+			$ret['title_row'] = $title_row;
+
+			unset($result[0]);
+			$result = array_values($result); // index を詰める
+
+			$ret['ranking'] = $result;
+		}
 		
 		return $ret;
 	}
