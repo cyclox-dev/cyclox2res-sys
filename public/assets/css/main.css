@@ -2,9 +2,29 @@
     Created on : 2017/08/20, 12:51:43
     Author     : shun
 */
+.main_container {
+  padding: 0;
+  margin: 0; }
+
 header {
   background-color: #FAFAF6;
-  padding: 0.5em 1em; }
+  padding: 16px 0; }
+  header .header_inner {
+    position: relative;
+    padding: 0 1rem; }
+  header .sp-logo {
+    margin: 0; }
+    header .sp-logo a img {
+      height: 46px; }
+    header .sp-logo span {
+      font-size: medium;
+      margin-left: 5px; }
+  header ul {
+    margin: 0; }
+    header ul li {
+      display: inline-block;
+      float: left;
+      height: 46px; }
 
 #main {
   padding: 0.5em 2em;
@@ -13,7 +33,41 @@ header {
 footer {
   color: #FFFFFF;
   background-color: #99958D;
-  padding: 0.5em 1em; }
+  text-align: center; }
+  footer a {
+    color: #FFFFFF; }
+  footer p.logo {
+    max-width: 304px;
+    padding: 24px 0 20px; }
+  footer ul li {
+    display: inline-block;
+    margin: 0 13px; }
+    footer ul li a {
+      padding-top: 6px;
+      display: block; }
+      footer ul li a img {
+        display: block;
+        margin: 0 auto; }
+      footer ul li a span {
+        display: block;
+        font-size: 90%;
+        line-height: 2.0; }
+  footer p.link-org {
+    padding: 12px 0;
+    border-top: 1px solid #b3aea7;
+    border-bottom: 1px solid #b3aea7; }
+  footer .ftr-bottom {
+    padding: 6px 20px 0; }
+    footer .ftr-bottom p {
+      padding-top: 8px; }
+    footer .ftr-bottom .copyright {
+      font-size: 85%; }
+    footer .ftr-bottom .link-others {
+      font-size: 90%; }
+
+.mark {
+  padding: 0;
+  background-color: #FFFFFF00; }
 
 .with_pop {
   margin-top: 0em; }

@@ -1,0 +1,132 @@
+<svg id="レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 608 92">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-20, .cls-7 {
+        fill: #fff;
+      }
+
+      .cls-2, .cls-7 {
+        font-size: 15.81px;
+        font-family: AxisStd-Medium-83pv-RKSJ-H, AXIS Std;
+      }
+
+      .cls-2 {
+        letter-spacing: -0.02em;
+      }
+
+      .cls-3 {
+        letter-spacing: -0.01em;
+      }
+
+      .cls-4 {
+        letter-spacing: -0.03em;
+      }
+
+      .cls-5 {
+        letter-spacing: -0.02em;
+      }
+
+      .cls-6 {
+        letter-spacing: -0.01em;
+      }
+
+      .cls-7 {
+        letter-spacing: -0.06em;
+      }
+
+      .cls-8 {
+        letter-spacing: -0.04em;
+      }
+
+      .cls-9 {
+        letter-spacing: -0.05em;
+      }
+
+      .cls-10 {
+        letter-spacing: -0.09em;
+      }
+
+      .cls-11 {
+        letter-spacing: -0.07em;
+      }
+
+      .cls-12 {
+        letter-spacing: -0.07em;
+      }
+
+      .cls-13 {
+        letter-spacing: -0.04em;
+      }
+
+      .cls-14 {
+        letter-spacing: -0.02em;
+      }
+
+      .cls-15 {
+        letter-spacing: -0.02em;
+      }
+
+      .cls-16 {
+        letter-spacing: -0.02em;
+      }
+
+      .cls-17 {
+        letter-spacing: -0.02em;
+      }
+
+      .cls-18 {
+        letter-spacing: -0.03em;
+      }
+
+      .cls-19 {
+        letter-spacing: -0.01em;
+      }
+
+      .cls-20 {
+        font-size: 18.19px;
+        font-family: AvenirNextCondensed-Regular, Avenir Next Condensed;
+        letter-spacing: 0.06em;
+      }
+
+      .cls-21 {
+        letter-spacing: 0.06em;
+      }
+
+      .cls-22 {
+        letter-spacing: 0.09em;
+      }
+
+      .cls-23 {
+        letter-spacing: 0.05em;
+      }
+
+      .cls-24 {
+        letter-spacing: 0.06em;
+      }
+
+      .cls-25 {
+        letter-spacing: 0.04em;
+      }
+
+      .cls-26 {
+        letter-spacing: 0.06em;
+      }
+    </style>
+  </defs>
+  <title>ftr-ajocc</title>
+  <g>
+    <path class="cls-1" d="M44.42,72.61,40.62,61.19H17.69L13.79,72.61H.65L24.13,8.08H34L57.57,72.61Zm-15-45.5L21.22,50.59h16Z"/>
+    <path class="cls-1" d="M67.18,91H60.47v-9.9H65c3,0,4.17-1.44,4.17-4.23V26.52H80.95v51C80.95,84.22,76.87,91,67.18,91Z"/>
+    <path class="cls-1" d="M138.59,66.09a23.33,23.33,0,0,1-17.4,7.07,23.54,23.54,0,0,1-17.49-7.07c-6.53-6.53-6.34-14.59-6.34-25.74s-.18-19.22,6.34-25.74a23.55,23.55,0,0,1,17.49-7.07,23.34,23.34,0,0,1,17.4,7.07C145.12,21.14,145,29.2,145,40.35S145.12,59.56,138.59,66.09Zm-9.34-43.87a10.45,10.45,0,0,0-8.06-3.44A10.66,10.66,0,0,0,113,22.22c-2.45,2.72-3.08,5.71-3.08,18.13s.64,15.4,3.08,18.13a10.67,10.67,0,0,0,8.15,3.45,10.46,10.46,0,0,0,8.06-3.45c2.45-2.72,3.17-5.71,3.17-18.13S131.71,24.94,129.25,22.22Z"/>
+    <path class="cls-1" d="M180.37,73.16A23.78,23.78,0,0,1,163,66.09c-6.52-6.53-6.34-14.59-6.34-25.74s-.18-19.22,6.34-25.74a23.78,23.78,0,0,1,17.4-7.07c8.25,0,13.32,2.9,17.95,7.43L190,23.31c-2.81-2.81-5.07-4.53-9.61-4.53a10.21,10.21,0,0,0-8,3.35c-2.45,2.72-3.17,5.8-3.17,18.22s.72,15.5,3.17,18.22a10.22,10.22,0,0,0,8,3.35c4.54,0,6.8-1.73,9.61-4.53l8.34,8.34C193.7,70.26,188.62,73.16,180.37,73.16Z"/>
+    <path class="cls-1" d="M232.22,73.16a23.76,23.76,0,0,1-17.4-7.07c-6.53-6.53-6.35-14.59-6.35-25.74s-.18-19.22,6.35-25.74a23.77,23.77,0,0,1,17.4-7.07c8.25,0,13.32,2.9,17.95,7.43l-8.34,8.34c-2.81-2.81-5.07-4.53-9.61-4.53a10.21,10.21,0,0,0-8,3.35c-2.45,2.72-3.17,5.8-3.17,18.22s.72,15.5,3.17,18.22a10.21,10.21,0,0,0,8,3.35c4.53,0,6.8-1.73,9.61-4.53l8.34,8.34C245.54,70.26,240.47,73.16,232.22,73.16Z"/>
+    <path class="cls-1" d="M88.32,5a3.53,3.53,0,0,0-2.51,6L79.6,14l-4-6a3.56,3.56,0,0,0,2.72-3.46A3.51,3.51,0,0,0,74.83,1a3.55,3.55,0,0,0-3.57,3.52,3.58,3.58,0,0,0,3,3.51l-3.93,6L64.3,11.12a3.57,3.57,0,0,0,1.1-2.58A3.5,3.5,0,0,0,61.89,5a3.54,3.54,0,0,0-3.57,3.52,3.58,3.58,0,0,0,3.57,3.56,3.44,3.44,0,0,0,1.62-.42l3.73,11.6H82.74l3.76-11.7A3.53,3.53,0,1,0,88.32,5Z"/>
+  </g>
+  <g>
+    <g>
+      <text class="cls-2" transform="translate(282.58 34.69)">一<tspan class="cls-3" x="15.53" y="0">般</tspan><tspan class="cls-4" x="31.1" y="0">社団</tspan><tspan class="cls-5" x="61.63" y="0">法</tspan><tspan class="cls-6" x="77.1" y="0">人</tspan></text>
+      <text class="cls-7" transform="translate(380.05 34.69)">日<tspan class="cls-8" x="14.93" y="0">本</tspan><tspan class="cls-9" x="30.1" y="0">シ</tspan><tspan class="cls-10" x="45.07" y="0">ク</tspan><tspan class="cls-11" x="59.39" y="0">ロ</tspan><tspan class="cls-10" x="74.15" y="0">ク</tspan><tspan class="cls-12" x="88.48" y="0">ロ</tspan><tspan class="cls-13" x="103.1" y="0">ス</tspan><tspan class="cls-14" x="118.33" y="0">競</tspan><tspan class="cls-15" x="133.85" y="0">技</tspan><tspan class="cls-16" x="149.33" y="0">主催</tspan><tspan class="cls-17" x="180.32" y="0">者</tspan><tspan class="cls-18" x="195.77" y="0">協</tspan><tspan class="cls-19" x="211.15" y="0">会</tspan></text>
+    </g>
+    <text class="cls-20" transform="translate(283.99 57.61)">A<tspan class="cls-21" x="9.57" y="0">s</tspan><tspan x="16.77" y="0">sociation o</tspan><tspan class="cls-22" x="97.27" y="0">f</tspan><tspan class="cls-23" x="103.15" y="0"> </tspan><tspan class="cls-21" x="107.42" y="0">J</tspan><tspan class="cls-24" x="115.33" y="0">apan </tspan><tspan class="cls-25" x="156.05" y="0">C</tspan><tspan class="cls-24" x="165.56" y="0">yclo-C</tspan><tspan class="cls-21" x="210.08" y="0">r</tspan><tspan class="cls-24" x="216.08" y="0">o</tspan><tspan class="cls-21" x="225.21" y="0">s</tspan><tspan class="cls-24" x="232.41" y="0">s O</tspan><tspan class="cls-21" x="255.7" y="0">r</tspan><tspan class="cls-26" x="261.7" y="0">ganizers</tspan></text>
+  </g>
+</svg>

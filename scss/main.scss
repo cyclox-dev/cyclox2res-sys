@@ -5,9 +5,38 @@
 
 $light_gray: #DDDDDD;
 
+.main_container {
+    padding: 0;
+    margin: 0;
+}
+
 header {
     background-color: #FAFAF6;
-    padding: 0.5em 1em;
+    padding: 16px 0;
+    .header_inner {
+        position: relative;
+        padding: 0 1rem;
+    }
+    .sp-logo {
+        margin: 0;
+        a {
+            img {
+                height: 46px;
+            }
+        }
+        span {
+            font-size: medium;
+            margin-left: 5px;
+        }
+    }
+    ul {
+        margin: 0;
+        li {
+            display: inline-block;
+            float: left;
+            height: 46px;
+        }
+    }
 }
 
 #main {
@@ -19,7 +48,56 @@ header {
 footer {
     color: #FFFFFF;
     background-color: #99958D;
-    padding: 0.5em 1em;
+    text-align: center;
+    a {
+        color: #FFFFFF;
+    }
+    p.logo {
+        max-width: 304px;
+        padding: 24px 0 20px;
+    }
+    ul {
+        li {
+            display: inline-block;
+            margin: 0 13px;
+            a {
+                padding-top: 6px;
+                display: block;
+                img {
+                    display: block;
+                    margin: 0 auto;
+                }
+                span {
+                    display: block;
+                    font-size: 90%;
+                    line-height:2.0;
+                }
+            }
+        }
+    }
+    p.link-org {
+        padding: 12px 0;
+        border-top: 1px solid #b3aea7;
+        border-bottom: 1px solid #b3aea7;
+    }
+    .ftr-bottom {
+            padding: 6px 20px 0;
+        p {
+            padding-top: 8px;
+        }
+        .copyright {
+            font-size: 85%;
+        }
+        .link-others {
+            font-size: 90%;
+        }
+    }
+}
+
+// bootstrap での設定取消
+.mark {
+    padding: 0;
+    background-color: #FFFFFF00;
 }
 
 .with_pop {
