@@ -6,12 +6,14 @@
 
 		<link href="<?= base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
 		<link href="<?= base_url('assets/css/main.css'); ?>" rel="stylesheet">
+		<link href="<?= base_url('assets/css/owl.carousel.css'); ?>" rel="stylesheet">
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 		<script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
+		<script src="<?= base_url('assets/js/owl.carousel.js'); ?>"></script>
 		<script src="<?= base_url('assets/js/main.js'); ?>"></script>
-
+		
 		<title>AJOCC Cross System</title>
 	</head>
 	<body>
@@ -36,6 +38,23 @@
 				</div>
 			</header>
 			<!-- END of Header -->
+			
+			<!-- PARTNERS LOGO -->
+			<div class="ptnr_logo_head">
+				<ul class="owl-carousel">
+					<li><a href="http://www.rapha.cc/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_rapha.svg'); ?>" width="255" height="105" alt="Rapha"></a></li>
+					<li><a href="http://www.champ-sys.jp/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_championsystem.svg'); ?>" width="255" height="105" alt="Champion System"></a></li>
+					<li><a href="http://www.trekbikes.co.jp/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_trek.svg'); ?>" width="255" height="105" alt="TREK"></a></li>
+					<li><a href="http://tsss.co.jp/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_tsss.jpg'); ?>" width="255" height="105" alt="OnebyESU"></a></li>
+					<li><a href="http://www.irc-tire.com/ja/bc/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_irc.svg'); ?>" width="255" height="105" alt="IRC TIRE"></a></li>
+					<li><a href="http://www.bs-supply.jp/sports-epa/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_nissui.jpg'); ?>" width="255" height="105" alt="ニッスイ SPORTS EPA"></a></li>
+					<li><a href="https://www.canyon.com/ja/specials/takeflite/?utm_campaign=InfliteCFSLX-JP-Aug-2017&utm_medium=display&utm_source=cyclocross.jp&utm_content=&utm_term=" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_canyon.svg'); ?>" width="255" height="105" alt="Canyon"></a></li>
+					<li><a href="http://www.giant.co.jp/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_giant.svg'); ?>" width="255" height="105" alt="GIANT"></a></li>
+					<li><a href="https://www.wslc.co.jp/bike/northwave/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_northwave.svg'); ?>" width="255" height="105" alt="Northwave"></a></li>
+					<li><a href="https://www.santacruzbicycles.com/ja-JP/stigmata" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_santacruz.svg'); ?>" width="255" height="105" alt="Santa Cruz Bicycles"></a></li>
+				</ul>
+			</div>
+			<!-- /PARTNERS LOGO -->
 			
 			<div id="flash_view">
 				<?php

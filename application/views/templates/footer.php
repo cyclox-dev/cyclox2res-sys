@@ -1,3 +1,18 @@
+		<div id="ptnr_ftr" class="clearfix">
+			<h2 class="text-center">OFFICIAL AJOCC PARTNERS</h2>
+			<ul class="clearfix center-block">
+				<li><a href="http://www.rapha.cc/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_rapha.svg'); ?>" width="255" height="105" alt="Rapha"></a></li>
+				<li><a href="http://www.champ-sys.jp/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_championsystem.svg'); ?>" width="255" height="105" alt="Champion System"></a></li>
+				<li><a href="http://www.trekbikes.co.jp/"><img src="<?= base_url('img/partners/ptnr_logo_trek.svg'); ?>" width="255" height="105" alt="TREK"></a></li>
+				<li><a href="https://tsssbrand.wixsite.com/onebyesujff" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_tsss.jpg'); ?>" width="255" height="105" alt="OnebyESU"></a></li>
+				<li><a href="http://www.irc-tire.com/ja/bc/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_irc.svg'); ?>" width="255" height="105" alt="IRC TIRE"></a></li>
+				<li><a href="http://www.bs-supply.jp/sports-epa/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_nissui.jpg'); ?>" width="255" height="105" alt="ニッスイ SPORTS EPA"></a></li>
+				<li><a href="https://www.canyon.com/ja/specials/takeflite/?utm_campaign=InfliteCFSLX-JP-Aug-2017&utm_medium=display&utm_source=cyclocross.jp&utm_content=&utm_term=" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_canyon.svg'); ?>" width="255" height="105" alt="Canyon"></a></li>
+				<li><a href="http://www.giant.co.jp/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_giant.svg'); ?>" width="255" height="105" alt="GIANT"></a></li>
+				<li><a href="https://www.wslc.co.jp/bike/northwave/" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_northwave.svg'); ?>" width="255" height="105" alt="Northwave"></a></li>
+				<li><a href="https://www.santacruzbicycles.com/ja-JP/stigmata" target="_blank"><img src="<?= base_url('img/partners/ptnr_logo_santacruz.svg'); ?>" width="255" height="105" alt="Santa Cruz Bicycles"></a></li>
+			</ul>
+		</div>
 		<footer>
 			<p class="logo center-block"><img src="<?= base_url('img/cmn/ftr-ajocc.svg'); ?>" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会"></p>
 			<div class="clearfix">

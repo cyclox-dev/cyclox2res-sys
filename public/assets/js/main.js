@@ -27,3 +27,27 @@ LinkOut
 $(function(){
 	$("a.out").attr("target","_blank");
 });
+
+/*================================================
+
+Banner
+
+================================================*/
+$(document).ready(function(){
+	$('.owl-carousel').owlCarousel({
+		items: 10,
+		autoplay: true,
+		autoplayTimeout: 4000,
+		loop: true,
+		nav: false,
+		dots: false,
+		rewind: false,
+		lazyLoad: true,
+		responsive: {
+			0: {items:3},
+			567: {items:4},
+			768: {items:6},
+			1024: {items:8}
+		}
+	});
+});
