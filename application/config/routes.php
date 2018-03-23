@@ -62,7 +62,6 @@ $route['meets/(:any)'] = 'meet/index/$1';
 $route['race/(:num)'] = 'race/view/$1';
 $route['race/(:any)/(:any)'] = 'race/view_race/$1/$2';
 
-$route['racers/search'] = 'racer/search';
 $route['racers'] = 'racer';
 $route['racer/(:any)'] = 'racer/view/$1';
 

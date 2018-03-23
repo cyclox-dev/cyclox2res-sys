@@ -86,39 +86,6 @@ class Racer extends XSYS_Controller {
 		return $ret;
 	}
 	
-	public function search()
-	{
-		$swords = $this->input->post('search_words');
-		$cat = $this->input->post('category');
-		$andor = $this->input->post('andor');
-		
-		$query_part = '';
-		$query_part = $this->_add_url_querystr($query_part, 'category', $cat);
-		$query_part = $this->_add_url_querystr($query_part, 'search_words', $swords);
-		$query_part = $this->_add_url_querystr($query_part, 'andor', $andor);
-		
-		redirect('racers' . $query_part);
-	}
-	
-	/**
-	 * URL に続く query string をつなげる
-	 * @param string $query_part 現在の query string
-	 * @param string $key
-	 * @param string $value
-	 * @return string key=value を接続した query string
-	 */
-	private function _add_url_querystr($query_part, $key, $value)
-	{
-		if (empty($key) || empty($value))
-		{
-			return $query_part;
-		}
-		
-		$query_part .= empty($query_part) ? '?' : '&';
-		
-		return $query_part . $key . '=' . $value;
-	}
-	
 	public function index()
 	{
 		$cat = $this->input->get('category');

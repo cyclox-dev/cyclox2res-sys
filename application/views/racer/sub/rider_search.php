@@ -4,7 +4,7 @@
 		選手コード、選手名、カナ名、ローマ字名、チーム名で検索ができます。</br>
 		複数キーワード検索する場合は、単語をスペースで区切って下さい。
 	</p>
-	<?php echo form_open('racers/search', array('class' => 'form-horizontal')); ?>
+	<?php echo form_open('racers', ['class' => 'form-horizontal', 'method' => 'GET']); ?>
 		<div class="form-group">
 			<div class="col-sm-5">
 				<select class="form-control" name="category">
