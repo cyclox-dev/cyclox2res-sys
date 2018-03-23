@@ -125,21 +125,30 @@ class Racer extends XSYS_Controller {
 		$swords = $this->input->get('search_words');
 		$andor = $this->input->get('andor');
 		
-		if (empty($swords) && $cat === 'empty')
+		if (is_null($swords) && is_null($cat))
 		{
-			// 全データになってしまうため、無しとする。
-			$data['racers'] = FALSE;
+			$data['searches'] = FALSE;
 		}
 		else
 		{
-			$cat_code = ($cat === 'empty') ? NULL : $cat;
-			$data['racers'] = $this->racer_model->get_racers($swords, $andor, $cat_code);
+			$data['searches'] = TRUE;
+			
+			if (empty($swords) && $cat === 'empty')
+			{
+				// 全データになってしまうため、無しとする。
+				$data['racers'] = FALSE;
+			}
+			else
+			{
+				$cat_code = ($cat === 'empty') ? FALSE : $cat;
+				$data['racers'] = $this->racer_model->get_racers($swords, $andor, $cat_code);
+			}
 		}
 		
 		$data['cat_code'] = $cat;
 		$data['search_words'] = $swords;
 		$data['andor'] = empty($andor) ? 'and' : $andor;
-		
+
 		$data['cats'] = $this->basedata_model->get_categories();
 		
 		$data['rider_search_div'] = $this->parser->parse('racer/sub/rider_search', $data, TRUE);
