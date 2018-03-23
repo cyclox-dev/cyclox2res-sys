@@ -17,13 +17,13 @@
 			<p class="logo center-block"><img src="<?= base_url('img/cmn/ftr-ajocc.svg'); ?>" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会"></p>
 			<div class="clearfix">
 				<ul>
-					<li><a href="/"><img src="<?= base_url('img/cmn/ftr-home.gif'); ?>" alt="トップページ"><span class="txt">トップページ</span></a></li>
-					<li><a href="/news/"><img src="<?= base_url('img/cmn/ftr-news.gif'); ?>" alt="ニュース"><span class="txt">ニュース</span></a></li>
-					<li><a href="/about/"><img src="<?= base_url('img/cmn/ftr-about.gif'); ?>" alt="概要"><span class="txt">概要</span></a></li>
-					<li><a href="/rankings/"><img src="<?= base_url('img/cmn/ftr-rankings.gif'); ?>" alt="ランキング"><span class="txt">ランキング</span></a></li>
-					<li><a href="/results/"><img src="<?= base_url('img/cmn/ftr-results.gif'); ?>" alt="リザルト"><span class="txt">リザルト</span></a></li>
-					<li><a href="/calendar/"><img src="<?= base_url('img/cmn/ftr-calendar.gif'); ?>" alt="カレンダー"><span class="txt">カレンダー</span></a></li>
-					<li><a href="/rider_search/"><img src="<?= base_url('img/cmn/ftr-riders.gif'); ?>" alt="選手検索"><span class="txt">選手検索</span></a></li>
+					<li><a href="http://www.cyclocross.jp/"><img src="<?= base_url('img/cmn/ftr-home.gif'); ?>" alt="トップページ"><span class="txt">トップページ</span></a></li>
+					<li><a href="http://www.cyclocross.jp/news/"><img src="<?= base_url('img/cmn/ftr-news.gif'); ?>" alt="ニュース"><span class="txt">ニュース</span></a></li>
+					<li><a href="http://www.cyclocross.jp/about/"><img src="<?= base_url('img/cmn/ftr-about.gif'); ?>" alt="概要"><span class="txt">概要</span></a></li>
+					<li><a href="<?= base_url('point_series'); ?>"><img src="<?= base_url('img/cmn/ftr-rankings.gif'); ?>" alt="ランキング"><span class="txt">ランキング</span></a></li>
+					<li><a href="<?= base_url('meets'); ?>"><img src="<?= base_url('img/cmn/ftr-results.gif'); ?>" alt="リザルト"><span class="txt">リザルト</span></a></li>
+					<li><a href="http://www.cyclocross.jp/calendar/"><img src="<?= base_url('img/cmn/ftr-calendar.gif'); ?>" alt="カレンダー"><span class="txt">カレンダー</span></a></li>
+					<li><a href="<?= base_url('racers'); ?>"><img src="<?= base_url('img/cmn/ftr-riders.gif'); ?>" alt="選手検索"><span class="txt">選手検索</span></a></li>
 				</ul>
 			</div>
 			<p class="link-org">
@@ -33,7 +33,7 @@
 			</p>
 			<div class="ftr-bottom center-block clearfix">
 				<p class="copyright pull-left">Copyright <span class="mark">&copy;</span> AJOCC. All rights reserved.</p>
-				<p class="link-others pull-right"><a href="/info/">このサイトについて</a>｜<a href="/info/#contact">お問い合せ</a></p>
+				<p class="link-others pull-right"><a href="http://www.cyclocross.jp/info/">このサイトについて</a>｜<a href="http://www.cyclocross.jp/info/#contact">お問い合せ</a></p>
 			</div>
 		</footer>
 	</div>
