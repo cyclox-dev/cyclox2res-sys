@@ -192,4 +192,12 @@ p.proviso {
 div.convini_link {
   margin-left: 20px; }
 
+table.table-striped tbody tr:nth-of-type(2n) {
+  background-color: initial; }
+table.table-striped tbody tr:nth-of-type(2n+1) {
+  background-color: #edede8; }
+table.table-striped tbody tr td {
+  font-size: 0.8em;
+  padding: 3px 2px; }
+
 /*# sourceMappingURL=main.css.map */
