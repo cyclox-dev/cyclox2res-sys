@@ -37,7 +37,8 @@ class Race_model extends CI_Model {
 		}
 		
 		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name, mg.name as meet_group_name'
-				. ', mt.code as meet_code, mt.start_frac_distance as meet_sfd, eg.start_frac_distance as eg_sfd')
+				. ', mt.code as meet_code, mt.start_frac_distance as meet_sfd, eg.start_frac_distance as eg_sfd'
+				. ', mt.lap_distance as meet_ld, eg.lap_distance as eg_ld')
 				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')
 				->join('meets as mt', 'mt.code = eg.meet_code', 'INNER')
 				->join('meet_groups as mg', 'mg.code = mt.meet_group_code', 'INNER')
@@ -53,6 +54,10 @@ class Race_model extends CI_Model {
 				, strtotime($this->_convert_start_clock($ecat['start_clock'], $ecat['start_delay_sec'])));
 		
 		$ecat['sf_dist'] = is_null($ecat['eg_sfd']) ? $ecat['meet_sfd'] : $ecat['eg_sfd'];
+		if (empty($ecat['sf_dist'])) {
+			$ecat['sf_dist'] = 0.0;
+		}
+		$ecat['lap_dist'] = is_null($ecat['eg_ld']) ? $ecat['meet_ld'] : $ecat['eg_ld'];
 		
 		return $ecat;
 	}
