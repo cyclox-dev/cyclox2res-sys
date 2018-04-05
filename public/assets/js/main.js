@@ -5,7 +5,7 @@ $(function(){
 	$(".pagetop a").click(function(){
 	$('html,body').animate({ scrollTop: $($(this).attr("href")).offset().top }, '300','swing');
 	return false;
-	})
+	});
 });
 
 /*==============================
@@ -51,3 +51,23 @@ $(document).ready(function(){
 		}
 	});
 });
+
+/*==============================
+for SmartPhone : MENU
+==============================*/
+$(function() {
+    $('#headerMenu').click(function(){
+        $('#headerMenuMain').animate({height:'toggle'} , 'slow');
+        $(window).resize(function(){
+            var w = $(window).width();
+            var x = 760;
+            if (w > x) {
+                $('#headerMenuMain').css({'display':'block'});
+            } else {
+                $('#headerMenuMain').css({'display':'none'});
+            }
+        });
+    });
+});
+
+

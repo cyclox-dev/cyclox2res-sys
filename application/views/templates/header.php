@@ -21,7 +21,9 @@
 			<!-- Header -->
 			<header>
 				<div class="header_inner clearfix">
-					<h1 class="sp-logo pull-left"><a href="http://www.cyclocross.jp/"><img src="<?= base_url('img/sp/hdr-logo.svg'); ?>" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" /></a><span class="align-bottom">DataSystem</span></h1>
+					<h1 class="sp-logo"><a href="http://www.cyclocross.jp/"><img src="<?= base_url('img/sp/hdr-logo.svg'); ?>" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" /></a><span class="align-bottom">DataSystem</span></h1>
+					<span class="sp-menu" title="MENU OPEN" id="headerMenu"><img src="<?= base_url('img/sp/hdr-menu.png'); ?>" alt="MENU" /></span>
+					<div class="sp-rankings"><a href="<?= base_url('point_series'); ?>"><img src="<?= base_url('img/sp/hdr-rankings.png'); ?>" alt="ランキング" /></a></div>
 					<ul class="navi pull-right" id="headerMenuMain">
 						<li class="home"><a href="http://www.cyclocross.jp/" class="mo"><img class="sp_none" src="<?= base_url('img/cmn/navi-home_off.gif'); ?>" alt="ホーム"></a></li>
 						<li class="news"><a href="http://www.cyclocross.jp/news/" class="mo"><img src="<?= base_url('img/cmn/navi-news_off.gif'); ?>" alt="ニュース" class="sp_none"></a></li>

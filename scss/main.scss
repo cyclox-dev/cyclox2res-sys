@@ -17,6 +17,7 @@ a:hover {color:#ff3f5b; text-decoration:none;}
 }
 
 header {
+    width: 100%;
     background-color: #FAFAF6;
     padding: 16px 0;
     .header_inner {
@@ -40,7 +41,110 @@ header {
         li {
             display: inline-block;
             float: left;
+        }
+    }
+    @media screen and (max-width:760px) {
+        position: fixed;
+        height: 80px;
+        top: 0;
+        z-index: 1000;
+        background-color: #fafaf6;
+        padding: 8px 0 16px;
+        .sp-logo {
+            margin:12px 0 0;
+            text-align:center;
+            padding-bottom: 12px;
+            img {
+                width: auto;
+                height: auto;
+                max-height: 60px;
+            }
+        }
+        .sp-menu {
+            position:absolute;
+            display: inline-block;
+            width:10%;
+            left:20px;
+            top:10px;
+            cursor: pointer;
+            img {
+                width: auto;
+                height: auto;
+                max-height: 40px;
+            }
+        }
+        .sp-rankings {
+            position:absolute;
+            width:8%;
+            top:10px;
+            right:20px;
+            img {
+                width: auto;
+                height: auto;
+                max-height: 40px;
+            }
+        }
+        #headerMenuMain {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 67px;
+            z-index: 1000;
+            width: 100%;
+            height: auto;
+        }
+        ul.navi {
+            background-color: #e3e2de;
+            li {
+                display:block;
+                height: 44px;
+                border-bottom: 3px solid #fff;
+            }
+        }
+    }
+    @media screen and (min-width:761px) {
+        .sp-logo {
+            float: left;
+            width: 220px;
+            padding-top: 6px;
+        }
+        .sp-menu, .sp-rankings {
+            display: none;
+        }
+        #headerMenuMain {
+            display: block;
+        }
+    }
+    @media screen and (min-width:761px) and (max-width:1055px) {
+        padding: 0 0 16px;
+        ul.navi {
+            float:right;
+            padding-top: 16px;
+            li {
+                float: left;
+                img {
+                    width: 56px;
+                    height: auto;
+                }
+            }
+            li:nth-last-child(2) {
+                padding:0 6px 0 0;
+            }
+        }
+    }
+    // override
+    @media screen and (min-width:1056px) {
+        padding: 16px 0;
+        ul.navi {
+            display: inline-block;
             height: 46px;
+            float: right;
+            li {
+                display: inline-block;
+                float:left;
+                height:46px;
+                margin:0;
+            }
         }
     }
 }
@@ -72,6 +176,9 @@ header {
                 height: auto;
             }
         }
+    }
+    @media screen and (max-width:760px) {
+		margin-top: 80px;
     }
 }
 
