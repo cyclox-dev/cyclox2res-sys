@@ -49,9 +49,11 @@
 						<td><?= h($r['rank_exp']) ?></td>
 						<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 						<td><?= h($r['team_name']) ?></td>
-						<?php if (!empty($r['time_gap'])): ?>
-						<td><?= h($r['time_gap']); ?></td>
-						<?php endif; ?>
+						<td>
+							<?php if (!empty($r['time_gap'])): ?>
+							<?= h($r['time_gap']); ?>
+							<?php endif; ?>
+						</td>
 						<td><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
 						<?php if ($has_holdpoints): ?>
 						<td>
