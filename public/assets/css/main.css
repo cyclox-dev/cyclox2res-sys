@@ -18,15 +18,19 @@ a:hover {
   color: #ff3f5b;
   text-decoration: none; }
 
+img {
+  border: 0; }
+
 .main_container {
   padding: 0;
   margin: 0;
-  background-color: #FAFAF6; }
+  background-color: #FAFAF6;
+  box-sizing: content-box; }
 
 header {
   width: 100%;
   background-color: #FAFAF6;
-  padding: 16px 0; }
+  color: #333333; }
   header .header_inner {
     position: relative;
     padding: 0 1rem; }
@@ -37,48 +41,49 @@ header {
     header .sp-logo span {
       font-size: medium;
       margin-left: 5px; }
+  header .sp-menu, header .sp-rankings {
+    box-sizing: content-box; }
   header ul {
     margin: 0; }
     header ul li {
-      display: inline-block;
-      float: left; }
+      display: inline-block; }
+      header ul li .nav_sp {
+        display: none; }
   @media screen and (max-width: 760px) {
     header {
       position: fixed;
       height: 80px;
       top: 0;
       z-index: 1000;
-      background-color: #fafaf6;
-      padding: 8px 0 16px; }
-      header .sp-logo {
+      background-color: #fafaf6; }
+      header .header_inner .sp-logo {
         margin: 12px 0 0;
-        text-align: center;
-        padding-bottom: 12px; }
-        header .sp-logo img {
+        text-align: center; }
+        header .header_inner .sp-logo img {
           width: auto;
           height: auto;
           max-height: 60px; }
-      header .sp-menu {
+      header .header_inner .sp-menu {
         position: absolute;
         display: inline-block;
         width: 10%;
         left: 20px;
         top: 10px;
         cursor: pointer; }
-        header .sp-menu img {
+        header .header_inner .sp-menu img {
           width: auto;
           height: auto;
           max-height: 40px; }
-      header .sp-rankings {
+      header .header_inner .sp-rankings {
         position: absolute;
         width: 8%;
         top: 10px;
         right: 20px; }
-        header .sp-rankings img {
+        header .header_inner .sp-rankings img {
           width: auto;
           height: auto;
           max-height: 40px; }
-      header #headerMenuMain {
+      header .header_inner #headerMenuMain {
         display: none;
         position: absolute;
         left: 0;
@@ -86,12 +91,28 @@ header {
         z-index: 1000;
         width: 100%;
         height: auto; }
-      header ul.navi {
-        background-color: #e3e2de; }
-        header ul.navi li {
+      header .header_inner ul.navi {
+        background-color: #e3e2de;
+        padding: 0; }
+        header .header_inner ul.navi li {
           display: block;
           height: 44px;
-          border-bottom: 3px solid #fff; } }
+          border-bottom: 3px solid #fff; }
+          header .header_inner ul.navi li .nav_sp {
+            display: block; }
+            header .header_inner ul.navi li .nav_sp .txt {
+              font-size: 1.6em;
+              line-height: 1;
+              list-style-type: none;
+              vertical-align: middle; }
+          header .header_inner ul.navi li .sp_none {
+            display: none; }
+          header .header_inner ul.navi li a {
+            color: #533f3a; }
+          header .header_inner ul.navi li img {
+            height: 40px;
+            width: auto;
+            margin: 2px 1em 0; } }
   @media screen and (min-width: 761px) {
     header .sp-logo {
       float: left;
@@ -100,13 +121,16 @@ header {
     header .sp-menu, header .sp-rankings {
       display: none; }
     header #headerMenuMain {
-      display: block; } }
+      display: block; }
+    header ul li {
+      float: left; } }
   @media screen and (min-width: 761px) and (max-width: 1055px) {
     header {
       padding: 0 0 16px; }
       header ul.navi {
         float: right;
-        padding-top: 16px; }
+        padding-top: 16px;
+        padding-left: 0px; }
         header ul.navi li {
           float: left; }
           header ul.navi li img {

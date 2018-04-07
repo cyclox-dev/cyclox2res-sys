@@ -10,16 +10,21 @@ a:visited {color:#993300; text-decoration:none;}
 a:active {color:#ff3f5b; text-decoration:none;}
 a:hover {color:#ff3f5b; text-decoration:none;}
 
+img {
+    border: 0;
+}
+
 .main_container {
     padding: 0;
     margin: 0;
     background-color: #FAFAF6;
+    box-sizing: content-box;
 }
 
 header {
     width: 100%;
     background-color: #FAFAF6;
-    padding: 16px 0;
+    color: #333333;
     .header_inner {
         position: relative;
         padding: 0 1rem;
@@ -36,11 +41,16 @@ header {
             margin-left: 5px;
         }
     }
+    .sp-menu, .sp-rankings {
+        box-sizing: content-box;
+    }
     ul {
         margin: 0;
         li {
             display: inline-block;
-            float: left;
+            .nav_sp {
+                display: none;
+            }
         }
     }
     @media screen and (max-width:760px) {
@@ -49,56 +59,77 @@ header {
         top: 0;
         z-index: 1000;
         background-color: #fafaf6;
-        padding: 8px 0 16px;
-        .sp-logo {
-            margin:12px 0 0;
-            text-align:center;
-            padding-bottom: 12px;
-            img {
-                width: auto;
-                height: auto;
-                max-height: 60px;
+        .header_inner {
+            .sp-logo {
+                margin: 12px 0 0;
+                text-align: center;
+                img {
+                    width: auto;
+                    height: auto;
+                    max-height: 60px;
+                }
             }
-        }
-        .sp-menu {
-            position:absolute;
-            display: inline-block;
-            width:10%;
-            left:20px;
-            top:10px;
-            cursor: pointer;
-            img {
-                width: auto;
-                height: auto;
-                max-height: 40px;
+            .sp-menu {
+                position:absolute;
+                display: inline-block;
+                width:10%;
+                left:20px;
+                top:10px;
+                cursor: pointer;
+                img {
+                    width: auto;
+                    height: auto;
+                    max-height: 40px;
+                }
             }
-        }
-        .sp-rankings {
-            position:absolute;
-            width:8%;
-            top:10px;
-            right:20px;
-            img {
-                width: auto;
-                height: auto;
-                max-height: 40px;
+            .sp-rankings {
+                position:absolute;
+                width:8%;
+                top:10px;
+                right:20px;
+                img {
+                    width: auto;
+                    height: auto;
+                    max-height: 40px;
+                }
             }
-        }
-        #headerMenuMain {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 67px;
-            z-index: 1000;
-            width: 100%;
-            height: auto;
-        }
-        ul.navi {
-            background-color: #e3e2de;
-            li {
-                display:block;
-                height: 44px;
-                border-bottom: 3px solid #fff;
+            #headerMenuMain {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 67px;
+                z-index: 1000;
+                width: 100%;
+                height: auto;
+            }
+            ul.navi {
+                background-color: #e3e2de;
+                padding: 0;
+                li {
+                    display:block;
+                    height: 44px;
+                    border-bottom: 3px solid #fff;
+                    .nav_sp {
+                        display: block;
+                        .txt {
+                            font-size: 1.6em;
+                            line-height: 1;
+                            list-style-type: none;
+                            vertical-align: middle;
+                        }
+                    }
+                    .sp_none {
+                        display: none;
+                    }
+                    a {
+                        color: #533f3a;
+                    }
+                    img {
+                        height: 40px;
+                        width: auto;
+                        margin: 2px 1em 0;
+                    }
+                }
             }
         }
     }
@@ -114,12 +145,18 @@ header {
         #headerMenuMain {
             display: block;
         }
+        ul {
+            li {
+                float: left;
+            }
+        }
     }
     @media screen and (min-width:761px) and (max-width:1055px) {
         padding: 0 0 16px;
         ul.navi {
             float:right;
             padding-top: 16px;
+            padding-left: 0px;
             li {
                 float: left;
                 img {
