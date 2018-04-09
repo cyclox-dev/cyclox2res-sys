@@ -30,7 +30,7 @@
 								{
 									if (isset($t['entry_category_name']))
 									{
-										$path = site_url('race/' . h($t['code']) . '/' . h(urlencode($t['entry_category_name'])));
+										$path = site_url('race/' . h($t['code']) . '/' . h(rawurlencode($t['entry_category_name'])));
 									}
 									else
 									{
