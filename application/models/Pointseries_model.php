@@ -32,6 +32,7 @@ class Pointseries_model extends CI_Model {
 			'rr.deleted' => 0,
 			'ec.id' => $ecat_id,
 			'ps.is_active' => 1,
+			'ps.publishes_on_ressys' => 1,
 		);
 		
 		$query = $this->db->select('*, rr.id as rr_id')
@@ -90,10 +91,16 @@ class Pointseries_model extends CI_Model {
 			return array();
 		}
 		
+		$cdt = [
+			'racer_code' => $code,
+			'ps.is_active' => 1,
+			'ps.publishes_on_ressys' => 1,
+		];
+		
 		$query = $this->db->select('*, ps.name as ps_name')
 				->join('point_series as ps', 'psr_set.point_series_id = ps.id and psr_set.set_group_id = ps.public_psrset_group_id', 'INNER')
 				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
-				->get_where('tmp_point_series_racer_sets as psr_set', array('racer_code' => $code, 'ps.is_active' => 1));
+				->get_where('tmp_point_series_racer_sets as psr_set', $cdt);
 		
 		$points = $query->result_array();
 		//var_dump(json_encode($points));
@@ -128,6 +135,7 @@ class Pointseries_model extends CI_Model {
 			'psrs.rank <=' => 3,
 			'psrs.rank >' => 0, // タイトル行除去
 			'ps.is_active' => 1,
+			'ps.publishes_on_ressys' => 1,
 		);
 		
 		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name, psg.name as psg_name')
@@ -144,6 +152,7 @@ class Pointseries_model extends CI_Model {
 			'psrs.rank <=' => 3,
 			'psrs.rank >' => 0, // タイトル行除去
 			'ps.is_active' => 1,
+			'ps.publishes_on_ressys' => 1,
 		);
 		
 		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psrs.name as psrs_name, psg.name as psg_name'
@@ -198,9 +207,7 @@ class Pointseries_model extends CI_Model {
 		
 		// psg_id --> ps_id ごとにまとめる
 		foreach ($series as $s)
-		{
-			
-			
+		{	
 			if ($s['ps_id'] != $ps_id)
 			{
 				$psg_pack['list'][] = $ps_pack;
@@ -245,10 +252,15 @@ class Pointseries_model extends CI_Model {
 		}
 		
 		$ret = array();
+		$cdt = array(
+			'ps.id' => $id,
+			'ps.deleted' => 0,
+			'ps.publishes_on_ressys' => 1,
+		);
 		
 		$query = $this->db->select('*, ps.name as ps_name')
 				->join('seasons as ss', 'ss.id = ps.season_id', 'LEFT')
-				->get_where('point_series as ps', array('ps.id' => $id, 'ps.deleted' => 0));
+				->get_where('point_series as ps', $cdt);
 		$series = $query->row_array();
 		//var_dump(json_encode($series, JSON_UNESCAPED_UNICODE));
 		
