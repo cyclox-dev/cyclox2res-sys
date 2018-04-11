@@ -33,7 +33,9 @@
 					<?php if ($has_holdpoints): ?>
 					<th>残留Pt</th>
 					<?php endif; ?>
+					<?php if ($with_ajoccpt): ?>
 					<th>AjoccPt</th>
+					<?php endif; ?>
 					<?php
 					foreach ($ps_titles as $t)
 					{
@@ -75,6 +77,7 @@
 							?>
 						</td>
 						<?php endif; ?>
+						<?php if ($with_ajoccpt): ?>
 						<td>
 							<?php
 							if (!empty($r['ajocc_pt']))
@@ -83,6 +86,7 @@
 							}
 							?>
 						</td>
+						<?php endif; ?>
 						<?php
 						for ($i = 0; $i < sizeof($ps_titles); $i++)
 						{

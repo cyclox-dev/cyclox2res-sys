@@ -19,6 +19,7 @@ class Race extends XSYS_Controller {
 		$this->load->model('result_model');
 		$this->load->model('categoryracer_model');
 		$this->load->model('pointseries_model');
+		$this->load->model('category_model');
 	}
 	
 	public function view($ecat_id = NULL)
@@ -32,6 +33,10 @@ class Race extends XSYS_Controller {
 		
 		$data = array();
 		$data['ecat'] = $ecat;
+		
+		// カテゴリーと結びついていないレースカテゴリーの場合は ajocc pt を表示しない。
+		$cats = $this->category_model->get_categories_of_rcat($ecat['races_category_code']);
+		$data['with_ajoccpt'] = !empty($cats);
 		
 		$results = $this->result_model->get_results($ecat_id);
 		$data['rankuppers'] = $this->categoryracer_model->get_rankuppers_of_ecat($ecat_id);
