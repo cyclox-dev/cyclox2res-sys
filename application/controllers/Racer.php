@@ -108,7 +108,10 @@ class Racer extends XSYS_Controller {
 			else
 			{
 				$cat_code = ($cat === 'empty') ? FALSE : $cat;
-				$data['racers'] = $this->racer_model->get_racers($swords, $andor, $cat_code);
+				$ret = $this->racer_model->get_racers($swords, $andor, $cat_code);
+				
+				$data['racers'] = $ret['racers'];
+				$data['all_count'] = $ret['count_all'];
 			}
 		}
 		
