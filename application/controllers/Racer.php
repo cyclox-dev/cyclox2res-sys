@@ -92,6 +92,13 @@ class Racer extends XSYS_Controller {
 		$swords = $this->input->get('search_words');
 		$andor = $this->input->get('andor');
 		
+		$RACER_PER_PAGE = 50;
+		
+		$page = $this->input->get('per_page');
+		if ($page === NULL) $page = 1;
+		
+		$data['paginates'] = FALSE;
+		
 		if (is_null($swords) && is_null($cat))
 		{
 			$data['searches'] = FALSE;
@@ -108,13 +115,35 @@ class Racer extends XSYS_Controller {
 			else
 			{
 				$cat_code = ($cat === 'empty') ? FALSE : $cat;
-				$ret = $this->racer_model->get_racers($swords, $andor, $cat_code);
+				$offset = $RACER_PER_PAGE * ($page - 1);
+				$ret = $this->racer_model->get_racers($swords, $andor, $cat_code, $offset, $RACER_PER_PAGE);
 				
 				$data['racers'] = $ret['racers'];
-				$data['all_count'] = $ret['count_all'];
+				$total = $ret['total_count'];
+				$data['total_count'] = $total;
+				
+				if ($total > $RACER_PER_PAGE)
+				{
+					$this->load->library('pagination');
+
+					$config = [
+						'base_url' => site_url('racers'),
+						'total_rows' => $total,
+						'per_page' => $RACER_PER_PAGE,
+						'num_links' => 3,
+						'use_page_numbers' => TRUE,
+						'page_query_string' => TRUE,
+						'reuse_query_string' => TRUE,
+						'first_link' => 'First',
+						'last_link' => 'Last',
+					];
+
+					$this->pagination->initialize($config);
+					$data['paginates'] = TRUE;
+				}
 			}
 		}
-		
+
 		$data['cat_code'] = $cat;
 		$data['search_words'] = $swords;
 		$data['andor'] = empty($andor) ? 'and' : $andor;

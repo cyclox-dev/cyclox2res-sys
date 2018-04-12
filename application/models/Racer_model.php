@@ -46,9 +46,11 @@ class Racer_model extends CI_Model {
 	 * @param string $search_word 検索ワード
 	 * @param string andor 'and' もしくはそれ以外の文字列
 	 * @param string $category_code カテゴリーコード
+	 * @param int $offset 取得オフセット
+	 * @param int $limit データ取得件数
 	 * @return array 選手情報配列。
 	 */
-	public function get_racers($search_word, $andor = 'and', $category_code = FALSE)
+	public function get_racers($search_word, $andor = 'and', $category_code = FALSE, $offset = 0, $limit = 20)
 	{
 		// for category racer sub query
 		// 単純に join category_racers だとカテゴリーを持たない選手が表示されない。
@@ -76,7 +78,7 @@ class Racer_model extends CI_Model {
 			$this->db->where('racers.deleted', 0);
 			$this->db->stop_cache();
 			
-			$all_count = $this->db->from('racers')->count_all_results();
+			$total_count = $this->db->from('racers')->count_all_results();
 		}
 		else
 		{
@@ -93,7 +95,7 @@ class Racer_model extends CI_Model {
 			$this->db->stop_cache();
 			
 			$subquery = $this->db->select('code')->distinct()->get_compiled_select('racers', TRUE);
-			$all_count = $this->db->select('code')->distinct()->get('racers')->num_rows();
+			$total_count = $this->db->select('code')->distinct()->get('racers')->num_rows();
 			// 上記はパフォーマンス悪いと思われるが、他だと distinct が使えない可能性があるので num_rows() で。
 			
 			$this->db->flush_cache();
@@ -106,6 +108,7 @@ class Racer_model extends CI_Model {
 				->join("($cat_subquery) as cr", 'cr.racer_code = racers.code', 'LEFT')
 						// ref: https://stackoverflow.com/questions/4455958/mysql-group-concat-with-left-join
 						// 選手に対応する category 所属が無しでも大丈夫。
+				->limit($limit, $offset)
 				->order_by('code')
 				->get('racers');
 		
@@ -115,13 +118,13 @@ class Racer_model extends CI_Model {
 		$this->db->flush_cache();
 		// <<< CACHE
 
-		//log_message('debug', 'all:' . print_r($all_count, TRUE) . ' with:' . count($racers));
+		log_message('debug', 'all:' . print_r($total_count, TRUE) . ' with:' . count($racers));
 		foreach ($racers as &$racer)
 		{
 			$racer['gender_exp'] = Gender::genderAt($racer['gender'])->charExp();
 		}
 
-		return ['racers' => $racers, 'count_allｌ' => $all_count];
+		return ['racers' => $racers, 'total_count' => $total_count];
 	}
 	
 	/**

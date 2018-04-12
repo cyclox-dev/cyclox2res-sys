@@ -8,6 +8,7 @@
 				<p>対象となる選手が見つかりませんでした。</p>
 				<p>※英数字の半角と全角は別物として検索されます。</br>※選手コードはすべて半角です。</p>
 			<?php else: ?>
+			<?php if ($paginates) echo $this->pagination->create_links(); ?>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -32,6 +33,7 @@
 					<?php endforeach; ?>
 				</tbody>
 			</table>
+			<?php if ($paginates) echo $this->pagination->create_links(); ?>
 			<?php endif; ?>
 		<?php endif; ?>
 	</div>
