@@ -380,6 +380,19 @@ p.proviso {
     }
 }
 
+.racer_index {
+    .pagination_navi {
+        a, strong {
+            display: inline-block;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        a:visited {
+            color: #00688c;
+        }
+    }
+}
+
 #ajocc_ranking_view {
     table {
         font-size: small;

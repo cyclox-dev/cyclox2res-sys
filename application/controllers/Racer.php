@@ -135,7 +135,11 @@ class Racer extends XSYS_Controller {
 						'page_query_string' => TRUE,
 						'reuse_query_string' => TRUE,
 						'first_link' => 'First',
+						'prev_link' => '&lt;Prev',
+						'next_link' => 'Next&gt;',
 						'last_link' => 'Last',
+						'full_tag_open' => '<p class="pagination_navi">',
+						'full_tag_close' => '</p>',
 					];
 
 					$this->pagination->initialize($config);

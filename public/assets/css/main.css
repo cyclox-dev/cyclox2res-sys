@@ -284,6 +284,13 @@ p.proviso {
 .racer_view .ranking .dl-horizontal > dd {
   margin-left: 210px; }
 
+.racer_index .pagination_navi a, .racer_index .pagination_navi strong {
+  display: inline-block;
+  margin-left: 2px;
+  margin-right: 2px; }
+.racer_index .pagination_navi a:visited {
+  color: #00688c; }
+
 #ajocc_ranking_view table {
   font-size: small; }
   #ajocc_ranking_view table tr {
