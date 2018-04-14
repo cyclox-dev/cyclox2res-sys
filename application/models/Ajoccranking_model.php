@@ -34,6 +34,28 @@ class Ajoccranking_model extends CI_Model {
 				->join('ajoccpt_local_settings as locals', 'locals.id = sets.ajoccpt_local_setting_id', 'LEFT')
 				->order_by('category_code', 'ASC')
 				->order_by('locals.id', 'ASC');
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$this->db->where('ss.start_date >', '2017-04-01');
+		}
+		
+		if ($seasonIds !== FALSE)
+		{
+			$this->db->group_start();
+			for ($i = 0; $i < count($seasonIds); $i++)
+			{
+				$sid = $seasonIds[$i];
+				if ($i == 0)
+				{
+					$this->db->where('ss.id', $sid);
+				}
+				else
+				{
+					$this->db->or_where('ss.id', $sid);
+				}
+			}
+			$this->db->group_end();
+		}
 		$query = $this->db->get('tmp_ajoccpt_racer_sets as sets');
 		$tmpr = $query->result_array();
 		
