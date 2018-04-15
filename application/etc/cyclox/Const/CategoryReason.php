@@ -7,7 +7,7 @@
 require_once(APPPATH . 'etc/cyclox/Const/CategoryChangeFlag.php');
 
 /**
- * カテゴリー適用理由
+ * カテゴリー所属開始理由
  */
 class CategoryReason
 {
