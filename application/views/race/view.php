@@ -5,7 +5,7 @@
 			<?= h($ecat['meet_name']) . '（' . h($ecat['meet_group_name']) . '）' ?>
 		</a>
 	</p>
-	<h2 class="with_pop"><?= h($ecat['ec_name']); ?></h2>
+	<h2 class="with_pop" id="ec_name"><?= h($ecat['ec_name']); ?></h2>
 	<dl class="dl-horizontal dl-horizontal_al">
 		<dt>スタート時刻</dt><dd><?= h($ecat['prepared_start_clock']) ?></dd>
 		<dt>カテゴリー</dt><dd><?= h($ecat['races_category_code']) ?></dd>
@@ -120,7 +120,7 @@
 		<?php if (empty($has_laps)): ?>
 			<p>表示できるラップデータがありません。</p>
 		<?php else: ?>
-			<table class="table table-striped">
+			<table class="table table-striped" id="laptime-table">
 				<thead>
 					<tr>
 						<th>順位</th>
@@ -147,21 +147,20 @@
 						<tr>
 							<td><?= h($r['rank_exp']) ?></td>
 							<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
-								<?php 
-									for ($i = $lap_min; $i <= $lap_max; $i++):
+							<?php 
+								for ($i = $lap_min; $i <= $lap_max; $i++):
+							?>
+							<td>
+								<div class="text-right">
+								<?php
+									if (!empty($r['lap_times']) && !empty($r['lap_times'][$i]))
+									{
+										echo $r['lap_times'][$i];
+									}
 								?>
-								<td>
-									<div class="text-right">
-									<?php
-										if (!empty($r['lap_times']) && !empty($r['lap_times'][$i]))
-										{
-											echo $r['lap_times'][$i];
-										}
-									?>
-									</div>
-								</td>
-								<?php endfor; ?>
+								</div>
 							</td>
+							<?php endfor; ?>
 						</tr>
 					<?php endforeach; ?>
 				</tbody>
@@ -169,4 +168,35 @@
 		<?php endif; ?>
 		<p class="proviso">※選手名はレース時点のものを表示しています。</p>
 	<?php endif; ?>
+	<div><a type="button" name="aaa" value="aaa" id="download_lap_times" class="disabled">ラップタイムCSVダウンロード</a></div>
+	
+	<script src="<?= base_url('assets/js/component/csv.js'); ?>"></script>
+	<script>
+	$('#download_lap_times').click(function() {
+		var data = [];
+		var title = $(".title_pop a")[0].innerText + " " + $("#ec_name")[0].innerText;
+		data.push([title]);
+		$("#laptime-table thead tr").each(function(index, elem){
+			row = [];
+			row.push($("th:first-child", this).text());
+			row.push($("th:nth-child(2)", this).text());
+			$("th:gt(1)", this).children("div").each(function(i, e) {
+				var txt = $(e)[0].innerText;
+				row.push(txt);
+			});
+			data.push(row);
+		});
+		$("#laptime-table tbody tr").each(function(index, elem){
+			row = [];
+			row.push($("td:first-child", this).text());
+			row.push($("td:nth-child(2)", this).children("a").text());
+			$("td:gt(1)", this).children("div").each(function(i, e) {
+				var txt = $(e)[0].innerText;
+				row.push(txt);
+			});
+			data.push(row);
+		});
+		exportToCsv('bars.csv', data);
+	});
+	</script>
 </div>
