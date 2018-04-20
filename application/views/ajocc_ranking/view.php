@@ -8,7 +8,7 @@
 			<p>ランキングデータがありません。</p>
 		<?php else: ?>
 			<p><?= $title_row['modified'] . '更新' ?></p>
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered" id="ranking-table">
 				<thead>
 					<tr>
 						<th>順位</th>
@@ -85,4 +85,17 @@
 			</table>
 		<?php endif; ?>
 	</div>
+	<script src="<?= base_url('assets/js/component/jquery.tablefix_1.0.1.js'); ?>"></script>
+	<script>
+		function setupTable() {
+			var h = window.innerHeight * 0.75;
+			var w = window.innerWidth - 80;
+			//console.log("w:" + w + ' x h:' + h);
+			$('#ranking-table').tablefix({width: w, height: h, fixRows: 1, fixCols: 2});
+		}
+		
+		setupTable(); // at load
+		
+		// TODO: Window リサイズ時にリセット
+	</script>
 </div>
