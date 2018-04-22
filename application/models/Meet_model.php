@@ -15,7 +15,7 @@ class Meet_model extends CI_Model {
 	
 	/**
 	 * 指定の大会グループをかえす
-	 * @param string $group_code 大会グループコード
+	 * @param string $code 大会グループコード
 	 * @return array 大会グループ
 	 */
 	public function get_meet_group($code = FALSE)
