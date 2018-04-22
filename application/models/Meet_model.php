@@ -88,6 +88,7 @@ class Meet_model extends CI_Model {
 			$cdt['at_date >'] = '2017-03-31';
 		}
 		
+		$this->db->order_by('season_id', 'DESC');
 		$this->db->order_by('at_date', 'DESC');
 		
 		if (!empty($code))
@@ -96,8 +97,9 @@ class Meet_model extends CI_Model {
 		}
 		
 		$this->db->select('*, meets.name as mt_name, meets.code as mt_code'
-				. ', mg.name as mg_name, mg.short_name as mg_short_name')
-				->join('meet_groups as mg', 'mg.code = meets.meet_group_code', 'INNER');
+				. ', mg.name as mg_name, mg.short_name as mg_short_name, ss.name as season_name')
+				->join('meet_groups as mg', 'mg.code = meets.meet_group_code', 'INNER')
+				->join('seasons as ss', 'ss.id = meets.season_id', 'INNER');
 	
 		if (!empty($limit) && is_int($limit))
 		{
