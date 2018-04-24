@@ -410,10 +410,14 @@ p.proviso {
         font-size: small;
         tr {
             padding: 4px;
-        }
-        td {
-            white-space: nowrap;
-            padding: 4px;
+            th.meet, th.rank, th.sumups {
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+            }
+            td {
+                white-space: nowrap;
+                padding: 4px;
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
 							$point_count = count($titles);
 							foreach ($titles as $t)
 							{
-								echo '<th>';
+								echo '<th class="meet">';
 								if (!empty($t['code']))
 								{
 									if (isset($t['entry_category_name']))
@@ -50,7 +50,7 @@
 							$sumup_count = count($sumup_titles);
 							foreach ($sumup_titles as $t)
 							{
-								echo '<th>' . $t . '</th>';
+								echo '<th class="sumups">' . $t . '</th>';
 							}
 						?>
 					</tr>
@@ -58,14 +58,14 @@
 				<tbody>
 					<?php foreach ($ranking as $r): ?>
 						<tr>
-							<td><?= h($r['rank']) ?></td>
+							<td align="center"><?= h($r['rank']) ?></td>
 							<td><a href="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name']) ?></a></td>
 							<td><?= h($r['team']) ?></td>
 							<?php
 								$pts = json_decode($r['point_json'], TRUE);
 								for ($j=0; $j < $point_count; $j++)
 								{
-									echo '<td>';
+									echo '<td align="center">';
 									if (isset($pts[$j]))
 									{
 										echo $pts[$j];
@@ -77,7 +77,7 @@
 								$pts = json_decode($r['sumup_json'], TRUE);
 								for ($j=0; $j < $sumup_count; $j++)
 								{
-									echo '<td>';
+									echo '<td align="right">';
 									if (isset($pts[$j]))
 									{
 										echo $pts[$j];

@@ -301,9 +301,12 @@ p.proviso {
   font-size: small; }
   #point_series_view table tr {
     padding: 4px; }
-  #point_series_view table td {
-    white-space: nowrap;
-    padding: 4px; }
+    #point_series_view table tr th.meet, #point_series_view table tr th.rank, #point_series_view table tr th.sumups {
+      writing-mode: vertical-rl;
+      text-orientation: upright; }
+    #point_series_view table tr td {
+      white-space: nowrap;
+      padding: 4px; }
 
 div.convini_link {
   margin-left: 20px; }
