@@ -118,10 +118,10 @@ class Racer_model extends CI_Model {
 		$this->db->flush_cache();
 		// <<< CACHE
 
-		log_message('debug', 'all:' . print_r($total_count, TRUE) . ' with:' . count($racers));
+		//log_message('debug', 'all:' . print_r($total_count, TRUE) . ' with:' . count($racers));
 		foreach ($racers as &$racer)
 		{
-			$racer['gender_exp'] = Gender::genderAt($racer['gender'])->charExp();
+			$racer['gender_obj'] = Gender::genderAt($racer['gender']);
 		}
 
 		return ['racers' => $racers, 'total_count' => $total_count];

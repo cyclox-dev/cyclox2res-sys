@@ -367,6 +367,16 @@ p.proviso {
             }
         }
     }
+    table.categories {
+        .cell__category {
+            text-align: center;
+        }
+    }
+    table.results {
+        .cell__rank, .cell__rankper, .cell__holdpt, .cell__ajoccpt {
+            text-align: center;
+        }
+    }
     .ranking {
         .dl-horizontal {
             > dt {
@@ -390,6 +400,9 @@ p.proviso {
         a:visited {
             color: #00688c;
         }
+    }
+    .cell__gender, .cell__nationality, .cell__category {
+        text-align: center;
     }
 }
 

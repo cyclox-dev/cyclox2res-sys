@@ -1,3 +1,5 @@
+<?php require_once(APPPATH . 'etc/cyclox/Const/Gender.php'); ?>
+
 <div id="main">
 	<div class="racer_index">
 		<?= $rider_search_div ?>
@@ -15,9 +17,9 @@
 						<th>選手コード</th>
 						<th>氏名</th>
 						<th>チーム</th>
-						<th>性別</th>
-						<th>国籍</th>
-						<th>カテゴリー</th>
+						<th class="cell__gender">性別</th>
+						<th class="cell__nationality">国籍</th>
+						<th class="cell__category">Category</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,9 +28,11 @@
 						<td><?= anchor('racer/' . h($r['code']), h($r['code'])) ?></td>
 						<td><?= anchor('racer/' . h($r['code']), h($r['family_name'] . ' ' . h($r['first_name']))) ?></td>
 						<td><?= h($r['team']) ?></td>
-						<td><?= h($r['gender_exp']) ?></td>
-						<td><?= h($r['nationality_code']) ?></td>
-						<td><?= h($r['cats']) ?></td>
+						<td class="cell__gender">
+							<?= ($r['gender_obj'] == Gender::$UNASSIGNED) ? '--' : h($r['gender_obj']->charExp()) ?>
+						</td>
+						<td class="cell__nationality"><?= h($r['nationality_code']) ?></td>
+						<td class="cell__category"><?= h($r['cats']) ?></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>

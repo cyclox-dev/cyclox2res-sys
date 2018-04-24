@@ -1,3 +1,5 @@
+<?php require_once(APPPATH . 'etc/cyclox/Const/Gender.php'); ?>
+
 <div id="main">
 	<div class="racer_view">
 		<?php
@@ -17,7 +19,7 @@
 				<h2><?= $racer['family_name'] . ' ' . $racer['first_name']; ?></h2>
 				<dl class="dl-horizontal">
 					<dt>選手コード</dt><dd><?= h($racer['code']) ?></dd>
-					<dt>ナマエ</dt><dd><?= h($racer['family_name_kana'] . ' ' . $racer['first_name_kana']) ?></dd>
+					<dt>フリガナ</dt><dd><?= h($racer['family_name_kana'] . ' ' . $racer['first_name_kana']) ?></dd>
 					<dt>Name</dt><dd><?= h($racer['first_name_en'] . ' ' . $racer['family_name_en']) ?></dd>
 					<dt>チーム</dt><dd><?= h($racer['team']) ?></dd>
 					<dt>性別</dt><dd><?= h($racer['gender_exp']->express()) ?></dd>
@@ -96,10 +98,10 @@
 		</div>
 		<h3>カテゴリー所属</h3>
 		<?php if (!empty($cats['on'])): ?>
-			<table class="table table-striped">
+			<table class="table table-striped categories">
 				<thead>
 					<tr>
-						<th>カテゴリー</th>
+						<th class="cell__category">カテゴリー</th>
 						<th>所属期間</th>
 						<th>備考</th>
 					</tr>
@@ -107,7 +109,7 @@
 				<tbody>
 					<?php foreach ($cats['on'] as $oncat): ?>
 					<tr>
-						<td><?= h($oncat['category_code']) ?></td>
+						<td class="cell__category"><?= h($oncat['category_code']) ?></td>
 						<td><?= h($oncat['apply_date'] . '〜' . $oncat['cancel_date']) ?></td>
 						<td>
 							<?php if ($oncat['is_by_rankup']): ?>
@@ -134,17 +136,17 @@
 				</div>
 				<div id="collapse1" class="panel-collapse collapse">
 					<div class="panel-body">
-						<table class="table table-striped">
+						<table class="table table-striped categories">
 							<thead>
 								<tr>
-									<th>カテゴリー</th>
+									<th class="cell__category">カテゴリー</th>
 									<th>所属期間</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php foreach ($cats['future'] as $fcut): ?>
 									<tr>
-										<td><?= h($fcut['category_code']) ?></td>
+										<td class="cell__category"><?= h($fcut['category_code']) ?></td>
 										<td><?= h($fcut['apply_date'] . '〜' . $fcut['cancel_date']) ?></td>
 									</tr>
 								<?php endforeach; ?>
@@ -168,10 +170,10 @@
 				</div>
 				<div id="collapse2" class="panel-collapse collapse">
 					<div class="panel-body">
-						<table class="table table-striped">
+						<table class="table table-striped categories">
 							<thead>
 								<tr>
-									<th>カテゴリー</th>
+									<th class="cell__category">カテゴリー</th>
 									<th>所属期間</th>
 									<th>備考</th>
 								</tr>
@@ -179,7 +181,7 @@
 							<tbody>
 								<?php foreach ($cats['old'] as $oldcat): ?>
 									<tr>
-										<td><?= h($oldcat['category_code']) ?></td>
+										<td class="cell__category"><?= h($oldcat['category_code']) ?></td>
 										<td><?= h($oldcat['apply_date'] . '〜' . $oldcat['cancel_date']) ?></td>
 										<td>
 											<?php if ($oldcat['is_by_rankup']): ?>
@@ -202,15 +204,15 @@
 		<?php if (empty($results)): ?>
 			<?php echo '表示可能なリザルトがありません。'; ?>
 		<?php else: ?>
-			<table class="table table-striped">
+			<table class="table table-striped results">
 				<thead>
 					<tr>
 						<th>日付</th>
 						<th>レース</th>
-						<th>順位</th>
-						<th>順位%</th>
-						<th>残留Pt</th>
-						<th>AjoccPt</th>
+						<th class="cell__rank">順位</th>
+						<th class="cell__rankper">順位%</th>
+						<th class="cell__holdpt">残留Pt</th>
+						<th class="cell__ajoccpt">AjoccPt</th>
 						<th>備考</th>
 					</tr>
 				</thead>
@@ -223,14 +225,14 @@
 									<?= h($r['meet_name'] . ' ' . $r['race_name']) ?>
 								</a>
 							</td>
-							<td><?= h($r['rank_exp']) ?></td>
-							<td><?php
+							<td class="cell__rank"><?= h($r['rank_exp']) ?></td>
+							<td class="cell__rankper"><?php
 								if (!empty($r['rank_per']))
 								{
 									echo h($r['rank_per'] . '%');
 								}
 							?></td>
-							<td>
+							<td class="cell__holdpt">
 								<?php
 								$exp = '';
 								if (!empty($r['hps']))
@@ -248,7 +250,7 @@
 								}
 								?>
 							</td>
-							<td><?= h($r['ajocc_pt_exp']) ?></td>
+							<td class="cell__ajoccpt"><?= h($r['ajocc_pt_exp']) ?></td>
 							<td><?php
 								if (!empty($r['rank_up_to']))
 								{

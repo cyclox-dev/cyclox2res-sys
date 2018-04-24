@@ -278,6 +278,10 @@ p.proviso {
   width: 110px; }
 .racer_view .racer .dl-horizontal > dd {
   margin-left: 110px; }
+.racer_view table.categories .cell__category {
+  text-align: center; }
+.racer_view table.results .cell__rank, .racer_view table.results .cell__rankper, .racer_view table.results .cell__holdpt, .racer_view table.results .cell__ajoccpt {
+  text-align: center; }
 .racer_view .ranking .dl-horizontal > dt {
   text-align: left;
   width: 210px; }
@@ -290,6 +294,8 @@ p.proviso {
   margin-right: 2px; }
 .racer_index .pagination_navi a:visited {
   color: #00688c; }
+.racer_index .cell__gender, .racer_index .cell__nationality, .racer_index .cell__category {
+  text-align: center; }
 
 #ajocc_ranking_view table tr {
   padding: 4px; }
