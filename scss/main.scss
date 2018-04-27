@@ -4,6 +4,9 @@
 */
 
 $light_gray: #DDDDDD;
+$base_bg_color: #FAFAF6;
+$title_color_az: #730046;
+$text_color_on_az: #FFF;
 
 a:link {color:#00688c; text-decoration:none;}
 a:visited {color:#993300; text-decoration:none;}
@@ -215,13 +218,13 @@ header {
         }
     }
     @media screen and (max-width:760px) {
-		margin-top: 80px;
+        margin-top: 80px;
     }
 }
 
 #main {
     //background-color: #f0f000;
-    padding: 0.5em 2em;
+    padding: 0.5em 1em;
     margin-bottom: 2em;
 }
 
@@ -281,7 +284,7 @@ footer {
         border-bottom: 1px solid #b3aea7;
     }
     .ftr-bottom {
-            padding: 6px 20px 0;
+        padding: 6px 20px 0;
         p {
             padding-top: 8px;
         }
@@ -344,12 +347,33 @@ p.proviso {
                 font-size: 0.8em;
             }
         }
+        .panel {
+            a {
+                outline: none;
+                h4 {
+                    margin: 0;
+                    background-color: $title_color_az;
+                    color: $text_color_on_az;
+                }
+            }
+            panel-heading, .panel-body {
+                background-color: $base_bg_color;
+            }
+        }
     }
-    .point_series {
-        margin-bottom: 15px;
-        .racers_row {
-            .team {
-                margin-left: 2em;
+    .ranking-box {
+        width: 280px;
+        height: 200px;
+        //display: inline-box;
+        position: static;
+        float: left;
+        margin: 0 4px 15px;
+        .point_series {
+            padding: 0 1em 0;
+            .racers_row {
+                .team {
+                    margin-left: 2em;
+                }
             }
         }
     }

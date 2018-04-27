@@ -179,7 +179,7 @@ header {
       margin-top: 80px; } }
 
 #main {
-  padding: 0.5em 2em;
+  padding: 0.5em 1em;
   margin-bottom: 2em; }
 
 #ptnr_ftr {
@@ -268,10 +268,24 @@ p.proviso {
     display: inline; }
   .point_series_index .rankings .ps_title span {
     font-size: 0.8em; }
-.point_series_index .point_series {
-  margin-bottom: 15px; }
-  .point_series_index .point_series .racers_row .team {
-    margin-left: 2em; }
+.point_series_index .rankings .panel a {
+  outline: none; }
+  .point_series_index .rankings .panel a h4 {
+    margin: 0;
+    background-color: #730046;
+    color: #FFF; }
+.point_series_index .rankings .panel panel-heading, .point_series_index .rankings .panel .panel-body {
+  background-color: #FAFAF6; }
+.point_series_index .ranking-box {
+  width: 280px;
+  height: 200px;
+  position: static;
+  float: left;
+  margin: 0 4px 15px; }
+  .point_series_index .ranking-box .point_series {
+    padding: 0 1em 0; }
+    .point_series_index .ranking-box .point_series .racers_row .team {
+      margin-left: 2em; }
 
 .racer_view .racer .dl-horizontal > dt {
   text-align: left;
