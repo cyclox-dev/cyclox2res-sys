@@ -311,6 +311,19 @@ p.proviso {
 .racer_index .cell__gender, .racer_index .cell__nationality, .racer_index .cell__category {
   text-align: center; }
 
+.meet_view .races-table {
+  width: auto; }
+  .meet_view .races-table th, .meet_view .races-table td {
+    padding: 2px 20px 2px; }
+  .meet_view .races-table .cell__start-at, .meet_view .races-table .cell__race, .meet_view .races-table .cell__entrynum {
+    text-align: center; }
+.meet_view .rankup-table {
+  width: auto; }
+  .meet_view .rankup-table th, .meet_view .rankup-table td {
+    padding: 2px 20px 2px; }
+  .meet_view .rankup-table .cell__races-category, .meet_view .rankup-table .cell__rankup-to {
+    text-align: center; }
+
 #ajocc_ranking_view table tr {
   padding: 4px; }
 #ajocc_ranking_view table td {

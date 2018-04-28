@@ -430,6 +430,27 @@ p.proviso {
     }
 }
 
+.meet_view {
+    .races-table {
+        width: auto;
+        th, td {
+            padding: 2px 20px 2px;
+        }
+        .cell__start-at, .cell__race, .cell__entrynum {
+            text-align: center;
+        }
+    }
+    .rankup-table {
+        width: auto;
+        th, td {
+            padding: 2px 20px 2px;
+        }
+        .cell__races-category, .cell__rankup-to {
+            text-align: center;
+        }
+    }
+}
+
 #ajocc_ranking_view {
     table {
         tr {
