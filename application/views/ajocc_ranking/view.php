@@ -1,6 +1,6 @@
 <div id="main">
 	<div id="ajocc_ranking_view">
-		<h2><?= h($season['name']) . 'AJOCC ランキング' ?></h2>
+		<h2><?= h($season['name']) . 'AJOCC ランキング '  . h($title_row['category_code']) ?></h2>
 		<?php if (!empty($local_setting)): ?>
 		<h3><?= h($local_setting['name']) ?></h3>
 		<?php endif; ?>
