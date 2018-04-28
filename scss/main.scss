@@ -430,6 +430,23 @@ p.proviso {
     }
 }
 
+.race_view {
+    .table__result {
+        .cell__rank, .cell__timegap, .cell__rankper, .cell__holdpt, .cell__ajoccpt, .cell__ptseries {
+            text-align: center;
+        }
+    }
+    .table__laptime {
+        width: auto;
+        th, td {
+            padding: 2px 10px 2px;
+        }
+        .cell__rank, .cell__lapat {
+            text-align: center;
+        }
+    }
+}
+
 .meet_view {
     .races-table {
         width: auto;

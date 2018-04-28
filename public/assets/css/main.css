@@ -311,6 +311,15 @@ p.proviso {
 .racer_index .cell__gender, .racer_index .cell__nationality, .racer_index .cell__category {
   text-align: center; }
 
+.race_view .table__result .cell__rank, .race_view .table__result .cell__timegap, .race_view .table__result .cell__rankper, .race_view .table__result .cell__holdpt, .race_view .table__result .cell__ajoccpt, .race_view .table__result .cell__ptseries {
+  text-align: center; }
+.race_view .table__laptime {
+  width: auto; }
+  .race_view .table__laptime th, .race_view .table__laptime td {
+    padding: 2px 10px 2px; }
+  .race_view .table__laptime .cell__rank, .race_view .table__laptime .cell__lapat {
+    text-align: center; }
+
 .meet_view .races-table {
   width: auto; }
   .meet_view .races-table th, .meet_view .races-table td {

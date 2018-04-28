@@ -1,5 +1,5 @@
 <div id="main">
-	<div id="race_view">
+	<div class="race_view">
 		<p class="title_pop">
 			<a href ="<?= site_url('meet/' . h($ecat['meet_code'])) ?>">
 				<?= h($ecat['meet_name']) . '（' . h($ecat['meet_group_name']) . '）' ?>
@@ -22,24 +22,24 @@
 		<?php if (empty($results)): ?>
 			<p>エントリー／リザルトがありません。</p>
 		<?php else: ?>
-			<table class="table table-striped">
+			<table class="table table-striped table__result">
 				<thead>
 					<tr>
-						<th>順位</th>
+						<th class="cell__rank">順位</th>
 						<th>選手</th>
 						<th>チーム</th>
-						<th>Time/Gap</th>
-						<th>順位%</th>
+						<th class="cell__timegap">Time/Gap</th>
+						<th class="cell__rankper">順位%</th>
 						<?php if ($has_holdpoints): ?>
-						<th>残留Pt</th>
+						<th class="cell__holdpt">残留Pt</th>
 						<?php endif; ?>
 						<?php if ($with_ajoccpt): ?>
-						<th>AjoccPt</th>
+						<th class="cell__ajoccpt">AjoccPt</th>
 						<?php endif; ?>
 						<?php
 						foreach ($ps_titles as $t)
 						{
-							echo '<th><a href="' . site_url('/point_series/') . $t['id'] . '">' . $t['name'] . '</a></th>';
+							echo '<th class="cell__ptseries"><a href="' . site_url('/point_series/') . $t['id'] . '">' . $t['name'] . '</a></th>';
 						}
 						?>
 						<th>Note</th>
@@ -48,17 +48,17 @@
 				<tbody>
 					<?php foreach ($results as $r): ?>
 						<tr>
-							<td><?= h($r['rank_exp']) ?></td>
+							<td class="cell__rank"><?= h($r['rank_exp']) ?></td>
 							<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 							<td><?= h($r['team_name']) ?></td>
-							<td>
+							<td class="cell__timegap">
 								<?php if (!empty($r['time_gap'])): ?>
 								<?= h($r['time_gap']); ?>
 								<?php endif; ?>
 							</td>
-							<td><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
+							<td class="cell__rankper"><?php if (!empty($r['rank_per'])) echo h($r['rank_per']) . '%'; ?></td>
 							<?php if ($has_holdpoints): ?>
-							<td>
+							<td class="cell__holdpt">
 								<?php
 								$exp = '';
 								if (!empty($r['hps']))
@@ -78,7 +78,7 @@
 							</td>
 							<?php endif; ?>
 							<?php if ($with_ajoccpt): ?>
-							<td>
+							<td class="cell__ajoccpt">
 								<?php
 								if (!empty($r['ajocc_pt']))
 								{
@@ -90,7 +90,7 @@
 							<?php
 							for ($i = 0; $i < sizeof($ps_titles); $i++)
 							{
-								echo '<td>';
+								echo '<td class="cell__ptseries">';
 								if (!empty($r['ps_points'][$i]))
 								{
 									echo $r['ps_points'][$i]['pt'];
@@ -120,32 +120,30 @@
 			<?php if (empty($has_laps)): ?>
 				<p>表示できるラップデータがありません。</p>
 			<?php else: ?>
-			<table class="table table-striped" id="laptime-table">
+			<table class="table table-striped table__laptime">
 					<thead>
 						<tr>
-						<th>順位</th>
+						<th class="cell__rank">順位</th>
 						<th>選手</th>
 							<?php for ($i = $lap_min; $i <= $lap_max; $i++): ?>
-							<th>
-								<div class="text-right">
-									<?php
-									if ($i == 0)
-									{
-										echo 'StartLoop';
-									}
-									else
-									{
-										echo $i . '周';
-									}
-									?>
-								</div>
+							<th class="cell__lapat">
+								<?php
+								if ($i == 0)
+								{
+									echo 'StartLoop';
+								}
+								else
+								{
+									echo $i . '周';
+								}
+								?>
 							<?php endfor; ?>
 						</tr>
 					</thead>
 					<tbody>
 						<?php foreach ($results as $r): ?>
 							<tr>
-							<td><?= h($r['rank_exp']) ?></td>
+							<td class="cell__rank"><?= h($r['rank_exp']) ?></td>
 							<td><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 								<?php 
 									for ($i = $lap_min; $i <= $lap_max; $i++):
