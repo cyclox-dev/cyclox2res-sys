@@ -53,7 +53,14 @@
 					<?php foreach ($ranking as $r): ?>
 						<tr>
 							<td align="center"><?= h($r['rank']) ?></td>
-							<td><a href="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name']) ?></a></td>
+							<td>
+								<a href="<?= site_url('racer/' . h($r['racer_code'])) ?>">
+								<?php if (in_array($r['racer_code'], $rankupper)): ?>
+								<?= '☆' ?>
+								<?php endif;?>
+								<?= h($r['name']) ?>
+								</a>
+							</td>
 							<td><?= h($r['team']) ?></td>
 							<?php
 								$pts = json_decode($r['point_json'], TRUE);

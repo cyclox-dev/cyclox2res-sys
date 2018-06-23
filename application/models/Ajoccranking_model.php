@@ -1,5 +1,7 @@
 <?php
 
+require_once(APPPATH . 'etc/cyclox/Const/CategoryReason.php');
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -121,9 +123,29 @@ class Ajoccranking_model extends CI_Model {
 			$ret['local_setting'] = $query->row_array();
 		}
 		
+		// シーズン情報
 		$query = $this->db->select('*')
 				->get_where('seasons', ['id' => $season_id]);
 		$ret['season'] = $query->row_array();
+		
+		// 昇格者情報
+		$cdt = [
+			'category_code' => $category_code,
+			'deleted' => 0,
+			'apply_date >=' => $ret['season']['start_date'],
+			'apply_date <=' => $ret['season']['end_date'],
+			'reason_id' => CategoryReason::$RESULT_UP->ID(),
+		];
+		$query = $this->db->select('racer_code')
+				->get_where('category_racers', $cdt);
+		$rankupper = $query->result_array();
+		$codes = [];
+		foreach($rankupper as $ru)
+		{
+			$codes[] = $ru['racer_code'];
+		}
+		$ret['rankupper'] = $codes;
+		//log_message('debug', print_r($codes, true));
 		
 		return $ret;
 	}
