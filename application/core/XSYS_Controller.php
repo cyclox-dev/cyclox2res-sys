@@ -25,7 +25,7 @@ class XSYS_Controller extends CI_Controller {
 		$this->load->helper('url_helper');
 	}
 
-	protected function _fmt_render($view = NULL, $data = array())
+	protected function _fmt_render($view = NULL, $data = [], $js_list = [], $css_list = [], $title = '')
 	{
 		if (empty($view))
 		{
@@ -34,6 +34,9 @@ class XSYS_Controller extends CI_Controller {
 		
 		$data['xsys_flash_error_list'] = $this->session->flashdata(XSYS_const::FLASH_KEY_ERROR);
 		$data['xsys_flash_info_list'] = $this->session->flashdata(XSYS_const::FLASH_KEY_INFO);
+		$data['xsys_header_js_files'] = $js_list;
+		$data['xsys_header_css_files'] = $css_list;
+		$data['xsys_page_title'] = $title;
 		
 		$hd = $this->parser->parse('templates/header', $data, TRUE);
 		$this->output->set_output($hd);

@@ -4,25 +4,41 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<link href="<?= base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
-		<link href="<?= base_url('assets/css/main.css'); ?>" rel="stylesheet">
-		<link href="<?= base_url('assets/css/owl.carousel.css'); ?>" rel="stylesheet">
+		<meta name="keywords" content="シクロクロス,cyclocross,AJOCC,ajocc,ジャパンシクロクロスシリーズ,JCX Series,JCX,jcx">
+		<link rel="start" href="<?= base_url('/'); ?>" title="Home">
 		
-		<script
-			  src="https://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			  crossorigin="anonymous">
-		</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-		<script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
-		<script src="<?= base_url('assets/js/owl.carousel.js'); ?>"></script>
-		<script src="<?= base_url('assets/js/main.js'); ?>"></script>
+		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/base.css'); ?>" media="all">
+		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/font-awesome.min.css'); ?>" media="all">
+		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/this_year.css'); ?>" media="all">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" charset="utf-8"></script>
+
+		<?php if (isset($xsys_header_css_files)): ?>
+		<?php foreach ($xsys_header_css_files as $css): ?>
+		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/' . $css); ?>" media="all">
+		<?php endforeach; ?>
+		<?php endif; ?>
 		
-		<title>AJOCC Cross System</title>
+		<?php if (isset($xsys_header_js_files)): ?>
+		<?php foreach ($xsys_header_js_files as $js): ?>
+		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/' . $js); ?>" media="all">
+		<?php endforeach; ?>
+		<?php endif; ?>
+		
+		<title>
+			<?php
+			if (!empty($xsys_page_title))
+			{
+				echo $xsys_page_title . ' | ';
+			}
+			?>
+			AJOCC 一般社団法人日本シクロクロス競技主催者協会
+		</title>
 	</head>
 	<body>
 		<div class="container-fluid main_container">
 			<!-- Header -->
+			<!-- ++++++++++++++++++++++++++++++++++++++++ ?> -->
+			<?php if (false): ?>
 			<header>
 				<div class="header_inner">
 					<h1 class="sp-logo"><a href="http://www.cyclocross.jp/"><img src="<?= base_url('img/sp/hdr-logo.svg'); ?>" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" /></a><span class="align-bottom">DataSystem</span></h1>
@@ -63,6 +79,7 @@
 			</div>
 			<!-- /PARTNERS LOGO -->
 			
+			
 			<div id="flash_view">
 				<?php
 				if (isset($xsys_flash_error_list))
@@ -89,3 +106,6 @@
 				<a href="<?= base_url('ajocc_ranking'); ?>">AjoccRanking</a>
 				<a href="<?= base_url('racers'); ?>">選手検索</a>
 			</div>
+			<?php endif; ?>
+			<!-- ++++++++++++++++++++++++++++++++++++++++ ?> -->
+			

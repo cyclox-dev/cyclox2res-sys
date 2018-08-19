@@ -55,9 +55,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['meet/(:any)'] = 'meet/view/$1';
-$route['meets/index'] = 'meet/index';
-$route['meets'] = 'meet';
-$route['meets/(:any)'] = 'meet/index/$1';
+$route['meet'] = 'meet/index';
+
+$route['meets/index__'] = 'meet/index__';
+$route['meets__'] = 'meet/index__';
 
 $route['race/(:num)'] = 'race/view/$1';
 $route['race/(:any)/(:any)'] = 'race/view_race/$1/$2';
@@ -74,3 +75,4 @@ $route['ajocc_ranking'] = 'ajocc_ranking';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/home';
+

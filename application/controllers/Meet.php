@@ -15,7 +15,34 @@ class Meet extends XSYS_Controller {
 		$this->load->model('categoryracer_model');
 	}
 	
-	public function index($meet_group_code = null)
+	public function index()
+	{
+		$meet_group_code = $this->input->get('meet_group');
+		
+		$cuts_futures = empty($meet_group_code);
+		
+		$data['meets'] = $this->meet_model->get_meets($meet_group_code, FALSE, $cuts_futures);
+		$data['meet_groups'] = $this->meet_model->get_meet_groups();
+		
+		//log_message('debug', print_r($data['meet_groups'], TRUE));
+		if (!empty($meet_group_code))
+		{
+			$data['meet_group_code'] = $meet_group_code;
+			
+			foreach ($data['meet_groups'] as $mg)
+			{
+				if ($mg['code'] == $meet_group_code)
+				{
+					$data['meet_group'] = $mg;
+					break;
+				}
+			}
+		}
+		
+		$this->_fmt_render('meet/index', $data, ['results.js'], ['results_data.css'], 'リザルト');
+	}
+	
+	public function index__($meet_group_code = null)
 	{
 		$cuts_futures = empty($meet_group_code);
 		
@@ -26,7 +53,7 @@ class Meet extends XSYS_Controller {
 			$data['meet_group'] = $this->meet_model->get_meet_group($meet_group_code);
 		}
 		
-		$this->_fmt_render('meet/index', $data);
+		$this->_fmt_render('meet/__index', $data);
 	}
 	
 	public function view($code = NULL)

@@ -1,0 +1,514 @@
+@charset "utf-8";
+
+/* ----------------------------------------------------------------------
+iframe表示用
+---------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------
+
+RESULT絞り込み
+
+---------------------------------------------------------------------- */
+#results_sort {
+	position: fixed;
+	top: 0;
+	width: calc(100% - 20px);
+	padding: 10px;
+	background-color: #cdcfd5;
+}
+#results_sort .sort_ttl {
+	float: left;
+	margin: 0;
+	color: #404b70;
+}
+#results_sort select,
+#results_sort .btn_sort {
+	height: 30px;
+	border: 1px solid #a39f97;
+	background-color: #fff;
+	font-size: 0.85rem;
+	color: #333;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+#results_sort select,
+#results_sort .btn_sort
+#results_sort #season_list,
+#results_sort #area_list,
+#results_sort .btn_sort {
+	float: left;
+	margin-left: 10px;
+	cursor: pointer;
+}
+#results_sort .sort_all {
+	float: right;
+	margin: 0;
+}
+#results_sort .sort_all a {
+	display: block;
+	padding: 0 5px;
+	line-height: 30px;
+	height: 30px;
+	border: 1px solid #a39f97;
+	background-color: #fff;
+	font-size: 0.85rem;
+	color: #333;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+#results_sort .btn_sort:hover,
+#results_sort .sort_all a:hover,
+#results_sort .sort_all a:active {
+	background-color: #404b70;
+	color: #fff;
+}
+
+/* ========= Media Queries ========= */
+		@media screen and (max-width:600px) {
+#results_sort #sort_on {
+	cursor: pointer;
+}
+#results_sort form {
+	clear: both;
+}
+#results_sort #target {
+	display: none;
+}
+#results_sort select {
+	display: block;
+	width: 90%;
+	margin-top: 10px;
+	padding: 8px 0;
+}
+#results_sort .btn_sort {
+	clear: both;
+	display: block;
+	width: 90%;
+	margin-top: 10px;
+	padding: 8px 0;
+}
+		}
+
+
+/* ----------------------------------------------------------------------
+
+RESULTSコンテンツエリア
+
+---------------------------------------------------------------------- */
+#results_contents_all {
+	margin-top: 60px;
+	width: 100%;
+}
+
+
+/* ----------------------------------------------------------------------
+
+RESULTSカテゴリタブ
+
+---------------------------------------------------------------------- */
+#cat_tab {
+	clear: both;
+	border-bottom: 2px solid #cccccc;
+}
+#cat_tab li {
+	display: block;
+	float: left;
+	padding: 4px 8px;
+	cursor: pointer;
+	background: #e3e3e3;
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	margin: 0 2px 0;
+	font-size: 0.85em;
+}
+#cat_tab li.selected {
+	background: #ff0000;
+	color: #ffffff;
+}
+#cat_tab li a {
+	color: #666666;
+}
+.disnon {
+	display: none;
+}
+
+
+/* ----------------------------------------------------------------------
+
+RESULTS レースページ
+
+---------------------------------------------------------------------- */
+#results_contents_race h1 {
+	font-size: 1em;
+	padding: 4px;
+	margin: 0 0 10px;
+	font-weight: bold;
+}
+.ttl_category {
+	font-size: 1em;
+	font-weight: bold;
+	background-color: #e3e3e3;
+	padding: 4px;
+}
+.ttl_rankup {
+	width: auto;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 4px;
+}
+.ttl_rankup i {
+	color: #ff0000;
+}
+#results_contents_race dl {
+	clear: both;
+	font-size: 0.8em;
+	display: table;
+	padding: 6px 0;
+	margin: 0 0 10px;
+}
+#results_contents_race dl dt {
+	display: table-cell;
+	padding: 0;
+	margin: 0;
+}
+#results_contents_race dl dd{
+	display: table-cell;
+	padding: 0 2em 0 0;
+	margin: 0;
+}
+#results_contents_race h3 {
+	display: inline-block;
+	width: 160px;
+	font-size: 1em;
+	color: #555555;
+	font-weight: bold;
+	background-color: #dddddd;
+	padding: 4px;
+	border-radius: 0 4px 0 0;
+	-moz-border-radius: 0 4px 0 0;
+	-webkit-border-radius: 0 4px 0 0;
+}
+
+/* ----------------------------------------------------------------------
+
+RESULTS 選手ページ
+
+---------------------------------------------------------------------- */
+#results_contents_rider h1 {
+	font-size: 1.1em;
+	letter-spacing: 2px;
+	padding: 4px;
+	font-weight: bold;
+	margin: 0 0 10px;
+}
+.individual_list {
+	border-top: 1px solid #dddddd;
+	border-left: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+	margin: 0 0 20px;
+	background-color: #ffffff;
+}
+.individual_list dt {
+	display: block;
+	width: 90px;
+	float: left;
+	border-right: 1px solid #dddddd;
+	font-size: 0.9em;
+	padding: 4px;
+	margin-right: 8px;
+}
+.individual_list dd {
+	display: block;
+	padding: 4px;
+	margin: 0;
+	font-size: 0.9em;
+	border-bottom: 1px solid #dddddd;
+}
+ .individual_list a {
+	 display: block;
+ }
+
+.ttl_individual {
+	font-size: 1em;
+	font-weight: bold;
+	display: inline-block;
+	width: 160px;
+	color: #555555;
+	font-weight: bold;
+	background-color: #dddddd;
+	padding: 4px;
+	border-radius: 0 4px 0 0;
+	-moz-border-radius: 0 4px 0 0;
+	-webkit-border-radius: 0 4px 0 0;
+}
+#ajocc_former-category .ttl_individual {
+	font-size: 0.8em;
+}
+
+#series_ranking .individual_list dt {
+	width: 60%;
+}
+#ajocc_ranking .individual_list dt {
+	width: 60%;
+}
+
+.proviso {
+	font-size: 0.7em;
+	margin: 0 0 20px;
+}
+
+/* ----------------------------------------------------------------------
+
+RESULTS エリアページ
+
+---------------------------------------------------------------------- */
+#results_contents_area h1 {
+	font-size: 1em;
+	padding: 4px;
+	margin: 0 0 10px;
+	font-weight: bold;
+}
+
+/* ----------------------------------------------------------------------
+
+RESULTS テーブル：共通
+
+---------------------------------------------------------------------- */
+.result_list {
+	width: 100%;
+	height: 480px;
+	overflow: scroll;
+}
+.result_list_inr {
+	width: 100%;
+}
+table {
+	overflow: auto;
+	border-top:1px solid #e3e3e3;
+	border-left:1px solid #e3e3e3;
+	background-color: #ffffff;
+	margin-bottom: 20px;
+	line-height: 1.2;
+}
+table tbody tr {
+	-webkit-transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+}
+table tbody tr:nth-child(odd) {
+	background-color: #efefef;
+}
+table th {
+	font-weight: normal;
+	font-size: 0.8em;
+	color: #000000;
+	text-align: center;
+	background: #ffffff;
+	padding: 8px 0;
+	border-right:1px solid #e3e3e3;
+	border-bottom:1px solid #e3e3e3;
+}
+table td {
+	border-bottom:1px solid #e3e3e3;
+	border-right:1px solid #e3e3e3;
+	font-size: 0.85em;
+	padding: 4px;
+	text-align: left;
+	word-wrap: break-word;
+	width: auto;
+}
+table a {
+	display: block;
+}
+
+
+/* ========================================
+
+Media Queries
+
+======================================== */
+		@media screen and (min-width: 801px) {
+table tbody tr:hover {
+	background-color: #f7d7d7;
+}
+		}
+
+/* ----------------------------------------------------------------------
+
+RESULTS テーブル：それぞれ
+
+---------------------------------------------------------------------- */
+table td.resuts_date {
+	font-size: 0.75em;
+	white-space: nowrap;
+}
+table td.resuts_area {
+	white-space: nowrap;
+}
+
+/*昇格者*/
+table.table__rankup {
+	width: auto;
+	border-left: 0;
+}
+table.table__rankup th {
+	border-right: 0;
+	padding: 4px 8px;
+}
+table.table__rankup td {
+	border-right: 0;
+	padding: 4px 7px;
+	white-space: nowrap;
+}
+table.table__rankup td.cell__races-category,
+table.table__rankup td.cell__rankup-to {
+	text-align: center;
+}
+
+/*カテゴリ別リザルト*/
+table.table__result td {
+	font-size: 0.8em;
+}
+
+/*No.1*/
+table.table__result tr:nth-child(1) td {
+	background-color: #ff7f7f;
+}
+/*No.2*/
+table.table__result tr:nth-child(2) td {
+	background-color: #c9c9c9;
+}
+/*No.3*/
+table.table__result tr:nth-child(3) td {
+	background-color: #bda66d;
+}
+
+table.table__result tr:nth-child(1) td a,
+table.table__result tr:nth-child(2) td a,
+table.table__result tr:nth-child(3) td a {
+	font-weight: bold;
+}
+table.table__laptime td {
+	font-size: 0.8em;
+	white-space: nowrap;
+	width: auto;
+}
+
+table td.cell__rank {
+	text-align: center;
+	font-size: 0.75em;
+	white-space: nowrap;
+}
+
+#ajocc_category table .cell__category,
+#ajocc_former-category table .cell__category {
+	width: 20%;
+	background: #ffffff;
+}
+#ajocc_category table .cell__term,
+#ajocc_former-category table .cell__term {
+	width: 50%;
+	background: #ffffff;
+}
+#ajocc_category table .cell__other,
+#ajocc_former-category table .cell__other {
+	width: 30%;
+	background: #ffffff;
+}
+
+
+
+/* ========================================
+
+Media Queries
+
+======================================== */
+		@media screen and (min-width: 801px) {
+#results_contents {
+	padding: 10px;
+}
+#results_contents_all table,
+#results_contents_area table,
+#results_contents_race table.table__result,
+#results_contents_race table.table__laptime {
+	width: 100%;
+}
+table tr:hover {
+	background-color: #efefef;
+}
+		}
+
+		@media screen and (max-width: 800px) {
+#cat_tab {
+	border: 0;
+}
+#cat_tab li {
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin-bottom: 3px;
+}
+#results_contents_race {
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+	overflow: scroll;
+}
+.scroll_sp table {
+	width: auto;
+	min-width: 100%;
+	white-space: nowrap;
+}
+table .resuts_date {
+	width: 25%;
+}
+table .resuts_area {
+	width: 15%;
+}
+table .resuts_race {
+	width: auto;
+}
+table .resuts_place {
+	display: none;
+}
+table tr:nth-child(odd) {
+	background-color: #efefef;
+}
+#results_contents_race dl {
+	display: block;
+	font-size: 0.8em;
+	margin-bottom: 10px;
+}
+#results_contents_race dl dt {
+	display: block;
+	float: left;
+	width: auto;
+	padding: 4px;
+}
+#results_contents_race dl dd{
+	display: block;
+	padding: 4px;
+	border-bottom: 1px solid #666666;
+}
+
+.individual_list dt {
+	width: calc(100% - 8px) !important;
+	float: none;
+	border: 0;
+	margin-right: 0;
+	background-color: #efefef;
+}
+.individual_list dd {
+	display: block;
+	border-bottom: 1px solid #dddddd;
+}
+
+
+		}
+
+
+
+
+

@@ -37,6 +37,18 @@ class Meet_model extends CI_Model {
 	}
 	
 	/**
+	 * 大会グループの配列をかえす
+	 * @return array 大会グループの配列
+	 */
+	public function get_meet_groups()
+	{
+		$query = $this->db->select('*')
+				->get_where('meet_groups', ['deleted' => 0]);
+		
+		return $query->result_array();
+	}
+	
+	/**
 	 * 大会を取得する。deleted は含まない。
 	 * @param string $code 大会コード。
 	 * @return array 大会データ
