@@ -57,6 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['meet/(:any)'] = 'meet/view/$1';
 $route['meet'] = 'meet/index';
 
+$route['meet__/(:any)'] = 'meet/view__/$1';
 $route['meets/index__'] = 'meet/index__';
 $route['meets__'] = 'meet/index__';
 
