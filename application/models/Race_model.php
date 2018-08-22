@@ -36,7 +36,8 @@ class Race_model extends CI_Model {
 			$cdt['at_date >'] = '2017-03-31';
 		}
 		
-		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name, mg.name as meet_group_name'
+		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name'
+				. ', mg.name as meet_group_name, mg.code as meet_group_code'
 				. ', mt.code as meet_code, mt.start_frac_distance as meet_sfd, eg.start_frac_distance as eg_sfd'
 				. ', mt.lap_distance as meet_ld, eg.lap_distance as eg_ld')
 				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')

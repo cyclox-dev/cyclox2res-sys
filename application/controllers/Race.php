@@ -41,6 +41,9 @@ class Race extends XSYS_Controller {
 		$results = $this->result_model->get_results($ecat_id);
 		$data['rankuppers'] = $this->categoryracer_model->get_rankuppers_of_ecat($ecat_id);
 		
+		$data['meet_ecats'] = $this->race_model->get_race_of_meet($data['ecat']['meet_code']);
+		$data['meet_rank_ups'] = $this->categoryracer_model->get_rankuppers_of_meet($data['ecat']['meet_code']);
+		
 		// 残留ポイント表記があるかチェック
 		// 人数カウント
 		$entried = 0;
@@ -167,7 +170,157 @@ class Race extends XSYS_Controller {
 		$data['results'] = $results;
 		$data['ps_titles'] = $ps_titles;
 		
-		$this->_fmt_render('race/view', $data);
+		$data['ecat_id'] = $ecat_id;
+		
+		$this->_fmt_render('race/view', $data, ['results.js'], ['results_data.css'], 'リザルト');
+	}
+	
+	public function view__($ecat_id = NULL)
+	{
+		$ecat = $this->race_model->get_race_info($ecat_id);
+		
+		if (empty($ecat))
+		{
+			show_404();
+		}
+		
+		$data = array();
+		$data['ecat'] = $ecat;
+		
+		// カテゴリーと結びついていないレースカテゴリーの場合は ajocc pt を表示しない。
+		$cats = $this->category_model->get_categories_of_rcat($ecat['races_category_code']);
+		$data['with_ajoccpt'] = !empty($cats);
+		
+		$results = $this->result_model->get_results($ecat_id);
+		$data['rankuppers'] = $this->categoryracer_model->get_rankuppers_of_ecat($ecat_id);
+		
+		// 残留ポイント表記があるかチェック
+		// 人数カウント
+		$entried = 0;
+		$started = 0;
+		$fin = 0;
+		$has_holdpoints = FALSE;
+		foreach ($results as $r)
+		{
+			++$entried;
+			if ($r['status'] != RacerResultStatus::$DNS->val())
+			{
+				++$started;
+				if ($r['status'] == RacerResultStatus::$FIN->val())
+				{
+					++$fin;
+				}
+			}
+			
+			if (!empty($r['hps']))
+			{
+				$has_holdpoints = TRUE;
+			}
+			
+			if ($r['rank'] == 1)
+			{
+				$data['ecat']['race_lap'] = $r['lap'];
+				$top_milli = $r['goal_milli_sec'];
+				$top_lap = $r['lap'];
+			}
+		}
+		$data['entried'] = $entried;
+		$data['started'] = $started;
+		$data['fin'] = $fin;
+		$data['has_holdpoints'] = $has_holdpoints;
+		
+		// time/gap の設定
+		if (!empty($top_milli))
+		{
+			foreach ($results as &$r)
+			{
+				$r['time_gap'] = $this->_get_result_timegaps($r, $top_lap, $top_milli);
+			}
+		}
+		
+		// ラップタイムの設定
+		$lap_map = $this->result_model->get_laps_of_ecat($ecat_id);
+		
+		$lap_max = -1;
+		$lap_min = PHP_INT_MAX;
+		foreach (array_values($lap_map) as $laps)
+		{
+			foreach (array_keys($laps) as $x)
+			{
+				if ($x > $lap_max)
+				{
+					$lap_max = $x;
+				}
+				if ($x < $lap_min)
+				{
+					$lap_min = $x;
+				}
+			}
+		}
+		
+		$data['lap_max'] = $lap_max;
+		$data['lap_min'] = $lap_min;
+		
+		if ($lap_min <= $lap_max)
+		{
+			$data['has_laps'] = TRUE;
+		}
+		
+		foreach ($results as &$r)
+		{
+			$rrid = $r['rr_id'];
+			if (!empty($lap_map[$rrid]))
+			{
+				$r['lap_times'] = $lap_map[$rrid];
+			}
+		}
+		
+		// シリーズポイント取得状況について取得
+		$psrs_map = $this->pointseries_model->get_psrmap_of_ecat($ecat_id);
+		
+		$ps_titles = array();
+		foreach ($results as &$result)
+		{
+			$rid = $result['rr_id'];
+			if (empty($psrs_map[$rid])) continue;
+			
+			foreach ($psrs_map[$rid] as $psr)
+			{
+				$finds = FALSE;
+				$index = 0;
+				foreach ($ps_titles as $t)
+				{
+					if ($psr['point_series_id'] == $t['id'])
+					{
+						$finds = TRUE;
+						break;
+					}
+					++$index;
+				}
+				
+				if (!$finds)
+				{
+					$ps = $this->pointseries_model->get_series_info($psr['point_series_id']);
+					$ps_titles[$index] = array('id' => $psr['point_series_id'], 'name' => $ps['short_name']);
+				}
+				
+				if (empty($result['ps_points']))
+				{
+					$result['ps_points'] = array();
+				}
+				
+				$result['ps_points'][$index] = array(
+					'pt' => $psr['point'],
+					'bonus' => $psr['bonus']
+				);
+			}
+		}
+		
+		//var_dump(json_encode($results));
+		$data['results'] = $results;
+		$data['ps_titles'] = $ps_titles;
+		
+		$this->_fmt_render('race/__view', $data);
 	}
 	
 	/**
