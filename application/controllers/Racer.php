@@ -63,7 +63,51 @@ class Racer extends XSYS_Controller {
 		}
 		
 		$data['results'] = $results;
-		$this->_fmt_render('racer/view', $data);
+		$this->_fmt_render('racer/view', $data, ['results.js'], ['results_data.css'], '選手データ');
+	}
+	
+	public function view__($code = NULL)
+	{
+		$racer = $this->racer_model->get_racer($code);
+		
+		if (empty($racer))
+		{
+			show_404();
+		}
+		
+		$data = array('racer' => $racer);
+		
+		$data['rankings'] = $this->pointseries_model->get_racers_ranks($code);
+		$data['ajocc_rankings'] = $this->ajoccranking_model->get_racers_ranks($code);
+		$data['cats'] = $this->categoryracer_model->get_catbinds($code);
+		
+		$results = $this->result_model->get_result_of_racer($code);
+		
+		$rankup_to = array();
+		
+		if (!empty($data['cats']['on']))
+		{
+			$rankup_to = $this->_pull_rankup_tos($data['cats']['on']);
+		}
+		
+		if (!empty($data['cats']['old']))
+		{
+			$rankup_to += $this->_pull_rankup_tos($data['cats']['old']);
+		}
+		
+		if (!empty($rankup_to))
+		{
+			foreach ($results as &$r)
+			{
+				if (!empty($rankup_to[$r['rr_id']]))
+				{
+					$r['rank_up_to'] = $rankup_to[$r['rr_id']];
+				}
+			}
+		}
+		
+		$data['results'] = $results;
+		$this->_fmt_render('racer/__view', $data);
 	}
 	
 	/**

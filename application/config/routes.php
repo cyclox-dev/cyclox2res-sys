@@ -70,6 +70,8 @@ $route['race__/(:num)'] = 'race/view__/$1';
 $route['racers'] = 'racer';
 $route['racer/(:any)'] = 'racer/view/$1';
 
+$route['racer__/(:any)'] = 'racer/view__/$1';
+
 $route['point_series/(:any)'] = 'point_series/view/$1';
 $route['point_series'] = 'point_series';
 
