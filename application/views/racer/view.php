@@ -22,7 +22,7 @@
 		<dt>チーム</dt><dd><?= h($racer['team']) ?></dd>
 		<dt>性別</dt><dd><?= h($racer['gender_exp']->express()) ?></dd>
 		<dt>国籍</dt><dd><?= h($racer['nationality_code']) ?></dd>
-		<dt>JCF No.</dt><dd><?= h($racer['jcf_number']) ?></dd>
+		<dt>JCF No.</dt><dd><?= h($racer['jcf_number']) ?>&nbsp;</dd>
 	</dl>
 	
 	<div id="series_ranking">
