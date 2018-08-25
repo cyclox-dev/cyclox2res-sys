@@ -314,4 +314,38 @@ class Pointseries_model extends CI_Model {
 		
 		return $ret;
 	}
+	
+	/**
+	 * 同じポイントシリーズに属するポイントシリーズの情報をかえす
+	 * @param type $ps_group_id ポイントシリーズグループ ID
+	 * @param type $season_id シーズン ID。未指定の場合はすべて。
+	 * @return $array ポイントシリーズ情報。無効な指定の場合には空の配列をかえす。
+	 */
+	public function get_series_grouped($ps_group_id, $season_id = FALSE)
+	{
+		if (empty($ps_group_id)) return [];
+		
+		$cdt = array(
+			'ps.point_series_group_id' => $ps_group_id,
+			'ps.deleted' => 0,
+			'ps.publishes_on_ressys' => 1,
+		);
+		
+		if (!empty($season_id))
+		{
+			$this->db->join('seasons as ss', 'ss.id = ps.season_id', 'INNER');
+			$cdt['ps.season_id'] = $season_id;
+			
+			if (XSYS_const::NONVISIBLE_BEFORE1718)
+			{
+				$cdt['ss.start_date >'] = '2017-03-31';
+			}
+		}
+		
+		$query = $this->db->select('*, ps.short_name as ps_short_name, ps.id as ps_id')
+				->get_where('point_series as ps', $cdt);
+		$series_list = $query->result_array();
+		
+		return $series_list;
+	}
 }
