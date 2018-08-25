@@ -61,7 +61,7 @@ class Racer_model extends CI_Model {
 				->group_by('racer_code');
 		$cat_subquery = $this->db->get_compiled_select('category_racers', TRUE);
 		
-		// 途中でカウントを取りたいのでキャッシュ機能を使用する。
+		// 途中でカウントを取りたいのでキャッシュ機能を使用する。 TODO: catch Exceptoin?
 		// >>> CACHE
 		$this->db->start_cache();
 
