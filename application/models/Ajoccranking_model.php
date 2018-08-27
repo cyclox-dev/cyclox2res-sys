@@ -116,6 +116,24 @@ class Ajoccranking_model extends CI_Model {
 		$ret['title_row'] = $sets[0];
 		$ret['ranking'] = array_slice($sets, 1);
 		
+		// 同じシーズン、ローカル設定の他カテゴリーランキングを取得
+		$cdt = [
+			'season_id' => $season_id,
+			'ajoccpt_local_setting_id' => $lsid,
+		];
+		$query = $this->db->select('category_code')
+				->distinct()
+				->get_where('tmp_ajoccpt_racer_sets as sets', $cdt);
+		$cat_codes = $query->result_array();
+		log_message('debug', print_r($cat_codes, TRUE));
+		$codes = [];
+		foreach ($cat_codes as $code)
+		{
+			$codes[] = $code['category_code'];
+		}
+		$ret['cat_codes'] = $codes;
+		
+		// 地域設定取得
 		if (!empty($local_setting_id))
 		{
 			$query = $this->db->select('*')
