@@ -1,3 +1,4 @@
+		<?php if (false): ?>		
 		<div id="ptnr_ftr" class="clearfix">
 			<h2 class="text-center">OFFICIAL AJOCC PARTNERS</h2>
 			<ul class="clearfix center-block">
@@ -36,6 +37,7 @@
 				<p class="link-others pull-right"><a href="http://www.cyclocross.jp/info/">このサイトについて</a>｜<a href="http://www.cyclocross.jp/info/#contact">お問い合せ</a></p>
 			</div>
 		</footer>
+		<?php endif; ?>
 	</div>
 </body>
 </html>
