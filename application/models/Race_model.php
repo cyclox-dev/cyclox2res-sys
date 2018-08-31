@@ -124,9 +124,10 @@ class Race_model extends CI_Model {
 				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
 				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')
 				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER') // result があること。カウントに必要。
+				->join('races_categories as rc', 'rc.code = ec.races_category_code', 'INNER')
 				->group_by('entry_category_id')
+				->order_by('rc.display_rank')
 				->get_where('entry_groups as eg', $cdt);
-		
 		$entries = $query->result_array();
 		
 		// 優勝者を取得 MEMO: 上記の処理で同時に取得しようとすると rank=1 がいない場合に取得できなくなる。
@@ -159,7 +160,7 @@ class Race_model extends CI_Model {
 	}
 	
 	/**
-	 * 出走時間順に並び替える。時間表記は HH:mm に変更する。
+	 * 実際の出走時間を設定する。時間表記は HH:mm に変更する。
 	 * @param array $entries 
 	 * @return array 並び替えられた配列
 	 */
@@ -178,23 +179,6 @@ class Race_model extends CI_Model {
 				$e['prepared_start_clock'] = $this->_convert_start_clock($e['start_clock'], $e['start_delay_sec']);
 			}
 		}
-		
-		// 出走時間順に並び替え
-		uasort($entries, function($a, $b) {
-			if (empty($a['prepared_start_clock']))
-			{
-				return empty($b['prepared_start_clock']) ? 0 : -1;
-			}
-			if (empty($b['prepared_start_clock']))
-			{
-				return 1;
-			}
-			
-			$timea = DateTime::createFromFormat('H:i:s', $a['prepared_start_clock']);
-			$timeb = DateTime::createFromFormat('H:i:s', $b['prepared_start_clock']);
-			
-			return ($timea->format('G') * 60 + $timea->format('i')) - ($timeb->format('G') * 60 + $timeb->format('i'));
-		});
 		
 		// 表記を HH:mm に変更。
 		foreach ($entries as &$e)
