@@ -32,9 +32,9 @@ class Point_series extends XSYS_Controller {
 		$data['ps_id'] = $id;
 		
 		$ranking = $this->pointseries_model->get_ranking($id);
-		$data['ranking'] = $ranking['ranking'];
-		$data['series'] = $ranking['series'];
-		$data['title_row'] = $ranking['title_row'];
+		if (!empty($ranking['ranking'])) $data['ranking'] = $ranking['ranking'];
+		if (!empty($ranking['series'])) $data['series'] = $ranking['series'];
+		if (!empty($ranking['title_row'])) $data['title_row'] = $ranking['title_row'];
 		
 		//log_message('debug', print_r($data, TRUE));
 		
