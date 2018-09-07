@@ -23,7 +23,7 @@ class Ajoccranking_model extends CI_Model {
 	
 	/**
 	 * AJOCC ランキングを取得する
-	 * @param type $seasonIds シーズン ID の配列。FALSE 指定で現在シーズン。
+	 * @param type $seasonIds シーズン ID の配列。FALSE 指定ですべてのßsシーズン。
 	 */
 	public function get_rankings($seasonIds = FALSE)
 	{
