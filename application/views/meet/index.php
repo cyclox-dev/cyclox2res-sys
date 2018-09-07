@@ -6,8 +6,9 @@
 			<form name="form1" id="target">
 				<select name="select2" id="season_list">
 					<option value="">シーズン別</option>
-					<option value="9/">2018-19</option>
-					<option value="8/">2017-18</option>
+					<?php foreach($seasons as $ss): ?>
+					<option value="<?= h($ss['id']); ?>/"><?= h($ss['name']); ?></option>
+					<?php endforeach; ?>
 				</select>
 				<select name="select1" id="area_list">
 					<option value="">シリーズ別</option>

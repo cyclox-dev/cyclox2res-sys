@@ -13,6 +13,7 @@ class Meet extends XSYS_Controller {
 		$this->load->model('meet_model');
 		$this->load->model('race_model');
 		$this->load->model('categoryracer_model');
+		$this->load->model('season_model');
 	}
 	
 	public function index()
@@ -23,6 +24,7 @@ class Meet extends XSYS_Controller {
 		
 		$data['meets'] = $this->meet_model->get_meets($meet_group_code, FALSE, $cuts_futures);
 		$data['meet_groups'] = $this->meet_model->get_meet_groups();
+		$data['seasons'] = $this->season_model->get_seasons();
 		
 		//log_message('debug', print_r($data['meet_groups'], TRUE));
 		if (!empty($meet_group_code))
