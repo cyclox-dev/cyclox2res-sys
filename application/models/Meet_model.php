@@ -80,11 +80,12 @@ class Meet_model extends CI_Model {
 	/**
 	 * 大会を取得する。deleted は含まない。
 	 * @param string $code 大会グループコード。指定しない場合はすべての大会を取得する。
+	 * @param int $season_id シーズン ID。empty な値指定で全シーズン。
 	 * @param int $limit 取得件数上限値
 	 * @param bool $cuts_futures 未来に開催されるレースを含ませるか
 	 * @return array 大会データの配列。$code を指定しない場合は大会データの配列。
 	 */
-	public function get_meets($code = FALSE, $limit = FALSE, $cuts_futures = FALSE)
+	public function get_meets($code = FALSE, $season_id = FALSE, $limit = FALSE, $cuts_futures = FALSE)
 	{
 		$cdt = array(
 			'meets.deleted' => 0,
@@ -100,7 +101,14 @@ class Meet_model extends CI_Model {
 			$cdt['at_date >'] = '2017-03-31';
 		}
 		
-		$this->db->order_by('season_id', 'DESC');
+		if (empty($season_id))
+		{
+			$this->db->order_by('season_id', 'DESC');
+		}
+		else
+		{
+			$cdt['season_id'] = $season_id;
+		}
 		$this->db->order_by('at_date', 'DESC');
 		
 		if (!empty($code))

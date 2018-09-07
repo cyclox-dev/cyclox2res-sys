@@ -19,10 +19,11 @@ class Meet extends XSYS_Controller {
 	public function index()
 	{
 		$meet_group_code = $this->input->get('meet_group');
+		$season_id = $this->input->get('season');
 		
 		$cuts_futures = empty($meet_group_code);
 		
-		$data['meets'] = $this->meet_model->get_meets($meet_group_code, FALSE, $cuts_futures);
+		$data['meets'] = $this->meet_model->get_meets($meet_group_code, $season_id, FALSE, $cuts_futures);
 		$data['meet_groups'] = $this->meet_model->get_meet_groups();
 		$data['seasons'] = $this->season_model->get_seasons();
 		
@@ -41,6 +42,7 @@ class Meet extends XSYS_Controller {
 			}
 		}
 		
+		$data['selected_season_id'] = $season_id;
 		$this->_fmt_render('meet/index', $data, ['results.js'], ['results_data.css'], 'リザルト');
 	}
 	
@@ -48,7 +50,7 @@ class Meet extends XSYS_Controller {
 	{
 		$cuts_futures = empty($meet_group_code);
 		
-		$data['meets'] = $this->meet_model->get_meets($meet_group_code, FALSE, $cuts_futures);
+		$data['meets'] = $this->meet_model->get_meets($meet_group_code, FALSE, FALSE, $cuts_futures);
 		
 		if (!empty($meet_group_code))
 		{
