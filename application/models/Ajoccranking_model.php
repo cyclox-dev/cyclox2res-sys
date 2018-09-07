@@ -123,6 +123,10 @@ class Ajoccranking_model extends CI_Model {
 		];
 		$query = $this->db->select('category_code')
 				->distinct()
+				->join('categories as cat', 'cat.code = sets.category_code')
+				->join('category_groups as grp', 'grp.id = cat.category_group_id')
+				->order_by('grp.display_rank', 'ASC')
+				->order_by('cat.rank', 'ASC')
 				->get_where('tmp_ajoccpt_racer_sets as sets', $cdt);
 		$cat_codes = $query->result_array();
 		log_message('debug', print_r($cat_codes, TRUE));
