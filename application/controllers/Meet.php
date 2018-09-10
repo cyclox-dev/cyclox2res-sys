@@ -70,10 +70,9 @@ class Meet extends XSYS_Controller {
 			show_404();
 		}
 		
-		$data['ecats'] = $this->race_model->get_race_of_meet($code);
-		$data['rank_ups'] = $this->categoryracer_model->get_rankuppers_of_meet($code);
+		$ecat_id = $this->race_model->get_first_race_id($code);
 		
-		$this->_fmt_render('meet/view', $data, ['results.js'], ['results_data.css'], 'リザルト');
+		redirect('race/' . $ecat_id);
 	}
 	
 	public function view__($code = NULL)

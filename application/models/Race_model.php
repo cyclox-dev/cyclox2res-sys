@@ -99,6 +99,34 @@ class Race_model extends CI_Model {
 		return empty($ecat['ec_id']) ? null : $ecat['ec_id'];
 	}
 	
+	public function get_first_race_id($meet_code)
+	{
+		if (empty($meet_code))
+		{
+			return NULL;
+		}
+		
+		// レース情報取得
+		$cdt = array(
+			'meet_code' => $meet_code,
+			'eg.deleted' => 0,
+			'ec.deleted' => 0,
+			'er.deleted' => 0,
+			'rr.deleted' => 0,
+		);
+		$query = $this->db->select('ec.id as ec_id')
+				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
+				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')
+				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER') // result があること。カウントに必要。
+				->join('races_categories as rc', 'rc.code = ec.races_category_code', 'INNER')
+				->group_by('entry_category_id')
+				->order_by('rc.display_rank')
+				->get_where('entry_groups as eg', $cdt);
+		$entry = $query->row_array();
+		
+		return $entry['ec_id'];
+	}
+	
 	/**
 	 * 指定大会のレース情報をかえす。
 	 * @param type $meet_code
