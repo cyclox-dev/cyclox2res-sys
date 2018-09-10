@@ -5,6 +5,9 @@
 		
 		
 		<h2 class="ttl_rankup "><i class="fas fa-level-up-alt"></i> 昇格者</h2>
+		<?php if (empty($meet_rank_ups)): ?>
+		<p>（昇格者なし）</p>
+		<?php else: ?>
 		<table class="table__rankup">
 			<thead>
 				<tr>
@@ -25,6 +28,7 @@
 			<?php endforeach; ?>
 			</tdoby>
 		</table>
+		<?php endif; ?><!-- empty($meet_rank_ups) -->
 		
 		<ul id="cat_tab" class="clearfix">
 		<?php foreach ($meet_ecats as $e): ?>
@@ -39,7 +43,7 @@
 			<?php endif; ?>
 		<?php endforeach; ?>
 		</ul>
-		<h2 id="ec_name" class="ttl_category"><i class="fas fa-bicycle"></i> C1</h2>
+		<h2 id="ec_name" class="ttl_category"><i class="fas fa-bicycle"></i> <?= h($ecat['ec_name']) ?></h2>
 		<dl class="clearfix">
 			<dt>スタート時刻</dt><dd><?= h($ecat['prepared_start_clock']) ?></dd>
 			<dt>距離・周回数</dt>
