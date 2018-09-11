@@ -21,7 +21,7 @@
 
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/base.css'); ?>" media="all">
-<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/font-awesome.min.css" media="all">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/owl.carousel.css" media="all">
 <link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/this_year.css" media="all">
 <!--[if lt IE 9]>
