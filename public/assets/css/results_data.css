@@ -9,7 +9,7 @@ RESULT絞り込み
 
 ---------------------------------------------------------------------- */
 #results_sort {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	width: calc(100% - 20px);
 	padding: 10px;
@@ -285,6 +285,8 @@ RESULTS テーブル：共通
 }
 .result_list_inr {
 	width: 100%;
+    position: relative;
+    padding-top: 0.1px; /* for enable child margin-top */
 }
 table {
 	overflow: auto;

@@ -1,5 +1,5 @@
 <div class="result_list">
-	<div class="ranking_list_inr">
+	<div class="result_list_inr">
 		<div id="results_sort" class="clearfix">
 			<p class="sort_ttl" id="sort_on"><i class="fa fa-filter fa-2x fa-fw" aria-hidden="true"></i><span>絞込み</span></p>
 			<p class="sort_all"><a href="<?= site_url("/meet") ?>">全リザルト</a></p>
