@@ -1,18 +1,10 @@
 <div class="ranking_list">
 	<div class="ranking_list_inr">
 
-		<h1><?= h($series['ps_name']) ?></h1>
-		<?php /* 情報は表示しない（タイトルのみ）
-		  <dl class="dl-horizontal dl-horizontal_al">
-		  <dt></dt><dd><?= h($series['']) ?></dd>
-		  <dt></dt><dd><?= h($series['']) ?></dd>
-		  <dt></dt><dd><?= h($series['']) ?></dd>
-		  </dl>
-		  <div class="clearfix"></div>
-		 */ ?>
 		<?php if (empty($ranking)): ?>
 		<p>ランキングデータがありません。</p>
 		<?php else: ?>
+		<h1><?= h($series['ps_name']) ?></h1>
 		<?php if (!empty($series['published_at'])): ?>
 		<p><?= $series['published_at'] . '更新' ?></p>
 		<?php endif; ?>

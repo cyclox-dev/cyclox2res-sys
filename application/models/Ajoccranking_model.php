@@ -113,8 +113,12 @@ class Ajoccranking_model extends CI_Model {
 		$sets = $query->result_array();
 		
 		$ret = [];
-		$ret['title_row'] = $sets[0];
-		$ret['ranking'] = array_slice($sets, 1);
+		
+		if (!empty($sets))
+		{
+			$ret['title_row'] = $sets[0];
+			$ret['ranking'] = array_slice($sets, 1);
+		}
 		
 		// 同じシーズン、ローカル設定の他カテゴリーランキングを取得
 		$cdt = [
