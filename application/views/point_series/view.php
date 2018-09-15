@@ -33,7 +33,15 @@
 					<th>順位</th>
 					<th><?= h($title_row['name']) ?></th>
 					<th><?= h($title_row['team']) ?></th>
+					
 					<?php
+						$sumup_titles = $title_row['sumup_titles'];
+						$sumup_count = count($sumup_titles);
+						foreach ($sumup_titles as $t)
+						{
+							echo '<th>' . $t . '</th>';
+						}
+						
 						$titles = $title_row['pt_titles'];
 						$point_count = count($titles);
 						foreach ($titles as $t)
@@ -57,8 +65,7 @@
 							}
 							echo '</th>';
 						}
-					?>
-					<?php
+						
 						$sumup_titles = $title_row['sumup_titles'];
 						$sumup_count = count($sumup_titles);
 						foreach ($sumup_titles as $t)
@@ -75,6 +82,15 @@
 					<td><a href="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name']) ?></a></td>
 					<td><?= h($r['team']) ?></td>
 					<?php
+					$pts = json_decode($r['sumup_json'], TRUE);
+					for ($j = 0; $j < $sumup_count; $j++) {
+						echo '<td>';
+						if (isset($pts[$j])) {
+							echo $pts[$j];
+						}
+						echo '</td>';
+					}
+					
 					$pts = json_decode($r['point_json'], TRUE);
 					for ($j = 0; $j < $point_count; $j++) {
 						echo '<td>';
@@ -83,8 +99,7 @@
 						}
 						echo '</td>';
 					}
-					?>
-					<?php
+					
 					$pts = json_decode($r['sumup_json'], TRUE);
 					for ($j = 0; $j < $sumup_count; $j++) {
 						echo '<td>';
