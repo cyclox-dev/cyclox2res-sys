@@ -125,7 +125,7 @@ class Ajoccranking_model extends CI_Model {
 			'season_id' => $season_id,
 			'ajoccpt_local_setting_id' => $lsid,
 		];
-		$query = $this->db->select('category_code')
+		$query = $this->db->select('category_code, display_rank, cat.rank as cat_rank')
 				->distinct()
 				->join('categories as cat', 'cat.code = sets.category_code')
 				->join('category_groups as grp', 'grp.id = cat.category_group_id')
