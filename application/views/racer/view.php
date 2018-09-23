@@ -210,7 +210,11 @@
 					<td class="cell__holdpt">
 						<?php
 						$exp = '';
-						if (!empty($r['hps']))
+						if ($r['at_date'] >= '2018-04-01')
+						{
+							echo '---';
+						}
+						else if (!empty($r['hps']))
 						{
 							foreach ($r['hps'] as $hp)
 							{

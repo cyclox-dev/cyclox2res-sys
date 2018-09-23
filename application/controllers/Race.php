@@ -74,6 +74,12 @@ class Race extends XSYS_Controller {
 				$top_lap = $r['lap'];
 			}
 		}
+		
+		if ($ecat['at_date'] >= '2018-04-01')
+		{
+			$has_holdpoints = FALSE;
+		}
+		
 		$data['entried'] = $entried;
 		$data['started'] = $started;
 		$data['fin'] = $fin;

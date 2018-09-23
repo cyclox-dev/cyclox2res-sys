@@ -168,7 +168,6 @@ class Result_model extends CI_Model {
 		// 2017-18 までの残留ポイント
 		$cdt['er.deleted'] = 0;
 		$cdt['rr.deleted'] = 0;
-		$cdt['rr.created >'] = '2017-03-31'; // 簡易的に期間を制限
 		
 		$query = $this->db->select('hp.racer_result_id, hp.point, hp.category_code')
 				->join('racer_results as rr', 'hp.racer_result_id = rr.id', 'INNER')
