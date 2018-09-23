@@ -62,7 +62,9 @@ class Meet_model extends CI_Model {
 		
 		$cdt = array(
 			'mt.code' => $code,
-			'mt.deleted' => 0
+			'mt.deleted' => 0,
+			'mg.deleted' => 0,
+			'ss.deleted' => 0,
 		);
 		if (XSYS_const::NONVISIBLE_BEFORE1718)
 		{
@@ -89,6 +91,8 @@ class Meet_model extends CI_Model {
 	{
 		$cdt = array(
 			'meets.deleted' => 0,
+			'mg.deleted' => 0,
+			'ss.deleted' => 0,
 		);
 		
 		if ($cuts_futures)

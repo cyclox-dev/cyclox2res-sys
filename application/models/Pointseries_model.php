@@ -30,6 +30,7 @@ class Pointseries_model extends CI_Model {
 			'ec.deleted' => 0,
 			'er.deleted' => 0,
 			'rr.deleted' => 0,
+			'ps.deleted' => 0,
 			'ec.id' => $ecat_id,
 			'ps.is_active' => 1,
 			'ps.publishes_on_ressys' => 1,
@@ -92,6 +93,8 @@ class Pointseries_model extends CI_Model {
 		}
 		
 		$cdt = [
+			'ps.deleted' => 0,
+			'ss.deleted' => 0,
 			'racer_code' => $code,
 			'ps.is_active' => 1,
 			'ps.publishes_on_ressys' => 1,
@@ -148,6 +151,7 @@ class Pointseries_model extends CI_Model {
 		
 		$cdt = array(
 			'ps.deleted' => 0,
+			'ss.deleted'=> 0,
 			'season_id is not NULL',
 			'psrs.rank <=' => 3,
 			'psrs.rank >' => 0, // タイトル行除去
@@ -255,6 +259,7 @@ class Pointseries_model extends CI_Model {
 		$cdt = array(
 			'ps.id' => $id,
 			'ps.deleted' => 0,
+			'ss.deleted' => 0,
 			'ps.publishes_on_ressys' => 1,
 		);
 		
@@ -335,6 +340,7 @@ class Pointseries_model extends CI_Model {
 		{
 			$this->db->join('seasons as ss', 'ss.id = ps.season_id', 'INNER');
 			$cdt['ps.season_id'] = $season_id;
+			$cdt['ss.deleted'] = 0;
 			
 			if (XSYS_const::NONVISIBLE_BEFORE1718)
 			{

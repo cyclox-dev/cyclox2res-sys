@@ -29,6 +29,7 @@ class Race_model extends CI_Model {
 			'ec.deleted' => 0,
 			'eg.deleted' => 0,
 			'mt.deleted' => 0,
+			'mg.deleted' => 0,
 			'ec.id' => $ecat_id,
 		);
 		if (XSYS_const::NONVISIBLE_BEFORE1718)
@@ -160,7 +161,6 @@ class Race_model extends CI_Model {
 		
 		// 優勝者を取得 MEMO: 上記の処理で同時に取得しようとすると rank=1 がいない場合に取得できなくなる。
 		$cdt['rr.rank'] = 1;
-		$cdt['rr.deleted'] = 0;
 		$query = $this->db->select('ec.id as ec_id, racer_code, er.name_at_race, er.team_name')
 				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
 				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')

@@ -35,7 +35,9 @@ class Ajoccranking_model extends CI_Model {
 				->join('categories as cat', 'cat.code = sets.category_code', 'INNER')
 				->join('ajoccpt_local_settings as locals', 'locals.id = sets.ajoccpt_local_setting_id', 'LEFT')
 				->order_by('category_code', 'ASC')
-				->order_by('locals.id', 'ASC');
+				->order_by('locals.id', 'ASC')
+				->where('ss.deleted', 0)
+				->where('cat.deleted', 8);
 		if (XSYS_const::NONVISIBLE_BEFORE1718)
 		{
 			$this->db->where('ss.start_date >', '2017-04-01');
@@ -124,11 +126,13 @@ class Ajoccranking_model extends CI_Model {
 		$cdt = [
 			'season_id' => $season_id,
 			'ajoccpt_local_setting_id' => $lsid,
+			'cat.deleted' => 0,
+			'grp.deleted' => 0,
 		];
 		$query = $this->db->select('category_code, display_rank, cat.rank as cat_rank')
 				->distinct()
-				->join('categories as cat', 'cat.code = sets.category_code')
-				->join('category_groups as grp', 'grp.id = cat.category_group_id')
+				->join('categories as cat', 'cat.code = sets.category_code', 'INNER')
+				->join('category_groups as grp', 'grp.id = cat.category_group_id', 'INNER')
 				->order_by('grp.display_rank', 'ASC')
 				->order_by('cat.rank', 'ASC')
 				->get_where('tmp_ajoccpt_racer_sets as sets', $cdt);
@@ -151,7 +155,7 @@ class Ajoccranking_model extends CI_Model {
 		
 		// シーズン情報
 		$query = $this->db->select('*')
-				->get_where('seasons', ['id' => $season_id]);
+				->get_where('seasons', ['id' => $season_id, 'deleted' => 0]);
 		$ret['season'] = $query->row_array();
 		
 		// 昇格者情報
@@ -161,6 +165,7 @@ class Ajoccranking_model extends CI_Model {
 			'apply_date >=' => $ret['season']['start_date'],
 			'apply_date <=' => $ret['season']['end_date'],
 			'reason_id' => CategoryReason::$RESULT_UP->ID(),
+			'deleted' => 0,
 		];
 		$query = $this->db->select('racer_code')
 				->get_where('category_racers', $cdt);
@@ -185,6 +190,7 @@ class Ajoccranking_model extends CI_Model {
 	{
 		$cdt = [
 			'racer_code' => $racer_code,
+			'ss.deleted' => 0,
 		];
 		
 		$query = $this->db->select('*, als.id as als_id, als.name as als_name, ss.id as ss_id, ss.name as season_name')
