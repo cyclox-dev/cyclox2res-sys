@@ -1,7 +1,7 @@
 <div id="results_contents_race" class="result_list">
 	<div class="result_list_inr">
 
-		<h1 id='js__page_title'><?= h($ecat['meet_name']); ?>（<a href="<?= site_url('meet?meet_group=' . h($ecat['meet_group_code'])); ?>"><?= h($ecat['meet_group_name']) ?></a>）</h1>
+		<h1 id='js__page_title'><?= h($ecat['at_date']) . ' ' . h($ecat['meet_name']); ?>（<a href="<?= site_url('meet?meet_group=' . h($ecat['meet_group_code'])); ?>"><?= h($ecat['meet_group_name']) ?></a>）</h1>
 		
 		
 		<h2 class="ttl_rankup "><i class="fas fa-level-up-alt"></i> 昇格者</h2>
