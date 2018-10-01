@@ -20,7 +20,7 @@
 <link rel="start" href="https://www.cyclocross.jp/" title="Home">
 
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/base2018.css" media="all">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/owl.carousel.css" media="all">
 <link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/this_year.css" media="all">
@@ -37,8 +37,7 @@
 <!-- script -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://www.cyclocross.jp/js/owl.carousel.js"></script>
-<script type="text/javascript" src="<?= base_url('assets/js/jquery.tile.min.js'); ?>"></script>
-<script type="text/javascript" src="<?= base_url('assets/js/cmn.js'); ?>"></script>
+<script type="text/javascript" src="https://www.cyclocross.jp/js/cmn2018.js"></script>
 
 <?php if (isset($xsys_header_js_files)): ?>
 	<?php foreach ($xsys_header_js_files as $js): ?>
