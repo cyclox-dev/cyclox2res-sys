@@ -35,7 +35,7 @@ class Ajocc_ranking extends XSYS_Controller {
 		$data['local_setting_id'] = $local_setting_id;
 		$data['category_code'] = $category_code;
 		
-		$this->_fmt_render('ajocc_ranking/view', $data, ['results.js'], ['rankings_data.css'], 'ランキング');
+		$this->_fmt_render('ajocc_ranking/view', $data, ['https://www.cyclocross.jp/js/results.js'], ['https://www.cyclocross.jp/css/rankings_data.css'], 'ランキング');
 	}
 	
 	public function view__($season_id, $local_setting_id, $category_code)

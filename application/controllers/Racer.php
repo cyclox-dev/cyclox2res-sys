@@ -63,7 +63,7 @@ class Racer extends XSYS_Controller {
 		}
 		
 		$data['results'] = $results;
-		$this->_fmt_render('racer/view', $data, ['results.js'], ['results_data.css'], '選手データ');
+		$this->_fmt_render('racer/view', $data, ['https://www.cyclocross.jp/js/results.js'], ['results_data.css'], '選手データ');
 	}
 	
 	public function view__($code = NULL)

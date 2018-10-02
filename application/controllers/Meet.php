@@ -43,7 +43,7 @@ class Meet extends XSYS_Controller {
 		}
 		
 		$data['selected_season_id'] = $season_id;
-		$this->_fmt_render('meet/index', $data, ['results.js'], ['results_data.css'], 'リザルト');
+		$this->_fmt_render('meet/index', $data, ['https://www.cyclocross.jp/js/results.js'], ['results_data.css'], 'リザルト');
 	}
 	
 	public function index__($meet_group_code = null)

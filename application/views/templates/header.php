@@ -30,7 +30,7 @@
 
 <?php if (isset($xsys_header_css_files)): ?>
 	<?php foreach ($xsys_header_css_files as $css): ?>
-		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/' . $css); ?>" media="all">
+		<link rel="stylesheet" type="text/css" href="<?= $css ?>" media="all">
 	<?php endforeach; ?>
 <?php endif; ?>
 
@@ -41,7 +41,7 @@
 
 <?php if (isset($xsys_header_js_files)): ?>
 	<?php foreach ($xsys_header_js_files as $js): ?>
-		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/' . $js); ?>" media="all">
+		<link rel="stylesheet" type="text/javascript" href="<?= $js ?>" media="all">
 	<?php endforeach; ?>
 <?php endif; ?>
 

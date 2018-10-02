@@ -43,7 +43,7 @@ class Point_series extends XSYS_Controller {
 		
 		//log_message('debug', print_r($data['ps_grouped'], TRUE));
 		
-		$this->_fmt_render('point_series/view', $data, ['results.js'], ['rankings_data.css'], 'ランキング');
+		$this->_fmt_render('point_series/view', $data, ['https://www.cyclocross.jp/js/results.js'], ['https://www.cyclocross.jp/css/rankings_data.css'], 'ランキング');
 	}
 	
 	public function view__($id = NULL)
