@@ -17,6 +17,35 @@
 
 	<dl class="individual_list">
 		<dt>選手コード</dt><dd><?= h($racer['code']) ?>&nbsp;</dd>
+		<dt>カテゴリー</dt>
+		<dd>
+			<?php
+			$ctgs = [];
+			foreach ($cats['on'] as $oncat)
+			{
+				$catcode = $oncat['category_code'];
+				if (!in_array($catcode, $ctgs))
+				{
+					$ctgs[] = $catcode;
+				}
+			}
+			$cstr = "";
+			foreach ($ctgs as $c)
+			{
+				if (strlen($cstr) == 0)
+				{
+					$cstr = $c;
+				}
+				else
+				{
+					$cstr .= ', ' . $c;
+				}
+			}
+			
+			echo $cstr;
+			?>
+			&nbsp;
+		</dd>
 		<dt>フリガナ</dt><dd><?= h($racer['family_name_kana'] . ' ' . $racer['first_name_kana']) ?>&nbsp;</dd>
 		<dt>Name</dt><dd><?= h($racer['first_name_en'] . ' ' . $racer['family_name_en']) ?>&nbsp;</dd>
 		<dt>チーム</dt><dd><?= h($racer['team']) ?>&nbsp;</dd>
@@ -88,92 +117,6 @@
 		</dl>
 		<?php endif; ?>
 	</div>
-	
-	<div id="ajocc_category">
-		<?php if (!empty($cats['on'])): ?>
-		<h2 class="ttl_individual">カテゴリー所属</h2>
-		<table class="table table-striped categories">
-			<thead>
-				<tr>
-					<th class="cell__category">カテゴリー</th>
-					<th class="cell__term">所属期間</th>
-					<th class="cell__other">備考</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($cats['on'] as $oncat): ?>
-				<tr>
-					<td class="cell__category"><?= h($oncat['category_code']) ?></td>
-					<td class="cell__term"><?= h($oncat['apply_date'] . '〜' . $oncat['cancel_date']) ?></td>
-					<td class="cell__other">
-						<?php if ($oncat['is_by_rankup']): ?>
-						<a href="<?= site_url('meet/' . h($oncat['code'])) ?>">
-						<?= h($oncat['season_short_name']) . h($oncat['meet_name']) ?>
-						</a>で昇格
-						<?php endif; ?>
-					</td>
-				</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-		<?php endif; ?>
-	</div>
-	
-	<div id="ajocc_former-category"> <!-- TODO: class="future" -->
-	<?php if (!empty($cats['future'])): ?>
-	<h2 class="ttl_individual">将来所属予定のカテゴリー</h2>
-		<table class="table table-striped categories">
-			<thead>
-				<tr>
-					<th class="cell__category">カテゴリー</th>
-					<th class="cell__term">所属期間</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($cats['future'] as $fcut): ?>
-					<tr>
-						<td class="cell__category"><?= h($fcut['category_code']) ?></td>
-						<td class="cell__term"><?= h($fcut['apply_date'] . '〜' . $fcut['cancel_date']) ?></td>
-					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-	<?php endif; ?>
-	</div>
-	
-	<div id="ajocc_former-category"> <!-- TODO: class="future" -->
-		<?php if (!empty($cats['old'])): ?>
-		<h2 class="ttl_individual">過去に所属したカテゴリー</h2>
-		<table class="table table-striped categories">
-			<thead>
-				<tr>
-					<th class="cell__category">カテゴリー</th>
-					<th class="cell__term">所属期間</th>
-					<th class="cell__other">備考</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($cats['old'] as $oldcat): ?>
-					<tr>
-						<td class="cell__category"><?= h($oldcat['category_code']) ?></td>
-						<td class="cell__term"><?= h($oldcat['apply_date'] . '〜' . $oldcat['cancel_date']) ?></td>
-						<td class="cell__other">
-							<?php if ($oldcat['is_by_rankup']): ?>
-								<a href="<?= site_url('meet/' . h($oldcat['code'])) ?>">
-									<?= h($oldcat['season_short_name']) . h($oldcat['meet_name']) ?>
-								</a>で昇格
-							<?php endif; ?>
-						</td>
-					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-		<?php endif; ?>
-	</div>
-	
-	<p class="proviso">※15-16シーズン以降のカテゴリー所属データのみを表示しています。</p>
-	
-	
 
 	<h2 class="ttl_individual"><i class="fas fa-trophy"></i> リザルト</h2>
 	<?php if (empty($results)): ?>
