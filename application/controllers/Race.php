@@ -178,7 +178,7 @@ class Race extends XSYS_Controller {
 		
 		$data['ecat_id'] = $ecat_id;
 		
-		$this->_fmt_render('race/view', $data, ['https://www.cyclocross.jp/js/results.js'], ['results_data.css'], 'リザルト');
+		$this->_fmt_render('race/view', $data, ['https://www.cyclocross.jp/js/results.js'], ['https://www.cyclocross.jp/css/results_data.css'], 'リザルト');
 	}
 	
 	public function view__($ecat_id = NULL)
