@@ -70,7 +70,7 @@
 							<th>シリーズ</th>
 						<?php endif; ?>
 						<th>大会名</th>
-						<th>会場</th>
+						<th class="resuts_place">会場</th>
 					</tr>
 				</thead>
 				<tbody>

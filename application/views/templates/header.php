@@ -37,13 +37,12 @@
 <!-- script -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://www.cyclocross.jp/js/owl.carousel.js"></script>
-<script type="text/javascript" src="https://www.cyclocross.jp/js/cmn2018.js"></script>
-
 <?php if (isset($xsys_header_js_files)): ?>
 	<?php foreach ($xsys_header_js_files as $js): ?>
-		<link rel="stylesheet" type="text/javascript" href="<?= $js ?>" media="all">
+		<script type="text/javascript" src="<?= $js ?>"></script>
 	<?php endforeach; ?>
 <?php endif; ?>
+<script type="text/javascript" src="https://www.cyclocross.jp/js/cmn2018.js"></script>
 
 <!-- og -->
 <meta property="og:image" content="https://www.cyclocross.jp/img/cmn/ogp2.png">
@@ -90,7 +89,7 @@
 			<li class="calendar"><a href="https://www.cyclocross.jp/calendar/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-calendar_off.gif" alt="カレンダー" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-calendar.png" width="50" height="50" alt="カレンダー"><span class="txt">CALENDAR</span></div></a></li>
 			<li class="riders"><a href="https://www.cyclocross.jp/rider_search/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-riders_off.gif" alt="選手検索" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-riders.png" width="50" height="50" alt="選手検索"><span class="txt">RIDERS</span></div></a></li>
 			<li class="partners"><a href="https://www.cyclocross.jp/partners/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-partners_off.gif" alt="オフィシャルパートナー" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-partners.png" width="50" height="50" alt="オフィシャルパートナー"><span class="txt">PARTNERS</span></div></a></li>
-			<li class="sns"><span class="sns-youtube"><a href="https://www.youtube.com/channel/UCRN8-g9eqNBhmXhRF_EQ82g" class="out mo"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></span><span class="sns-tw"><a href="https://twitter.com/cyclocross_jp" class="out mo"><i class="fa fa-twitter" aria-hidden="true"></i></a></span><span class="sns-fb"><a href="https://www.facebook.com/cyclocross.jp" class="out mo"><i class="fa fa-facebook" aria-hidden="true"></i></a></span></li>
+			<li class="sns"><span class="sns-youtube"><a href="https://www.youtube.com/channel/UCRN8-g9eqNBhmXhRF_EQ82g" class="out mo"><i class="fab fa-youtube"></i></a></span><span class="sns-tw"><a href="https://twitter.com/cyclocross_jp" class="out mo"><i class="fab fa-twitter"></i></a></span><span class="sns-fb"><a href="https://www.facebook.com/cyclocross.jp" class="out mo"><i class="fab fa-facebook-f"></i></a></span></li>
 		</ul>
 	</div>
 </div>
