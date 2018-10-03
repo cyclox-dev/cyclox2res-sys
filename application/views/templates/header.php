@@ -67,7 +67,7 @@
 <!-- Header -->
 <div id="hdr">
 	<div class="hdr_inner clearfix">
-		<h1 class="logo"><a href="https://www.cyclocross.jp/"><img src="https://www.cyclocross.jp/img/cmn/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="sp_none"><img src="https://www.cyclocross.jp/img/sp/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="pc_none tb_none"></a></h1>
+		<div class="logo"><a href="https://www.cyclocross.jp/"><img src="https://www.cyclocross.jp/img/cmn/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="sp_none"><img src="https://www.cyclocross.jp/img/sp/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="pc_none tb_none"></a></div>
 		<span class="sp-menu" title="MENU OPEN" id="headerMenu"><img src="https://www.cyclocross.jp/img/sp/hdr-menu.png" alt="MENU"></span>
 		<div class="sp-rankings"><a href="#JcxRankingTop3"><img src="https://www.cyclocross.jp/img/sp/hdr-rankings.png" alt="ランキング"></a></div>
 		<ul class="navi" id="headerMenuMain">

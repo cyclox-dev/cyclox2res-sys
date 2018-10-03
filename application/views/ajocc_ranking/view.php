@@ -1,7 +1,7 @@
 <div class="ranking_list">
 	<div class="ranking_list_inr">
 
-		<h1><h2><?= h($season['name']) . 'AJOCC ランキング ' . h($category_code) ?></h2></h1>
+		<h1><?= h($season['name']) . 'AJOCC ランキング ' . h($category_code) ?></h1>
 		
 		<?php if (!empty($local_setting)): ?>
 		<h3><?= h($local_setting['name']) ?></h3>
