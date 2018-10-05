@@ -51,15 +51,17 @@
 <meta property="og:description" content="AJOCC 一般社団法人日本シクロクロス競技主催者協会オフィシャルサイト。日本国内のシクロクロス競技の普及発展、参加のための情報提供の場です。1995年11月に「Cyclocross in Japan」として大会情報の発信や日本からのオピニオンを海外に伝えるために始まり、以後AJOCC（日本シクロクロス競技主催者協会）として事業を継続。現在は全国各地にシクロクロス大会が広がりを見せています。気軽に参加できるシクロクロス大会の運営、競技レベルの向上、公平なルールと全国共通カテゴリー制度の実現のために活動しています。2016年8月より「一般社団法人日本シクロクロス競技主催者協会」として法人化し、発展的に継続していきます。">
 
 <!-- ga -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-55596444-1', 'auto');
-  ga('send', 'pageview');
+<?php if (ENVIRONMENT === 'production'): ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55596444-2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-55596444-2');
 </script>
+<?php endif; ?>
+
 </head>
 <body>
 
