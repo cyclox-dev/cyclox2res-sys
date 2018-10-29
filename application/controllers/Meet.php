@@ -72,6 +72,13 @@ class Meet extends XSYS_Controller {
 		
 		$ecat_id = $this->race_model->get_first_race_id($code);
 		
+		if (empty($ecat_id))
+		{
+			$this->_add_flash_error('指定の大会が見つからないか、リザルトがアップロードされていません。');
+			redirect('meet');
+			return;
+		}
+		
 		redirect('race/' . $ecat_id);
 	}
 	
