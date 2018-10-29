@@ -28,6 +28,7 @@
 <link rel="stylesheet" type="text/css" href="/css/base.css" media="all">
 <![endif]-->
 
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/ressys_util.css') ?>" media="all">
 <?php if (isset($xsys_header_css_files)): ?>
 	<?php foreach ($xsys_header_css_files as $css): ?>
 		<link rel="stylesheet" type="text/css" href="<?= $css ?>" media="all">
@@ -114,6 +115,21 @@ gtag('config', 'UA-55596444-2');
 <!-- /PARTNERS LOGO -->
 
 <div id="contents">
+	
+	
+	<div id="main">
+		<div id="flash_view">
+		<?php
+		if (isset($xsys_flash_error_list)) {
+			foreach ($xsys_flash_error_list as $e) {
+				echo '<div class="alert alert-danger" role="alert">' . $e . '</div>';
+			}
+		}
 
-
-<div id="main">
+		if (isset($xsys_flash_info_list)) {
+			foreach ($xsys_flash_info_list as $i) {
+				echo '<div class="alert alert-info" role="alert">' . $i . '</div>';
+			}
+		}
+		?>
+	</div>
