@@ -156,6 +156,7 @@ class Race_model extends CI_Model {
 				->join('races_categories as rc', 'rc.code = ec.races_category_code', 'INNER')
 				->group_by('entry_category_id')
 				->order_by('rc.display_rank')
+				->order_by('ec.name')
 				->get_where('entry_groups as eg', $cdt);
 		$entries = $query->result_array();
 		
