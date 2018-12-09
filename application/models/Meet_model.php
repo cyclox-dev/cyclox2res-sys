@@ -97,7 +97,7 @@ class Meet_model extends CI_Model {
 		
 		if ($cuts_futures)
 		{
-			$cdt['at_date <'] = date('Y-m-d');
+			$cdt['at_date <='] = date('Y-m-d');
 		}
 
 		if (XSYS_const::NONVISIBLE_BEFORE1718)
