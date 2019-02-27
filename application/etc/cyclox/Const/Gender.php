@@ -19,9 +19,9 @@ class Gender
 	
 	public static function init()
 	{
-		self::$MALE = new Gender(0, '男性', 'M', '男');
-		self::$FEMALE = new Gender(1, '女性', 'F', '女');
-		self::$UNASSIGNED = new Gender(-1, '未指定', 'X', '？');
+		self::$MALE = new Gender(0, '男性', 'M', '男', 'Male');
+		self::$FEMALE = new Gender(1, '女性', 'F', '女', 'Female');
+		self::$UNASSIGNED = new Gender(-1, '未指定', 'X', '？', 'Unassigned');
 		
 		self::$genders = array(
 			self::$MALE,
@@ -47,13 +47,15 @@ class Gender
 	private $express;
 	private $charExp;
 	private $charExpJp;
+	private $expressEn;
 	
-	private function __construct($v, $e, $c, $j)
+	private function __construct($v, $e, $c, $j, $ee)
 	{
 		$this->val = $v;
 		$this->express = $e;
 		$this->charExp = $c;
 		$this->charExpJp = $j;
+		$this->expressEn = $ee;
 	}
 	
 	/** @return int DB 値 */                                                                           
@@ -64,5 +66,7 @@ class Gender
     public function charExp() { return $this->charExp; }
     /** @return string アルファベット大文字1文字での表現 */                                            
     public function charExpJp() { return $this->charExpJp; }
+	/** @return string 文字列表現*/                                                                    
+    public function expressEn() { return $this->expressEn; }
 }
 Gender::init();
