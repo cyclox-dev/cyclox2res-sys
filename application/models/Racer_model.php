@@ -103,8 +103,8 @@ class Racer_model extends CI_Model {
 			$this->db->where("code IN ($subquery)");
 		}
 		
-		$query = $this->db->select('code, family_name, first_name, team, gender,'
-				. 'nationality_code, jcf_number, cats')
+		$query = $this->db->select('code, family_name, first_name, family_name_kana, first_name_kana, family_name_en, first_name_en, team, gender,'
+				. 'nationality_code, jcf_number, prefecture, cats')
 				->join("($cat_subquery) as cr", 'cr.racer_code = racers.code', 'LEFT')
 						// ref: https://stackoverflow.com/questions/4455958/mysql-group-concat-with-left-join
 						// 選手に対応する category 所属が無しでも大丈夫。

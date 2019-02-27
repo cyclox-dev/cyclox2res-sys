@@ -14,6 +14,7 @@
 class XSYS_Controller extends CI_Controller {
 
 	protected $twig;
+	protected $__KEY_BODY_ID= '__key_body_id'; // body 要素に与えるid名
 	
 	public function __construct()
 	{
@@ -26,7 +27,7 @@ class XSYS_Controller extends CI_Controller {
 	}
 
 	private function _startsWith($haystack, $needle)
-			{
+	{
 		return strpos($haystack, $needle) === 0;
 	}
 	/**

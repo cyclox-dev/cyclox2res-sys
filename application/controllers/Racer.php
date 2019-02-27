@@ -199,6 +199,7 @@ class Racer extends XSYS_Controller {
 		$data['cats'] = $this->basedata_model->get_categories();
 		
 		$data['rider_search_div'] = $this->parser->parse('racer/sub/rider_search', $data, TRUE);
-		$this->_fmt_render('racer/index', $data);
+		$data[$this->__KEY_BODY_ID] = 'rider_search';
+		$this->_fmt_render('racer/index', $data, [], ['https://www.cyclocross.jp/css/rider_search.css'], '選手データ');
 	}
 }
