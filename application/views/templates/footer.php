@@ -44,5 +44,5 @@
 </div>
 <!-- /Footer -->
 
-</div>
-<!-- /Container -->
+</body>
+</html>
