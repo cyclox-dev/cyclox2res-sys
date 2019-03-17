@@ -75,7 +75,12 @@
 						$pts = json_decode($r['sumup_json'], TRUE);
 						for ($j = 0; $j < $sumup_count; $j++) {
 							echo '<td>';
-							if (isset($pts[$j])) {
+							if (is_float($pts[$j]))
+							{
+								echo sprintf('%.2f', $pts[$j]);
+							}
+							else
+							{
 								echo $pts[$j];
 							}
 							echo '</td>';
@@ -89,12 +94,19 @@
 							}
 							echo '</td>';
 						}
-						
+
 						$pts = json_decode($r['sumup_json'], TRUE);
 						for ($j = 0; $j < $sumup_count; $j++) {
 							echo '<td>';
 							if (isset($pts[$j])) {
-								echo $pts[$j];
+								if (is_float($pts[$j]))
+								{
+									echo sprintf('%.2f', $pts[$j]);
+								}
+								else
+								{
+									echo $pts[$j];
+								}
 							}
 							echo '</td>';
 						}
