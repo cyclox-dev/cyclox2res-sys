@@ -90,7 +90,13 @@
 						for ($j = 0; $j < $point_count; $j++) {
 							echo '<td align="center">';
 							if (isset($pts[$j])) {
-								echo $pts[$j];
+								$ptstr = $pts[$j][0];
+								for ($k = 1; $k < count($pts[$j]); $k++)
+								{
+									$ptstr .= ',' . $pts[$j][$k];
+								}
+								
+								echo $ptstr;
 							}
 							echo '</td>';
 						}
