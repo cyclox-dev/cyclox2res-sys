@@ -20,10 +20,39 @@
 		<dt>カテゴリー</dt>
 		<dd>
 			<?php
+			require_once(APPPATH . 'etc/cyclox/Const/CategoryReason.php');
+			
+			$checks_rankdown = (date('n') > 3 && date('n') < 10); // 4月から9月まで表示
+			$ucats = ['C1', 'C2', 'C3', 'CL1', 'CM1', 'CM2'];
+			$dcats = ['C2', 'C3', 'C4', 'CL2', 'CM2', 'CM3'];
 			$ctgs = [];
 			foreach ($cats['on'] as $oncat)
 			{
 				$catcode = $oncat['category_code'];
+				
+				// シーズン残留or降格
+				if ($checks_rankdown)
+				{
+					$ts = strtotime($oncat['apply_date']);
+					
+					if (in_array($catcode, $dcats))
+					{
+						if (date('Y/m/d', $ts) == date('' . date('Y') . '/04/01')
+								&& $oncat['reason_id'] == CategoryReason::$SEASON_DOWN->ID())
+						{
+							$catcode .= '（' . (date('y') - 1) . '-' . date('y') . '降格）';
+						}
+					}
+					
+					if (in_array($catcode, $ucats))
+					{
+						if (date('Y/m/d', $ts) < date('' . date('Y') . '/04/01'))
+						{
+							$catcode .= '（' . (date('y') - 1) . '-' . date('y') . '残留）';
+						}
+					}
+				}
+				
 				if (!in_array($catcode, $ctgs))
 				{
 					$ctgs[] = $catcode;
