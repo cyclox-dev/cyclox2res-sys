@@ -90,13 +90,20 @@
 						for ($j = 0; $j < $point_count; $j++) {
 							echo '<td align="center">';
 							if (isset($pts[$j])) {
-								$ptstr = $pts[$j][0];
-								for ($k = 1; $k < count($pts[$j]); $k++)
-								{
-									$ptstr .= ',' . $pts[$j][$k];
+								if (is_array($pts[$j])) {
+									$ptstr = $pts[$j][0];
+									for ($k = 1; $k < count($pts[$j]); $k++)
+									{
+										$ptstr .= ',' . $pts[$j][$k];
+									}
+
+									echo $ptstr;
 								}
-								
-								echo $ptstr;
+								else
+								{
+									// 旧版データ形式への対応のため、残しておく。
+									echo $pts[$j];
+								}
 							}
 							echo '</td>';
 						}
