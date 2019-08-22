@@ -134,7 +134,8 @@ class Result_model extends CI_Model {
 		{
 			$r['rank_exp'] = Xsys_util::rank_express($r['rank'], $r['result_status'], $r['entry_status']);
 			
-			if (empty($r['ajocc_pt']))
+			// 18-19以前は ajocc point ゼロの場合に非表示
+			if (is_null($r['ajocc_pt']) || ($r['at_date'] < '2019-04-01' && empty($r['ajocc_pt'])))
 			{
 				$r['ajocc_pt_exp'] = '';
 			}

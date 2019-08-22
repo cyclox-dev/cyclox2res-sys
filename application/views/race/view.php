@@ -130,7 +130,8 @@
 							<?php if ($with_ajoccpt): ?>
 							<td class="cell__ajoccpt">
 							<?php
-							if (!empty($r['ajocc_pt'])) {
+							// 18-19以前は ajocc point ゼロの場合に非表示
+							if (!(is_null($r['ajocc_pt']) || ($ecat['at_date'] < '2019-04-01' && empty($r['ajocc_pt'])))) {
 								echo h($r['ajocc_pt']) . 'pt/' . h($r['as_category']);
 							}
 							?>
