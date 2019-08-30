@@ -25,7 +25,7 @@ class Ajoccranking_model extends CI_Model {
 	{
 		$this->db->select('sets.season_id, ajoccpt_local_setting_id, category_code'
 				. ', cat.short_name as cat_name, ss.name as season_name'
-				. ', locals.id as locals_id, locals.name as locals_name')
+				. ', locals.id as locals_id, locals.name as locals_name', 'start_date')
 				->distinct()
 				->join('seasons as ss', 'ss.id = sets.season_id', 'INNER')
 				->join('categories as cat', 'cat.code = sets.category_code', 'INNER')
