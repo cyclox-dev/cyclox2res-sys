@@ -127,6 +127,42 @@ class Pointseries_model extends CI_Model {
 	}
 	
 	/**
+	 * ポイントシリーズ一覧をかえす
+	 * @param array $option キー 'before_only' === true ならば以前のシーズンのみをかえす
+	 * @return array point series list
+	 */
+	public function get_ranking_list($option = array())
+	{
+		$cdt = array(
+			'ps.deleted' => 0,
+			'ps.is_active' => 1,
+			'ps.publishes_on_ressys' => 1,
+		);
+		
+		if (isset($option['before_only']))
+		{
+			$cdt['end_date <='] = $option['before_only'];
+		}
+		
+		if (XSYS_const::NONVISIBLE_BEFORE1718)
+		{
+			$cdt['start_date >='] = '2017-04-01';
+		}
+		
+		$query = $this->db->select('*, ps.name as ps_name, ps.id as ps_id, psg.name as psg_name, seasons.name as season_name')
+				->join('seasons', 'seasons.id = ps.season_id', 'INNER')
+				->join('point_series_groups as psg', 'psg.id = ps.point_series_group_id', 'LEFT')
+				->order_by('start_date DESC')
+				->order_by('point_series_group_id')
+				->order_by('priority_value')
+				->get_where('point_series as ps', $cdt);
+		
+		$ss = $query->result_array();
+		
+		return $this->_packByPsId($ss);
+	}
+	
+	/**
 	 * ポイントシリーズと3位までの情報をかえす
 	 * @return array ポイントシリーズ情報
 	 */

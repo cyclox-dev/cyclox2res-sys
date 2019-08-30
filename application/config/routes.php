@@ -73,6 +73,7 @@ $route['racer/(:any)'] = 'racer/view/$1';
 $route['racer__/(:any)'] = 'racer/view__/$1';
 
 $route['point_series/(:num)'] = 'point_series/view/$1';
+$route['point_series/index/(:any)'] = 'point_series/index/$1';
 $route['point_series'] = 'point_series';
 
 $route['point_series__/(:any)'] = 'point_series/view__/$1';
