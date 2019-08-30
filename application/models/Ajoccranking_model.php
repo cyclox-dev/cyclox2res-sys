@@ -21,11 +21,7 @@ class Ajoccranking_model extends CI_Model {
 		$this->load->database();
 	}
 	
-	/**
-	 * AJOCC ランキングを取得する
-	 * @param type $seasonIds シーズン ID の配列。FALSE 指定ですべてのßsシーズン。
-	 */
-	public function get_rankings($seasonIds = FALSE)
+	public function get_rankings($opt = FALSE)
 	{
 		$this->db->select('sets.season_id, ajoccpt_local_setting_id, category_code'
 				. ', cat.short_name as cat_name, ss.name as season_name'
@@ -33,32 +29,23 @@ class Ajoccranking_model extends CI_Model {
 				->distinct()
 				->join('seasons as ss', 'ss.id = sets.season_id', 'INNER')
 				->join('categories as cat', 'cat.code = sets.category_code', 'INNER')
+				->join('category_groups as cg', 'cg.id = cat.category_group_id', 'INNER')
 				->join('ajoccpt_local_settings as locals', 'locals.id = sets.ajoccpt_local_setting_id', 'LEFT')
-				->order_by('category_code', 'ASC')
+				->order_by('ss.start_date', 'DESC')
 				->order_by('locals.id', 'ASC')
+				->order_by('cg.display_rank', 'ASC')
+				->order_by('cat.rank', 'ASC')
 				->where('ss.deleted', 0)
-				->where('cat.deleted', 8);
+				->where('cat.deleted', 0);
+		
 		if (XSYS_const::NONVISIBLE_BEFORE1718)
 		{
 			$this->db->where('ss.start_date >', '2017-04-01');
 		}
 		
-		if ($seasonIds !== FALSE)
+		if (isset($opt['before_only']))
 		{
-			$this->db->group_start();
-			for ($i = 0; $i < count($seasonIds); $i++)
-			{
-				$sid = $seasonIds[$i];
-				if ($i == 0)
-				{
-					$this->db->where('ss.id', $sid);
-				}
-				else
-				{
-					$this->db->or_where('ss.id', $sid);
-				}
-			}
-			$this->db->group_end();
+			$this->db->where('end_date <=', $opt['before_only']);
 		}
 		$query = $this->db->get('tmp_ajoccpt_racer_sets as sets');
 		$tmpr = $query->result_array();

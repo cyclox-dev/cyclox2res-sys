@@ -21,9 +21,22 @@ class Ajocc_ranking extends XSYS_Controller {
 		$this->load->helper('date');
 	}
 	
-	public function index()
+	/**
+	 * 一覧を表示する
+	 * @param any $opt string'before' ならば昨シーズンのシリーズだけを表示する（表示の切替は8/1である。）
+	 */
+	public function index($opt = FALSE)
 	{
-		$data['rankings'] = $this->ajoccranking_model->get_rankings();
+		$arg = array();
+		if ($opt === 'before')
+		{
+			$y = date('Y');
+			if (date('n') < 4) --$y;
+			
+			$arg['before_only'] = '' . $y . '-08-01'; // BETAG: 8月には昨シーズンのを point_series/index/before に表示
+		}
+		
+		$data['rankings'] = $this->ajoccranking_model->get_rankings($arg);
 		
 		$this->_fmt_render('ajocc_ranking/index', $data);
 	}
