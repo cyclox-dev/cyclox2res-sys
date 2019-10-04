@@ -121,13 +121,14 @@ gtag('config', 'UA-55596444-2');
 			<li class="about"><a href="https://www.cyclocross.jp/about/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-about_off.gif" alt="AJOCCについて" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-about.png" width="50" height="50" alt="AJOCCについて"><span class="txt">ABOUT</span></div></a></li>
 			<li class="rankings"><img src="https://www.cyclocross.jp/img/cmn/navi-rankings_<?php echo is_curr_page(['point_series', 'ajocc_ranking']) ? 'on' : 'off' ?>.gif" alt="ランキング" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-rankings.png" width="50" height="50" alt="ランキング"><span class="txt">RANKINGS</span></div>
 				 <ul class="clearfix">
-					 <li><a href="<?= base_url('point_series/108'); ?>">JCX</a></li>
-					 <li><a href="<?= base_url('ajocc_ranking/9/0/C1'); ?>">AJOCC</a></li>
-					 <li><a href="<?= base_url('point_series/124'); ?>">東北</a></li>
-					 <li><a href="<?= base_url('ajocc_ranking/9/4/C1'); ?>">関東</a></li>
-					 <li><a href="<?= base_url('point_series/110'); ?>">信州</a></li>
-					 <li><a href="<?= base_url('ajocc_ranking/9/2/C1'); ?>">東海</a></li>
-					 <li><a href="<?= base_url('point_series/154'); ?>">関西</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/182">JCX</a></li>
+					<li><a href="https://data.cyclocross.jp/ajocc_ranking/10/0/C1">AJOCC</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/161">東北</a></li>
+					<li><a href="https://data.cyclocross.jp/ajocc_ranking/10/6/C1">関東</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/173">信州</a></li>
+					<li><a href="https://data.cyclocross.jp/ajocc_ranking/10/7/C1">東海</a></li>
+					<!--<li><a href="https://data.cyclocross.jp/point_series/154">関西</a></li>-->
+					<!-- 中国 -->
 					 <li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
 				 </ul>
 			 </li>
