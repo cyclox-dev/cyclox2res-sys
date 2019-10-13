@@ -1,3 +1,5 @@
+<?php require_once(APPPATH . 'etc/cyclox/Const/MeetStatus.php'); ?>
+
 <div class="result_list">
 	<div class="result_list_inr">
 		<div id="results_sort" class="clearfix">
@@ -79,10 +81,19 @@
 				
 					<tr>
 						<td class="resuts_date"><?= h($mt['at_date']); ?></td>
-						<?php if (empty($meet_group)): ?>
-							<td class="results_area"><a href="<?= site_url('meet?meet_group=' . h($mt['meet_group_code'])); ?>"><?= h($mt['mg_short_name']); ?></a></td>
-						<?php endif; ?>
-						<td class="resuts_race"><a href="<?= site_url('meet/' . h($mt['mt_code'])); ?>"><?= h($mt['mt_name']); ?></a></td>
+						<td class="results_area">
+							<?php if (empty($meet_group)): ?>
+							<a href="<?= site_url('meet?meet_group=' . h($mt['meet_group_code'])); ?>"><?= h($mt['mg_short_name']); ?></a>
+							<?php endif; ?>
+						</td>
+						<td class="resuts_race">
+							<a href="<?= site_url('meet/' . h($mt['mt_code'])); ?>">
+								<?= h($mt['mt_name']); ?>
+								<?php if ($mt['meet_status'] != MeetStatus::$NORMAL->ID()) {
+									echo '<span>（' . MeetStatus::statusAt($mt['meet_status'])->name() . '）</span>';
+								} ?>
+							</a>
+						</td>
 						<td class="resuts_place"><?= h($mt['location']); ?></td>
 					</tr>
 			<?php endfor; ?> <!-- $i<count($meets) -->

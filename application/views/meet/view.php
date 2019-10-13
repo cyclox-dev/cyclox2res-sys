@@ -1,7 +1,15 @@
+<?php require_once(APPPATH . 'etc/cyclox/Const/MeetStatus.php'); ?>
+
 <div id="results_contents_race" class="result_list">
 	<div class="result_list_inr">
 
 		<h1><?= h($meet['meet_name']); ?>（<a href="<?= site_url('meet?meet_group=' . h($meet['meet_group_code'])); ?>"><?= h($meet['mg_name']) ?></a>）</h1>
+		
+		<?php 
+		if ($meet['meet_status'] != MeetStatus::$NORMAL->ID()) {
+			echo '<p>※本大会は' . MeetStatus::statusAt($meet['meet_status']->doneMsg()) . '</p>';
+		}
+		?>
 		
 		<h2 class="ttl_rankup "><i class="fas fa-level-up-alt"></i> 昇格者</h2>
 		<table class="table__rankup">

@@ -148,7 +148,7 @@ class Race_model extends CI_Model {
 			'ec.deleted' => 0,
 		);
 		$query = $this->db->select('start_clock, start_delay_sec'
-				.', count(*), ec.name as ec_name, ec.id as ec_id')
+				.', count(*), ec.name as ec_name, ec.id as ec_id, holding_status as race_status')
 				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
 				->join('races_categories as rc', 'rc.code = ec.races_category_code', 'INNER')
 				->group_by('ec.id')

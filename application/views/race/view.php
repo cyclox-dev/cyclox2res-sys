@@ -1,7 +1,16 @@
+<?php require_once(APPPATH . 'etc/cyclox/Const/MeetStatus.php'); ?>
+<?php require_once(APPPATH . 'etc/cyclox/Const/RaceStatus.php'); ?>
+
 <div id="results_contents_race" class="result_list">
 	<div class="result_list_inr">
 
 		<h1 id='js__page_title'><?= h($ecat['at_date']) . ' ' . h($ecat['meet_name']); ?>（<a href="<?= site_url('meet?meet_group=' . h($ecat['meet_group_code'])); ?>"><?= h($ecat['meet_group_name']) ?></a>）</h1>
+		
+		<?php 
+			if ($ecat['meet_status'] != MeetStatus::$NORMAL->ID()) {
+				echo '<p>※本大会は' . MeetStatus::statusAt($ecat['meet_status'])->doneMsg() . '</p>';
+			}
+		?>
 		
 		
 		<h2 class="ttl_rankup "><i class="fas fa-level-up-alt"></i> 昇格者</h2>
@@ -32,18 +41,33 @@
 		
 		<ul id="cat_tab" class="clearfix">
 		<?php foreach ($meet_ecats as $e): ?>
+			<?php
+				$addstr = '';
+				if ($e['race_status'] != RaceStatus::$NORMAL->ID()) {
+					$addstr = '（' . RaceStatus::statusAt($e['race_status'])->name() . '）';
+				}
+			?>
 			<?php if ($e['ec_id'] == $ecat_id): ?>
-			<li class="selected"><span><?= h($e['ec_name']) ?></span></li>
+			<li class="selected"><span><?= h($e['ec_name']) . $addstr ?></span></li>
 			<?php else: ?>
 			<li>
 				<a href ="<?= site_url('race/' . h($e['ec_id'])) ?>">
-				<?= h($e['ec_name']) ?>
+				<?= h($e['ec_name']) . $addstr ?>
 				</a>
 			</li>
 			<?php endif; ?>
 		<?php endforeach; ?>
 		</ul>
 		<h2 id="ec_name" class="ttl_category"><i class="fas fa-bicycle"></i> <?= h($ecat['ec_name']) ?></h2>
+		
+		<?php 
+			if ($ecat['race_status'] != RaceStatus::$NORMAL->ID()) {
+				echo '<p>※本レースは' . RaceStatus::statusAt($ecat['race_status'])->doneMsg() . '</p>';
+			}
+		?>
+		
+		<?php if (!empty($results)): ?>
+
 		<dl class="clearfix">
 			<dt>スタート時刻</dt><dd><?= h($ecat['prepared_start_clock']) ?></dd>
 			<dt>距離・周回数</dt>
@@ -217,6 +241,8 @@
 						
 		<div><a type="button" name="aaa" value="aaa" id="download_lap_times" class="disabled">ラップタイムCSVダウンロード</a></div>
 
+		<?php endif; ?><!-- if (!empty($reuslts))) -->
+		
 		<script src="<?= base_url('assets/js/component/csv.js'); ?>"></script>
 		<script>
 		$('#download_lap_times').click(function() {

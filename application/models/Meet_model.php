@@ -72,7 +72,7 @@ class Meet_model extends CI_Model {
 		}
 		
 		$query = $this->db->select('*, mg.code as mg_code, mt.name as meet_name, mt.homepage as meet_hp'
-				. ', mg.name as mg_name, ss.name as ss_name')
+				. ', mg.name as mg_name, ss.name as ss_name, mt.holding_status as meet_status')
 				->join('meet_groups as mg', 'mt.meet_group_code = mg.code', 'INNER')
 				->join('seasons as ss', 'mt.season_id = ss.id', 'INNER')
 				->get_where('meets as mt', $cdt);
@@ -120,7 +120,7 @@ class Meet_model extends CI_Model {
 			$cdt['meet_group_code'] = $code;
 		}
 		
-		$this->db->select('*, meets.name as mt_name, meets.code as mt_code'
+		$this->db->select('*, meets.name as mt_name, meets.code as mt_code, meets.holding_status as meet_status'
 				. ', mg.name as mg_name, mg.short_name as mg_short_name, ss.name as season_name')
 				->join('meet_groups as mg', 'mg.code = meets.meet_group_code', 'INNER')
 				->join('seasons as ss', 'ss.id = meets.season_id', 'INNER');
