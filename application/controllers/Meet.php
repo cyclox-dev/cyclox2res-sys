@@ -74,7 +74,7 @@ class Meet extends XSYS_Controller {
 		
 		if (empty($ecat_id))
 		{
-			$this->_add_flash_error('指定の大会が見つからないか、リザルトがアップロードされていません。');
+			$this->_add_flash_error('指定した大会のリザルトデータがみつかりません。');
 			redirect('meet');
 			return;
 		}
