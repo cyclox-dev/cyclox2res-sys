@@ -40,7 +40,8 @@ class Race_model extends CI_Model {
 		$query = $this->db->select('*, ec.name as ec_name, mt.name as meet_name'
 				. ', mg.name as meet_group_name, mg.code as meet_group_code'
 				. ', mt.code as meet_code, mt.start_frac_distance as meet_sfd, eg.start_frac_distance as eg_sfd'
-				. ', mt.lap_distance as meet_ld, eg.lap_distance as eg_ld')
+				. ', mt.lap_distance as meet_ld, eg.lap_distance as eg_ld'
+				. ', mt.holding_status as meet_status, ec.holding_status as race_status')
 				->join('entry_groups as eg', 'eg.id = ec.entry_group_id', 'INNER')
 				->join('meets as mt', 'mt.code = eg.meet_code', 'INNER')
 				->join('meet_groups as mg', 'mg.code = mt.meet_group_code', 'INNER')
@@ -145,16 +146,12 @@ class Race_model extends CI_Model {
 			'meet_code' => $meet_code,
 			'eg.deleted' => 0,
 			'ec.deleted' => 0,
-			'er.deleted' => 0,
-			'rr.deleted' => 0,
 		);
 		$query = $this->db->select('start_clock, start_delay_sec'
 				.', count(*), ec.name as ec_name, ec.id as ec_id')
 				->join('entry_categories as ec', 'ec.entry_group_id = eg.id', 'INNER')
-				->join('entry_racers as er', 'er.entry_category_id = ec.id', 'INNER')
-				->join('racer_results as rr', 'rr.entry_racer_id = er.id', 'INNER') // result があること。カウントに必要。
 				->join('races_categories as rc', 'rc.code = ec.races_category_code', 'INNER')
-				->group_by('entry_category_id')
+				->group_by('ec.id')
 				->order_by('rc.display_rank')
 				->order_by('ec.name')
 				->get_where('entry_groups as eg', $cdt);
