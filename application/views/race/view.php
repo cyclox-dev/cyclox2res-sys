@@ -66,8 +66,9 @@
 			}
 		?>
 		
-		<?php if (!empty($results)): ?>
-
+		<?php if (empty($results)): ?>
+		<p>リザルトデータがありません。</p>
+		<?php else: ?>
 		<dl class="clearfix">
 			<dt>スタート時刻</dt><dd><?= h($ecat['prepared_start_clock']) ?></dd>
 			<dt>距離・周回数</dt>
@@ -241,7 +242,7 @@
 						
 		<div><a type="button" name="aaa" value="aaa" id="download_lap_times" class="disabled">ラップタイムCSVダウンロード</a></div>
 
-		<?php endif; ?><!-- if (!empty($reuslts))) -->
+		<?php endif; ?><!-- if (empty($reuslts))) -->
 		
 		<script src="<?= base_url('assets/js/component/csv.js'); ?>"></script>
 		<script>
