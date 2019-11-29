@@ -152,6 +152,7 @@ gtag('config', 'UA-55596444-2');
 		<li><a href="https://www.canyon.com/ja/specials/takeflite/?utm_campaign=InfliteCFSLX-JP-Aug-2017&utm_medium=display&utm_source=cyclocross.jp&utm_content=&utm_term=" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_canyon.svg" width="255" height="105" alt="Canyon"></a></li>
 		<li><a href="http://www.giant.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_giant.svg" width="255" height="105" alt="GIANT"></a></li>
 		<li><a href="https://www.sports-w.com/bike/northwave/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_northwave.svg" width="255" height="105" alt="Northwave"></a></li>
+		<li><a href="http://www.diatechproducts.com/muc-off/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_muc-off.jpg" width="255" height="105" alt="Muc-Off"></a></li>
 		<li><a href="http://www.trekbikes.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_trek.svg" width="255" height="105" alt="TREK"></a></li>
 		<li><a href="http://tsss.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tsss.jpg" width="255" height="105" alt="OnebyESU"></a></li>
 	</ul>
