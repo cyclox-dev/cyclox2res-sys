@@ -127,6 +127,7 @@ gtag('config', 'UA-55596444-2');
 					<li><a href="https://data.cyclocross.jp/ajocc_ranking/10/6/C1">関東</a></li>
 					<li><a href="https://data.cyclocross.jp/point_series/173">信州</a></li>
 					<li><a href="https://data.cyclocross.jp/ajocc_ranking/10/7/C1">東海</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/186">関西</a></li>
 					<!--<li><a href="https://data.cyclocross.jp/point_series/154">関西</a></li>-->
 					<!-- 中国 -->
 					 <li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
