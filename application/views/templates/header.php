@@ -149,7 +149,7 @@ gtag('config', 'UA-55596444-2');
 		<li><a href="http://www.rapha.cc/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_rapha.svg" width="255" height="105" alt="Rapha"></a></li>
 		<li><a href="http://www.champ-sys.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_championsystem.svg" width="255" height="105" alt="Champion System"></a></li>
 		<li><a href="http://www.irc-tire.com/ja/bc/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_irc.svg" width="255" height="105" alt="IRC TIRE"></a></li>
-		<li><a href="http://www.bs-supply.jp/sports-epa/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_nissui.jpg" width="255" height="105" alt="ニッスイ SPORTS EPA"></a></li>
+		<li><a href="https://www.bs-supply.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_nissui.jpg" width="255" height="105" alt="ニッスイ SPORTS EPA"></a></li>
 		<li><a href="https://www.canyon.com/ja/specials/takeflite/?utm_campaign=InfliteCFSLX-JP-Aug-2017&utm_medium=display&utm_source=cyclocross.jp&utm_content=&utm_term=" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_canyon.svg" width="255" height="105" alt="Canyon"></a></li>
 		<li><a href="http://www.giant.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_giant.svg" width="255" height="105" alt="GIANT"></a></li>
 		<li><a href="https://www.sports-w.com/bike/northwave/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_northwave.svg" width="255" height="105" alt="Northwave"></a></li>
