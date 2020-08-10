@@ -26,17 +26,18 @@
 <div id="ftr">
 	<p class="logo"><img src="https://www.cyclocross.jp/img/cmn/ftr-ajocc.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会"></p>
 	<ul class="navi">
-		<li class="home"><a href="https://www.cyclocross.jp/"><img src="https://www.cyclocross.jp/img/cmn/ftr-home.gif" alt="ホーム"><span class="txt">ホーム</span></a></li>
+		<li class="home"><a href="https://www.cyclocross.jp/"><img src="https://www.cyclocross.jp/img/cmn/ftr-home.gif" alt="トップページ"><span class="txt">トップページ</span></a></li>
 		<li class="news"><a href="https://www.cyclocross.jp/news/"><img src="https://www.cyclocross.jp/img/cmn/ftr-news.gif" alt="ニュース"><span class="txt">ニュース</span></a></li>
 		<li class="about"><a href="https://www.cyclocross.jp/about/"><img src="https://www.cyclocross.jp/img/cmn/ftr-about.gif" alt="概要"><span class="txt">概要</span></a></li>
-		<li class="rankings"><a href="https://www.cyclocross.jp/rankings/"><img src="https://www.cyclocross.jp/img/cmn/ftr-rankings.gif" alt="ランキング"><span class="txt">ランキング</span></a></li>
-		<li class="results"><a href="<?= base_url('meet'); ?>"><img src="https://www.cyclocross.jp/img/cmn/ftr-results.gif" alt="リザルト"><span class="txt">リザルト</span></a></li>
 		<li class="calendar"><a href="https://www.cyclocross.jp/calendar/"><img src="https://www.cyclocross.jp/img/cmn/ftr-calendar.gif" alt="カレンダー"><span class="txt">カレンダー</span></a></li>
+		<li class="results"><a href="https://data.cyclocross.jp/meet"><img src="https://www.cyclocross.jp/img/cmn/ftr-results.gif" alt="リザルト"><span class="txt">リザルト</span></a></li>
+		<li class="rankings"><a href="https://data.cyclocross.jp/ajocc_ranking/10/0/C1"><img src="https://www.cyclocross.jp/img/cmn/ftr-rankings.gif" alt="ランキング"><span class="txt">ランキング</span></a></li>
 		<li class="riders"><a href="https://www.cyclocross.jp/rider_search/"><img src="https://www.cyclocross.jp/img/cmn/ftr-riders.gif" alt="選手検索"><span class="txt">選手検索</span></a></li>
 	</ul>
-	<p class="link-org"><a href="http://www.cx-hokkaido.org/" class="out">北海道シクロクロス</a>｜<a href="http://www.tohoku-cx-project.com/" class="out">東北CX Project</a>｜<a href="http://www.utsunomiya-cyclocross.com/" class="out">宇都宮シクロクロス</a>｜<a href="https://www.facebook.com/maebashicx/" class="out">前橋シクロクロス</a>｜<a href="http://www.ibarakicx.com/" class="out">茨城シクロクロス</a><br>
-	<a href="http://starlightcross.com/" class="out">スターライト幕張</a>｜<a href="http://www.cyclocrosstokyo.com/" class="out">シクロクロス東京</a>｜<a href="http://www.496chiba.com/about.html" class="out">シクロクロス千葉</a>｜<a href="http://shonancyclocross.jp/index.html" class="out">湘南シクロクロス</a>｜<a href="http://www.shinshu-cyclocross.com/" class="out">シクロクロスミーティング</a>｜<a href="http://nobeyamacyclocross.cc/" class="out">野辺山シクロクロス</a><br>
-	<a href="https://cxtoyama.wixsite.com/cxtoyama" class="out">シクロクロス富山</a>｜<a href="http://gcf-fukyu.p2.weblife.me/cx/" class="out">東海シクロクロス</a>｜<a href="http://www.kyoto-cf.com/cross/" class="out">関西シクロクロス</a>｜<a href="http://tyugokucx.info/" class="out">中国シクロクロス</a>｜山口シクロクロスシリーズ｜<a href="http://cx-shikoku.hateblo.jp/" class="out">シクロクロス四国</a>
+	<p class="link-org">
+		<a href="http://www.cx-hokkaido.org/" class="out">北海道シクロクロス</a>｜<a href="http://www.tohoku-cx-project.com/" class="out">東北シクロクロス</a>｜<a href="https://cxtoyama.wixsite.com/cxtoyama" class="out">シクロクロス富山</a>｜<a href="http://www.shinshu-cyclocross.com/" class="out">シクロクロスミーティング</a>｜<a href="http://nobeyamacyclocross.cc/" class="out">野辺山シクロクロス</a><br />
+		<a href="http://www.utsunomiya-cyclocross.com/" class="out">宇都宮シクロクロス</a>｜<a href="https://maebashicx.com/" class="out">前橋シクロクロス</a>｜<a href="http://www.ibarakicx.com/" class="out">茨城シクロクロス</a>｜<a href="http://starlightcross.com/" class="out">幕張クロス</a>｜<a href="http://www.cyclocrosstokyo.com/" class="out">シクロクロス東京</a>｜<a href="https://www.inagicross.tokyo/" target="_blank">INAGI CROSS</a>｜<a href="http://www.496chiba.com/" class="out">シクロクロス千葉</a>｜<a href="http://shonancyclocross.jp/index.html" class="out">湘南シクロクロス</a><br />
+		<a href="http://gcf-fukyu.p2.weblife.me/cx/" class="out">東海シクロクロス</a>｜<a href="http://www.kyoto-cf.com/cross/" class="out">関西シクロクロス</a>｜<a href="http://tyugokucx.info/" class="out">中国シクロクロス</a>｜<a href="http://www.geocities.jp/yamaguchi98_cf/cyclo/2018-2019/index.html" class="out">山口シクロクロスシリーズ</a>｜<a href="http://cx-shikoku.hateblo.jp/" class="out">シクロクロス四国</a>｜<a href="https://www.kcxmtg.com/" class="out">九州シクロクロス</a>
 	</p>
 	<div class="ftr-bottom">
 		<p class="link-others"><a href="/info/">このサイトについて</a>｜<a href="/info/#contact">お問い合せ</a></p>
