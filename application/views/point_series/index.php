@@ -19,6 +19,31 @@
 				$season_id = $psg['season_id'];
 
 				$needs_grp_title = TRUE;
+				
+				// ajocc ranking 出力
+				if (isset($ajocc_rankings[$season_id]))
+				{
+					$season_r = $ajocc_rankings[$season_id];
+					echo "<div class='ajocc_ranking'>";
+					echo '<div>Ajocc ランキング</div>';
+					echo '<div>';
+					unset($season_r['__name__']);
+					foreach ($season_r as $set_id => $setting_r) {
+						if (!empty($setting_r['__name__']))
+						{
+							echo '<h4>' . h($setting_r['__name__']) . '</h4>';
+						}
+						unset($setting_r['__name__']); // 次の foreach で読ませない。
+						
+						foreach ($setting_r as $cat)
+						{
+							echo anchor('ajocc_ranking/' . $season_id . '/' . $set_id . '/' . h($cat['code']), h($cat['name']));
+						}
+					}
+					
+					echo '</div';
+					echo '</div>';
+				}
 			}
 		}
 		?>

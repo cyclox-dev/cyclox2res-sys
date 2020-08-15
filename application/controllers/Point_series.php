@@ -17,6 +17,7 @@ class Point_series extends XSYS_Controller {
 	{
 		parent::__construct();
 		$this->load->model('pointseries_model');
+		$this->load->model('ajoccranking_model');
 		
 		$this->load->helper('date');
 	}
@@ -36,9 +37,11 @@ class Point_series extends XSYS_Controller {
 			$arg['before_only'] = '' . $y . '-04-01';
 		}
 		
-		$rankings = $this->pointseries_model->get_ranking_list($arg);
+		$data = [];
+		$data['rankings'] = $this->pointseries_model->get_ranking_list($arg);
+		$data['ajocc_rankings'] = $this->ajoccranking_model->get_rankings($arg);
 		
-		$this->_fmt_render('point_series/index', array('rankings' => $rankings));
+		$this->_fmt_render('point_series/index', $data);
 	}
 	
 	public function view($id = NULL)
