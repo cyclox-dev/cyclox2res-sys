@@ -31,9 +31,9 @@ class Ajocc_ranking extends XSYS_Controller {
 		if ($opt === 'before')
 		{
 			$y = date('Y');
-			if (date('n') < 4) --$y;
+			if (date('n') < 8) --$y; // BETAG: 8月には昨シーズンのを point_series/index/before に表示
 			
-			$arg['before_only'] = '' . $y . '-08-01'; // BETAG: 8月には昨シーズンのを point_series/index/before に表示
+			$arg['before_only'] = '' . $y . '-04-01';
 		}
 		
 		$data['rankings'] = $this->ajoccranking_model->get_rankings($arg);
