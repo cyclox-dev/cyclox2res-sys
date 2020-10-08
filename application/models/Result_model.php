@@ -31,7 +31,7 @@ class Result_model extends CI_Model {
 			'ec.id' => $ecat_id,
 		);
 		
-		$query = $this->db->select('*, rr.id as rr_id')
+		$query = $this->db->select('*, rr.id as rr_id, rr.note as rr_note')
 				->join('entry_racers as er', 'rr.entry_racer_id = er.id', 'INNER')
 				->join('entry_categories as ec', 'er.entry_category_id = ec.id', 'INNER')
 				->order_by('order_index ASC')

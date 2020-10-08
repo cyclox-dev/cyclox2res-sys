@@ -180,6 +180,8 @@
 						if (!empty($rankuppers[$r['rr_id']])) {
 							$cr = $rankuppers[$r['rr_id']];
 							echo h($cr['category_code']) . 'へ昇格';
+						} else if (strpos($r['rr_note'], '__KEY_NOT_RANKUP_BY_AGE') !== false) {
+							echo h('年齢のため昇格なし');
 						}
 						?>
 						</td>
