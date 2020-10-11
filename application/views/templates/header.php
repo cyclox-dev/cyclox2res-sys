@@ -154,8 +154,8 @@ gtag('config', 'UA-55596444-2');
 		<li><a href="http://www.giant.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_giant.svg" width="255" height="105" alt="GIANT"></a></li>
 		<li><a href="https://www.sports-w.com/bike/northwave/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_northwave.svg" width="255" height="105" alt="Northwave"></a></li>
 		<li><a href="http://www.diatechproducts.com/muc-off/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_muc-off.jpg" width="255" height="105" alt="Muc-Off"></a></li>
-		<li><a href="http://www.trekbikes.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_trek.svg" width="255" height="105" alt="TREK"></a></li>
 		<li><a href="http://tsss.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tsss.jpg" width="255" height="105" alt="OnebyESU"></a></li>
+		<li><a href="http://www.trekbikes.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_trek.svg" width="255" height="105" alt="TREK"></a></li>
 	</ul>
 </div>
 <!-- /PARTNERS LOGO -->

@@ -16,8 +16,8 @@
 		<li><a href="http://www.giant.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_giant.svg" width="255" height="105" alt="GIANT"></a></li>
 		<li><a href="https://www.sports-w.com/bike/northwave/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_northwave.svg" width="255" height="105" alt="Northwave"></a></li>
 		<li><a href="http://www.diatechproducts.com/muc-off/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_muc-off.jpg" width="255" height="105" alt="Muc-Off"></a></li>
-		<li><a href="http://www.trekbikes.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_trek.svg" width="255" height="105" alt="TREK"></a></li>
 		<li><a href="http://tsss.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tsss.jpg" width="255" height="105" alt="OnebyESU"></a></li>
+		<li><a href="http://www.trekbikes.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_trek.svg" width="255" height="105" alt="TREK"></a></li>
 	</ul>
 </div>
 <!-- /PARTNERS -->
@@ -37,7 +37,7 @@
 	<p class="link-org">
 		<a href="http://www.cx-hokkaido.org/" class="out">北海道シクロクロス</a>｜<a href="http://www.tohoku-cx-project.com/" class="out">東北シクロクロス</a>｜<a href="https://cxtoyama.wixsite.com/cxtoyama" class="out">シクロクロス富山</a>｜<a href="http://www.shinshu-cyclocross.com/" class="out">シクロクロスミーティング</a>｜<a href="http://nobeyamacyclocross.cc/" class="out">野辺山シクロクロス</a><br />
 		<a href="http://www.utsunomiya-cyclocross.com/" class="out">宇都宮シクロクロス</a>｜<a href="https://maebashicx.com/" class="out">前橋シクロクロス</a>｜<a href="http://www.ibarakicx.com/" class="out">茨城シクロクロス</a>｜<a href="http://starlightcross.com/" class="out">幕張クロス</a>｜<a href="http://www.cyclocrosstokyo.com/" class="out">シクロクロス東京</a>｜<a href="https://www.inagicross.tokyo/" target="_blank">INAGI CROSS</a>｜<a href="http://www.496chiba.com/" class="out">シクロクロス千葉</a>｜<a href="http://shonancyclocross.jp/index.html" class="out">湘南シクロクロス</a><br />
-		<a href="http://gcf-fukyu.p2.weblife.me/cx/" class="out">東海シクロクロス</a>｜<a href="http://www.kyoto-cf.com/cross/" class="out">関西シクロクロス</a>｜<a href="http://tyugokucx.info/" class="out">中国シクロクロス</a>｜<a href="http://www.geocities.jp/yamaguchi98_cf/cyclo/2018-2019/index.html" class="out">山口シクロクロスシリーズ</a>｜<a href="http://cx-shikoku.hateblo.jp/" class="out">シクロクロス四国</a>｜<a href="https://www.kcxmtg.com/" class="out">九州シクロクロス</a>
+		<a href="http://gcf-fukyu.p2.weblife.me/cx/" class="out">東海シクロクロス</a>｜<a href="http://www.kyoto-cf.com/cross/" class="out">関西シクロクロス</a>｜<a href="http://tyugokucx.info/" class="out">中国シクロクロス</a>｜<a href="http://mmjcyclo.grupo.jp/" class="out">もみじシクロクロス</a>｜<a href="http://www.geocities.jp/yamaguchi98_cf/cyclo/2018-2019/index.html" class="out">山口シクロクロスシリーズ</a>｜<a href="http://cx-shikoku.hateblo.jp/" class="out">シクロクロス四国</a>｜<a href="https://www.kcxmtg.com/" class="out">九州シクロクロス</a>
 	</p>
 	<div class="ftr-bottom">
 		<p class="link-others"><a href="/info/">このサイトについて</a>｜<a href="/info/#contact">お問い合せ</a></p>
