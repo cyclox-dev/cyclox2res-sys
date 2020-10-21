@@ -182,6 +182,8 @@
 							echo h($cr['category_code']) . 'へ昇格';
 						} else if (strpos($r['rr_note'], '__KEY_NOT_RANKUP_BY_AGE') !== false) {
 							echo h('年齢のため昇格なし');
+						} else if (strpos($r['rr_note'], '__NEXT_RANKUP_CL_RACER_KEYWORD') !== false) {
+							echo h('CL1へ昇格可（任意）');
 						}
 						?>
 						</td>
