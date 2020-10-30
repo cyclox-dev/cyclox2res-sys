@@ -31,7 +31,7 @@
 		<li class="about"><a href="https://www.cyclocross.jp/about/"><img src="https://www.cyclocross.jp/img/cmn/ftr-about.gif" alt="概要"><span class="txt">概要</span></a></li>
 		<li class="calendar"><a href="https://www.cyclocross.jp/calendar/"><img src="https://www.cyclocross.jp/img/cmn/ftr-calendar.gif" alt="カレンダー"><span class="txt">カレンダー</span></a></li>
 		<li class="results"><a href="https://data.cyclocross.jp/meet"><img src="https://www.cyclocross.jp/img/cmn/ftr-results.gif" alt="リザルト"><span class="txt">リザルト</span></a></li>
-		<li class="rankings"><a href="https://data.cyclocross.jp/ajocc_ranking/10/0/C1"><img src="https://www.cyclocross.jp/img/cmn/ftr-rankings.gif" alt="ランキング"><span class="txt">ランキング</span></a></li>
+		<li class="rankings"><a href="https://data.cyclocross.jp/ajocc_ranking/11/0/C1"><img src="https://www.cyclocross.jp/img/cmn/ftr-rankings.gif" alt="ランキング"><span class="txt">ランキング</span></a></li>
 		<li class="riders"><a href="https://www.cyclocross.jp/rider_search/"><img src="https://www.cyclocross.jp/img/cmn/ftr-riders.gif" alt="選手検索"><span class="txt">選手検索</span></a></li>
 	</ul>
 	<p class="link-org">
