@@ -40,8 +40,9 @@ class Point_series extends XSYS_Controller {
 		$data = [];
 		$data['rankings'] = $this->pointseries_model->get_ranking_list($arg);
 		$data['ajocc_rankings'] = $this->ajoccranking_model->get_rankings($arg);
+		$data['is_before'] = ($opt === 'before');
 		
-		$this->_fmt_render('point_series/index', $data);
+		$this->_fmt_render('point_series/index', $data, [], ['https://www.cyclocross.jp/css/rankings_data.css'], 'ランキング');
 	}
 	
 	public function view($id = NULL)
