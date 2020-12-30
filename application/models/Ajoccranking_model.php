@@ -81,6 +81,27 @@ class Ajoccranking_model extends CI_Model {
 	}
 	
 	/**
+	 * 赤線を引くための残留順位を取得する。残留順位より低い順位の上に赤線がひかれることになる。
+	 * @param type $season_id
+	 * @param type $category_code
+	 * @return int 対象となる順位がない場合 0 をかえす。入力値が不正の場合 -1 をかえす。
+	 */
+	public function get_redline_rank($season_id, $category_code)
+	{
+		if (empty($season_id) || empty($category_code)) return -1;
+		
+		$query = $this->db
+				->where('season_id', $season_id)
+				->where('category_code', $category_code)
+				->get('red_lines');
+		$ret = $query->row_array();
+		
+		if (!isset($ret)) return 0;
+		
+		return $ret['end_rank'];
+	}
+	
+	/**
 	 * 指定の ajocc point ranking を取得する
 	 * @param type $season_id
 	 * @param type $local_setting_id
@@ -125,7 +146,7 @@ class Ajoccranking_model extends CI_Model {
 				->order_by('cat.rank', 'ASC')
 				->get_where('tmp_ajoccpt_racer_sets as sets', $cdt);
 		$cat_codes = $query->result_array();
-		log_message('debug', print_r($cat_codes, TRUE));
+		//log_message('debug', print_r($cat_codes, TRUE));
 		$codes = [];
 		foreach ($cat_codes as $code)
 		{

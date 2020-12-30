@@ -48,6 +48,9 @@ class Ajocc_ranking extends XSYS_Controller {
 		$data['local_setting_id'] = $local_setting_id;
 		$data['category_code'] = $category_code;
 		
+		$data['red_line_rank'] = $this->ajoccranking_model->get_redline_rank($season_id, $category_code);
+		//log_message('debug', print_r($data['red_line_rank'], true));
+		
 		$this->_fmt_render('ajocc_ranking/view', $data, ['https://www.cyclocross.jp/js/results.js'], ['https://www.cyclocross.jp/css/rankings_data.css'], 'ランキング');
 	}
 	

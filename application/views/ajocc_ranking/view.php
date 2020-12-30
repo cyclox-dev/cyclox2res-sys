@@ -1,3 +1,7 @@
+<?php
+	$redlined = FALSE;
+?>
+
 <div class="ranking_list">
 	<div class="ranking_list_inr">
 
@@ -59,8 +63,28 @@
 					</tr>
 				</thead>
 				<tbody class="ranking_data">
-					<?php foreach ($ranking as $r): ?>
-					<tr>
+					<?php 
+						for ($i = 0; $i < count($ranking); $i++): 
+					?>
+					<?php
+						$r = $ranking[$i];
+						
+						if (!$redlined)
+						{
+							$exec_red = FALSE;
+						
+							if ($red_line_rank > 0 && isset($ranking[$i + 1]))
+							{
+								if ($ranking[$i + 1]['rank'] > $red_line_rank)
+								{
+									$exec_red = TRUE;
+									$redlined = TRUE;
+								}
+							}
+
+							echo $exec_red ? '<tr class="red_line">' : '<tr>';
+						}
+					?>
 						<td><?= h($r['rank']) ?></td>
 						<td>
 							<a href="<?= site_url('racer/' . h($r['racer_code'])) ?>">
@@ -125,7 +149,7 @@
 						}
 						?>
 					</tr>
-					<?php endforeach; ?>
+					<?php endfor; ?>
 				</tbody>
 			</table>
 		<?php endif; ?>
