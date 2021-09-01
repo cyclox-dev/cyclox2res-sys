@@ -120,17 +120,16 @@ gtag('config', 'UA-55596444-2');
 			<li class="news"><a href="https://www.cyclocross.jp/news/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-news_off.gif" alt="ニュース" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-news.png" width="50" height="50" alt="ニュース"><span class="txt">NEWS</span></div></a></li>
 			<li class="about"><a href="https://www.cyclocross.jp/about/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-about_off.gif" alt="AJOCCについて" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-about.png" width="50" height="50" alt="AJOCCについて"><span class="txt">ABOUT</span></div></a></li>
 			<li class="rankings"><img src="https://www.cyclocross.jp/img/cmn/navi-rankings_<?php echo is_curr_page(['point_series', 'ajocc_ranking']) ? 'on' : 'off' ?>.gif" alt="ランキング" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-rankings.png" width="50" height="50" alt="ランキング"><span class="txt">RANKINGS</span></div>
-				 <ul class="clearfix">
-					<!-- <li><a href="https://data.cyclocross.jp/point_series/210">JCX</a></li> -->
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/11/0/C1">AJOCC</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/189">東北</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/11/11/C1">関東</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/200">信州</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/11/10/C1">東海</a></li>
-					<!--<li><a href="https://data.cyclocross.jp/point_series/154">関西</a></li>-->
-					<!-- 中国 -->
-					 <li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
-				 </ul>
+				<ul class="clearfix">
+                    <li><a href="https://data.cyclocross.jp/point_series/247">JCX</a></li>
+					<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/0/C1">AJOCC</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/226">東北</a></li>
+					<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/14/C1">関東</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/237">信州</a></li>
+					<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/12/C1">東海</a></li>
+					<!-- <li><a href="https://data.cyclocross.jp/point_series/186">関西</a></li> -->
+					<li><a href="/rankings/about-rankings.html">種類と解説</a></li>
+				</ul>
 			 </li>
 			<li class="results"><a href="<?= base_url('meet'); ?>" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-results_<?php echo is_curr_page(['meet', 'race']) ? 'on' : 'off' ?>.gif" alt="リザルト" class="sp_none<?php echo is_curr_page(['meet', 'race']) ? ' currentPage' : '' ?>"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-results.png" width="50" height="50" alt="リザルト"><span class="txt">RESULTS</span></div></a></li>
 			<li class="calendar"><a href="https://www.cyclocross.jp/calendar/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-calendar_off.gif" alt="カレンダー" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-calendar.png" width="50" height="50" alt="カレンダー"><span class="txt">CALENDAR</span></div></a></li>
