@@ -42,4 +42,10 @@ class Pages extends XSYS_Controller
 		$this->_fmt_render('pages/' . $page, $data);
 	}
 
+	public function maintenance()
+	{
+		$data['title'] = 'メンテナンス中です。';
+		
+		$this->_fmt_render('pages/maintenance', $data);
+	}
 }

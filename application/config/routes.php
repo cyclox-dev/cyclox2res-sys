@@ -50,6 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+// メンテナンスモードときにはこの行の1つ下の行で /* を有効にすること。//* ならメンテナンス解除となる。
+//*
+
+
 //$route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
@@ -89,3 +93,10 @@ $route['ajocc_ranking__/(:num)/(:num)/(:any)'] = 'ajocc_ranking/view__/$1/$2/$3'
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/home';
 
+/*/
+
+$route['default_controller'] = 'pages/maintenance';
+$route['(:any)'] = 'pages/maintenance';
+$route['404_override'] = 'pages/maintenance';
+
+//*/
