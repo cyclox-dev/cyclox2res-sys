@@ -39,7 +39,7 @@
 		<a href="http://gcf-fukyu.p2.weblife.me/cx/" class="out">東海シクロクロス</a>｜<a href="http://www.kyoto-cf.com/cross/" class="out">関西シクロクロス</a>｜<a href="http://tyugokucx.info/" class="out">中国シクロクロス</a>｜<a href="http://mmjcyclo.grupo.jp/" class="out">もみじシクロクロス</a>｜<a href="http://www.geocities.jp/yamaguchi98_cf/cyclo/2018-2019/index.html" class="out">山口シクロクロスシリーズ</a>｜<a href="http://cx-shikoku.hateblo.jp/" class="out">シクロクロス四国</a>｜<a href="https://www.kcxmtg.com/" class="out">九州シクロクロス</a>
 	</p>
 	<div class="ftr-bottom">
-		<p class="link-others"><a href="/info/">このサイトについて</a>｜<a href="/info/#contact">お問い合せ</a></p>
+		<p class="link-others"><a href="https://www.cyclocross.jp/info/">このサイトについて</a>｜<a href="https://www.cyclocross.jp/info/#contact">お問い合せ</a></p>
 		<p class="copyright">Copyright <span class="mark">&copy;</span> AJOCC. All rights reserved.</p>
 	</div>
 </div>
