@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:fb="https://ogp.me/ns/fb#">
 <head>
+	
+<!-- ga -->
+<?php if (ENVIRONMENT === 'production'): ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55596444-2"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-55596444-2');
+</script>
+<?php endif; ?>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="format-detection" content="telephone=no">
@@ -20,10 +33,10 @@
 <link rel="start" href="https://www.cyclocross.jp/" title="Home">
 
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/base2018.css" media="all">
+<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/base.css?<?php echo (new DateTime())->format('YmdHis'); ?>" media="all">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/owl.carousel.css" media="all">
-<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/this_year.css" media="all">
+<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/this_year?<?php echo (new DateTime())->format('YmdHis'); ?>.css" media="all">
 <!--[if lt IE 9]>
 <link rel="stylesheet" type="text/css" href="/css/base.css" media="all">
 <![endif]-->
@@ -36,8 +49,8 @@
 <?php endif; ?>
 
 <!-- script -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="https://www.cyclocross.jp/js/owl.carousel.js"></script>
+<script type="text/javascript" src="https://www.cyclocross.jp/js/mt.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <?php if (isset($xsys_header_js_files)): ?>
 	<?php foreach ($xsys_header_js_files as $js): ?>
 		<script type="text/javascript" src="<?= $js ?>"></script>
@@ -46,22 +59,12 @@
 <script type="text/javascript" src="https://www.cyclocross.jp/js/cmn2018.js"></script>
 
 <!-- og -->
+<meta property="fb:app_id" content="567024486718370">
+<meta property="og:type" content="sport">
 <meta property="og:image" content="https://www.cyclocross.jp/img/cmn/ogp2.png">
 <meta property="og:title" content="AJOCC 一般社団法人日本シクロクロス競技主催者協会">
 <meta property="og:url" content="https://www.cyclocross.jp/">
 <meta property="og:description" content="AJOCC 一般社団法人日本シクロクロス競技主催者協会オフィシャルサイト。日本国内のシクロクロス競技の普及発展、参加のための情報提供の場です。1995年11月に「Cyclocross in Japan」として大会情報の発信や日本からのオピニオンを海外に伝えるために始まり、以後AJOCC（日本シクロクロス競技主催者協会）として事業を継続。現在は全国各地にシクロクロス大会が広がりを見せています。気軽に参加できるシクロクロス大会の運営、競技レベルの向上、公平なルールと全国共通カテゴリー制度の実現のために活動しています。2016年8月より「一般社団法人日本シクロクロス競技主催者協会」として法人化し、発展的に継続していきます。">
-
-<!-- ga -->
-<?php if (ENVIRONMENT === 'production'): ?>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55596444-2"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-55596444-2');
-</script>
-<?php endif; ?>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </head>
@@ -112,29 +115,31 @@ gtag('config', 'UA-55596444-2');
 			}
 		?>
 		<?php is_curr_page(['meet', 'racers']); ?>
-		<div class="logo"><a href="https://www.cyclocross.jp/"><img src="https://www.cyclocross.jp/img/cmn/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="sp_none"><img src="https://www.cyclocross.jp/img/sp/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="pc_none tb_none"></a></div>
+		<h1 class="logo"><a href="https://www.cyclocross.jp/"><img src="https://www.cyclocross.jp/img/cmn/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="sp_none"><img src="https://www.cyclocross.jp/img/sp/hdr-logo.svg" alt="AJOCC 一般社団法人日本シクロクロス競技主催者協会" class="pc_none tb_none"></a></h1>
 		<span class="sp-menu" title="MENU OPEN" id="headerMenu"><img src="https://www.cyclocross.jp/img/sp/hdr-menu.png" alt="MENU"></span>
 		<div class="sp-rankings"><a href="#JcxRankingTop3"><img src="https://www.cyclocross.jp/img/sp/hdr-rankings.png" alt="ランキング"></a></div>
 		<ul class="navi" id="headerMenuMain">
-			<li class="home"><a href="https://www.cyclocross.jp/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-home_off.gif" alt="ホーム" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-home.png" width="50" height="50" alt="ホーム"><span class="txt">HOME</span></div></a></li>
-			<li class="news"><a href="https://www.cyclocross.jp/news/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-news_off.gif" alt="ニュース" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-news.png" width="50" height="50" alt="ニュース"><span class="txt">NEWS</span></div></a></li>
-			<li class="about"><a href="https://www.cyclocross.jp/about/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-about_off.gif" alt="AJOCCについて" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-about.png" width="50" height="50" alt="AJOCCについて"><span class="txt">ABOUT</span></div></a></li>
-			<li class="rankings"><img src="https://www.cyclocross.jp/img/cmn/navi-rankings_<?php echo is_curr_page(['point_series', 'ajocc_ranking']) ? 'on' : 'off' ?>.gif" alt="ランキング" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-rankings.png" width="50" height="50" alt="ランキング"><span class="txt">RANKINGS</span></div>
-				<ul class="clearfix">
-                    <li><a href="https://data.cyclocross.jp/point_series/247">JCX</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/0/C1">AJOCC</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/226">東北</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/14/C1">関東</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/237">信州</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/12/C1">東海</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/249">関西</a></li>
-					<li><a href="/rankings/about-rankings.html">種類と解説</a></li>
-				</ul>
+			<li class="home"><a href="https://www.cyclocross.jp/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-home.png" width="50" height="50" alt="ホーム"><span class="txt">HOME</span></a></li>
+			<li class="news"><a href="https://www.cyclocross.jp/news/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-news.png" width="50" height="50" alt="ニュース"><span class="txt">NEWS</span></a></li>
+			<li class="about"><a href="https://www.cyclocross.jp/about/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-about.png" width="50" height="50" alt="AJOCCについて"><span class="txt">ABOUT</span></a></li>
+			<li class="rankings"><img src="https://www.cyclocross.jp/img/sp/navi-rankings.png" width="50" height="50" alt="ランキング"><span class="txt">RANKINGS</span>
+				<div class="sub">
+					<ul>
+						<li><a href="https://data.cyclocross.jp/point_series/247">JCX</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/0/C1">AJOCC</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/226">東北</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/14/C1">関東</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/237">信州</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/12/12/C1">東海</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/249">関西</a></li>
+						<li><a href="/rankings/about-rankings.html">種類と解説</a></li>
+					</ul>
+				</div>
 			 </li>
-			<li class="results"><a href="<?= base_url('meet'); ?>" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-results_<?php echo is_curr_page(['meet', 'race']) ? 'on' : 'off' ?>.gif" alt="リザルト" class="sp_none<?php echo is_curr_page(['meet', 'race']) ? ' currentPage' : '' ?>"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-results.png" width="50" height="50" alt="リザルト"><span class="txt">RESULTS</span></div></a></li>
-			<li class="calendar"><a href="https://www.cyclocross.jp/calendar/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-calendar_off.gif" alt="カレンダー" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-calendar.png" width="50" height="50" alt="カレンダー"><span class="txt">CALENDAR</span></div></a></li>
-			<li class="riders"><a href="<?= base_url('racers'); ?>" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-riders_<?php echo is_curr_page(['racers', 'racer']) ? 'on' : 'off' ?>.gif" alt="選手検索" class="sp_none<?php echo is_curr_page(['racers', 'racer']) ? ', currentPage' : '' ?>"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-riders.png" width="50" height="50" alt="選手検索"><span class="txt">RIDERS</span></div></a></li>
-			<li class="partners"><a href="https://www.cyclocross.jp/partners/" class="mo"><img src="https://www.cyclocross.jp/img/cmn/navi-partners_off.gif" alt="オフィシャルパートナー" class="sp_none"><div class="nav_sp"><img src="https://www.cyclocross.jp/img/sp/navi-partners.png" width="50" height="50" alt="オフィシャルパートナー"><span class="txt">PARTNERS</span></div></a></li>
+			<li class="results"><a href="<?= base_url('meet'); ?>" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-results.png" width="50" height="50" alt="リザルト"><span class="txt">RESULTS</span></a></li>
+			<li class="calendar"><a href="https://www.cyclocross.jp/calendar/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-calendar.png" width="50" height="50" alt="カレンダー"><span class="txt">CALENDAR</span></a></li>
+			<li class="riders"><a href="<?= base_url('racers'); ?>" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-riders.png" width="50" height="50" alt="選手検索"><span class="txt">RIDERS</span></a></li>
+			<li class="partners"><a href="https://www.cyclocross.jp/partners/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-partners.png" width="50" height="50" alt="オフィシャルパートナー"><span class="txt">PARTNERS</span></a></li>
 			<li class="sns"><span class="sns-ig"><a href="https://www.instagram.com/cyclocross.jp/" class="out mo"><i class="fab fa-instagram"></i></a></span><span class="sns-youtube"><a href="https://www.youtube.com/channel/UCRN8-g9eqNBhmXhRF_EQ82g" class="out mo"><i class="fab fa-youtube"></i></a></span><span class="sns-tw"><a href="https://twitter.com/cyclocross_jp" class="out mo"><i class="fab fa-twitter"></i></a></span><span class="sns-fb"><a href="https://www.facebook.com/cyclocross.jp" class="out mo"><i class="fab fa-facebook-f"></i></a></span></li>
 		</ul>
 	</div>
