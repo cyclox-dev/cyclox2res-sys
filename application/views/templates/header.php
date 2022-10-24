@@ -124,12 +124,13 @@
 			<li class="rankings<?php echo is_curr_page(['point_series', 'ajocc_ranking']) ? ' menu_here' : '' ?>"><img src="https://www.cyclocross.jp/img/sp/navi-rankings.png" width="50" height="50" alt="ランキング"><span class="txt">RANKINGS</span>
 			<div class="sub">
 				<ul>
-					<li><a href="https://data.cyclocross.jp/point_series/270">JCX</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/269">JCX</a></li>
 					<li><a href="https://data.cyclocross.jp/ajocc_ranking/13/0/C1">AJOCC</a></li>
 					<li><a href="https://data.cyclocross.jp/point_series/255">東北</a></li>
 					<li><a href="https://data.cyclocross.jp/ajocc_ranking/13/16/C1">関東</a></li>
 					<li><a href="https://data.cyclocross.jp/point_series/267">信州</a></li>
 					<li><a href="https://data.cyclocross.jp/ajocc_ranking/13/15/C1">東海</a></li>
+					<li><a href="https://data.cyclocross.jp/point_series/287">関西</a></li>
 					<li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
 				</ul>
 			</div>
