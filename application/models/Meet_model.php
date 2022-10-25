@@ -90,6 +90,7 @@ class Meet_model extends CI_Model {
 	public function get_meets($code = FALSE, $season_id = FALSE, $limit = FALSE, $cuts_futures = FALSE)
 	{
 		$cdt = array(
+			'meets.publishes_on_ressys' => 1,
 			'meets.deleted' => 0,
 			'mg.deleted' => 0,
 			'ss.deleted' => 0,
