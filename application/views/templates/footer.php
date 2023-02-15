@@ -7,7 +7,7 @@
 <!-- PARTNERS -->
 <div id="ptnr_ftr" class="clear-fix">
 	<h2 class="ptnr-title">OFFICIAL AJOCC PARTNERS</h2>
-	<ul class="clear-fix">
+	<ul>
 		<li><a href="https://www.rapha.cc/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_rapha.svg" width="255" height="105" alt="Rapha"></a></li>
 		<li><a href="https://champ-sys.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_championsystem.svg" width="255" height="105" alt="Champion System"></a></li>
 		<li><a href="https://ircbike.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_irc.svg" width="255" height="105" alt="IRC TIRE"></a></li>
