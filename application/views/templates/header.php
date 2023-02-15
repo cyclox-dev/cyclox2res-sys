@@ -148,7 +148,7 @@
 
 <!-- PARTNERS LOGO -->
 <div id="ptnr_logo_list01">
-	<ul class="clearfix">
+	<ul>
 		<li><a href="https://www.rapha.cc/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_rapha.svg" width="255" height="105" alt="Rapha"></a></li>
 		<li><a href="https://champ-sys.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_championsystem.svg" width="255" height="105" alt="Champion System"></a></li>
 		<li><a href="https://ircbike.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_irc.svg" width="255" height="105" alt="IRC TIRE"></a></li>
