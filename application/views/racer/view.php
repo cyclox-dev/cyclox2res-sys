@@ -51,6 +51,15 @@
 							$catcode .= '（' . (date('y') - 1) . '-' . date('y') . '残留）';
 						}
 					}
+					
+					if (in_array($catcode, ['C1', 'C2', 'C3']))
+					{
+						if (date('Y/m/d', $ts) == date('' . date('Y') . '/04/01')
+								&& $oncat['reason_id'] == CategoryReason::$SEASON_UP->ID())
+						{
+							$catcode .= '（' . (date('y') - 1) . '-' . date('y') . '昇格）';
+						}
+					}
 				}
 				
 				if (!in_array($catcode, $ctgs))
