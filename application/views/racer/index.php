@@ -1,4 +1,5 @@
 <?php require_once(APPPATH . 'etc/cyclox/Const/Gender.php'); ?>
+<?php require_once(APPPATH . 'etc/cyclox/Util/AjoccCatConverter.php'); ?>
 
 <h1 class="category-ttl bg_this_year_color">RIDERS</h1>
 
@@ -34,7 +35,16 @@
 						<?php foreach ($racers as $r): ?>
 						<tr class="tr01">
 							<td class="ajocc_code"><?= anchor('racer/' . h($r['code']), h($r['code'])) ?></td>
-							<td colspan="2" class="ajocc_category"><?= h($r['cats']) ?></td>
+							<td colspan="2" class="ajocc_category">
+								<?php
+								$cats = explode(',', $r['cats']);
+								$new_cats = [];
+								foreach ($cats as $c) {
+									$new_cats[] = AjoccCatConverter::convert($c);
+								}
+								echo h(implode(',', $new_cats));
+								?>
+							</td>
 							<td class="rider_jcf_code"><?= empty($r['jcf_number']) ? '' : h($r['jcf_number']) ?></td>
 							<td class="rider_team"><?= empty($r['team']) ? '' : h($r['team']) ?></td>
 						</tr>

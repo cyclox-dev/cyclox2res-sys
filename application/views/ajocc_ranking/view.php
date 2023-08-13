@@ -1,11 +1,16 @@
 <?php
 	$redlined = FALSE;
 ?>
+<?php require_once(APPPATH . 'etc/cyclox/Util/AjoccCatConverter.php'); ?>
 
 <div class="ranking_list">
 	<div class="ranking_list_inr">
 
-		<h1><?= h($season['name']) . 'AJOCC ランキング ' . h($category_code) ?></h1>
+		<?php
+			$tail = substr($season['name'], 2, 2);
+			$cat_date = '20' . $tail . '-04-01';
+		?>
+		<h1><?= h($season['name']) . 'AJOCC ランキング ' . h(AjoccCatConverter::convert($category_code, $cat_date)) ?></h1>
 		
 		<?php if (!empty($local_setting)): ?>
 		<h3><?= h($local_setting['name']) ?></h3>
@@ -18,9 +23,9 @@
 		<ul id="cat_tab" class="clearfix">
 			<?php foreach ($cat_codes as $cat_code): ?>
 			<?php if ($cat_code == $title_row['category_code']): ?>
-			<li class="selected"><span><?= $cat_code ?></span></li>
+			<li class="selected"><span><?= h(AjoccCatConverter::convert($cat_code, $cat_date)) ?></span></li>
 			<?php else: ?>
-			<li><a href="<?= site_url('ajocc_ranking/' . $season_id . '/' . $local_setting_id . '/' . $cat_code) ?>"><?=  $cat_code ?></a></li>
+			<li><a href="<?= site_url('ajocc_ranking/' . $season_id . '/' . $local_setting_id . '/' . $cat_code) ?>"><?= h(AjoccCatConverter::convert($cat_code, $cat_date)) ?></a></li>
 			<?php endif; ?> <!-- ($cat_code == $title_row('category_code')): ?> -->
 			<?php endforeach; ?> <!-- $cat_codes -->
 		</ul>

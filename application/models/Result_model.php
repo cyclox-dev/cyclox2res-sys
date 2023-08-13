@@ -3,6 +3,7 @@
 require_once(APPPATH . 'etc/cyclox/Const/RacerResultStatus.php');
 require_once(APPPATH . 'etc/cyclox/Util/Util.php');
 require_once(APPPATH . 'etc/util/Xsys_util.php');
+require_once(APPPATH . 'etc/cyclox/Util/AjoccCatConverter.php');
 
 /**
  * Description of Result_model
@@ -141,7 +142,7 @@ class Result_model extends CI_Model {
 			}
 			else
 			{
-				$r['ajocc_pt_exp'] = $r['ajocc_pt'] . 'pt/' . $r['as_category'];
+				$r['ajocc_pt_exp'] = $r['ajocc_pt'] . 'pt/' . AjoccCatConverter::convert($r['as_category'], $r['at_date']);
 			}
 			
 			if (!empty($hpmap[$r['rr_id']]))

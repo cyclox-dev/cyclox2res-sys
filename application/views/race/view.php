@@ -1,5 +1,6 @@
 <?php require_once(APPPATH . 'etc/cyclox/Const/MeetStatus.php'); ?>
 <?php require_once(APPPATH . 'etc/cyclox/Const/RaceStatus.php'); ?>
+<?php require_once(APPPATH . 'etc/cyclox/Util/AjoccCatConverter.php'); ?>
 
 <div id="results_contents_race" class="result_list">
 	<div class="result_list_inr">
@@ -32,7 +33,7 @@
 					<td class="rankup_rider"><a href ="<?= site_url('racer/' . h($r['racer_code'])) ?>"><?= h($r['name_at_race']) ?></a></td>
 					<td><?= h($r['team_name']) ?></td>
 					<td class="cell__races-category"><a href ="<?= site_url('race/' . h($r['entry_category_id'])) ?>"><?= h($r['ec_name']) ?></a></td>
-					<td class="cell__rankup-to"><?= h($r['cr_cat_code']) ?></td>
+					<td class="cell__rankup-to"><?= h(AjoccCatConverter::convert($r['cr_cat_code'], $ecat['at_date'])) ?></td>
 				</tr>
 			<?php endforeach; ?>
 			</tdoby>
@@ -157,7 +158,7 @@
 							<?php
 							// 18-19以前は ajocc point ゼロの場合に非表示
 							if (!(is_null($r['ajocc_pt']) || ($ecat['at_date'] < '2019-04-01' && empty($r['ajocc_pt'])))) {
-								echo h($r['ajocc_pt']) . 'pt/' . h($r['as_category']);
+								echo h($r['ajocc_pt']) . 'pt/' . h(AjoccCatConverter::convert($r['as_category'], $ecat['at_date']));
 							}
 							?>
 							</td>
@@ -179,11 +180,11 @@
 						<?php
 						if (!empty($rankuppers[$r['rr_id']])) {
 							$cr = $rankuppers[$r['rr_id']];
-							echo h($cr['category_code']) . 'へ昇格';
+							echo h(AjoccCatConverter::convert($cr['category_code'], $ecat['at_date'])) . 'へ昇格';
 						} else if (strpos($r['rr_note'], '__KEY_NOT_RANKUP_BY_AGE') !== false) {
 							echo h('年齢のため昇格なし');
 						} else if (strpos($r['rr_note'], '__NEXT_RANKUP_CL_RACER_KEYWORD') !== false) {
-							echo h('CL1へ昇格可（任意）');
+							echo ($ecat['at_date'] < '2023-04-01' ? 'CL1' : 'WE1') . 'へ昇格可（任意）';
 						}
 						?>
 						</td>

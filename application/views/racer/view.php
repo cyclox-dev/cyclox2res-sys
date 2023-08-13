@@ -21,6 +21,7 @@
 		<dd>
 			<?php
 			require_once(APPPATH . 'etc/cyclox/Const/CategoryReason.php');
+			require_once(APPPATH . 'etc/cyclox/Util/AjoccCatConverter.php');
 			
 			$checks_rankdown = (date('n') > 3 && date('n') < 10); // 4月から9月まで表示
 			$ucats = ['C1', 'C2', 'C3', 'CL1', 'CM1', 'CM2'];
@@ -29,6 +30,7 @@
 			foreach ($cats['on'] as $oncat)
 			{
 				$catcode = $oncat['category_code'];
+				$plus_str = '';
 				
 				// シーズン残留or降格
 				if ($checks_rankdown)
@@ -40,7 +42,7 @@
 						if (date('Y/m/d', $ts) == date('' . date('Y') . '/04/01')
 								&& $oncat['reason_id'] == CategoryReason::$SEASON_DOWN->ID())
 						{
-							$catcode .= '（' . (date('y') - 1) . '-' . date('y') . '降格）';
+							$plus_str .= '（' . (date('y') - 1) . '-' . date('y') . '降格）';
 						}
 					}
 					
@@ -48,7 +50,7 @@
 					{
 						if (date('Y/m/d', $ts) < date('' . date('Y') . '/04/01'))
 						{
-							$catcode .= '（' . (date('y') - 1) . '-' . date('y') . '残留）';
+							$plus_str .= '（' . (date('y') - 1) . '-' . date('y') . '残留）';
 						}
 					}
 					
@@ -57,9 +59,11 @@
 						if (date('Y/m/d', $ts) == date('' . date('Y') . '/04/01')
 								&& $oncat['reason_id'] == CategoryReason::$SEASON_UP->ID())
 						{
-							$catcode .= '（' . (date('y') - 1) . '-' . date('y') . '昇格）';
+							$plus_str .= '（' . (date('y') - 1) . '-' . date('y') . '昇格）';
 						}
 					}
+					
+					$catcode = AjoccCatConverter::convert($catcode) . $plus_str;
 				}
 				
 				if (!in_array($catcode, $ctgs))
@@ -127,7 +131,10 @@
 			<?php foreach ($ajocc_rankings as $ranking): ?>
 			<dt>
 				<?php
-				$title = h($ranking['season_name']) . ' ' . h($ranking['category_code']);
+				$tail = substr($ranking['season_name'], 2, 2); // 2023-24からカテゴリー表示名変更
+				$cat_code = $ranking['category_code'];
+				
+				$title = h($ranking['season_name']) . ' ' . h(AjoccCatConverter::convert($cat_code, '20'.$tail.'-04-01'));
 
 				$als_id = 0;
 				if (!empty($ranking['als_id']))
@@ -214,7 +221,7 @@
 					<td><?php
 						if (!empty($r['rank_up_to']))
 						{
-							echo h($r['rank_up_to'] . 'へ昇格');
+							echo h(AjoccCatConverter::convert($r['rank_up_to'], $r['at_date']) . 'へ昇格');
 						}
 					?></td>
 				</tr>
