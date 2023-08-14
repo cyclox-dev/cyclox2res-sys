@@ -37,12 +37,14 @@
 							<td class="ajocc_code"><?= anchor('racer/' . h($r['code']), h($r['code'])) ?></td>
 							<td colspan="2" class="ajocc_category">
 								<?php
-								$cats = explode(',', $r['cats']);
+								
+								$cats = explode(',', str_replace(' ', '', $r['cats']));
 								$new_cats = [];
 								foreach ($cats as $c) {
 									$new_cats[] = AjoccCatConverter::convert($c);
 								}
-								echo h(implode(',', $new_cats));
+								$new_cats = array_unique($new_cats);
+								echo h(implode(', ', $new_cats));
 								?>
 							</td>
 							<td class="rider_jcf_code"><?= empty($r['jcf_number']) ? '' : h($r['jcf_number']) ?></td>
