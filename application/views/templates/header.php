@@ -33,7 +33,7 @@
 <link rel="start" href="https://www.cyclocross.jp/" title="Home">
 
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/base.css?<?php echo (new DateTime())->format('YmdHis'); ?>" media="all">
+<link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/base.css" media="all">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/owl.carousel.css" media="all">
 <link rel="stylesheet" type="text/css" href="https://www.cyclocross.jp/css/this_year?<?php echo (new DateTime())->format('YmdHis'); ?>.css" media="all">
