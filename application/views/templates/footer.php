@@ -5,16 +5,19 @@
 <!-- /#contents -->
 
 <!-- PARTNERS -->
-<div id="ptnr_ftr" class="clear-fix">
+<div id="ptnr_ftr">
 	<h2 class="ptnr-title">OFFICIAL AJOCC PARTNERS</h2>
 	<ul>
+		<li><a href="https://bike.shimano.com/ja-JP/home.html" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_shimano.svg" width="255" height="105" alt="SHIMANO"></a></li>
 		<li><a href="https://champ-sys.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_championsystem.svg" width="255" height="105" alt="Champion System"></a></li>
 		<li><a href="https://ircbike.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_irc.svg" width="255" height="105" alt="IRC TIRE"></a></li>
+		<li><a href="https://tsss.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tsss.jpg" width="255" height="105" alt="OnebyESU"></a></li>
 		<li><a href="https://www.canyon.com/ja/specials/takeflite/?utm_campaign=InfliteCFSLX-JP-Aug-2017&utm_medium=display&utm_source=cyclocross.jp&utm_content=&utm_term=" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_canyon.svg" width="255" height="105" alt="Canyon"></a></li>
 		<li><a href="https://www.giant.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_giant.svg" width="255" height="105" alt="GIANT"></a></li>
 		<li><a href="https://www.diatechproducts.com/muc-off/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_muc-off.jpg" width="255" height="105" alt="Muc-Off"></a></li>
-		<li><a href="https://www.iris21.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_exlub.svg" width="255" height="105" alt="EXLUB"></a></li>
-		<li><a href="https://tsss.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tsss.jpg" width="255" height="105" alt="OnebyESU"></a></li>
+		<li class="logo_size02"><a href="https://www.instagram.com/tanakabeeyard/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tanaka-bee-yard.png" width="255" height="105" alt="田中養蜂場"></a></li>
+		<li><a href="https://www.758sessions.com/brand/challenge/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_challenge.svg" width="255" height="105" alt="Challenge"></a></li>
+		<li class="logo_size02"><a href="https://www.ogkkabuto.co.jp/bicycle/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_kabuto.svg" width="255" height="105" alt="オージーケーカブト"></a></li>
 	</ul>
 </div>
 <!-- /PARTNERS -->
