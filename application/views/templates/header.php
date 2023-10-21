@@ -122,18 +122,18 @@
 			<li class="news"><a href="https://www.cyclocross.jp/news/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-news.png" width="50" height="50" alt="ニュース"><span class="txt">NEWS</span></a></li>
 			<li class="about"><a href="https://www.cyclocross.jp/about/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-about.png" width="50" height="50" alt="AJOCCについて"><span class="txt">ABOUT</span></a></li>
 			<li class="rankings<?php echo is_curr_page(['point_series', 'ajocc_ranking']) ? ' menu_here' : '' ?>"><img src="https://www.cyclocross.jp/img/sp/navi-rankings.png" width="50" height="50" alt="ランキング"><span class="txt">RANKINGS</span>
-			<div class="sub">
-				<ul>
-					<li><a href="https://data.cyclocross.jp/point_series/269">JCX</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/13/0/C1">AJOCC</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/255">東北</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/13/16/C1">関東</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/267">信州</a></li>
-					<li><a href="https://data.cyclocross.jp/ajocc_ranking/13/15/C1">東海</a></li>
-					<li><a href="https://data.cyclocross.jp/point_series/287">関西</a></li>
-					<li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
-				</ul>
-			</div>
+				<div class="sub">
+					<ul>
+						<li><a href="https://data.cyclocross.jp/point_series/324">JCX</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/0/C1">AJOCC</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/290">東北</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/17/C1">関東</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/319">信州</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/320">関西</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/18/C1">山口･九州</a></li>
+						<li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
+					</ul>
+				</div>
 			</li>
 			<li class="results<?php echo is_curr_page(['meet', 'race']) ? ' menu_here' : '' ?>"><a href="https://data.cyclocross.jp/meet" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-results.png" width="50" height="50" alt="リザルト"><span class="txt">RESULTS</span></a></li>
 			<li class="calendar"><a href="https://www.cyclocross.jp/calendar/" class="mo"><img src="https://www.cyclocross.jp/img/sp/navi-calendar.png" width="50" height="50" alt="カレンダー"><span class="txt">CALENDAR</span></a></li>
