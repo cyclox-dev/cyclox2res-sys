@@ -129,6 +129,7 @@
 						<li><a href="https://data.cyclocross.jp/point_series/290">東北</a></li>
 						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/17/C1">関東</a></li>
 						<li><a href="https://data.cyclocross.jp/point_series/319">信州</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/19/C1">東海</a></li>
 						<li><a href="https://data.cyclocross.jp/point_series/320">関西</a></li>
 						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/18/C1">山口･九州</a></li>
 						<li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
@@ -158,6 +159,7 @@
 		<li><a href="https://www.diatechproducts.com/muc-off/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_muc-off.jpg" width="255" height="105" alt="Muc-Off"></a></li>
 		<li class="logo_size02"><a href="https://www.instagram.com/tanakabeeyard/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tanaka-bee-yard.png" width="255" height="105" alt="田中養蜂場"></a></li>
 		<li><a href="https://www.758sessions.com/brand/challenge/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_challenge.svg" width="255" height="105" alt="Challenge"></a></li>
+		<li><a href="https://www.jsports.co.jp/cycle/cyclocross/?utm_source=AJOCC&utm_medium=WEBs&utm_campaign=js_AJOCC_WEBs_cycle" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_jsports.svg" width="255" height="105" alt="J SPORTS"></a></li>
 		<li class="logo_size02"><a href="https://www.ogkkabuto.co.jp/bicycle/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_kabuto.svg" width="255" height="105" alt="オージーケーカブト"></a></li>
 	</ul>
 </div>
