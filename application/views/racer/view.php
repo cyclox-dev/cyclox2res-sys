@@ -23,7 +23,6 @@
 			require_once(APPPATH . 'etc/cyclox/Const/CategoryReason.php');
 			require_once(APPPATH . 'etc/cyclox/Util/AjoccCatConverter.php');
 			
-			$checks_rankdown = (date('n') > 3 && date('n') < 10); // 4月から9月まで表示
 			$ucats = ['C1', 'C2', 'C3', 'CL1', 'CM1', 'CM2'];
 			$dcats = ['C2', 'C3', 'C4', 'CL2', 'CM2', 'CM3'];
 			$ctgs = [];
@@ -33,7 +32,7 @@
 				$plus_str = '';
 				
 				// シーズン残留or降格
-				if ($checks_rankdown)
+				if ($shows_rankdown_exp)
 				{
 					$ts = strtotime($oncat['apply_date']);
 					
@@ -42,7 +41,7 @@
 						if (date('Y/m/d', $ts) == date('' . date('Y') . '/04/01')
 								&& $oncat['reason_id'] == CategoryReason::$SEASON_DOWN->ID())
 						{
-							$plus_str .= '（' . (date('y') - 1) . '-' . date('y') . '降格）';
+							$plus_str .= '（20' . date('y') . '-' . (date('y') + 1) . '）※20' .  (date('y') - 1) . '-' . date('y') . 'リザルトで降格';
 						}
 					}
 					
@@ -50,7 +49,7 @@
 					{
 						if (date('Y/m/d', $ts) < date('' . date('Y') . '/04/01'))
 						{
-							$plus_str .= '（' . (date('y') - 1) . '-' . date('y') . '残留）';
+							$plus_str .= '（20' . date('y') . '-' . (date('y') + 1) . '）※20' .  (date('y') - 1) . '-' . date('y') . 'リザルトで残留';
 						}
 					}
 					
@@ -62,9 +61,9 @@
 							$plus_str .= '（' . (date('y') - 1) . '-' . date('y') . '昇格）';
 						}
 					}
-					
-					$catcode = AjoccCatConverter::convert($catcode) . $plus_str;
 				}
+					
+				$catcode = AjoccCatConverter::convert($catcode) . $plus_str;
 				
 				if (!in_array($catcode, $ctgs))
 				{
