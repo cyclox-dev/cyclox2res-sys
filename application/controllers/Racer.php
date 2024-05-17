@@ -68,8 +68,8 @@ class Racer extends XSYS_Controller {
 		$shows_rankdown = (date('n') > 3 && date('n') < 10); // 4月から9月まで表示
 		if ($shows_rankdown) {
 			// シーズン 4/1付けでの降格処理がなされているかをシーズン降格データ個数 >=20 で判断する（他に判断できるデータがないため）
-			$num = $this->categoryracer_model->get_rankdown_num_at();
-			log_message('debug', 'rank down num = ' . $num);
+			$num = $this->categoryracer_model->get_seasonrankdown_num_at();
+			//log_message('debug', 'rank down num = ' . $num);
 			if ($num < 20) {
 				$shows_rankdown = false;
 			}

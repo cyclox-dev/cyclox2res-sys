@@ -185,7 +185,7 @@ class Categoryracer_model extends CI_Model {
 		return $ret;
 	}
 	
-	public function get_rankdown_num_at($dt = false)
+	public function get_seasonrankdown_num_at($dt = false)
 	{
 		if (! $dt) {
 			$dt = date('Y-m-d');
