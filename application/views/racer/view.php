@@ -16,7 +16,7 @@
 	<h1><i class="fas fa-user-circle"></i> <?= $racer['family_name'] . ' ' . $racer['first_name']; ?></h1>
 
 	<dl class="individual_list">
-		<dt>選手コード</dt><dd><?= h($racer['code']) ?>&nbsp;</dd>
+		<dt>AJOCCコード</dt><dd><?= h($racer['code']) ?>&nbsp;</dd>
 		<dt>カテゴリー</dt>
 		<dd>
 			<?php

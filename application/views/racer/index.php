@@ -12,7 +12,7 @@
 				<div class="alert alert-danger" role="alert">キーワードもしくはカテゴリーを入力し、検索して下さい。</div>
 			<?php elseif (empty($racers)): ?>
 				<p>対象となる選手が見つかりませんでした。</p>
-				<p>※英数字の半角と全角は別物として検索されます。</br>※選手コードはすべて半角です。</p>
+				<p>※英数字の半角と全角は別物として検索されます。</br>※AJOCCコードはすべて半角です。</p>
 			<?php else: ?>
 				<?php if ($paginates) echo $this->pagination->create_links(); ?>
 				<h2 class="entry-ttl">検索結果</h2>
@@ -20,7 +20,7 @@
 				<div class="search_result_wrap">
 					<table class="search_result_table">
 						<tr class="tr01">
-							<th class="ajocc_code">選手コード</th>
+							<th class="ajocc_code">AJOCCコード</th>
 							<th class="ajocc_category" colspan="2">カテゴリー</th>
 							<th class="rider_jcf_code">JCFライセンス</th>
 							<th class="rider_team">チーム</th>
