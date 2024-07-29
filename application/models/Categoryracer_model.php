@@ -184,4 +184,20 @@ class Categoryracer_model extends CI_Model {
 		
 		return $ret;
 	}
+	
+	public function get_seasonrankdown_num_at($dt = false)
+	{
+		if (! $dt) {
+			$dt = date('Y-m-d');
+		}
+		
+		$apply_date = (new DateTime($dt))->format('Y') . '-04-01';
+		$cdt = [
+			'deleted' => 0,
+			'reason_id' => CategoryReason::$SEASON_DOWN->ID(),
+			'apply_date' => $apply_date,
+		];
+		
+		return $this->db->from('category_racers')->where($cdt)->count_all_results();
+	}
 }

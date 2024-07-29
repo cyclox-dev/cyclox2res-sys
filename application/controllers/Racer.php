@@ -63,6 +63,19 @@ class Racer extends XSYS_Controller {
 		}
 		
 		$data['results'] = $results;
+		
+		// カテゴリー表示に降格／残留を表示するか
+		$shows_rankdown = (date('n') > 3 && date('n') < 10); // 4月から9月まで表示
+		if ($shows_rankdown) {
+			// シーズン 4/1付けでの降格処理がなされているかをシーズン降格データ個数 >=20 で判断する（他に判断できるデータがないため）
+			$num = $this->categoryracer_model->get_seasonrankdown_num_at();
+			//log_message('debug', 'rank down num = ' . $num);
+			if ($num < 20) {
+				$shows_rankdown = false;
+			}
+		}
+		$data['shows_rankdown_exp'] = $shows_rankdown;
+		
 		$this->_fmt_render('racer/view', $data, ['https://www.cyclocross.jp/js/results.js'], ['https://www.cyclocross.jp/css/results_data.css'], '選手データ');
 	}
 	
