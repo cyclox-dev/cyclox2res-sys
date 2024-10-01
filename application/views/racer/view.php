@@ -89,9 +89,7 @@
 		</dd>
 		<dt>フリガナ</dt><dd><?= h($racer['family_name_kana'] . ' ' . $racer['first_name_kana']) ?>&nbsp;</dd>
 		<dt>Name</dt><dd><?= h($racer['first_name_en'] . ' ' . $racer['family_name_en']) ?>&nbsp;</dd>
-		<dt>チーム</dt><dd><?= h($racer['team']) ?>&nbsp;</dd>
 		<dt>性別</dt><dd><?= h($racer['gender_exp']->express()) ?>&nbsp;</dd>
-		<dt>国籍</dt><dd><?= h($racer['nationality_code']) ?>&nbsp;</dd>
 		<dt>JCF No.</dt><dd><?= h($racer['jcf_number']) ?>&nbsp;</dd>
 	</dl>
 	

@@ -23,14 +23,12 @@
 							<th class="ajocc_code">AJOCCコード</th>
 							<th class="ajocc_category" colspan="2">カテゴリー</th>
 							<th class="rider_jcf_code">JCFライセンス</th>
-							<th class="rider_team">チーム</th>
 						</tr>
 							<tr class="tr02">
 							<th class="rider_name">氏名</th>
 							<th class="rider_name_kana">フリガナ</th>
 							<th class="rider_name_roman">ローマ字(姓名)</th>
 							<th class="rider_gender">性別</th>
-							<th class="rider_native_place">都道府県</th>
 						</tr>
 						<?php foreach ($racers as $r): ?>
 						<tr class="tr01">
@@ -48,14 +46,12 @@
 								?>
 							</td>
 							<td class="rider_jcf_code"><?= empty($r['jcf_number']) ? '' : h($r['jcf_number']) ?></td>
-							<td class="rider_team"><?= empty($r['team']) ? '' : h($r['team']) ?></td>
 						</tr>
 						<tr class="tr02">
 							<td class="rider_name"><?= anchor('racer/' . h($r['code']), h($r['family_name']) . ' ' . h($r['first_name'])) ?></td>
 							<td class="rider_name_kana"><?= h($r['family_name_kana']) . ' ' . h($r['first_name_kana']) ?></td>
 							<td class="rider_name_roman"><?= h($r['family_name_en']) . ' ' . h($r['first_name_en']) ?></td>
 							<td class="rider_gender"><?= ($r['gender_obj'] == Gender::$UNASSIGNED) ? '--' : h($r['gender_obj']->express() . '/' . $r['gender_obj']->expressEn()) ?></td>
-							<td class="rider_native_place"><?= empty($r['prefecture']) ? '' : h($r['prefecture']) ?></td>
 						</tr>
 						<?php endforeach; ?>
 					</table>
