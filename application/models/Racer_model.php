@@ -135,7 +135,7 @@ class Racer_model extends CI_Model {
 	private function _set_word_search_condition($words, $andor)
 	{
 		$COL_NAMES = array('code', 'family_name', 'family_name_kana', 'family_name_en'
-				, 'first_name', 'first_name_kana', 'first_name_en', 'team');
+				, 'first_name', 'first_name_kana', 'first_name_en');
 
 		$with_and = (empty($andor) || $andor === 'and');
 		$is_first = TRUE;
