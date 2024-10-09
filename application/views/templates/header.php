@@ -124,14 +124,14 @@
 			<li class="rankings<?php echo is_curr_page(['point_series', 'ajocc_ranking']) ? ' menu_here' : '' ?>"><img src="https://www.cyclocross.jp/img/sp/navi-rankings.png" width="50" height="50" alt="ランキング"><span class="txt">RANKINGS</span>
 				<div class="sub">
 					<ul>
-						<li><a href="https://data.cyclocross.jp/point_series/324">JCX</a></li>
-						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/0/C1">AJOCC</a></li>
-						<li><a href="https://data.cyclocross.jp/point_series/290">東北</a></li>
-						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/17/C1">関東</a></li>
-						<li><a href="https://data.cyclocross.jp/point_series/319">信州</a></li>
-						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/19/C1">東海</a></li>
-						<li><a href="https://data.cyclocross.jp/point_series/320">関西</a></li>
-						<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/18/C1">山口･九州</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/375">JCX</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/15/0/C1">AJOCC</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/338">東北</a></li>
+						<li><a href="https://data.cyclocross.jp/ajocc_ranking/15/21/C1">関東</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/351">信州</a></li>
+                        <li><a href="https://data.cyclocross.jp/ajocc_ranking/15/23/C1">東海</a></li>
+						<li><a href="https://data.cyclocross.jp/point_series/371">関西</a></li>
+                        <!--<li><a href="https://data.cyclocross.jp/ajocc_ranking/14/18/C1">山口･九州</a></li>-->
 						<li><a href="https://www.cyclocross.jp/rankings/about-rankings.html">種類と解説</a></li>
 					</ul>
 				</div>
