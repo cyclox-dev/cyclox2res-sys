@@ -17,6 +17,7 @@
 		<li><a href="https://www.diatechproducts.com/muc-off/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_muc-off.jpg" width="255" height="105" alt="Muc-Off"></a></li>
 		<li class="logo_size02"><a href="https://www.instagram.com/tanakabeeyard/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tanaka-bee-yard.png" width="255" height="105" alt="田中養蜂場"></a></li>
 		<li><a href="https://www.758sessions.com/brand/challenge/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_challenge.svg" width="255" height="105" alt="Challenge"></a></li>
+		<li><a href="https://www.jsports.co.jp/cycle/cyclocross/?utm_source=AJOCC&utm_medium=WEBs&utm_campaign=js_AJOCC_WEBs_cycle" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_jsports.svg" width="255" height="105" alt="J SPORTS"></a></li>
 		<li><a href="https://tsss.co.jp/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_tsss.jpg" width="255" height="105" alt="OnebyESU"></a></li>
 		<li class="logo_size02"><a href="https://www.ogkkabuto.co.jp/bicycle/" target="_blank"><img src="https://www.cyclocross.jp/img/partners/ptnr_logo_kabuto.svg" width="255" height="105" alt="オージーケーカブト"></a></li>
 	</ul>
