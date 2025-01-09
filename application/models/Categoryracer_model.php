@@ -58,24 +58,42 @@ class Categoryracer_model extends CI_Model {
 	 */
 	public function get_rankuppers_of_ecat($ecat_id)
 	{
-		// 昇格者情報取得
+		// 以下、ecat->er->rr->cr->racer と5段 join すると本番環境で激重になったので3段+2弾に分割して SQL を実行している。
+		
+		// リザルト id 取得
 		$cdt = array(
-			'reason_id' => CategoryReason::$RESULT_UP->ID(),
-			'r.deleted' => 0,
-			'cr.deleted' => 0,
 			'rr.deleted' => 0,
 			'er.deleted' => 0,
 			'ec.deleted' => 0,
 			'ec.id' => $ecat_id
 		);
 		
-		$query = $this->db->select('*, cr.category_code as cr_cat_code, ec.name as ec_name, rr.id as rr_id')
-				->join('racers as r', 'r.code = cr.racer_code', 'INNER')
-				->join('racer_results as rr', 'rr.id = cr.racer_result_id', 'INNER')
+		$query = $this->db->select('rr.id as rr_id')
 				->join('entry_racers as er', 'rr.entry_racer_id = er.id', 'INNER')
 				->join('entry_categories as ec', 'ec.id = er.entry_category_id', 'INNER')
-				->get_where('category_racers as cr', $cdt);
+				->get_where('racer_results as rr', $cdt);
+		$rrids = $query->result_array();
 		
+		if (empty($rrids)) {
+			return [];
+		}
+		
+		$rrids_arr = [];
+		foreach ($rrids as $rrid) {
+			$rrids_arr[] = $rrid['rr_id'];
+		}
+		
+		// リザルト id から昇格者情報取得
+		$cdt = array(
+			'reason_id' => CategoryReason::$RESULT_UP->ID(),
+			'r.deleted' => 0,
+			'cr.deleted' => 0,
+		);
+		
+		$query = $this->db->select('*, cr.category_code as cr_cat_code, racer_result_id as rr_id')
+				->join('racers as r', 'r.code = cr.racer_code', 'INNER')
+				->where_in('racer_result_id', $rrids_arr)
+				->get_where('category_racers as cr', $cdt);
 		$rankups = $query->result_array();
 		
 		$retMap = array();
